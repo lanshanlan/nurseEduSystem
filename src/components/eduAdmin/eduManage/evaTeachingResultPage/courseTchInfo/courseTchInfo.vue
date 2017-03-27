@@ -1,6 +1,7 @@
 <template>
     <div id="courseTchInfo">
       <div class="dropdown">
+        <!--学期选择下拉列表-->
         <input type="text" id="changeTerm" placeholder="选择学期">
         <div class="dropdown-content">
           <table v-for="year in years">
@@ -33,7 +34,7 @@
         },
       methods:{
         yearClick: function(year,term){
-          //监听搜索内容点击选择，同步到课程表选择框
+          //监听搜索内容点击选择，同步到学期选择框
 //          alert("Hello boy!");
           var changeTerm = document.getElementById("changeTerm");
           changeTerm.value = year+': '+term;

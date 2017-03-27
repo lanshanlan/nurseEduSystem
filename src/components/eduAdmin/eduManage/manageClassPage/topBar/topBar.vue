@@ -1,5 +1,6 @@
 <template>
   <div id="manageClassPageTopBar" class="nav">
+    <!--导航栏-->
     <ul>
       <li><a href="#">异动详情</a></li>
     </ul>

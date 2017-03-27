@@ -1,5 +1,6 @@
 <template>
   <div id="tchTable">
+    <!--教师信息表格-->
     <table id="eduAdminTchTableSy" border="1">
       <thead>
       <tr>

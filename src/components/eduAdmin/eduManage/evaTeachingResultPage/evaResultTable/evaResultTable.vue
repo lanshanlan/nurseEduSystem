@@ -1,5 +1,6 @@
 <template>
   <div id="evaResultTable">
+    <!--评教结果表格-->
     <table id="stdInfoTableSy" border="1">
       <thead>
       <tr>

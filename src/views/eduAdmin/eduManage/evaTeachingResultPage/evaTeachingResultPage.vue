@@ -1,10 +1,11 @@
 <template>
-  <div id="evaTeachingReasultPage">
-    <topTitle></topTitle>
-    <topBar></topBar>
-    <courseTchInfo></courseTchInfo>
-    <evaResultTable></evaResultTable>
-  </div>
+    <!--使用import引入的组件组合page页面-->
+    <div id="evaTeachingReasultPage">
+      <topTitle></topTitle>
+      <topBar></topBar>
+      <courseTchInfo></courseTchInfo>
+      <evaResultTable></evaResultTable>
+    </div>
 </template>
 
 <script>

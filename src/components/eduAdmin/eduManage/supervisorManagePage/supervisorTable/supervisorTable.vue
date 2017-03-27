@@ -1,7 +1,8 @@
 <template>
   <div id="supervisorTable">
-    <span><p>*下面是y已分配督导员的课程</p></span>
+    <span><p>*下面是已分配督导员的课程</p></span>
     <table id="supervisorTableSy" border="1">
+      <!--已分配督导员的课程的表格-->
       <thead>
       <tr>
         <th width="2rem">当前状态</th>

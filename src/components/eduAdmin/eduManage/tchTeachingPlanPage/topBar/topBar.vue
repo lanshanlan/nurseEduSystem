@@ -1,5 +1,6 @@
 <template>
   <div id="tchTeachingPlanPageTopBar" class="nav">
+    <!--导航栏-->
     <ul>
       <li><a href="#">培养方案</a></li>
     </ul>

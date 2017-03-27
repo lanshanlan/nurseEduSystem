@@ -1,5 +1,6 @@
 <template>
   <div id="courseGroupTable">
+    <!--课程培养方案表格-->
     <table id="courseGroupTableSy" border="1">
       <thead>
       <tr>
@@ -17,6 +18,7 @@
         <td v-text="courseGroupInfo.headman"></td>
         <td v-text="courseGroupInfo.look"></td>
         <td><button id="download">下载</button></td>
+        <!--下载培养方案的按钮-->
       </tr>
       </tbody>
     </table>

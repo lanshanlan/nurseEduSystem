@@ -1,6 +1,7 @@
 <template>
   <div id="tchDropdown">
     <div class="dropdown">
+      <!--教师选择下拉列表-->
       <input type="text" id="changeTch" placeholder="任课教师">
       <div class="dropdown-content">
         <table v-for="tch in tchs">
@@ -9,6 +10,7 @@
       </div>
     </div>
     <div class="dropdown">
+      <!--课程选择下拉列表-->
       <input type="text" id="changeCourse" placeholder="选择课程">
       <div class="dropdown-content">
         <table v-for="course in courses">
@@ -41,13 +43,13 @@
         },
       methods:{
         tchClick: function(tch){
-          //监听搜索内容点击选择，同步到课程表选择框
+          //监听搜索内容点击选择，同步到教师选择框
 //          alert("Hello boy!");
           var changeTch = document.getElementById("changeTch");
           changeTch.value = tch;
         },
         courseClick: function(course){
-          //监听搜索内容点击选择，同步到课程表选择框
+          //监听搜索内容点击选择，同步到课程选择框
 //          alert("Hello boy!");
           var changeCourse = document.getElementById("changeCourse");
           changeCourse.value = course;

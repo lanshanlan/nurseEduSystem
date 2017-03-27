@@ -1,5 +1,6 @@
 <template>
   <div id="mngStdPageTopBar" class="nav">
+    <!--导航栏-->
     <ul>
       <li><a href="#">学生管理</a></li>
     </ul>

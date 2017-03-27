@@ -25,7 +25,6 @@
         </div>
       </div>
       <!--年级选择下拉列表-->
-      <!--条件判断错误，待改动-->
       <div class="dropdown">
         <input type="text" id="selectClass"  placeholder="选择班级">
         <div class="dropdown-content">
@@ -85,13 +84,13 @@
           }
         },
         gradeClick: function(grade){
-          //监听搜索内容点击选择，同步到课程表选择框
+          //监听搜索内容点击选择，同步到年级选择框
 //          alert("Hello boy!");
           var selectGrade = document.getElementById("selectGrade");
           selectGrade.value = grade;
         },
         classClick: function(clacc){
-          //监听搜索内容点击选择，同步到课程表选择框
+          //监听搜索内容点击选择，同步到班级选择框
 //          alert("Hello boy!");
           var selectClass = document.getElementById("selectClass");
           selectClass.value = clacc;

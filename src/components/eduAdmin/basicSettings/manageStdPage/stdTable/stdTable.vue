@@ -1,5 +1,6 @@
 <template>
     <div id="stdTable">
+      <!--学生信息表格-->
       <table id="eduAdminStdTableSy" border="1">
         <thead>
         <tr>

@@ -1,14 +1,16 @@
 <template>
   <div>
-    <div id="yearPlan">
+    <div id="fiveYearPlan">
+      <!--五年制课程表格模块-->
       <div id="fiveYearsPlanDiv">
-        <!--五年制课程表格模块-->
+        <!--五年制课程表格模块下拉菜单-->
         <span><img id="fiveYearsArrow"  @click="fiveTableSlideToggle()" :src="fiveYearsArrow"></span>
         <span id="fiveYearsPlanP" @click="fiveTableSlideToggle()">五年制</span>
         <span><button id="fiveLeadIn">导入</button></span>
         <span><button id="fiveLeadOut">导出</button></span>
       </div>
       <div>
+        <!--五年制课程表格-->
         <table id="fiveYearsPlanTable" v-show="fiveYearsPlanTable" border="1">
           <thead>
           <tr>
@@ -59,14 +61,16 @@
       </div>
     </div>
     <div id="threeYearsPlan">
+      <!--三年制课程表格模块-->
       <div id="threeYearsPlanDiv">
-        <!--三年制课程表格模块-->
+        <!--三年制课程表格模块下拉菜单-->
         <span><img id="threeYearsArrow"  @click="threeTableSlideToggle()" :src="threeYearsArrow"></span>
         <span id="threeYearsPlanP" @click="threeTableSlideToggle()">三年制</span>
         <span><button id="threeLeadIn">导入</button></span>
         <span><button id="threeLeadOut">导出</button></span>
       </div>
       <div>
+        <!--三年制课程表格-->
         <table id="threeYearsPlanTable" v-show="threeYearsPlanTable" border="1">
           <thead>
           <tr>
@@ -173,9 +177,6 @@
         font-size: 62.5%;
     }
 
-    #yearPlan{
-
-    }
     #fiveYearsPlanDiv,#threeYearsPlanDiv{
       position: relative;
       background-color: #37937a;

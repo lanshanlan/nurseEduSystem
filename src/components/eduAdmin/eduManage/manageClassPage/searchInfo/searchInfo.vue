@@ -1,6 +1,7 @@
 <template>
     <div id="searchInfo">
       <div class="dropdown">
+        <!--年制选择下拉列表-->
         <input type="text" id="changeYearPlan" placeholder="选择年制">
         <div class="dropdown-content">
           <table v-for="yearPlan in yearPlans">
@@ -11,6 +12,7 @@
       <span><input type="text" id="stdID" placeholder="请输入学号"></span>
       <span><input type="text" id="stdName" placeholder="请输入姓名"></span>
       <div class="dropdown">
+        <!--时间段(上)选择下拉列表-->
         <input type="text" id="changeTimeHead" placeholder="时间段">
         <div class="dropdown-content">
           <table v-for="timeHE in timeHEs">
@@ -20,6 +22,7 @@
       </div>
       <span id="timeTo">至</span>
       <div class="dropdown">
+        <!--时间段(下)选择下拉列表-->
         <input type="text" id="changeTimeEnd" placeholder="时间段">
         <div class="dropdown-content">
           <table v-for="timeHE in timeHEs">
@@ -46,13 +49,13 @@
         },
       methods:{
         changeTimeHeadClick: function(timeHE){
-          //监听搜索内容点击选择，同步到课程表选择框
+          //监听搜索内容点击选择，同步到年制选择框
 //          alert("Hello boy!");
           var changeTimeHead = document.getElementById("changeTimeHead");
           changeTimeHead.value = timeHE;
         },
         changeTimeEndClick: function(timeHE){
-          //监听搜索内容点击选择，同步到课程表选择框
+          //监听搜索内容点击选择，同步到时间段选择框
 //          alert("Hello boy!");
           var changeTimeEnd = document.getElementById("changeTimeEnd");
           changeTimeEnd.value = timeHE;

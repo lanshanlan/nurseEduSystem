@@ -4,6 +4,7 @@
     <div>
       <span id="setSupSpan">设置督导员:</span>
       <div class="dropdown">
+        <!--督导员选择下拉列表-->
         <input type="text" id="changeSupervisor" placeholder="选择督导员">
         <div class="dropdown-content">
           <table v-for="supervisor in supervisors">
@@ -12,9 +13,10 @@
         </div>
       </div>
       <div class="dropdown">
+        <!--督导时间选择下拉列表-->
         <input type="text" id="changeTime" placeholder="选择时间">
         <div class="dropdown-content">
-          <table v-for="time in ctimes">
+          <table v-for="time in times">
             <tr class="dropdownMenu" @click="timeClick(time)">{{time}}</tr>
           </table>
         </div>
@@ -45,13 +47,13 @@
     },
     methods:{
       supervisorClick: function(supervisor){
-        //监听搜索内容点击选择，同步到课程表选择框
+        //监听搜索内容点击选择，同步到督导员选择框
 //          alert("Hello boy!");
         var changeSupervisor = document.getElementById("changeSupervisor");
         changeSupervisor.value = supervisor;
       },
       timeClick: function(time){
-        //监听搜索内容点击选择，同步到课程表选择框
+        //监听搜索内容点击选择，同步到督导时间选择框
 //          alert("Hello boy!");
         var changeTime = document.getElementById("changeTime");
         changeTime.value = time;
@@ -113,7 +115,7 @@
       z-index: 2;
       background-color: #f9f9f9;
       min-width: 2rem;
-      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
       padding: 1rem;
       opacity: 1.0;
     }

@@ -1,4 +1,5 @@
 <template>
+    <!--使用import引入的组件组合page页面-->
     <div id="teachProcessPage">
       <topTitle></topTitle>
       <topBar></topBar>

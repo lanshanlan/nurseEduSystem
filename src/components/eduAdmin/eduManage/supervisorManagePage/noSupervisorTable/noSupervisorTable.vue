@@ -1,6 +1,7 @@
 <template>
   <div id="noSupervisorTable">
     <span><p>*下面是筛选后的课程</p></span>
+    <!--未设置督导的课程的表格-->
     <table id="noSupervisorTableSy" border="1">
       <thead>
       <tr>

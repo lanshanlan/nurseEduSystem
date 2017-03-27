@@ -1,5 +1,6 @@
 <template>
   <div id="stdInfoTable">
+    <!--学生异动信息表格-->
     <table id="stdInfoTableSy" border="1">
       <thead>
       <tr>
