@@ -34,7 +34,7 @@
     }
     #eduPlanPage{
       text-align: left;
-      height:50rem;
+      min-height: 50rem;
       background-color: #f0f3f8;
     }
     @media screen and (max-width: 1023px) {

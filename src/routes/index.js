@@ -11,6 +11,8 @@ import eduAdminTchTeachingPlan from '../views/eduAdmin/eduManage/tchTeachingPlan
 import eduAdminManageClass from '../views/eduAdmin/eduManage/manageClassPage/manageClassPage.vue'
 import eduAdminEvaTeachingResult from '../views/eduAdmin/eduManage/evaTeachingResultPage/evaTeachingResultPage.vue'
 import eduAdminSupervisorManage from '../views/eduAdmin/eduManage/supervisorManagePage/supervisorManagePage.vue'
+import eduAdminAuthorityManage2 from '../views/eduAdmin/authorityManage2Page/authorityManage2Page.vue'
+
 Vue.use(Router)
 
 export default new Router({   //将routes里的参数导出
@@ -64,6 +66,11 @@ export default new Router({   //将routes里的参数导出
       path: '/eduAdminSupervisorManage',
       name: 'eduAdminSupervisorManage',
       component: eduAdminSupervisorManage
+    },
+    {
+      path: '/eduAdminAuthorityManage2',
+      name: 'eduAdminAuthorityManage2',
+      component: eduAdminAuthorityManage2
     }
   ]
 })

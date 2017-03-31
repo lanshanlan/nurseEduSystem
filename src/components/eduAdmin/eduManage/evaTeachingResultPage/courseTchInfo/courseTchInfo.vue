@@ -80,7 +80,7 @@
       min-width: 5rem;
        border: none;
      }
-    #changebut:hover{
+    button:hover{
       background-color: #00a539;
     }
     .dropdown {

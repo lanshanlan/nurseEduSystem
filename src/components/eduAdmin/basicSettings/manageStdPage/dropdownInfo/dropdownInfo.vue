@@ -106,6 +106,8 @@
     #dropdownInfo{
       height: 7rem;
       background-color: white;
+      display: flex;
+      flex-direction: row;
     }
     #stdID{
       margin-left: 3rem;
@@ -141,7 +143,6 @@
     .dropdown {
       position: relative;
       margin-left:3rem;
-      display: inline-block;
     }
     .dropdown-content {
       display: none;

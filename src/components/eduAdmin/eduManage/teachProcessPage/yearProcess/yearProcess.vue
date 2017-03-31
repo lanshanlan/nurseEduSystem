@@ -489,6 +489,16 @@
         var FYProcessMenu = document.getElementById("FYProcessMenu");
         if (this.FYProcessMenu === true){
           this.FYProcessMenu = false;
+          this.FYfirstProcessTable = false;
+          this.FYsecondProcessTable = false;
+          this.FYthirdProcessTable = false;
+          this.FYfourthProcessTable = false;
+          this.FYfifthProcessTable = false;
+          this.FYfirstArrow = arrowright;
+          this.FYsecondArrow = arrowright;
+          this.FYthirdArrow = arrowright;
+          this.FYfourthArrow = arrowright;
+          this.FYfifthArrow = arrowright;
           this.FYArrow = arrowright;
         }
         else {
@@ -497,10 +507,17 @@
         }
       },
 //        用于更改五年制各年级下拉列表的显示与否、箭头图标为向右还是向下的函数
+//        将下拉列表上拉时，将五年制各年级下拉列表的下拉状态及箭头图标复原
       threeTableSlideToggle: function(){
         var TYProcessMenu = document.getElementById("TYProcessMenu");
         if (this.TYProcessMenu === true){
           this.TYProcessMenu = false;
+          this.TYfirstProcessTable = false;
+          this.TYsecondProcessTable = false;
+          this.TYthirdProcessTable = false;
+          this.TYfirstArrow = arrowright;
+          this.TYsecondArrow = arrowright;
+          this.TYthirdArrow = arrowright;
           this.TYArrow = arrowright;
         }
         else {
@@ -509,6 +526,7 @@
         }
       },
 //        用于更改三年制各年级下拉列表的显示与否、箭头图标为向右还是向下的函数
+//        将下拉列表上拉时，将三年制各年级下拉列表的下拉状态及箭头图标复原
       fiveFirstTableSlideToggle: function(){
         var FYfirstProcessTable = document.getElementById("FYfirstProcessTable");
         if (this.FYfirstProcessTable === true){
