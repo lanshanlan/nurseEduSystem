@@ -11,7 +11,7 @@ import eduAdminTchTeachingPlan from '../views/eduAdmin/eduManage/tchTeachingPlan
 import eduAdminManageClass from '../views/eduAdmin/eduManage/manageClassPage/manageClassPage.vue'
 import eduAdminEvaTeachingResult from '../views/eduAdmin/eduManage/evaTeachingResultPage/evaTeachingResultPage.vue'
 import eduAdminSupervisorManage from '../views/eduAdmin/eduManage/supervisorManagePage/supervisorManagePage.vue'
-import eduAdminAuthorityManage2 from '../views/eduAdmin/authorityManage2Page/authorityManage2Page.vue'
+import eduAdminAuthorityManage2 from '../views/eduAdmin/userManage/authorityManage2Page/authorityManage2Page.vue'
 
 Vue.use(Router)
 

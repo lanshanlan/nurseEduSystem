@@ -2,7 +2,7 @@
   <div id="tchTeachingPlanPageTopBar" class="nav">
     <!--导航栏-->
     <ul>
-      <li><a href="#">培养方案</a></li>
+      <li><a href="#">教师管理</a></li>
     </ul>
   </div>
 </template>

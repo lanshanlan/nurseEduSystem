@@ -12,10 +12,10 @@
 
 <script>
   /*import引入该page页面的单文件组件*/
-  import topTitle from '../../../components/public/topTitle/topTitle.vue'
-  import topBar from '../../../components/eduAdmin/authorityManage2Page/topBar/topBar.vue'
-  import dropdownStaff from '../../../components/eduAdmin/authorityManage2Page/dropdownStaff/dropdownStaff.vue'
-  import staffAuthority from '../../../components/eduAdmin/authorityManage2Page/staffAuthority/staffAuthority.vue'
+  import topTitle from '../../../../components/public/topTitle/topTitle.vue'
+  import topBar from '../../../../components/eduAdmin/userManage/authorityManage2Page/topBar/topBar.vue'
+  import dropdownStaff from '../../../../components/eduAdmin/userManage/authorityManage2Page/dropdownStaff/dropdownStaff.vue'
+  import staffAuthority from '../../../../components/eduAdmin/userManage/authorityManage2Page/staffAuthority/staffAuthority.vue'
   export default {
     name: 'authorityManage2Page',
     data () {
