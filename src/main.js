@@ -4,9 +4,12 @@ import Vue from 'vue'
 import  VueResource from  'vue-resource'
 import App from './App'
 import router from './routes/index'   //导入index文件，使用其中的route路径
+import iView from 'iview'
+import './assets/css/iview.css'
 
 Vue.config.productionTip = false;
 Vue.use(VueResource);
+Vue.use(iView);
 
 /*下面的app实力是一个外壳，每个page页面都会用到app这个外壳框架 */
 new Vue({

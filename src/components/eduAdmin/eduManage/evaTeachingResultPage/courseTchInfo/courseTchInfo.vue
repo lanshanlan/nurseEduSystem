@@ -10,7 +10,6 @@
           </table>
         </div>
       </div>
-      <span><button id="changebut">切换学期</button></span>
       <span><input type="text" id="courseID" placeholder="课程代码"></span>
       <span><input type="text" id="courseName" placeholder="课程名称"></span>
       <span><input type="text" id="tchID" placeholder="教师编码"></span>
@@ -48,6 +47,7 @@
         font-size: 100%;
     }
     #courseTchInfo{
+      margin-left: 2rem;
       height: 7rem;
       background-color: white;
     }
@@ -55,7 +55,7 @@
       margin-top: 2.5rem;
       margin-left: 2rem;
       font-size: 0.8rem;
-      width: 6.5rem;
+      width: 8rem;
       border-radius: 0.5rem;
       padding-left: 1rem;
       padding-bottom: 0.2rem;
@@ -77,7 +77,7 @@
        border-radius: 0.5rem;
        padding-bottom: 0.2rem;
        height: 2rem;
-      min-width: 5rem;
+       min-width: 5rem;
        border: none;
      }
     button:hover{

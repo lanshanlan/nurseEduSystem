@@ -35,6 +35,8 @@
       </div>
       <!--班级选择下拉列表-->
       <span><input type="text" id="stdID" placeholder="请输入学号"></span>
+      <span><button id="downloadForm">下载模板</button></span>
+      <span><button id="searchFor">查找</button></span>
       <span><button id="leadIn">导入</button></span>
       <span><button id="leadOut">导出</button></span>
     </div>
@@ -115,7 +117,7 @@
     input{
       margin-top: 2.5rem;
       font-size: 1rem;
-      width: 11rem;
+      width: 8rem;
       border-radius: 0.5rem;
       padding-left: 1rem;
       padding-bottom: 0.2rem;

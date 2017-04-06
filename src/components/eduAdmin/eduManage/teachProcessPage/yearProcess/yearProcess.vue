@@ -5,7 +5,6 @@
         <!--五年制课程表格模块-->
         <span><img id="FYArrow"  @click="fiveTableSlideToggle()" :src="FYArrow"></span>
         <span id="FYProcessP" @click="fiveTableSlideToggle()">五年制</span>
-        <span><button id="fiveLeadIn">导入</button></span>
         <span><button id="fiveLeadOut">导出</button></span>
       </div>
       <div id="FYProcessMenu" v-show="FYProcessMenu">
@@ -287,14 +286,13 @@
         <!--三年制课程表格模块-->
         <span><img id="TYArrow"  @click="threeTableSlideToggle()" :src="TYArrow"></span>
         <span id="TYProcessP" @click="threeTableSlideToggle()">三年制</span>
-        <span><button id="threeLeadIn">导入</button></span>
         <span><button id="threeLeadOut">导出</button></span>
       </div>
       <div id="TYProcessMenu" v-show="TYProcessMenu">
         <div id="TYfirstProcessDiv">
           <!--三年制大一课程表格模块-->
           <span><img id="TYfirstArrow"  @click="threeFirstTableSlideToggle()" :src="TYfirstArrow"></span>
-          <span id="TYfirstProcessP" @click="threeFirstTableSlideToggle()">大一</span>
+          <span id="TYfirstProcessP" @click="threeFirstTableSlideToggle()">2016级</span>
         </div>
         <div>
           <table id="TYfirstProcessTable" v-show="TYfirstProcessTable" border="1">
@@ -304,7 +302,7 @@
               <th width="4rem" rowspan="2">课程名称</th>
               <th width="3rem" colspan="3">学时</th>
               <th width="8rem" colspan="8">执行学期</th>
-              <th width="4rem" colspan="2">考核学期</th>
+              <th width="4rem" rowspan="2">课程进度</th>
             </tr>
             <tr>
               <td>总计</td>
@@ -318,8 +316,6 @@
               <td>6</td>
               <td>7</td>
               <td>8</td>
-              <td>考察</td>
-              <td>考试</td>
             </tr>
             </thead>
             <tbody>
@@ -340,7 +336,6 @@
               <td v-text="course.term7"></td>
               <td v-text="course.term8"></td>
               <td v-text="course.inspect"></td>
-              <td v-text="course.exam"></td>
             </tr>
             </tbody>
           </table>
@@ -476,11 +471,11 @@
         TYfirstArrow: arrowright,TYsecondArrow: arrowright,TYthirdArrow: arrowright,
 //        用于更改三年制各年级箭头图标为向右还是向下的变量
         courses:[
-          {cozName:'职业生涯规划',stdTimeAdd:'36',stdTimeTheory:'32',stdTimePractice:'4',term1:'36',term2:'',term3:'',term4:'',term5:'',term6:'',term7:'',term8:'',inspect:'1',exam:''},
-          {cozName:'哲学与人生',stdTimeAdd:'36',stdTimeTheory:'32',stdTimePractice:'4',term1:'',term2:'36',term3:'',term4:'',term5:'',term6:'',term7:'',term8:'',inspect:'2',exam:''},
-          {cozName:'经济政治与社会',stdTimeAdd:'36',stdTimeTheory:'32',stdTimePractice:'4',term1:'',term2:'',term3:'36',term4:'',term5:'',term6:'',term7:'',term8:'',inspect:'3',exam:''},
-          {cozName:'职业道德与法律',stdTimeAdd:'36',stdTimeTheory:'32',stdTimePractice:'4',term1:'',term2:'',term3:'',term4:'36',term5:'',term6:'',term7:'',term8:'',inspect:'4',exam:''},
-          {cozName:'语文',stdTimeAdd:'180',stdTimeTheory:'156',stdTimePractice:'24',term1:'108',term2:'72',term3:'',term4:'',term5:'',term6:'',term7:'',term8:'',inspect:'2',exam:'1'}
+          {cozName:'职业生涯规划',stdTimeAdd:'36',stdTimeTheory:'32',stdTimePractice:'4',term1:'36',term2:'',term3:'',term4:'',term5:'',term6:'',term7:'',term8:'',inspect:'已安排',exam:''},
+          {cozName:'哲学与人生',stdTimeAdd:'36',stdTimeTheory:'32',stdTimePractice:'4',term1:'',term2:'36',term3:'',term4:'',term5:'',term6:'',term7:'',term8:'',inspect:'已安排',exam:''},
+          {cozName:'经济政治与社会',stdTimeAdd:'36',stdTimeTheory:'32',stdTimePractice:'4',term1:'',term2:'',term3:'36',term4:'',term5:'',term6:'',term7:'',term8:'',inspect:'已安排',exam:''},
+          {cozName:'职业道德与法律',stdTimeAdd:'36',stdTimeTheory:'32',stdTimePractice:'4',term1:'',term2:'',term3:'',term4:'36',term5:'',term6:'',term7:'',term8:'',inspect:'已安排',exam:''},
+          {cozName:'语文',stdTimeAdd:'180',stdTimeTheory:'156',stdTimePractice:'24',term1:'108',term2:'72',term3:'',term4:'',term5:'',term6:'',term7:'',term8:'',inspect:'已安排',exam:'1'}
         ]
       }
     },

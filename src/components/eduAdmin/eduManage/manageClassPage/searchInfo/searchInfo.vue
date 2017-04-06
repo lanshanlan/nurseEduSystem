@@ -30,6 +30,7 @@
           </table>
         </div>
       </div>
+      <span><button id="searchFor">查询</button></span>
     </div>
 </template>
 
@@ -69,13 +70,14 @@
         font-size: 100%;
     }
     #searchInfo{
+      margin-left: 2rem;
       height: 7rem;
       background-color: white;
     }
     input{
       margin-top: 2.5rem;
       font-size: 1rem;
-      width: 11rem;
+      width: 8rem;
       border-radius: 0.5rem;
       padding-left: 1rem;
       padding-bottom: 0.2rem;
@@ -84,11 +86,28 @@
       border-color: #e6e6e6;
     }
     #changeYearPlan,#stdID,#stdName,#changeTimeHead{
-      margin-left: 3rem;
+      margin-left: 2rem;
     }
     #timeTo{
       font-size: 1rem;
       margin: auto 1rem;
+    }
+    button{
+      margin-top: 2.5rem;
+      margin-left: 3rem;
+      background-color: #158064;
+      font-size: 0.8rem;
+      color:#FFF;
+      font-weight: bold;
+      text-align: center;
+      border-radius: 0.5rem;
+      padding-bottom: 0.2rem;
+      height: 2rem;
+      min-width: 5rem;
+      border: none;
+    }
+    button:hover{
+      background-color: #00a539;
     }
     .dropdown {
       position: relative;
@@ -98,6 +117,7 @@
       display: none;
       position: relative;
       z-index: 2;
+      margin-left: 2rem;
       background-color: #f9f9f9;
       min-width: 2rem;
       box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);

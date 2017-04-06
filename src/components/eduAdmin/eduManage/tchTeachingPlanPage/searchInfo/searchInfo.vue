@@ -39,7 +39,7 @@
     }
     button{
       margin-top: 2.5rem;
-      margin-right: 3rem;
+      margin-right: 9rem;
       float: right;
       background-color: #158064;
       font-size: 0.8rem;

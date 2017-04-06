@@ -8,6 +8,7 @@
         <span id="fiveYearsPlanP" @click="fiveTableSlideToggle()">五年制</span>
         <span><button id="fiveLeadIn">导入</button></span>
         <span><button id="fiveLeadOut">导出</button></span>
+        <span><button id="fiveModule">下载模板</button></span>
       </div>
       <div>
         <!--五年制课程表格-->
@@ -68,6 +69,7 @@
         <span id="threeYearsPlanP" @click="threeTableSlideToggle()">三年制</span>
         <span><button id="threeLeadIn">导入</button></span>
         <span><button id="threeLeadOut">导出</button></span>
+        <span><button id="threeForm">下载模板</button></span>
       </div>
       <div>
         <!--三年制课程表格-->

@@ -2,8 +2,10 @@
   <div id="dropdownInfo">
     <span><input type="text" id="tchName" placeholder="请输入姓名"></span>
     <span><input type="text" id="tchID" placeholder="请输入编号"></span>
-    <span><button id="searchFor">查找</button></span>
     <span><button id="leadOut">导出</button></span>
+    <span><button id="leadIn">导入</button></span>
+    <span><button id="searchFor">查找</button></span>
+    <span><button id="downloadForm">下载模板</button></span>
   </div>
 </template>
 
