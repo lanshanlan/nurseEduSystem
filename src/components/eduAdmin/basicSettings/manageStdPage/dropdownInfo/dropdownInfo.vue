@@ -1,7 +1,7 @@
 <template>
     <div id="dropdownInfo">
       <div class="dropdown">
-        <input type="text" id="selectYearplan"  placeholder="选择年制（必选项）">
+        <input type="text" id="selectYearplan"  placeholder="选择年制（必选）">
         <div class="dropdown-content">
           <table v-for="year in years">
             <tr class="dropdownMenu" @click="yearClick(year)">{{year}}</tr>
@@ -125,6 +125,12 @@
       border-style: solid;
       border-color: #e6e6e6;
     }
+    /*.bgimg{*/
+      /*background-image: url("./images/arrow.png");*/
+      /*background-position: 90%;*/
+      /*background-repeat: no-repeat;*/
+      /*background-size:1.3rem 1.3rem ;*/
+    /*}*/
     button{
       margin-top: 2.5rem;
       margin-left: 3rem;

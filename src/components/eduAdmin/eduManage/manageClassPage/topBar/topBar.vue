@@ -1,9 +1,7 @@
 <template>
-  <div id="manageClassPageTopBar" class="nav">
+  <div id="manageClassPageTopBar" class="topBarDiv am-btn-group">
     <!--导航栏-->
-    <ul>
-      <li><a href="#">异动详情</a></li>
-    </ul>
+    <button class="am-btn am-btn-success btn-active" style="margin-left: 5rem">异动详情</button>
   </div>
 </template>
 
@@ -22,28 +20,7 @@
     html {
         font-size: 100%;
     }
-    .nav{
-      width:100%;
-      height:35px;
-      background-color: #158064;
-      margin:0 auto;
-    }
-    .nav li{
-      width:260px;
-      float:left;
-      margin-left:70px;
-      list-style:none;
-      line-height:35px;
-      text-align:center;
-    }
-    .nav li:hover{
-      background-color: #00a539;
-    }
-    .nav li a{
-      text-decoration:none;
-      color:#FFF;
-      font-weight: bold;
-    }
+
     @media screen and (max-width: 1023px) {
         html {
             font-size: 56%;

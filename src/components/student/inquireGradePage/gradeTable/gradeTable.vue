@@ -42,9 +42,14 @@
           {term:'2016-2017.2',courseCode:'K2210710',courseNum:'K2210710.02',courseName:'企业合作课程',courseCategory:'实践类核心课程',credit:'1',generalScore:'80',makeupScore:'--',finalScore:'80',performanceEvalu:'3.5'},
           {term:'2016-2017.2',courseCode:'K2210710',courseNum:'K2210710.02',courseName:'企业合作课程',courseCategory:'实践类核心课程',credit:'1',generalScore:'80',makeupScore:'--',finalScore:'80',performanceEvalu:'3.5'},
           {term:'2016-2017.2',courseCode:'K2210710',courseNum:'K2210710.02',courseName:'企业合作课程',courseCategory:'实践类核心课程',credit:'1',generalScore:'80',makeupScore:'--',finalScore:'80',performanceEvalu:'3.5'}
-        ],//表格原始数据
-        tableItems:[]//后台传回数据
+        ]
       }
+    },
+    created:function() {
+      this.$http.get('../readjson.php').then(function (response) {
+        console.log(response);
+        this.items = response.body.items;
+      });
     }
   }
 </script>

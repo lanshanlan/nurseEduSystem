@@ -1,8 +1,7 @@
 <template>
-  <div id="stdInquireGradeBar" class="nav">
-    <ul>
-      <li><a href="#">我的成绩</a></li>
-    </ul>
+  <div id="stdInquireGradeBar" class="topBarDiv am-btn-group">
+    <!--导航栏-->
+    <button class="am-btn am-btn-success btn-active" style="margin-left: 5rem">我的成绩</button>
   </div>
 </template>
 
@@ -21,27 +20,5 @@
 <style scoped>
   html{
     font-size: 100%;
-  }
-  .nav{
-    width:100%;
-    height:35px;
-    background-color: #158064;
-    margin:0 auto;
-  }
-  .nav li{
-    width:260px;
-    float:left;
-    margin-left:70px;
-    list-style:none;
-    line-height:35px;
-    text-align:center;
-  }
-  .nav li:hover{
-    background-color: #00a539;
-  }
-  .nav li a{
-    text-decoration:none;
-    color:#FFF;
-    font-weight: bold;
   }
 </style>

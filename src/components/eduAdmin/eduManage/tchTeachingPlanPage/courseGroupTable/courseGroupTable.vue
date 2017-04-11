@@ -4,21 +4,24 @@
     <table id="courseGroupTableSy" border="1">
       <thead>
       <tr>
-        <th width="4rem">课程组名称</th>
-        <th width="4rem">课程组编号</th>
+        <th width="4rem">教研组名称</th>
+        <th width="4rem">教师姓名</th>
         <th width="4rem">组长</th>
-        <th width="4rem">查看</th>
         <th width="4rem">导出</th>
+        <th width="4rem">审核</th>
       </tr>
       </thead>
       <tbody>
       <tr v-for=" courseGroupInfo in  courseGroupInfos">
         <td v-text="courseGroupInfo.groupName"></td>
-        <td v-text="courseGroupInfo.groupID"></td>
+        <td v-text="courseGroupInfo.tchName"></td>
         <td v-text="courseGroupInfo.headman"></td>
-        <td v-text="courseGroupInfo.look"></td>
         <td><button id="download">下载</button></td>
         <!--下载培养方案的按钮-->
+        <td>
+          <img id="adopt" src="./images/save.png">
+          <img id="notAdopt" src="./images/restore.png">
+        </td>
       </tr>
       </tbody>
     </table>
@@ -31,12 +34,18 @@
         data () {
             return {
                 courseGroupInfos:[
-                  {groupName:'临床医学',groupID:'2017001',headman:'何平',look:'未查看'},
-                  {groupName:'临床护理',groupID:'2017002',headman:'张扬',look:'已查看'},
-                  {groupName:'护用药理',groupID:'2017003',headman:'李季',look:'未查看'}
+                  {groupName:'临床医学',groupID:'2017001',tchName:'李伟',tchID:'111', headman:'何平'},
+                  {groupName:'临床护理',groupID:'2017002',tchName:'张亮',tchID:'222',headman:'张扬'},
+                  {groupName:'护用药理',groupID:'2017003',tchName:'邓常',tchID:'333',headman:'李季'}
                 ]
             }
-        }
+        },
+      created:function() {
+        this.$http.get('../readjson.php').then(function (response) {
+          console.log(response);
+          this.courseGroupInfos = response.body.courseGroupInfos;
+        });
+      }
     }
 </script>
 
@@ -68,6 +77,15 @@
     }
     button:hover{
       background-color: #00a539;
+    }
+    img{
+      width: 2rem;
+      height: 2rem;
+      border: thin solid white;
+    }
+    img:hover{
+      cursor: pointer;
+      border: thin solid grey;
     }
     @media screen and (max-width: 1023px) {
         html {

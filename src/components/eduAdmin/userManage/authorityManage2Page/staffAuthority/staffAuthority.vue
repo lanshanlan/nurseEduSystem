@@ -28,7 +28,13 @@
                   {value:'tch7',checked:true,output:'管理学生在校信息'}
                 ]
             }
-        }
+        },
+      created:function() {
+        this.$http.get('../readjson.php').then(function (response) {
+          console.log(response);
+          this.tchAuthoritys = response.body.tchAuthoritys;
+        });
+      }
     }
 </script>
 

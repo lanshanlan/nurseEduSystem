@@ -1,6 +1,6 @@
 <template>
   <div id="yearProcess">
-    <div id="FYProcessAll">
+    <div id="FYProcessAll" v-for="grade in gardes">
       <div id="FYProcessDiv">
         <!--五年制课程表格模块-->
         <span><img id="FYArrow"  @click="fiveTableSlideToggle()" :src="FYArrow"></span>
@@ -40,10 +40,8 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-              <td rowspan="6">公共基础课</td>
-            </tr>
             <tr v-for="course in courses">
+              <td v-text="course.cozType"></td>
               <td v-text="course.cozName"></td>
               <td v-text="course.stdTimeAdd"></td>
               <td v-text="course.stdTimeTheory"></td>
@@ -94,10 +92,8 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-              <td rowspan="6">公共基础课</td>
-            </tr>
             <tr v-for="course in courses">
+              <td v-text="course.cozType"></td>
               <td v-text="course.cozName"></td>
               <td v-text="course.stdTimeAdd"></td>
               <td v-text="course.stdTimeTheory"></td>

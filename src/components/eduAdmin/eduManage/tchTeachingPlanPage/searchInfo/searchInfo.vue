@@ -1,7 +1,7 @@
 <template>
   <div id="searchInfo">
-    <span><input type="text" id="tchName" placeholder="请输入课程组名称"></span>
-    <span><input type="text" id="tchID" placeholder="请输入课程组编号"></span>
+    <span><input type="text" id="groupID" placeholder="请输入教研组编号"></span>
+    <span><input type="text" id="tchID" placeholder="请输入教师编号"></span>
     <span><button id="searchFor">查找</button></span>
   </div>
 </template>

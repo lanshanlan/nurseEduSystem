@@ -43,7 +43,13 @@
                   {NO:'02',manageID:'86846',manageType:'多个班拆分合班上课排课',className:'对口高职 2015 护理 1班 + 普通高中 2015 护理1班',courseName:'护理管理学',courseID:'10301',tch:'何平(61742)',timePlace:'1-19周星期二第7-8节 教学楼206(89人)'}
                 ]
             }
-        }
+        },
+      created:function() {
+        this.$http.get('../readjson.php').then(function (response) {
+          console.log(response);
+          this.courseInfos = response.body.courseInfos;
+        });
+      }
     }
 </script>
 

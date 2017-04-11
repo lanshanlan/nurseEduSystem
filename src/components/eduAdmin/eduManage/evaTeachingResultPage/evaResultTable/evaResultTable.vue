@@ -15,7 +15,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr v-for=" result in results">
+      <tr v-for="result in results">
         <td v-text="result.courseID"></td>
         <td v-text="result.courseName"></td>
         <td v-text="result.tchID"></td>
@@ -41,7 +41,13 @@
                   {courseID:'K2210712',courseName:'企业合作课程',tchID:'1234567',tchName:'张小山',evaNum:'56',multiplyScore:'96',rank:'A',tips:'暂无'}
                 ]
             }
-        }
+        },
+      created:function() {
+        this.$http.get('../readjson.php').then(function (response) {
+          console.log(response);
+          this.results = response.body.results;
+        });
+      }
     }
 </script>
 

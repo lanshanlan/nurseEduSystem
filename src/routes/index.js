@@ -12,7 +12,7 @@ import eduAdminManageClass from '../views/eduAdmin/eduManage/manageClassPage/man
 import eduAdminEvaTeachingResult from '../views/eduAdmin/eduManage/evaTeachingResultPage/evaTeachingResultPage.vue'
 import eduAdminSupervisorManage from '../views/eduAdmin/eduManage/supervisorManagePage/supervisorManagePage.vue'
 import eduAdminAuthorityManage2 from '../views/eduAdmin/userManage/authorityManage2Page/authorityManage2Page.vue'
-import eduAdminGradeMgmtDiv from '../components/eduAdmin/gradeMgmtDiv.vue'
+import eduAdminGradeMgmtDiv from '../components/eduAdmin/gradeMgmtDiv/gradeMgmtDiv.vue'
 
 Vue.use(Router)
 
