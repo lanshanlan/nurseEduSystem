@@ -1,30 +1,32 @@
 <template>
-  <div id="courseGroupTable">
-    <!--课程培养方案表格-->
-    <table id="courseGroupTableSy" border="1">
-      <thead>
-      <tr>
-        <th width="4rem">教研组名称</th>
-        <th width="4rem">教师姓名</th>
-        <th width="4rem">组长</th>
-        <th width="4rem">导出</th>
-        <th width="4rem">审核</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr v-for=" courseGroupInfo in  courseGroupInfos">
-        <td v-text="courseGroupInfo.groupName"></td>
-        <td v-text="courseGroupInfo.tchName"></td>
-        <td v-text="courseGroupInfo.headman"></td>
-        <td><button id="download">下载</button></td>
-        <!--下载培养方案的按钮-->
-        <td>
-          <img id="adopt" src="./images/save.png">
-          <img id="notAdopt" src="./images/restore.png">
-        </td>
-      </tr>
-      </tbody>
-    </table>
+  <div style="padding: 0.6rem 5rem;background-color: #f3f3f3">
+    <div id="courseGroupTable" style="background-color: white">
+      <!--课程培养方案表格-->
+      <table id="courseGroupTableSy" class="operationTable" style="table-layout: fixed;">
+        <thead>
+        <tr>
+          <th>教研组名称</th>
+          <th>教师姓名</th>
+          <th>组长</th>
+          <th>导出</th>
+          <th>审核</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for=" courseGroupInfo in  courseGroupInfos">
+          <td v-text="courseGroupInfo.groupName"></td>
+          <td v-text="courseGroupInfo.tchName"></td>
+          <td v-text="courseGroupInfo.headman"></td>
+          <td><button id="download" class="am-btn am-btn-success am-radius">下载</button></td>
+          <!--下载培养方案的按钮-->
+          <td>
+            <img id="adopt" src="./images/save.png">
+            <img id="notAdopt" src="./images/restore.png">
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 
@@ -52,31 +54,6 @@
 <style scoped>
     html {
         font-size: 100%;
-    }
-    #courseGroupTableSy{
-      position: relative;
-      margin: 2rem auto;
-      width: 90%;
-      border: 0 solid #d4d4d9;
-      border-collapse: collapse;
-      table-layout: fixed;
-      text-align: center;
-    }
-    button{
-      margin: 0.2rem auto;
-      background-color: #158064;
-      font-size: 0.8rem;
-      color:#FFF;
-      font-weight: bold;
-      text-align: center;
-      border-radius: 0.5rem;
-      padding-bottom: 0.2rem;
-      height: 2rem;
-      min-width: 5rem;
-      border: none;
-    }
-    button:hover{
-      background-color: #00a539;
     }
     img{
       width: 2rem;

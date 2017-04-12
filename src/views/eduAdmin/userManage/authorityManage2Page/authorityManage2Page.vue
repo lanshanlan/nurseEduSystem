@@ -3,6 +3,7 @@
   <div id="authorityManage2Page">
     <topTitle></topTitle>
     <topBar></topBar>
+    <div class="blank"></div>
     <div id="staffAuthorityAll">
       <div ><dropdownStaff></dropdownStaff></div>
       <div class="marginLeft"><staffAuthority></staffAuthority></div>
@@ -38,8 +39,6 @@
     font-size: 100%;
   }
   #authorityManage2Page{
-    text-align: left;
-    background-color: #f0f3f8;
   }
   #staffAuthorityAll{
     display: flex;
@@ -50,6 +49,9 @@
   }
   .marginLeft{
     margin-left: 3rem;
+  }
+  .blank{
+    height: 2.9rem;
   }
   @media screen and (max-width: 1023px) {
     html {

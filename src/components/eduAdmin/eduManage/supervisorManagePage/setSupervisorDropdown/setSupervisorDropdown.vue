@@ -3,26 +3,18 @@
     <span><p>课程序号:01</p></span>
     <div>
       <span id="setSupSpan">设置督导员:</span>
-      <div class="dropdown">
         <!--督导员选择下拉列表-->
-        <input type="text" id="changeSupervisor" placeholder="选择督导员">
-        <div class="dropdown-content">
-          <table v-for="supervisor in supervisors">
-            <tr class="dropdownMenu" @click="supervisorClick(supervisor)">{{supervisor}}</tr>
-          </table>
-        </div>
-      </div>
-      <div class="dropdown">
+      <select class="selectWM">
+        <option disabled selected>选择督导员</option>
+        <option v-for="supervisor in supervisors">{{supervisor}}</option>
+      </select>
         <!--督导时间选择下拉列表-->
-        <input type="text" id="changeTime" placeholder="选择时间">
-        <div class="dropdown-content">
-          <table v-for="time in times">
-            <tr class="dropdownMenu" @click="timeClick(time)">{{time}}</tr>
-          </table>
-        </div>
-      </div>
-      <span><button id="save">保存</button></span>
-      <span><button id="cancel">取消</button></span>
+      <select class="selectWM">
+        <option disabled selected>选择时间</option>
+        <option v-for="time in times">{{time}}</option>
+      </select>
+      <span><button id="save" class="am-btn am-btn-success am-radius buttonWM">保存</button></span>
+      <span><button id="cancel" class="am-btn am-btn-success am-radius buttonWM">取消</button></span>
     </div>
   </div>
 </template>
@@ -67,67 +59,23 @@
         font-size: 100%;
     }
     #setSupervisorDropdown{
-      height: 8rem;
+      margin: 0.6rem 5rem;
       background-color: white;
     }
-    #setSupSpan{
-      margin-left: 5rem;
+    .selectWM{
+      width: 8rem;
+      margin: 0 0.7rem;
+    }
+    .inputWM{
+      width: 8rem;
+      margin: 0 0.7rem;
+    }
+    .buttonWM{
+      width: 5.6rem;
+      margin: 0 0.7rem;
     }
     p{
       margin-top: 5rem;
-      margin-left: 5rem;
-    }
-    input{
-      margin-left: 3rem;
-      font-size: 1rem;
-      width: 11rem;
-      border-radius: 0.5rem;
-      padding-left: 1rem;
-      padding-bottom: 0.2rem;
-      height: 1.5rem;
-      border: solid;
-      border-color: #e6e6e6;
-    }
-    button{
-      margin-left: 3rem;
-      background-color: #158064;
-      font-size: 0.8rem;
-      color:#FFF;
-      font-weight: bold;
-      text-align: center;
-      border-radius: 0.5rem;
-      padding-bottom: 0.2rem;
-      height: 2rem;
-      min-width: 5rem;
-      border: none;
-    }
-    button:hover{
-      background-color: #00a539;
-    }
-    .dropdown {
-      position: relative;
-      display: inline-block;
-    }
-    .dropdown-content {
-      display: none;
-      position: relative;
-      margin-left: 3rem;
-      z-index: 2;
-      background-color: #f9f9f9;
-      min-width: 2rem;
-      box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-      padding: 1rem;
-      opacity: 1.0;
-    }
-    .dropdown:hover .dropdown-content {
-      display: block;
-      background-color: #f9f9f9;
-      opacity: 1.0;
-      position: relative;
-    }
-    .dropdownMenu:hover{
-      background-color:#2F6FAD ;
-      cursor: default;
     }
     @media screen and (max-width: 1023px) {
         html {

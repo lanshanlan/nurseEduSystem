@@ -1,36 +1,24 @@
 <template>
     <div id="searchInfo">
-      <div class="dropdown">
         <!--年制选择下拉列表-->
-        <input type="text" id="changeYearPlan" placeholder="选择年制">
-        <div class="dropdown-content">
-          <table v-for="yearPlan in yearPlans">
-            <tr class="dropdownMenu" @click="yearPlanClick(yearPlan)">{{yearPlan}}</tr>
-          </table>
-        </div>
-      </div>
-      <span><input type="text" id="stdID" placeholder="请输入学号"></span>
-      <span><input type="text" id="stdName" placeholder="请输入姓名"></span>
-      <div class="dropdown">
+      <select class="selectWM">
+        <option disabled selected>选择年制</option>
+        <option v-for="yearPlan in yearPlans">{{yearPlan}}</option>
+      </select>
+      <span><input type="text" id="stdID" class="inputWM" placeholder="请输入学号"></span>
+      <span><input type="text" id="stdName" class="inputWM" placeholder="请输入姓名"></span>
         <!--时间段(上)选择下拉列表-->
-        <input type="text" id="changeTimeHead" placeholder="时间段">
-        <div class="dropdown-content">
-          <table v-for="timeHE in timeHEs">
-            <tr class="dropdownMenu" @click="changeTimeHeadClick(timeHE)">{{timeHE}}</tr>
-          </table>
-        </div>
-      </div>
+      <select class="selectWM">
+        <option disabled selected>时间段</option>
+        <option v-for="timeHE in timeHEs">{{timeHE}}</option>
+      </select>
       <span id="timeTo">至</span>
-      <div class="dropdown">
         <!--时间段(下)选择下拉列表-->
-        <input type="text" id="changeTimeEnd" placeholder="时间段">
-        <div class="dropdown-content">
-          <table v-for="timeHE in timeHEs">
-            <tr class="dropdownMenu" @click="changeTimeEndClick(timeHE)">{{timeHE}}</tr>
-          </table>
-        </div>
-      </div>
-      <span><button id="searchFor">查询</button></span>
+      <select class="selectWM">
+        <option disabled selected>时间段</option>
+        <option v-for="timeHE in timeHEs">{{timeHE}}</option>
+      </select>
+      <span><button id="searchFor" class="am-btn am-btn-success am-radius buttonWM">查询</button></span>
     </div>
 </template>
 
@@ -49,18 +37,6 @@
             }
         },
       methods:{
-        changeTimeHeadClick: function(timeHE){
-          //监听搜索内容点击选择，同步到年制选择框
-//          alert("Hello boy!");
-          var changeTimeHead = document.getElementById("changeTimeHead");
-          changeTimeHead.value = timeHE;
-        },
-        changeTimeEndClick: function(timeHE){
-          //监听搜索内容点击选择，同步到时间段选择框
-//          alert("Hello boy!");
-          var changeTimeEnd = document.getElementById("changeTimeEnd");
-          changeTimeEnd.value = timeHE;
-        }
       }
     }
 </script>
@@ -70,69 +46,23 @@
         font-size: 100%;
     }
     #searchInfo{
-      margin-left: 2rem;
-      height: 7rem;
+      margin: 0.6rem 5rem;
       background-color: white;
     }
-    input{
-      margin-top: 2.5rem;
-      font-size: 1rem;
+    .selectWM{
       width: 8rem;
-      border-radius: 0.5rem;
-      padding-left: 1rem;
-      padding-bottom: 0.2rem;
-      height: 1.5rem;
-      border: solid;
-      border-color: #e6e6e6;
+      margin: 0 0.7rem;
     }
-    #changeYearPlan,#stdID,#stdName,#changeTimeHead{
-      margin-left: 2rem;
+    .inputWM{
+      width: 8rem;
+      margin: 0 0.7rem;
+    }
+    .buttonWM{
+      width: 5.6rem;
+      margin: 0 0.7rem;
     }
     #timeTo{
-      font-size: 1rem;
-      margin: auto 1rem;
-    }
-    button{
-      margin-top: 2.5rem;
-      margin-left: 3rem;
-      background-color: #158064;
-      font-size: 0.8rem;
-      color:#FFF;
-      font-weight: bold;
-      text-align: center;
-      border-radius: 0.5rem;
-      padding-bottom: 0.2rem;
-      height: 2rem;
-      min-width: 5rem;
-      border: none;
-    }
-    button:hover{
-      background-color: #00a539;
-    }
-    .dropdown {
-      position: relative;
-      display: inline-block;
-    }
-    .dropdown-content {
-      display: none;
-      position: relative;
-      z-index: 2;
-      margin-left: 2rem;
-      background-color: #f9f9f9;
-      min-width: 2rem;
-      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-      padding: 1rem;
-      opacity: 1.0;
-    }
-    .dropdown:hover .dropdown-content {
-      display: block;
-      background-color: #f9f9f9;
-      opacity: 1.0;
-      position: relative;
-    }
-    .dropdownMenu:hover{
-      background-color:#2F6FAD ;
-      cursor: default;
+      margin: 0 0.3rem;
     }
     @media screen and (max-width: 1023px) {
         html {

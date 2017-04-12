@@ -1,8 +1,8 @@
 <template>
   <div id="searchInfo">
-    <span><input type="text" id="groupID" placeholder="请输入教研组编号"></span>
-    <span><input type="text" id="tchID" placeholder="请输入教师编号"></span>
-    <span><button id="searchFor">查找</button></span>
+    <span><input type="text" id="groupID" class="inputWM" placeholder="请输入教研组编号"></span>
+    <span><input type="text" id="tchID" class="inputWM" placeholder="请输入教师编号"></span>
+    <span><button id="searchFor" class="am-btn am-btn-success am-radius buttonWM">查找</button></span>
   </div>
 </template>
 
@@ -22,38 +22,20 @@
         font-size: 100%;
     }
     #searchInfo{
-      height: 7rem;
+      margin: 0.6rem 5rem;
       background-color: white;
     }
-    input{
-      margin-top: 2.5rem;
-      font-size: 1rem;
-      width: 11rem;
-      border-radius: 0.5rem;
-      padding-left: 1rem;
-      padding-bottom: 0.2rem;
-      height: 1.5rem;
-      border: solid;
-      border-color: #e6e6e6;
-      margin-left: 5rem;
+    .selectWM{
+      width: 8rem;
+      margin: 0 0.7rem;
     }
-    button{
-      margin-top: 2.5rem;
-      margin-right: 9rem;
-      float: right;
-      background-color: #158064;
-      font-size: 0.8rem;
-      color:#FFF;
-      font-weight: bold;
-      text-align: center;
-      border-radius: 0.5rem;
-      padding-bottom: 0.2rem;
-      height: 2rem;
-      min-width: 5rem;
-      border: none;
+    .inputWM{
+      width: 8rem;
+      margin: 0 0.7rem;
     }
-    button:hover{
-      background-color: #00a539;
+    .buttonWM{
+      width: 5.6rem;
+      margin: 0 0.7rem;
     }
     @media screen and (max-width: 1023px) {
         html {

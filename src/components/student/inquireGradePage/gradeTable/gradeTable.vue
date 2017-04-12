@@ -1,18 +1,18 @@
 <template>
-  <div id="stdTable">
-    <table id="stdInquireGradeTableSy" border="1">
+  <div id="stdTable" style="padding: 0.6rem 5rem;background-color: #f3f3f3">
+    <table id="stdInquireGradeTableSy" class="normalTable" style="table-layout: fixed;">
       <thead>
       <tr>
-        <th width="6.6rem">学年学期</th>
-        <th width="6.6rem">课程代码</th>
-        <th width="6.6rem">课程序号</th>
-        <th width="13.3rem">课程名称</th>
-        <th width="13.3rem">课程类别</th>
-        <th width="6.6rem">学分</th>
-        <th width="6.6rem">总评成绩</th>
-        <th width="6.6rem">补考成绩</th>
-        <th width="6.6rem">最终</th>
-        <th width="6.6rem">绩点</th>
+        <th>学年学期</th>
+        <th>课程代码</th>
+        <th>课程序号</th>
+        <th>课程名称</th>
+        <th>课程类别</th>
+        <th>学分</th>
+        <th>总评成绩</th>
+        <th>补考成绩</th>
+        <th>最终</th>
+        <th>绩点</th>
       </tr>
       </thead>
       <tbody>
@@ -58,18 +58,6 @@
     html{
         font-size: 62.5%;
 
-    }
-    #stTable{
-
-    }
-    #stdInquireGradeTableSy{
-      position: relative;
-      margin: 2rem auto;
-      width: 90%;
-      border: 0 solid #d4d4d9;
-      border-collapse: collapse;
-      table-layout: fixed;
-      text-align: center;
     }
     @media screen and (max-width:1023px) {
         html {

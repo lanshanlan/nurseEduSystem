@@ -154,6 +154,7 @@ html {
  ============================================================================ */
 /************无操作的表格（无border）normalTable************/
 .normalTable {
+  text-align: center;
   background-color: #ececec;
   width: 100%;
 }
@@ -166,6 +167,7 @@ html {
 /************有操作的表格（有border）operationTable************/
 .operationTable {
   width: 100%;
+/*改为98%，然后设置margin:0 1%;使得head下的横线有边框*/
   text-align: center;
   border-spacing: 0;
   border-collapse: separate;

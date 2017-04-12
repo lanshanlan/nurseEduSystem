@@ -1,37 +1,39 @@
 <template>
-  <div id="supervisorTable">
-    <span><p>*下面是已分配督导员的课程</p></span>
-    <table id="supervisorTableSy" border="1">
-      <!--已分配督导员的课程的表格-->
-      <thead>
-      <tr>
-        <th width="2rem">当前状态</th>
-        <th width="2rem">序号</th>
-        <th width="2rem">排课序号</th>
-        <th width="8rem">排课类型</th>
-        <th width="8rem">班级名称</th>
-        <th width="2rem">课程名称</th>
-        <th width="2rem">课程编号</th>
-        <th width="2rem">任课老师</th>
-        <th width="4rem">第1段</th>
-        <th width="4rem">反馈</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr v-for=" courseInfo in courseInfos">
-        <td v-text="courseInfo.status"></td>
-        <td v-text="courseInfo.NO"></td>
-        <td v-text="courseInfo.manageID"></td>
-        <td v-text="courseInfo.manageType"></td>
-        <td v-text="courseInfo.className"></td>
-        <td v-text="courseInfo.courseName"></td>
-        <td v-text="courseInfo.courseID"></td>
-        <td v-text="courseInfo.tch"></td>
-        <td v-text="courseInfo.timePlace"></td>
-        <td><button>反馈</button></td>
-      </tr>
-      </tbody>
-    </table>
+  <div style="padding: 0.6rem 5rem;background-color: #f3f3f3">
+    <div id="supervisorTable" style="background-color: white">
+      <span><p>*下面是已分配督导员的课程</p></span>
+      <table id="supervisorTableSy" class="operationTable" style="table-layout: fixed;">
+        <!--已分配督导员的课程的表格-->
+        <thead>
+        <tr>
+          <th>当前状态</th>
+          <th>序号</th>
+          <th>排课序号</th>
+          <th>排课类型</th>
+          <th>班级名称</th>
+          <th>课程名称</th>
+          <th>课程编号</th>
+          <th>任课老师</th>
+          <th>第1段</th>
+          <th>反馈</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for=" courseInfo in courseInfos">
+          <td v-text="courseInfo.status"></td>
+          <td v-text="courseInfo.NO"></td>
+          <td v-text="courseInfo.manageID"></td>
+          <td v-text="courseInfo.manageType"></td>
+          <td v-text="courseInfo.className"></td>
+          <td v-text="courseInfo.courseName"></td>
+          <td v-text="courseInfo.courseID"></td>
+          <td v-text="courseInfo.tch"></td>
+          <td v-text="courseInfo.timePlace"></td>
+          <td><button class="am-btn am-btn-success am-radius">反馈</button></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 
@@ -60,39 +62,7 @@
         font-size: 100%;
     }
     p{
-      margin-left: 5rem;
       color: grey;
-    }
-    #supervisorTableSy{
-      position: relative;
-      margin: 2rem auto;
-      width: 90%;
-      border: 0 solid #d4d4d9;
-      border-collapse: collapse;
-      table-layout: fixed;
-      text-align: center;
-    }
-    button{
-      float: right;
-      margin-top: 0.3rem;
-      margin-bottom: auto;
-      margin-left: 3rem;
-      background-color: #158064;
-      font-size: 0.8rem;
-      color:#FFF;
-      font-weight: bold;
-      text-align: center;
-      border-radius: 0.5rem;
-      padding-bottom: 0.1rem;
-      height: 1.4rem;
-      min-width: 5rem;
-      border-color: white;
-      border-style: solid;
-      border-width: 0.1rem;
-      /*更改button的边框属性*/
-    }
-    button:hover{
-      background-color: #00a539;
     }
     @media screen and (max-width: 1023px) {
         html {

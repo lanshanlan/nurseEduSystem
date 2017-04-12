@@ -1,17 +1,17 @@
 <template>
-  <div id="stdInfoTable">
+  <div id="stdInfoTable" style="padding: 0.6rem 5rem;background-color: #f3f3f3">
     <!--学生异动信息表格-->
-    <table id="stdInfoTableSy" border="1">
+    <table id="stdInfoTableSy" class="normalTable" style="table-layout: fixed;">
       <thead>
       <tr>
-        <th width="4rem">学制</th>
-        <th width="4rem">专业</th>
-        <th width="4rem">班级</th>
-        <th width="4rem">学号</th>
-        <th width="4rem">姓名</th>
-        <th width="4rem">异动类型</th>
-        <th width="4rem">异动原因</th>
-        <th width="4rem">生效日期</th>
+        <th>学制</th>
+        <th>专业</th>
+        <th>班级</th>
+        <th>学号</th>
+        <th>姓名</th>
+        <th>异动类型</th>
+        <th>异动原因</th>
+        <th>生效日期</th>
       </tr>
       </thead>
       <tbody>
@@ -54,15 +54,6 @@
 <style scoped>
     html {
         font-size: 100%;
-    }
-    #stdInfoTableSy{
-      position: relative;
-      margin: 2rem auto;
-      width: 90%;
-      border: 0 solid #d4d4d9;
-      border-collapse: collapse;
-      table-layout: fixed;
-      text-align: center;
     }
     @media screen and (max-width: 1023px) {
         html {

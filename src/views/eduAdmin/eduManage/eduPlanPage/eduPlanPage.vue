@@ -3,6 +3,7 @@
     <div id="eduPlanPage">
       <topTitle></topTitle>
       <topBar></topBar>
+      <div class="blank"></div>
       <yearPlan></yearPlan>
     </div>
 </template>
@@ -33,9 +34,10 @@
         font-size: 100%;
     }
     #eduPlanPage{
-      text-align: left;
       min-height: 50rem;
-      background-color: #f0f3f8;
+    }
+    .blank{
+      height: 2.9rem;
     }
     @media screen and (max-width: 1023px) {
         html {

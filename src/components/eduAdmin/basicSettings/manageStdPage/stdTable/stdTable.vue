@@ -1,35 +1,43 @@
 <template>
-    <div id="stdTable">
-      <!--学生信息表格-->
-      <table id="eduAdminStdTableSy" border="1">
-        <thead>
-        <tr>
-          <th width="4rem">年级</th>
-          <th width="4rem">姓名</th>
-          <th width="4rem">性别</th>
-          <th width="4rem">专业</th>
-          <th width="8rem">学号</th>
-          <th width="6rem">链接</th>
-          <th width="4rem">操作</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr v-for="(stdInfo,index) in stdInfos" :id="'inputTable'+index">
-          <td><input id="input1" :value="stdInfo.grade" style="display: none"><p id="p1" style="display: inline">{{stdInfo.grade}}</p></td>
-          <td><input id="input2" :value="stdInfo.name" style="display: none"><p id="p2" style="display: inline">{{stdInfo.name}}</p></td>
-          <td><input id="input3" :value="stdInfo.sex" style="display: none"><p id="p3" style="display: inline">{{stdInfo.sex}}</p></td>
-          <td><input id="input4" :value="stdInfo.major" style="display: none"><p id="p4" style="display: inline">{{stdInfo.major}}</p></td>
-          <td><input id="input5" :value="stdInfo.stdID" style="display: none"><p id="p5" style="display: inline">{{stdInfo.stdID}}</p></td>
-          <td><input id="input6" :value="stdInfo.interlink" style="display: none"><p id="p6" style="display: inline">{{stdInfo.interlink}}</p></td>
-          <td>
-            <img :id="'editImg'+index" src="./images/edit.png" @click="editClick(index)">
-            <img :id="'saveImg'+index" src="./images/save.png" style="display: none" @click="saveClick(index)">
-            <img :id="'deleteImg'+index" src="./images/delete.png" @click="deleteClick(index)">
-            <img :id="'restoreImg'+index" src="./images/restore.png" style="display: none" @click="restoreClick(index)">
-          </td>
-        </tr>
-        </tbody>
-      </table>
+    <div style="padding: 0.6rem 5rem;background-color: #f3f3f3">
+      <div id="stdTable" style="background-color: white">
+        <!--学生信息表格-->
+        <table id="eduAdminStdTableSy" class="operationTable" style="table-layout: fixed;">
+          <!--table-layout: fixed;固定表格格局-->
+          <!--margin:0 1%;-->
+          <thead>
+          <tr>
+            <th>学号</th>
+            <th>姓名</th>
+            <th>身份证号码</th>
+            <th>性别</th>
+            <th>学制</th>
+            <th>年级</th>
+            <th>专业</th>
+            <th>班级</th>
+            <th>操作</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr v-for="(stdInfo,index) in stdInfos" :id="'inputTable'+index">
+            <td><input id="input1" :value="stdInfo.stdID" style="display: none"><p id="p1" style="display: inline">{{stdInfo.stdID}}</p></td>
+            <td><input id="input2" :value="stdInfo.name" style="display: none"><p id="p2" style="display: inline">{{stdInfo.name}}</p></td>
+            <td><input id="input3" :value="stdInfo.idCard" style="display: none"><p id="p3" style="display: inline">{{stdInfo.idCard}}</p></td>
+            <td><input id="input4" :value="stdInfo.sex" style="display: none"><p id="p4" style="display: inline">{{stdInfo.sex}}</p></td>
+            <td><input id="input5" :value="stdInfo.yearPlan" style="display: none"><p id="p5" style="display: inline">{{stdInfo.yearPlan}}</p></td>
+            <td><input id="input6" :value="stdInfo.gradeName" style="display: none"><p id="p6" style="display: inline">{{stdInfo.gradeName}}</p></td>
+            <td><input id="input7" :value="stdInfo.majorName" style="display: none"><p id="p7" style="display: inline">{{stdInfo.majorName}}</p></td>
+            <td><input id="input8" :value="stdInfo.className" style="display: none"><p id="p8" style="display: inline">{{stdInfo.className}}</p></td>
+            <td>
+              <img :id="'editImg'+index" src="./images/edit.png" @click="editClick(index)">
+              <img :id="'saveImg'+index" src="./images/save.png" style="display: none" @click="saveClick(index)">
+              <img :id="'deleteImg'+index" src="./images/delete.png" @click="deleteClick(index)">
+              <img :id="'restoreImg'+index" src="./images/restore.png" style="display: none" @click="restoreClick(index)">
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 </template>
 
@@ -39,9 +47,9 @@
         data () {
             return {
                 stdInfos:[
-                  {grade:'2013级',name:'高兴月',sex:'女',major:'护理学',stdID:'1530310503',interlink:'196.168.3.4'},
-                  {grade:'2013级',name:'王明',sex:'男',major:'护理学',stdID:'1530310502',interlink:'196.168.3.3'},
-                  {grade:'2013级',name:'张玲',sex:'女',major:'护理学',stdID:'1530310513',interlink:'196.168.3.2'}
+                  {stdID:'1530310503',name:'高兴月',idCard:'321281199503281111',sex:'女',yearPlan:'五年制',gradeName:'2013级',majorName:'护理',className:'护理3班'},
+                  {stdID:'1530310502',name:'王明',idCard:'321281199503282222',sex:'男',yearPlan:'三年制',gradeName:'2013级',majorName:'护理',className:'护理2班'},
+                  {stdID:'1530310513',name:'张玲',idCard:'321281199503283333',sex:'女',yearPlan:'五年制',gradeName:'2013级',majorName:'养生',className:'养生3班'}
                 ]
             }
         },
@@ -61,13 +69,9 @@
           var deleteImg = document.getElementById("deleteImg"+index);
           var restoreImg = document.getElementById("restoreImg"+index);
           var i = null;
-          for(i = 0;i<input.length;i++){
-            input[i].style.display = "inline";
-            input[i].style.border = "thin solid";
-          }
-          for(i = 0;i<input.length;i++){
-            p[i].style.display = "none";
-          }
+            input[7].style.display = "inline";
+            input[7].style.border = "thin solid";
+            p[7].style.display = "none";
           editImg.style.display = "none";
           saveImg.style.display = "inline";
           deleteImg.style.display = "none";
@@ -82,19 +86,10 @@
           var deleteImg = document.getElementById("deleteImg"+index);
           var restoreImg = document.getElementById("restoreImg"+index);
           var i = null;
-          for(i = 0;i<input.length;i++){
-            input[i].style.display = "none";
-            input[i].style.border = "none";
-          }
-          for(i = 0;i<input.length;i++){
-            p[i].style.display = "inline";
-          }
-          this.stdInfos[index].grade = input[0].value;
-          this.stdInfos[index].name = input[1].value;
-          this.stdInfos[index].sex = input[2].value;
-          this.stdInfos[index].major = input[3].value;
-          this.stdInfos[index].stdID = input[4].value;
-          this.stdInfos[index].interlink = input[5].value;
+            input[7].style.display = "none";
+            input[7].style.border = "none";
+            p[7].style.display = "inline";
+          this.stdInfos[index].classname = input[7].value;
           editImg.style.display = "inline";
           saveImg.style.display = "none";
           deleteImg.style.display = "inline";
@@ -109,13 +104,9 @@
           var deleteImg = document.getElementById("deleteImg"+index);
           var restoreImg = document.getElementById("restoreImg"+index);
           var i = null;
-          for(i = 0;i<input.length;i++){
-            input[i].style.display = "none";
-            input[i].style.border = "none";
-          }
-          for(i = 0;i<input.length;i++){
-            p[i].style.display = "inline";
-          }
+            input[7].style.display = "none";
+            input[7].style.border = "none";
+            p[7].style.display = "inline";
           editImg.style.display = "inline";
           saveImg.style.display = "none";
           deleteImg.style.display = "inline";
@@ -132,24 +123,11 @@
     html {
         font-size: 62.5%;
     }
-    #eduAdminStdTableSy{
-      position: relative;
-      margin: 2rem auto;
-      width: 90%;
-      border: 0 solid #d4d4d9;
-      border-collapse: collapse;
-      table-layout: fixed;
-      text-align: center;
-    }
     input{
-      outline:none;
-      border: none;
-      text-align: center;
-      font-size: 1rem;
-      width: 100%;
+      width:100%;
     }
     p{
-      font-size: 1rem;
+      font-size: 0.8rem;
       text-align: center;
     }
     img{

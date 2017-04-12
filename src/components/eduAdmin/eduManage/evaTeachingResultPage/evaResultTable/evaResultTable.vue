@@ -1,17 +1,17 @@
 <template>
-  <div id="evaResultTable">
+  <div id="evaResultTable" style="padding: 0.6rem 5rem;background-color: #f3f3f3">
     <!--评教结果表格-->
-    <table id="stdInfoTableSy" border="1">
+    <table id="stdInfoTableSy" class="normalTable" style="table-layout: fixed;">
       <thead>
       <tr>
-        <th width="4rem">课程代码</th>
-        <th width="4rem">课程名称</th>
-        <th width="4rem">教师编码</th>
-        <th width="4rem">教师姓名</th>
-        <th width="2rem">参评人数</th>
-        <th width="2rem">综合得分</th>
-        <th width="2rem">等级</th>
-        <th width="8rem">查看留言</th>
+        <th>课程代码</th>
+        <th>课程名称</th>
+        <th>教师编码</th>
+        <th>教师姓名</th>
+        <th>参评人数</th>
+        <th>综合得分</th>
+        <th>等级</th>
+        <th>查看留言</th>
       </tr>
       </thead>
       <tbody>
@@ -54,15 +54,6 @@
 <style scoped>
     html {
         font-size: 100%;
-    }
-    #stdInfoTableSy{
-      position: relative;
-      margin: 2rem auto;
-      width: 90%;
-      border: 0 solid #d4d4d9;
-      border-collapse: collapse;
-      table-layout: fixed;
-      text-align: center;
     }
     @media screen and (max-width: 1023px) {
         html {

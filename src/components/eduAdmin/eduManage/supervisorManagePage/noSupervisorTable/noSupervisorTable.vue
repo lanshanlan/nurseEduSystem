@@ -1,19 +1,19 @@
 <template>
-  <div id="noSupervisorTable">
+  <div id="noSupervisorTable" style="padding: 0.6rem 5rem;background-color: #f3f3f3">
     <span><p>*下面是筛选后的课程</p></span>
     <!--未设置督导的课程的表格-->
-    <table id="noSupervisorTableSy" border="1">
+    <table id="noSupervisorTableSy" class="normalTable" style="table-layout: fixed;">
       <thead>
       <tr>
-        <th width="2rem">请选择</th>
-        <th width="2rem">序号</th>
-        <th width="2rem">排课序号</th>
-        <th width="8rem">排课类型</th>
-        <th width="8rem">班级名称</th>
-        <th width="2rem">课程名称</th>
-        <th width="2rem">课程编号</th>
-        <th width="2rem">任课老师</th>
-        <th width="4rem">第1段</th>
+        <th>请选择</th>
+        <th>序号</th>
+        <th>排课序号</th>
+        <th>排课类型</th>
+        <th>班级名称</th>
+        <th>课程名称</th>
+        <th>课程编号</th>
+        <th>任课老师</th>
+        <th>第1段</th>
       </tr>
       </thead>
       <tbody>
@@ -58,19 +58,8 @@
         font-size: 62.5%;
     }
     p{
-      margin-left: 5rem;
       color: grey;
     }
-    #noSupervisorTableSy{
-      position: relative;
-      margin: 2rem auto;
-      width: 90%;
-      border: 0 solid #d4d4d9;
-      border-collapse: collapse;
-      table-layout: fixed;
-      text-align: center;
-    }
-
     @media screen and (max-width: 1023px) {
         html {
             font-size: 56%;
