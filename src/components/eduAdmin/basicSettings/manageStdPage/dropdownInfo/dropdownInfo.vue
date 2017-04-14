@@ -2,6 +2,7 @@
     <div id="dropdownInfo">
       <select class="selectWM">
         <option disabled selected>选择年制</option>
+        <!--此语句导致select不可绑定v-model-->
         <option v-for="year in years">{{year}}</option>
       </select>
       <!--年制选择下拉列表-->

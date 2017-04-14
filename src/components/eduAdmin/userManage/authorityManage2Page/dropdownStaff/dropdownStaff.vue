@@ -9,7 +9,7 @@
         <table class="dropdownStaffTableSy" id="tchDropdownTable" v-show="tchDropdownTable">
           <tr>
             <td width="40%">督导</td>
-            <td width="60%"><img id="tchModifyInfo" class="downImg" src="./images/modify.png"><img id="tchDeleteInfo" class="downImg" src="./images/delete.png"></td>
+            <td width="60%"><img id="tchModifyInfo" class="downImg" src="./images/edit.png"><img id="tchDeleteInfo" class="downImg" src="./images/delete.png"></td>
           </tr>
         </table>
       </div>
@@ -22,7 +22,7 @@
         <table class="dropdownStaffTableSy" id="eduAdimnDropdownTable" v-show="eduAdminDropdownTable">
           <tr>
             <td width="40%">教务管理员</td>
-            <td width="60%"><img id="edudminModifyInfo" class="downImg" src="./images/modify.png"><img id="edudminDeleteInfo" class="downImg" src="./images/delete.png"></td>
+            <td width="60%"><img id="edudminModifyInfo" class="downImg" src="./images/edit.png"><img id="edudminDeleteInfo" class="downImg" src="./images/delete.png"></td>
           </tr>
         </table>
       </div>

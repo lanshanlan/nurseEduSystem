@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="padding: 0.6rem 5rem;background-color: #f3f3f3">
     <div id="fiveYearPlan">
       <!--五年制课程表格模块-->
       <div id="fiveYearsPlanDiv">
@@ -12,7 +12,7 @@
       </div>
       <div>
         <!--五年制课程表格-->
-        <table id="fiveYearsPlanTable" class="charSmall" v-show="fiveYearsPlanTable" border="1">
+        <table id="fiveYearsPlanTable" v-show="fiveYearsPlanTable" class="normalTable" style="table-layout: fixed;">
           <thead>
           <tr>
             <th width="2rem" rowspan="3">课程类别</th>
@@ -97,7 +97,7 @@
       </div>
       <div>
         <!--三年制课程表格-->
-        <table id="threeYearsPlanTable" class="charSmall" v-show="threeYearsPlanTable" border="1">
+        <table id="threeYearsPlanTable" v-show="threeYearsPlanTable" class="normalTable" style="table-layout: fixed;">
           <thead>
           <tr>
             <th width="2rem" rowspan="3">课程类别</th>
@@ -234,35 +234,23 @@
 
     #fiveYearsPlanDiv,#threeYearsPlanDiv{
       position: relative;
-      background-color: #37937a;
+      background-color: #158064;
+      border:thin solid #d4d4d9;
       height: 2rem;
-      width: 90%;
-    }
-    #fiveYearsPlanDiv{
-      margin: 2rem auto 0;
-    }
-    #threeYearsPlanDiv{
-      margin: 0 auto;
-      border-top-style: solid;
-      border-top-width: 0.1rem;
-      border-top-color: #d4d4d9;
+      width: 100%;
     }
     #fiveYearsPlanP,#threeYearsPlanP{
       position: absolute;
-      background-color: #37937a;
+      background-color: #158064;
       /*background-color: red;*/
       height: 1.7rem;
       width: 10rem;
       padding-top: 0.3rem;
       text-align: center;
-      font-weight: bold;
       color:#FFF;
     }
     #fiveYearsPlanP:hover,#threeYearsPlanP:hover{
       background-color: #00a539;
-    }
-    .charSmall{
-      font-size: 0.8rem;
     }
     img{
       width: 2rem;
@@ -279,7 +267,6 @@
       background-color: #158064;
       font-size: 0.8rem;
       color:#FFF;
-      font-weight: bold;
       text-align: center;
       border-radius: 0.5rem;
       padding-bottom: 0.1rem;
@@ -292,15 +279,6 @@
     }
     button:hover{
       background-color: #00a539;
-    }
-    table{
-      position: relative;
-      width: 90%;
-      margin: 0 auto;
-      border: 0 solid #d4d4d9;
-      border-collapse: collapse;
-      table-layout: fixed;
-      text-align: center;
     }
     @media screen and (max-width: 1023px) {
         html {

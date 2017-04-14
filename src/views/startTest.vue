@@ -1,21 +1,47 @@
 <template>
-    <div style="padding: 0.6rem 5rem;background-color: #f3f3f3">
+    <div style="padding: 0.6rem 5rem;background-color: #f3f3f3;margin-top: 5rem">
       <div id="" style="background-color: white">
-        <table class="operationTable" style="table-layout: fixed;">
+        <table class="normalTable" style="table-layout: fixed;">
           <thead>
-          <tr><th>页面链接测试</th></tr>
+          <tr><th colspan="7">页面链接测试</th></tr>
           </thead>
           <tbody>
-          <tr><td><a href="./eduAdmin/basicSettings/manageStdPage/manageStdPage.vue">学生管理</a></td></tr>
-          <tr><td><a href="./eduAdmin/basicSettings/manageTchPage/manageTchPage.vue">教师管理</a></td></tr>
-          <tr><td><a href="./eduAdmin/eduManage/eduPlanPage/eduPlanPage.vue">培养方案</a></td></tr>
-          <tr><td><a href="./eduAdmin/eduManage/evaTeachingResultPage/evaTeachingResultPage.vue">评教结果</a></td></tr>
-          <tr><td><a href="./eduAdmin/eduManage/manageClassPage/manageClassPage.vue">班级管理</a></td></tr>
-          <tr><td><a href="./eduAdmin/eduManage/supervisorManagePage/supervisorManagePage.vue">督导设置</a></td></tr>
-          <tr><td><a href="./eduAdmin/eduManage/tchTeachingPlanPage/tchTeachingPlanPage.vue">教师教学计划</a></td></tr>
-          <tr><td><a href="./eduAdmin/eduManage/teachProcessPage/teachProcessPage.vue">学期教学进程</a></td></tr>
-          <tr><td><a href="./eduAdmin/userManage/authorityManage2Page/authorityManage2Page.vue">权限管理页面2</a></td></tr>
-          <tr><td><a href="./student/inquireGradePage/inquireGradePage.vue">学生查询成绩</a></td></tr>
+          <tr>
+            <td>教务基本设置模块</td>
+            <td><router-link to="/eduAdminManageStd">学生管理</router-link></td>
+            <td><router-link to="/eduAdminManageTch">教师管理</router-link></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>教务管理模块</td>
+            <td><router-link to="/eduAdminEduPlan">培养方案</router-link></td>
+            <td><router-link to="/eduAdminTeachProcess">学期教学进程</router-link></td>
+            <td><router-link to="/eduAdminTchTeachingPlan">教师教学计划</router-link></td>
+            <td><router-link to="/eduAdminManageClass">班级管理</router-link></td>
+            <td><router-link to="/eduAdminEvaTeachingResult">评教结果</router-link></td>
+            <td><router-link to="/eduAdminSupervisorManage">督导设置</router-link></td>
+          </tr>
+          <tr>
+            <td>权限管理</td>
+            <td><router-link to="/eduAdminAuthorityManage2">权限管理页面2</router-link></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>学生模块</td>
+            <td><router-link to="/stInquireGrade">学生查询成绩</router-link></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
           </tbody>
         </table>
       </div>

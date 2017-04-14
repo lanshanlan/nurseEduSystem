@@ -1,6 +1,6 @@
 <template>
   <div id="setSupervisorDropdown">
-    <span><p>课程序号:01</p></span>
+    <span><p>课程编号:11111</p></span>
     <div>
       <span id="setSupSpan">设置督导员:</span>
         <!--督导员选择下拉列表-->
@@ -73,9 +73,6 @@
     .buttonWM{
       width: 5.6rem;
       margin: 0 0.7rem;
-    }
-    p{
-      margin-top: 5rem;
     }
     @media screen and (max-width: 1023px) {
         html {

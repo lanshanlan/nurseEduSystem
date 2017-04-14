@@ -20,14 +20,14 @@
           </thead>
           <tbody>
           <tr v-for="(stdInfo,index) in stdInfos" :id="'inputTable'+index">
-            <td><input id="input1" :value="stdInfo.stdID" style="display: none"><p id="p1" style="display: inline">{{stdInfo.stdID}}</p></td>
-            <td><input id="input2" :value="stdInfo.name" style="display: none"><p id="p2" style="display: inline">{{stdInfo.name}}</p></td>
-            <td><input id="input3" :value="stdInfo.idCard" style="display: none"><p id="p3" style="display: inline">{{stdInfo.idCard}}</p></td>
-            <td><input id="input4" :value="stdInfo.sex" style="display: none"><p id="p4" style="display: inline">{{stdInfo.sex}}</p></td>
-            <td><input id="input5" :value="stdInfo.yearPlan" style="display: none"><p id="p5" style="display: inline">{{stdInfo.yearPlan}}</p></td>
-            <td><input id="input6" :value="stdInfo.gradeName" style="display: none"><p id="p6" style="display: inline">{{stdInfo.gradeName}}</p></td>
-            <td><input id="input7" :value="stdInfo.majorName" style="display: none"><p id="p7" style="display: inline">{{stdInfo.majorName}}</p></td>
-            <td><input id="input8" :value="stdInfo.className" style="display: none"><p id="p8" style="display: inline">{{stdInfo.className}}</p></td>
+            <td><input id="input1" :value="stdInfo.stdID" style="display: none"></td>
+            <td><input id="input2" :value="stdInfo.name" style="display: none"></td>
+            <td><input id="input3" :value="stdInfo.idCard" style="display: none"></td>
+            <td><input id="input4" :value="stdInfo.sex" style="display: none"></td>
+            <td><input id="input5" :value="stdInfo.yearPlan" style="display: none"></td>
+            <td><input id="input6" :value="stdInfo.gradeName" style="display: none"></td>
+            <td><input id="input7" :value="stdInfo.majorName" style="display: none"></td>
+            <td><input id="input8" :value="stdInfo.className" style="display: none"></td>
             <td>
               <img :id="'editImg'+index" src="./images/edit.png" @click="editClick(index)">
               <img :id="'saveImg'+index" src="./images/save.png" style="display: none" @click="saveClick(index)">
