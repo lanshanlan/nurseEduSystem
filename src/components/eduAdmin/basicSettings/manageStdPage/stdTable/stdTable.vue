@@ -7,7 +7,7 @@
           <!--margin:0 1%;-->
           <thead>
           <tr>
-            <th>学号</th>
+            <th>号</th>
             <th>姓名</th>
             <th>身份证号码</th>
             <th>性别</th>
@@ -20,14 +20,14 @@
           </thead>
           <tbody>
           <tr v-for="(stdInfo,index) in stdInfos" :id="'inputTable'+index">
-            <td><input id="input1" :value="stdInfo.stdID" style="display: none"></td>
-            <td><input id="input2" :value="stdInfo.name" style="display: none"></td>
-            <td><input id="input3" :value="stdInfo.idCard" style="display: none"></td>
-            <td><input id="input4" :value="stdInfo.sex" style="display: none"></td>
-            <td><input id="input5" :value="stdInfo.yearPlan" style="display: none"></td>
-            <td><input id="input6" :value="stdInfo.gradeName" style="display: none"></td>
-            <td><input id="input7" :value="stdInfo.majorName" style="display: none"></td>
-            <td><input id="input8" :value="stdInfo.className" style="display: none"></td>
+            <td><input id="input1" :value="stdInfo.stdID" readonly="readonly" style="border: none"></td>
+            <td><input id="input2" :value="stdInfo.name" readonly="readonly" style="border: none"></td>
+            <td><input id="input3" :value="stdInfo.idCard" readonly="readonly" style="border: none"></td>
+            <td><input id="input4" :value="stdInfo.sex" readonly="readonly" style="border: none"></td>
+            <td><input id="input5" :value="stdInfo.yearPlan" readonly="readonly" style="border: none"></td>
+            <td><input id="input6" :value="stdInfo.gradeName" readonly="readonly" style="border: none"></td>
+            <td><input id="input7" :value="stdInfo.majorName" readonly="readonly" style="border: none"></td>
+            <td><input id="input8" :value="stdInfo.className" readonly="readonly" style="border: none"></td>
             <td>
               <img :id="'editImg'+index" src="./images/edit.png" @click="editClick(index)">
               <img :id="'saveImg'+index" src="./images/save.png" style="display: none" @click="saveClick(index)">
@@ -68,10 +68,8 @@
           var saveImg = document.getElementById("saveImg"+index);
           var deleteImg = document.getElementById("deleteImg"+index);
           var restoreImg = document.getElementById("restoreImg"+index);
-          var i = null;
-            input[7].style.display = "inline";
-            input[7].style.border = "thin solid";
-            p[7].style.display = "none";
+            input[7].readOnly = false;
+            input[7].style.border = "0.1rem solid #d4d4d9";
           editImg.style.display = "none";
           saveImg.style.display = "inline";
           deleteImg.style.display = "none";
@@ -85,10 +83,9 @@
           var saveImg = document.getElementById("saveImg"+index);
           var deleteImg = document.getElementById("deleteImg"+index);
           var restoreImg = document.getElementById("restoreImg"+index);
-          var i = null;
-            input[7].style.display = "none";
-            input[7].style.border = "none";
-            p[7].style.display = "inline";
+          input[7].readOnly = true;
+//          true或false不可用引号
+          input[7].style.border = "none";
           this.stdInfos[index].classname = input[7].value;
           editImg.style.display = "inline";
           saveImg.style.display = "none";
@@ -103,10 +100,9 @@
           var saveImg = document.getElementById("saveImg"+index);
           var deleteImg = document.getElementById("deleteImg"+index);
           var restoreImg = document.getElementById("restoreImg"+index);
-          var i = null;
-            input[7].style.display = "none";
-            input[7].style.border = "none";
-            p[7].style.display = "inline";
+          input[7].readOnly = true;
+          input[7].style.border = "none";
+          input[7].value = this.stdInfos[index].classname;
           editImg.style.display = "inline";
           saveImg.style.display = "none";
           deleteImg.style.display = "inline";
@@ -124,10 +120,7 @@
         font-size: 62.5%;
     }
     input{
-      width:100%;
-    }
-    p{
-      font-size: 0.8rem;
+      width:80%;
       text-align: center;
     }
     img{

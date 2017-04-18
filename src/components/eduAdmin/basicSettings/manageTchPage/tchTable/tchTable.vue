@@ -5,7 +5,7 @@
       <!--table-layout: fixed;固定表格格局-->
       <thead>
       <tr>
-        <th>教师工号</th>
+        <th>教师号</th>
         <th>姓名</th>
         <th>身份证号</th>
         <th>性别</th>
@@ -20,16 +20,16 @@
       </thead>
       <tbody>
       <tr v-for="(tchInfo,index) in tchInfos" :id="'inputTable'+index">
-        <td><input id="input1" :value="tchInfo.tchID" style="display: none"><p id="p1" style="display: inline">{{tchInfo.tchID}}</p></td>
-        <td><input id="input2" :value="tchInfo.name" style="display: none"><p id="p2" style="display: inline">{{tchInfo.name}}</p></td>
-        <td><input id="input3" :value="tchInfo.idCard" style="display: none"><p id="p3" style="display: inline">{{tchInfo.idCard}}</p></td>
-        <td><input id="input4" :value="tchInfo.sex" style="display: none"><p id="p4" style="display: inline">{{tchInfo.sex}}</p></td>
-        <td><input id="input5" :value="tchInfo.phoneNum" style="display: none"><p id="p5" style="display: inline">{{tchInfo.phoneNum}}</p></td>
-        <td><input id="input6" :value="tchInfo.employCampus" style="display: none"><p id="p6" style="display: inline">{{tchInfo.employCampus}}</p></td>
-        <td><input id="input7" :value="tchInfo.proRanks" style="display: none"><p id="p7" style="display: inline">{{tchInfo.proRanks}}</p></td>
-        <td><input id="input8" :value="tchInfo.duties" style="display: none"><p id="p8" style="display: inline">{{tchInfo.duties}}</p></td>
-        <td><input id="input9" :value="tchInfo.tchType" style="display: none"><p id="p9" style="display: inline">{{tchInfo.tchType}}</p></td>
-        <td><input id="input10" :value="tchInfo.tchGroup" style="display: none"><p id="p10" style="display: inline">{{tchInfo.tchGroup}}</p></td>
+        <td><input id="input1" :value="tchInfo.tchID" readonly="readonly" style="border: none"></td>
+        <td><input id="input2" :value="tchInfo.name" readonly="readonly" style="border: none"></td>
+        <td><input id="input3" :value="tchInfo.idCard" readonly="readonly" style="border: none"></td>
+        <td><input id="input4" :value="tchInfo.sex" readonly="readonly" style="border: none"></td>
+        <td><input id="input5" :value="tchInfo.phoneNum" readonly="readonly" style="border: none"></td>
+        <td><input id="input6" :value="tchInfo.employCampus" readonly="readonly" style="border: none"></td>
+        <td><input id="input7" :value="tchInfo.proRanks" readonly="readonly" style="border: none"></td>
+        <td><input id="input8" :value="tchInfo.duties" readonly="readonly" style="border: none"></td>
+        <td><input id="input9" :value="tchInfo.tchType" readonly="readonly" style="border: none"></td>
+        <td><input id="input10" :value="tchInfo.tchGroup" readonly="readonly" style="border: none"></td>
         <td>
           <img :id="'editImg'+index" src="./images/edit.png" @click="editClick(index)">
           <img :id="'saveImg'+index" src="./images/save.png" style="display: none" @click="saveClick(index)">
@@ -69,13 +69,9 @@
           var saveImg = document.getElementById("saveImg"+index);
           var deleteImg = document.getElementById("deleteImg"+index);
           var restoreImg = document.getElementById("restoreImg"+index);
-          var i = null;
-          for(i = 5;i<9;i++){
-            input[i].style.display = "inline";
-            input[i].style.border = "thin solid";
-          }
-          for(i = 5;i<9;i++){
-            p[i].style.display = "none";
+          for(var i = 5;i<9;i++){
+            input[i].readOnly = false;
+            input[i].style.border = "0.1rem solid #d4d4d9";
           }
           editImg.style.display = "none";
           saveImg.style.display = "inline";
@@ -90,13 +86,9 @@
           var saveImg = document.getElementById("saveImg"+index);
           var deleteImg = document.getElementById("deleteImg"+index);
           var restoreImg = document.getElementById("restoreImg"+index);
-          var i = null;
-          for(i = 5;i<9;i++){
-            input[i].style.display = "none";
+          for(var i = 5;i<9;i++){
+            input[i].readOnly = true;
             input[i].style.border = "none";
-          }
-          for(i = 5;i<9;i++){
-            p[i].style.display = "inline";
           }
           this.tchInfos[index].employCampus = input[5].value;
           this.tchInfos[index].proRanks = input[6].value;
@@ -115,14 +107,14 @@
           var saveImg = document.getElementById("saveImg"+index);
           var deleteImg = document.getElementById("deleteImg"+index);
           var restoreImg = document.getElementById("restoreImg"+index);
-          var i = null;
-          for(i = 5;i<9;i++){
-            input[i].style.display = "none";
+          for(var i = 5;i<9;i++){
+            input[i].readOnly = true;
             input[i].style.border = "none";
           }
-          for(i = 5;i<9;i++){
-            p[i].style.display = "inline";
-          }
+          input[5].value = this.tchInfos[index].employCampus;
+          input[6].value = this.tchInfos[index].proRanks;
+          input[7].value = this.tchInfos[index].duties;
+          input[8].value = this.tchInfos[index].tchType;
           editImg.style.display = "inline";
           saveImg.style.display = "none";
           deleteImg.style.display = "inline";
@@ -140,7 +132,8 @@
         font-size: 62.5%;
     }
     input{
-      width: 100%;
+      width: 80%;
+      text-align: center;
     }
     p{
       font-size: 0.8rem;

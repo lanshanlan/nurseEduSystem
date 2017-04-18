@@ -10,7 +10,7 @@
             <td>教务基本设置模块</td>
             <td><router-link to="/eduAdminManageStd">学生管理</router-link></td>
             <td><router-link to="/eduAdminManageTch">教师管理</router-link></td>
-            <td></td>
+            <td><router-link to="/eduAdminManageGrade">年级管理</router-link></td>
             <td></td>
             <td></td>
             <td></td>
