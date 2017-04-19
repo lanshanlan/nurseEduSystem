@@ -3,7 +3,6 @@
     <div id="tchTeachingPlanPage">
       <topTitle></topTitle>
       <topBar></topBar>
-      <searchInfo></searchInfo>
       <courseGroupTable></courseGroupTable>
     </div>
 </template>
@@ -12,7 +11,6 @@
   /*import引入该page页面的单文件组件*/
   import topTitle from '../../../../components/public/topTitle/topTitle.vue'
   import topBar from '../../../../components/eduAdmin/eduManage/tchTeachingPlanPage/topBar/topBar.vue'
-  import searchInfo from '../../../../components/eduAdmin/eduManage/tchTeachingPlanPage/searchInfo/searchInfo.vue'
   import courseGroupTable from '../../../../components/eduAdmin/eduManage/tchTeachingPlanPage/courseGroupTable/courseGroupTable.vue'
   export default {
     name: 'eduPlanPage',
@@ -25,7 +23,6 @@
     components: {
       topTitle,
       topBar,
-      searchInfo,
       courseGroupTable
     }
   }

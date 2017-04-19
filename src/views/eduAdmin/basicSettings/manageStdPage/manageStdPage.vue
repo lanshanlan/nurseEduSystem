@@ -3,7 +3,6 @@
     <div id="manageStdPage">
       <topTitle></topTitle>
       <topBar></topBar>
-      <dropdownInfo></dropdownInfo>
       <stdTable></stdTable>
     </div>
 </template>
@@ -12,7 +11,6 @@
   /*import引入该page页面的单文件组件*/
     import topTitle from '../../../../components/public/topTitle/topTitle.vue'
     import topBar from '../../../../components/eduAdmin/basicSettings/manageStdPage/topBar/topbar.vue'
-    import dropdownInfo from '../../../../components/eduAdmin/basicSettings/manageStdPage/dropdownInfo/dropdownInfo.vue'
     import stdTable from '../../../../components/eduAdmin/basicSettings/manageStdPage/stdTable/stdTable.vue'
     export default {
         name: 'manageStdPage',
@@ -25,7 +23,6 @@
       components:{
         topTitle,
         topBar,
-        dropdownInfo,
         stdTable
       }
     }

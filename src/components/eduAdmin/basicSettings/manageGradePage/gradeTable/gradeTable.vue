@@ -109,16 +109,16 @@
         threeYearTable: false,
         gradeTable: false,
         fiveGrades: [
-          { name:"2016级", peopleNum:"167", },
-          { name:"2015级", peopleNum:"167", },
-          { name:"2014级", peopleNum:"167", },
-          { name:"2013级", peopleNum:"167", },
-          { name:"2012级", peopleNum:"167", }
+          { name:"2016级", peopleNum:"167" },
+          { name:"2015级", peopleNum:"167" },
+          { name:"2014级", peopleNum:"167" },
+          { name:"2013级", peopleNum:"167" },
+          { name:"2012级", peopleNum:"167" }
         ],
         threeGrades: [
-          { name:"2016级", peopleNum:"167", },
-          { name:"2015级", peopleNum:"167", },
-          { name:"2014级", peopleNum:"167", }
+          { name:"2016级", peopleNum:"167" },
+          { name:"2015级", peopleNum:"167" },
+          { name:"2014级", peopleNum:"167" }
         ],
         gradeClassInfos:[
           {gradeID:'04',majorId:'221',majorName:'护理',classID:'03',className:'护理3班',classTchID:'12345',classTchName:'何平',yearPlan:'五年制',peopleNum:'43'},

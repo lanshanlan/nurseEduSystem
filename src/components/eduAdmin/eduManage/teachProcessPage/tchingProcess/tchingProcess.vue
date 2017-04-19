@@ -3,11 +3,14 @@
       <div v-for="(yearPlan,index) in yearPlans">
         <div :id="yearPlan.English + 'YearsPlanDiv'" class="yearsPlanDiv">
           <!--年制模块下拉菜单-->
-          <span><img :id="yearPlan.English + 'Arrow'" class="yearsPlanImg" @click="yearsPlanSlideToggle(yearPlan.English)" :src="arrowright"></span>
-          <span :id="yearPlan.English + 'P'" class="yearsPlanP" @click="yearsPlanSlideToggle(yearPlan.English)">{{yearPlan.China}}</span>
+          <!--<span><img :id="yearPlan.English + 'Arrow'" class="yearsPlanImg" :src="arrowright"></span>-->
+          <span :id="yearPlan.English + 'P'" class="yearsPlanP">{{yearPlan.China}}</span>
+          <span><button id="yearPlan.English + 'LeadIn'" class="yearButton">导入</button></span>
+          <span><button id="yearPlan.English + 'LeadOut'" class="yearButton">导出</button></span>
+          <span><button id="yearPlan.English + 'Module'" class="yearButton">下载模板</button></span>
         </div>
 
-        <div :id="yearPlan.English + 'ProcessMenu'" style="display: none">
+        <div :id="yearPlan.English + 'ProcessMenu'">
           <div v-for="(grade,index) in grades">
             <div :id="yearPlan.English + grade + 'GradeProcessDiv'" class="gradeProcessDiv">
               <!--年级教学进程下拉菜单-->
@@ -95,18 +98,18 @@
         });
       },
       methods:{
-        yearsPlanSlideToggle:function(yearPlanEnglish){
-          var processMenu = document.getElementById(yearPlanEnglish + "ProcessMenu");
-          var arrow = document.getElementById(yearPlanEnglish + "Arrow");
-          if (arrow.src === this.arrowright){
-            processMenu.style.display = "inline";
-            arrow.src = this.arrowdown;
-          }
-          else {
-            processMenu.style.display = "none";
-            arrow.src = this.arrowright;
-          }
-        },
+//        yearsPlanSlideToggle:function(yearPlanEnglish){
+//          var processMenu = document.getElementById(yearPlanEnglish + "ProcessMenu");
+//          var arrow = document.getElementById(yearPlanEnglish + "Arrow");
+//          if (arrow.src === this.arrowright){
+//            processMenu.style.display = "inline";
+//            arrow.src = this.arrowdown;
+//          }
+//          else {
+//            processMenu.style.display = "none";
+//            arrow.src = this.arrowright;
+//          }
+//        },
         TableSlideToggle:function(yearPlanEnglish,grade){
           var table = document.getElementById(yearPlanEnglish + grade + "Table");
           var arrow = document.getElementById(yearPlanEnglish + grade + "Arrow");
@@ -136,44 +139,64 @@
     }
     .gradeProcessDiv{
       position: relative;
-      background-color: #158064;
+      /*background-color: #158064;*/
+      background-color: #1fa573;
       border-top:1px solid #ececec;
       height: 2rem;
       width: 100%;
     }
     .yearsPlanP{
       position: absolute;
-      background-color: #158064;
-      /*background-color: red;*/
+      margin-left: 2rem;
       height: 2rem;
       width: 10rem;
       padding-top: 0.5rem;
       text-align: center;
       font-size: 1rem;
       color:#FFF;
+      cursor: default;
     }
     .gradeProcessP{
       position: absolute;
-      background-color: #158064;
-      /*background-color: red;*/
       height: 1.7rem;
       width: 10rem;
       padding-top: 0.3rem;
       text-align: center;
       font-size: 0.9rem;
       color:#FFF;
+      cursor: default;
     }
-    .yearsPlanP:hover,img:hover{
+    .gradeProcessP:hover,.gradeProcessImg:hover{
       background-color: #00a539;
     }
-    .yearsPlanImg{
-      width: 2.5rem;
-      height: 2.5rem;
-    }
+    /*.yearsPlanImg{*/
+      /*width: 2.5rem;*/
+      /*height: 2.5rem;*/
+    /*}*/
     .gradeProcessImg{
       width: 2rem;
       height: 2rem;
-      margin-left: 0.7rem;
+      /*margin-left: 0.7rem;*/
+    }
+    .yearButton{
+      float: right;
+      margin-top: 0.5rem;
+      margin-right: 5rem;
+      background-color: #158064;
+      font-size: 0.8rem;
+      color:#FFF;
+      text-align: center;
+      border-radius: 0.5rem;
+      padding-bottom: 0.1rem;
+      height: 1.4rem;
+      min-width: 5rem;
+      border-color: white;
+      border-style: solid;
+      border-width: 0.1rem;
+      /*更改button的边框属性*/
+    }
+    .yearButton:hover{
+      background-color: #00a539;
     }
     @media screen and (max-width: 1023px) {
         html {

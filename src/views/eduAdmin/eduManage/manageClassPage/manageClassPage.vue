@@ -3,7 +3,6 @@
     <div id="manageClassPage">
       <topTitle></topTitle>
       <topBar></topBar>
-      <searchInfo></searchInfo>
       <stdInfoTable></stdInfoTable>
     </div>
 </template>
@@ -12,7 +11,6 @@
   /*import引入该page页面的单文件组件*/
   import topTitle from '../../../../components/public/topTitle/topTitle.vue'
   import topBar from '../../../../components/eduAdmin/eduManage/manageClassPage/topBar/topBar.vue'
-  import searchInfo from '../../../../components/eduAdmin/eduManage/manageClassPage/searchInfo/searchInfo.vue'
   import stdInfoTable from '../../../../components/eduAdmin/eduManage/manageClassPage/stdInfoTable/stdInfoTable.vue'
   export default {
     name: 'manageClassPage',
@@ -25,7 +23,6 @@
     components: {
       topTitle,
       topBar,
-      searchInfo,
       stdInfoTable
     }
   }

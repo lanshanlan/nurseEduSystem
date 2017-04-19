@@ -3,9 +3,7 @@
   <div id="evaTeachingReasultPage">
     <topTitle></topTitle>
     <topBar></topBar>
-    <tchDropdown></tchDropdown>
     <noSupervisorTable></noSupervisorTable>
-    <setSupervisorDropdown></setSupervisorDropdown>
     <supervisorTable></supervisorTable>
   </div>
 </template>
@@ -14,9 +12,7 @@
   /*import引入该page页面的单文件组件*/
   import topTitle from '../../../../components/public/topTitle/topTitle.vue'
   import topBar from '../../../../components/eduAdmin/eduManage/supervisorManagePage/topBar/topBar.vue'
-  import tchDropdown from '../../../../components/eduAdmin/eduManage/supervisorManagePage/tchDropdown/tchDropdown.vue'
   import noSupervisorTable from '../../../../components/eduAdmin/eduManage/supervisorManagePage/noSupervisorTable/noSupervisorTable.vue'
-  import setSupervisorDropdown from '../../../../components/eduAdmin/eduManage/supervisorManagePage/setSupervisorDropdown/setSupervisorDropdown.vue'
   import supervisorTable from '../../../../components/eduAdmin/eduManage/supervisorManagePage/supervisorTable/supervisorTable.vue'
   export default {
     name: 'manageClassPage',
@@ -29,9 +25,7 @@
     components: {
       topTitle,
       topBar,
-      tchDropdown,
       noSupervisorTable,
-      setSupervisorDropdown,
       supervisorTable
     }
   }

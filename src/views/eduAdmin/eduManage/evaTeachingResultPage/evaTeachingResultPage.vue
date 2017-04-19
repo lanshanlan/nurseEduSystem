@@ -3,7 +3,6 @@
     <div id="evaTeachingReasultPage">
       <topTitle></topTitle>
       <topBar></topBar>
-      <courseTchInfo></courseTchInfo>
       <evaResultTable></evaResultTable>
     </div>
 </template>
@@ -12,7 +11,6 @@
   /*import引入该page页面的单文件组件*/
   import topTitle from '../../../../components/public/topTitle/topTitle.vue'
   import topBar from '../../../../components/eduAdmin/eduManage/evaTeachingResultPage/topBar/topBar.vue'
-  import courseTchInfo from '../../../../components/eduAdmin/eduManage/evaTeachingResultPage/courseTchInfo/courseTchInfo.vue'
   import evaResultTable from '../../../../components/eduAdmin/eduManage/evaTeachingResultPage/evaResultTable/evaResultTable.vue'
   export default {
     name: 'manageClassPage',
@@ -25,7 +23,6 @@
     components: {
       topTitle,
       topBar,
-      courseTchInfo,
       evaResultTable
     }
   }

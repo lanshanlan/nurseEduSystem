@@ -3,7 +3,6 @@
   <div id="inquireGradePage">
     <topTitle></topTitle>
     <topBar></topBar>
-    <changeTerm></changeTerm>
     <gradeTable></gradeTable>
   </div>
 </template>
@@ -12,7 +11,6 @@
   /*import引入该page页面的单文件组件*/
   import topTitle from '../../../components/public/topTitle/topTitle.vue'
   import topBar from '../../../components/student/inquireGradePage/topBar/topBar.vue'
-  import changeTerm from '../../../components/student/inquireGradePage/changeTerm/changeTerm.vue'
   import gradeTable from '../../../components/student/inquireGradePage/gradeTable/gradeTable.vue'
   export default {
     name: 'inquireGradePage',
@@ -25,7 +23,6 @@
     components:{
       topTitle,
       topBar,
-      changeTerm,
       gradeTable
     }
   }

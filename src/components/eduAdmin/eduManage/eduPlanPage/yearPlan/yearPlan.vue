@@ -248,6 +248,7 @@
       padding-top: 0.3rem;
       text-align: center;
       color:#FFF;
+      cursor: default;
     }
     #fiveYearsPlanP:hover,#threeYearsPlanP:hover,img:hover{
       background-color: #00a539;

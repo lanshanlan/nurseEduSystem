@@ -1,44 +1,54 @@
 <template>
-  <div id="tchTable" style="padding: 0.6rem 5rem;background-color: #f3f3f3">
-    <!--教师信息表格-->
-    <table id="eduAdminTchTableSy" class="operationTable" style="table-layout: fixed;">
-      <!--table-layout: fixed;固定表格格局-->
-      <thead>
-      <tr>
-        <th>教师号</th>
-        <th>姓名</th>
-        <th>身份证号</th>
-        <th>性别</th>
-        <th>手机号码</th>
-        <th>聘用校区</th>
-        <th>工作职称</th>
-        <th>工作职务</th>
-        <th>教师类型</th>
-        <th>所属教研组</th>
-        <th>操作</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr v-for="(tchInfo,index) in tchInfos" :id="'inputTable'+index">
-        <td><input id="input1" :value="tchInfo.tchID" readonly="readonly" style="border: none"></td>
-        <td><input id="input2" :value="tchInfo.name" readonly="readonly" style="border: none"></td>
-        <td><input id="input3" :value="tchInfo.idCard" readonly="readonly" style="border: none"></td>
-        <td><input id="input4" :value="tchInfo.sex" readonly="readonly" style="border: none"></td>
-        <td><input id="input5" :value="tchInfo.phoneNum" readonly="readonly" style="border: none"></td>
-        <td><input id="input6" :value="tchInfo.employCampus" readonly="readonly" style="border: none"></td>
-        <td><input id="input7" :value="tchInfo.proRanks" readonly="readonly" style="border: none"></td>
-        <td><input id="input8" :value="tchInfo.duties" readonly="readonly" style="border: none"></td>
-        <td><input id="input9" :value="tchInfo.tchType" readonly="readonly" style="border: none"></td>
-        <td><input id="input10" :value="tchInfo.tchGroup" readonly="readonly" style="border: none"></td>
-        <td>
-          <img :id="'editImg'+index" src="./images/edit.png" @click="editClick(index)">
-          <img :id="'saveImg'+index" src="./images/save.png" style="display: none" @click="saveClick(index)">
-          <img :id="'deleteImg'+index" src="./images/delete.png" @click="deleteClick(index)">
-          <img :id="'restoreImg'+index" src="./images/restore.png" style="display: none" @click="restoreClick(index)">
-        </td>
-      </tr>
-      </tbody>
-    </table>
+  <div>
+    <div id="dropdownInfo">
+      <span><input type="text" id="tchName" class="inputWM" placeholder="请输入姓名"></span>
+      <span><input type="text" id="tchID" class="inputWM" placeholder="请输入编号"></span>
+      <span><button id="downloadForm" class="am-btn am-btn-success am-radius buttonWM">下载模板</button></span>
+      <span><button id="searchFor" class="am-btn am-btn-success am-radius buttonWM">查找</button></span>
+      <span><button id="leadIn" class="am-btn am-btn-success am-radius buttonWM">导入</button></span>
+      <span><button id="leadOut" class="am-btn am-btn-success am-radius buttonWM">导出</button></span>
+    </div>
+    <div id="tchTable" style="padding: 0.6rem 5rem;background-color: #f3f3f3">
+      <!--教师信息表格-->
+      <table id="eduAdminTchTableSy" class="operationTable" style="table-layout: fixed;">
+        <!--table-layout: fixed;固定表格格局-->
+        <thead>
+        <tr>
+          <th>教师号</th>
+          <th>姓名</th>
+          <th>身份证号</th>
+          <th>性别</th>
+          <th>手机号码</th>
+          <th>聘用校区</th>
+          <th>工作职称</th>
+          <th>工作职务</th>
+          <th>教师类型</th>
+          <th>所属教研组</th>
+          <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="(tchInfo,index) in tchInfos" :id="'inputTable'+index">
+          <td><input id="input1" :value="tchInfo.tchID" readonly="readonly" style="border: none"></td>
+          <td><input id="input2" :value="tchInfo.name" readonly="readonly" style="border: none"></td>
+          <td><input id="input3" :value="tchInfo.idCard" readonly="readonly" style="border: none"></td>
+          <td><input id="input4" :value="tchInfo.sex" readonly="readonly" style="border: none"></td>
+          <td><input id="input5" :value="tchInfo.phoneNum" readonly="readonly" style="border: none"></td>
+          <td><input id="input6" :value="tchInfo.employCampus" readonly="readonly" style="border: none"></td>
+          <td><input id="input7" :value="tchInfo.proRanks" readonly="readonly" style="border: none"></td>
+          <td><input id="input8" :value="tchInfo.duties" readonly="readonly" style="border: none"></td>
+          <td><input id="input9" :value="tchInfo.tchType" readonly="readonly" style="border: none"></td>
+          <td><input id="input10" :value="tchInfo.tchGroup" readonly="readonly" style="border: none"></td>
+          <td>
+            <img :id="'editImg'+index" src="./images/edit.png" @click="editClick(index)">
+            <img :id="'saveImg'+index" src="./images/save.png" style="display: none" @click="saveClick(index)">
+            <img :id="'deleteImg'+index" src="./images/delete.png" @click="deleteClick(index)">
+            <img :id="'restoreImg'+index" src="./images/restore.png" style="display: none" @click="restoreClick(index)">
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 
@@ -130,6 +140,19 @@
 <style scoped>
     html {
         font-size: 62.5%;
+    }
+    #dropdownInfo{
+      margin: 0.6rem 5rem;
+      background-color: white;
+    }
+    .inputWM{
+      width: 8rem;
+      margin: 0 0.7rem;
+      text-align: left;
+    }
+    .buttonWM{
+      width: 5.6rem;
+      margin: 0 0.7rem;
     }
     input{
       width: 80%;
