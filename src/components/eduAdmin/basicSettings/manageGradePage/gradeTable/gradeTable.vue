@@ -4,20 +4,44 @@
       <div id="fiveYearDiv" v-show="gradeManagement">
         <button class="amButtom" @click="fiveYearClick"><img id="fiveYearArrow" class="iconImg" :src="icon2"><span class="subtitle">五年制</span></button>
         <table id="fiveYearTable" v-show="fiveYearTable"  class="operationTable" style="table-layout: fixed;">
-          <tr v-for="fiveGrade in fiveGrades">
-            <td>{{ fiveGrade.name }}</td>
-            <td>{{ fiveGrade.peopleNum }}</td>
+          <tr v-for="(fiveGrade,index) in fiveGrades" :id="'fiveInputTr'+index">
+            <td><input class="gradeInput" type="text" :value="fiveGrade.name" readonly="readonly"></td>
+            <td><input class="gradeInput" type="text" :value="fiveGrade.peopleNum" readonly="readonly"></td>
             <td class="checkGradeInfo" @click="checkGradeInfoClick(fiveGrade.name ,fiveGrade.peopleNum)"><u>查看年级信息</u></td>
+            <td>
+              <img :id="'fiveEditImg'+index" src="./images/edit.png" @click="editGradeClick('five',index)">
+              <img :id="'fiveSaveImg'+index" src="./images/save.png" style="display: none" @click="saveGradeClick('five',index)">
+              <img :id="'fiveDeleteImg'+index" src="./images/delete.png" @click="deleteGradeClick(fiveGrades,index)">
+              <img :id="'fiveRestoreImg'+index" src="./images/restore.png" style="display: none" @click="restoreGradeClick('five',index)">
+            </td>
+          </tr>
+          <tr>
+            <td><img :id="'fiveAddImg'+index" src="./images/add.png" @click="addGradeClick(fiveGrades)"></td>
+            <td></td>
+            <td></td>
+            <td></td>
           </tr>
         </table>
       </div>
       <div id="threeYearDiv" v-show="gradeManagement">
         <button class="amButtom" @click="threeYearClick"><img id="threeYearArrow" class="iconImg" :src="icon1"><span class="subtitle">三年制</span></button>
         <table id="threeYearTable" v-show="threeYearTable"  class="operationTable" style="table-layout: fixed;">
-          <tr v-for="threeGrade in threeGrades">
-            <td>{{ threeGrade.name }}</td>
-            <td>{{ threeGrade.peopleNum }}</td>
+          <tr v-for="(threeGrade,index) in threeGrades" :id="'threeInputTr'+index">
+            <td><input class="gradeInput" type="text" :value="threeGrade.name" readonly="readonly"></td>
+            <td><input class="gradeInput" type="text" :value="threeGrade.peopleNum" readonly="readonly"></td>
             <td class="checkGradeInfo" @click="checkGradeInfoClick(threeGrade.name ,threeGrade.peopleNum)"><u>查看年级信息</u></td>
+            <td>
+              <img :id="'threeEditImg'+index" src="./images/edit.png" @click="editGradeClick('three',index)">
+              <img :id="'threeSaveImg'+index" src="./images/save.png" style="display: none" @click="saveGradeClick('three',index)">
+              <img :id="'threeDeleteImg'+index" src="./images/delete.png" @click="deleteGradeClick(threeGrades,index)">
+              <img :id="'threeRestoreImg'+index" src="./images/restore.png" style="display: none" @click="restoreGradeClick('three',index)">
+            </td>
+          </tr>
+          <tr>
+            <td><img :id="'threeAddImg'+index" src="./images/add.png" @click="addGradeClick(threeGrades)"></td>
+            <td></td>
+            <td></td>
+            <td></td>
           </tr>
         </table>
       </div>
@@ -85,16 +109,16 @@
         threeYearTable: false,
         gradeTable: false,
         fiveGrades: [
-          { name:"2016级", peopleNum:"167", informationUrl:"" },
-          { name:"2015级", peopleNum:"167", informationUrl:"" },
-          { name:"2014级", peopleNum:"167", informationUrl:"" },
-          { name:"2013级", peopleNum:"167", informationUrl:"" },
-          { name:"2012级", peopleNum:"167", informationUrl:"" }
+          { name:"2016级", peopleNum:"167", },
+          { name:"2015级", peopleNum:"167", },
+          { name:"2014级", peopleNum:"167", },
+          { name:"2013级", peopleNum:"167", },
+          { name:"2012级", peopleNum:"167", }
         ],
         threeGrades: [
-          { name:"2016级", peopleNum:"167", informationUrl:"" },
-          { name:"2015级", peopleNum:"167", informationUrl:"" },
-          { name:"2014级", peopleNum:"167", informationUrl:"" }
+          { name:"2016级", peopleNum:"167", },
+          { name:"2015级", peopleNum:"167", },
+          { name:"2014级", peopleNum:"167", }
         ],
         gradeClassInfos:[
           {gradeID:'04',majorId:'221',majorName:'护理',classID:'03',className:'护理3班',classTchID:'12345',classTchName:'何平',yearPlan:'五年制',peopleNum:'43'},
@@ -131,6 +155,95 @@
           this.threeYearTable = false;
           threeYearArrow.src = this.icon1;
         }
+      },
+      editGradeClick: function(year,index){
+        var inputTr = document.getElementById(year+"InputTr"+index);
+        var input = inputTr.getElementsByTagName("input");
+        var editImg = document.getElementById(year+"EditImg"+index);
+        var saveImg = document.getElementById(year+"SaveImg"+index);
+        var restoreImg = document.getElementById(year+"RestoreImg"+index);
+        var deleteImg = document.getElementById(year+"DeleteImg"+index);
+//          使课程信息的输入标签变为可输入，显示边框
+        for(var i = 0;i<input.length;i++){
+          input[i].readOnly = false;
+          input[i].style.border = "0.1rem solid #d4d4d9";
+        }
+//        隐藏编辑和删除功能图标,显示保存和重置功能图标
+        editImg.style.display = "none";
+        saveImg.style.display = "inline";
+        deleteImg.style.display = "none";
+        restoreImg.style.display = "inline";
+      },
+      saveGradeClick: function(year,index){
+        if(confirm("您确定提交保存该课程吗？")){
+          var inputTr = document.getElementById(year+"InputTr"+index);
+          var input = inputTr.getElementsByTagName("input");
+          var editImg = document.getElementById(year+"EditImg"+index);
+          var saveImg = document.getElementById(year+"SaveImg"+index);
+          var restoreImg = document.getElementById(year+"RestoreImg"+index);
+          var deleteImg = document.getElementById(year+"DeleteImg"+index);
+          var i = null;
+    //            保存数据到data,虽然input的value和data中的属性绑定,但并不是完成的双向,此时data中的属性数据并没有发生修改
+          if(year == "five"){
+            this.fiveGrades[index].name = input[0].value;
+            this.fiveGrades[index].peopleNum = input[1].value;
+            console.log(this.fiveCourses);
+          }
+          if(year == "three"){
+            this.threeGrades[index].name = input[0].value;
+            this.threeGrades[index].peopleNum = input[1].value;
+          }
+          for(i = 0;i<input.length;i++){
+            input[i].readOnly = true;
+            input[i].style.border = "none";
+          }
+    //          预留功能,将data提交到后端,实现保存数据,处理回调
+          editImg.style.display = "inline";
+          saveImg.style.display = "none";
+          deleteImg.style.display = "inline";
+          restoreImg.style.display = "none";
+        }
+      },
+      restoreGradeClick: function(year,index){
+        if(confirm("您确定取消编辑并重置该课程信息吗？")){
+          var inputTr = document.getElementById(year+"InputTr"+index);
+          var input = inputTr.getElementsByTagName("input");
+          var editImg = document.getElementById(year+"EditImg"+index);
+          var saveImg = document.getElementById(year+"SaveImg"+index);
+          var restoreImg = document.getElementById(year+"RestoreImg"+index);
+          var deleteImg = document.getElementById(year+"DeleteImg"+index);
+          var i = null;
+//            重置数据到value,虽然input的value和data中的属性绑定,但并不是完全的双向,此时data中的属性数据并没有发生修改
+          if(year == "five"){
+            input[0].value = this.fiveGrades[index].name;
+            input[1].value = this.fiveGrades[index].peopleNum;
+          }
+          if(year == "three"){
+            input[0].value = this.threeGrades[index].name;
+            input[1].value = this.threeGrades[index].peopleNum;
+          }
+//          使课程信息的输入标签变为不可输入，隐藏边框
+          for(i = 0;i<input.length;i++){
+            input[i].readOnly = true;
+            input[i].style.border = "none";
+          }
+          editImg.style.display = "inline";
+          saveImg.style.display = "none";
+          deleteImg.style.display = "inline";
+          restoreImg.style.display = "none";
+        }
+      },
+      deleteGradeClick: function(grades,index){
+//          从data中的课程信息数组中删除
+//          预留功能,将data提交到后端,实现删除数据,处理回调
+        if(confirm("您确定删除该课程吗？")){
+          grades.splice(index, 1);
+        }
+      },
+      addGradeClick: function (grades,year){
+        grades.push(
+            { name:"请编辑后保存", peopleNum:"请编辑后保存" }
+        );
       },
       checkGradeInfoClick: function(name,peopleNum){
         this.gradeTable = true;
@@ -245,7 +358,14 @@
   }
   #buttonDiv{
     text-align: center;
-  }img{
+  }
+  .gradeInput{
+    font-size: 0.5rem;
+    width: 35%;
+    border: none;
+    outline: none;
+  }
+  img{
      position: relative;
      margin: 0.5rem 0.2rem;
      width: 1.5rem;

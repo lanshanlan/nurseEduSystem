@@ -4,7 +4,7 @@
       <topTitle></topTitle>
       <topBar></topBar>
       <div class="blank"></div>
-      <yearProcess></yearProcess>
+      <tchingProcess></tchingProcess>
     </div>
 </template>
 
@@ -12,7 +12,7 @@
   /*import引入该page页面的单文件组件*/
   import topTitle from '../../../../components/public/topTitle/topTitle.vue'
   import topBar from '../../../../components/eduAdmin/eduManage/teachProcessPage/topBar/topBar.vue'
-  import yearProcess from '../../../../components/eduAdmin/eduManage/teachProcessPage/yearProcess/yearProcess.vue'
+  import tchingProcess from '../../../../components/eduAdmin/eduManage/teachProcessPage/tchingProcess/tchingProcess.vue'
   export default {
     name: 'eduPlanPage',
     data () {
@@ -24,7 +24,7 @@
     components: {
       topTitle,
       topBar,
-      yearProcess
+      tchingProcess
     }
   }
 </script>

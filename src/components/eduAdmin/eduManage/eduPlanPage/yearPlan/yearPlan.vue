@@ -15,11 +15,11 @@
         <table id="fiveYearsPlanTable" v-show="fiveYearsPlanTable" class="normalTable" style="table-layout: fixed;">
           <thead>
           <tr>
-            <th width="2rem" rowspan="3">课程类别</th>
-            <th width="2rem" rowspan="3">课程名称</th>
-            <th width="3rem" rowspan="2" colspan="3">学时</th>
-            <th width="16rem" colspan="16">执行学期</th>
-            <th width="2rem" rowspan="2" colspan="2">考核学期</th>
+            <th width="8%" rowspan="3">课程类别</th>
+            <th width="8%" rowspan="3">课程名称</th>
+            <th width="12%" rowspan="2" colspan="3">学时</th>
+            <th width="64%" colspan="16">执行学期</th>
+            <th width="8%" rowspan="2" colspan="2">考核学期</th>
           </tr>
           <tr>
             <td colspan="2">1</td>
@@ -100,11 +100,11 @@
         <table id="threeYearsPlanTable" v-show="threeYearsPlanTable" class="normalTable" style="table-layout: fixed;">
           <thead>
           <tr>
-            <th width="2rem" rowspan="3">课程类别</th>
-            <th width="2rem" rowspan="3">课程名称</th>
-            <th width="3rem" rowspan="2" colspan="3">学时</th>
-            <th width="16rem" colspan="16">执行学期</th>
-            <th width="2rem" rowspan="2" colspan="2">考核学期</th>
+            <th width="8%" rowspan="3">课程类别</th>
+            <th width="8%" rowspan="3">课程名称</th>
+            <th width="12%" rowspan="2" colspan="3">学时</th>
+            <th width="64%" colspan="16">执行学期</th>
+            <th width="8%" rowspan="2" colspan="2">考核学期</th>
           </tr>
           <tr>
             <td colspan="2">1</td>
@@ -249,15 +249,12 @@
       text-align: center;
       color:#FFF;
     }
-    #fiveYearsPlanP:hover,#threeYearsPlanP:hover{
+    #fiveYearsPlanP:hover,#threeYearsPlanP:hover,img:hover{
       background-color: #00a539;
     }
     img{
       width: 2rem;
       height: 2rem;
-    }
-    img:hover{
-      background-color: white;
     }
     button{
       float: right;

@@ -3,7 +3,7 @@
       <div id="" style="background-color: white">
         <table class="normalTable" style="table-layout: fixed;">
           <thead>
-          <tr><th colspan="7">页面链接测试</th></tr>
+          <tr><th colspan="7" style="font-size: 2rem;">页面链接测试</th></tr>
           </thead>
           <tbody>
           <tr>

@@ -19,11 +19,11 @@ Vue.use(Router)
 
 export default new Router({   //将routes里的参数导出
   routes: [
-    {
-      path: '/',   //这里只用'/'，即为默认路径，首次打开项目进入Hello界面
-      name: 'Hello',
-      component: Hello
-    },
+    //{
+    //  path: '/',   //这里只用'/'，即为默认路径，首次打开项目进入Hello界面
+    //  name: 'Hello',
+    //  component: Hello
+    //},
     {
       path: '/stInquireGrade',
       name: 'stInquireGrade',
@@ -80,7 +80,7 @@ export default new Router({   //将routes里的参数导出
       component: eduAdminManageGrade
     },
     {
-      path: '/startTest',
+      path: '/',
       name: 'startTest',
       component: startTest
     }
