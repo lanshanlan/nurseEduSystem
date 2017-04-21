@@ -3,10 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="b5e2218c-6acf-49f7-bcba-6cb40434d61e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageGradePage/gradeTable/gradeTable.vue" afterPath="$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageGradePage/gradeTable/gradeTable.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageStdPage/stdTable/stdTable.vue" afterPath="$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageStdPage/stdTable/stdTable.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageTchPage/tchTable/tchTable.vue" afterPath="$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageTchPage/tchTable/tchTable.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/eduAdmin/userManage/authorityManage2Page/staffAuthority/staffAuthority.vue" afterPath="$PROJECT_DIR$/src/components/eduAdmin/userManage/authorityManage2Page/staffAuthority/staffAuthority.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/eduAdmin/eduManage/evaTeachingResultPage/evaResultTable/evaResultTable.vue" afterPath="$PROJECT_DIR$/src/components/eduAdmin/eduManage/evaTeachingResultPage/evaResultTable/evaResultTable.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/eduAdmin/eduManage/manageClassPage/stdInfoTable/stdInfoTable.vue" afterPath="$PROJECT_DIR$/src/components/eduAdmin/eduManage/manageClassPage/stdInfoTable/stdInfoTable.vue" />
     </list>
     <ignored path="nurseEduSystem.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,7 +30,7 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/routes/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
+            <state vertical-scroll-proportion="-22.5">
               <caret line="35" column="6" selection-start-line="35" selection-start-column="6" selection-end-line="35" selection-end-column="6" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
@@ -39,11 +39,23 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="stdTable.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageStdPage/stdTable/stdTable.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.0">
+              <caret line="108" column="13" selection-start-line="108" selection-start-column="13" selection-end-line="108" selection-end-column="13" />
+              <folding>
+                <element signature="n#style#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="gradeTable.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageGradePage/gradeTable/gradeTable.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5553539">
-              <caret line="53" column="38" selection-start-line="53" selection-start-column="38" selection-end-line="53" selection-end-column="38" />
+            <state vertical-scroll-proportion="0.261343">
+              <caret line="128" column="6" selection-start-line="128" selection-start-column="6" selection-end-line="128" selection-end-column="6" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
@@ -67,16 +79,6 @@
                 <element signature="e#12297#12376#0" expanded="false" />
                 <element signature="e#12407#12486#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tchingProcess.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/eduManage/teachProcessPage/tchingProcess/tchingProcess.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="116" column="43" selection-start-line="116" selection-start-column="43" selection-end-line="116" selection-end-column="43" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -142,9 +144,7 @@
         <option value="$PROJECT_DIR$/src/components/eduAdmin/eduManage/teachProcessPage/tchingProcess/tchingProcess.vue" />
         <option value="$PROJECT_DIR$/src/views/eduAdmin/basicSettings/manageStdPage/manageStdPage.vue" />
         <option value="$PROJECT_DIR$/src/views/eduAdmin/basicSettings/manageTchPage/manageTchPage.vue" />
-        <option value="$PROJECT_DIR$/src/components/eduAdmin/eduManage/evaTeachingResultPage/evaResultTable/evaResultTable.vue" />
         <option value="$PROJECT_DIR$/src/views/eduAdmin/eduManage/evaTeachingResultPage/evaTeachingResultPage.vue" />
-        <option value="$PROJECT_DIR$/src/components/eduAdmin/eduManage/manageClassPage/stdInfoTable/stdInfoTable.vue" />
         <option value="$PROJECT_DIR$/src/views/eduAdmin/eduManage/manageClassPage/manageClassPage.vue" />
         <option value="$PROJECT_DIR$/src/components/eduAdmin/eduManage/supervisorManagePage/noSupervisorTable/noSupervisorTable.vue" />
         <option value="$PROJECT_DIR$/src/components/eduAdmin/eduManage/supervisorManagePage/supervisorTable/supervisorTable.vue" />
@@ -154,9 +154,11 @@
         <option value="$PROJECT_DIR$/src/components/student/inquireGradePage/gradeTable/gradeTable.vue" />
         <option value="$PROJECT_DIR$/src/views/student/inquireGradePage/inquireGradePage.vue" />
         <option value="$PROJECT_DIR$/src/components/eduAdmin/userManage/authorityManage2Page/staffAuthority/staffAuthority.vue" />
-        <option value="$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageTchPage/tchTable/tchTable.vue" />
-        <option value="$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageStdPage/stdTable/stdTable.vue" />
         <option value="$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageGradePage/gradeTable/gradeTable.vue" />
+        <option value="$PROJECT_DIR$/src/components/eduAdmin/eduManage/evaTeachingResultPage/evaResultTable/evaResultTable.vue" />
+        <option value="$PROJECT_DIR$/src/components/eduAdmin/eduManage/manageClassPage/stdInfoTable/stdInfoTable.vue" />
+        <option value="$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageStdPage/stdTable/stdTable.vue" />
+        <option value="$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageTchPage/tchTable/tchTable.vue" />
       </list>
     </option>
   </component>
@@ -198,8 +200,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -315,14 +317,6 @@
               <option name="myItemId" value="eduAdmin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="userManage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="authorityManage2Page" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -346,37 +340,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="userManage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="authorityManage2Page" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="staffAuthority" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nurseEduSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nurseEduSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eduAdmin" />
+              <option name="myItemId" value="eduManage" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -406,7 +370,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="teachProcessPage" />
+              <option name="myItemId" value="manageClassPage" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -436,11 +400,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="teachProcessPage" />
+              <option name="myItemId" value="manageClassPage" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="tchingProcess" />
+              <option name="myItemId" value="stdInfoTable" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -466,7 +430,45 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="eduManage" />
+              <option name="myItemId" value="basicSettings" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="manageTchPage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nurseEduSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nurseEduSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="eduAdmin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="basicSettings" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="manageTchPage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tchTable" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -523,40 +525,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="manageGradePage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nurseEduSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nurseEduSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eduAdmin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="basicSettings" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="manageGradePage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gradeTable" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -639,10 +607,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20717423" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20717423" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -743,6 +711,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -933,24 +904,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/eduManage/evaTeachingResultPage/evaResultTable/evaResultTable.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.738657">
-          <caret line="95" column="5" selection-start-line="95" selection-start-column="5" selection-end-line="95" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/views/eduAdmin/eduManage/manageClassPage/manageClassPage.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.39201453">
           <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/eduManage/manageClassPage/stdInfoTable/stdInfoTable.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0653358">
-          <caret line="87" column="4" selection-start-line="87" selection-start-column="4" selection-end-line="87" selection-end-column="4" />
         </state>
       </provider>
     </entry>
@@ -1018,23 +975,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/routes/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="6" selection-start-line="35" selection-start-column="6" selection-end-line="35" selection-end-column="6" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageStdPage/stdTable/stdTable.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.0">
-          <caret line="62" column="14" selection-start-line="62" selection-start-column="14" selection-end-line="62" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/userManage/authorityManage2Page/staffAuthority/staffAuthority.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5553539">
@@ -1042,25 +982,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageTchPage/tchTable/tchTable.vue">
+    <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/eduManage/teachProcessPage/tchingProcess/tchingProcess.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.537037">
-          <caret line="57" column="31" selection-start-line="57" selection-start-column="31" selection-end-line="57" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.032667875">
+          <caret line="116" column="43" selection-start-line="116" selection-start-column="43" selection-end-line="116" selection-end-column="43" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/eduManage/teachProcessPage/tchingProcess/tchingProcess.vue">
+    <entry file="file://$PROJECT_DIR$/src/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="116" column="43" selection-start-line="116" selection-start-column="43" selection-end-line="116" selection-end-column="43" />
+        <state vertical-scroll-proportion="-22.5">
+          <caret line="35" column="6" selection-start-line="35" selection-start-column="6" selection-end-line="35" selection-end-column="6" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/eduManage/evaTeachingResultPage/evaResultTable/evaResultTable.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.7967333">
+          <caret line="61" column="120" selection-start-line="61" selection-start-column="120" selection-end-line="61" selection-end-column="120" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageTchPage/tchTable/tchTable.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.7223231">
+          <caret line="68" column="51" selection-start-line="68" selection-start-column="51" selection-end-line="68" selection-end-column="51" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#td#5;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/eduManage/manageClassPage/stdInfoTable/stdInfoTable.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.7313975">
+          <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageStdPage/stdTable/stdTable.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.0">
+          <caret line="108" column="13" selection-start-line="108" selection-start-column="13" selection-end-line="108" selection-end-column="13" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageGradePage/gradeTable/gradeTable.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5553539">
-          <caret line="53" column="38" selection-start-line="53" selection-start-column="38" selection-end-line="53" selection-end-column="38" />
+        <state vertical-scroll-proportion="0.261343">
+          <caret line="128" column="6" selection-start-line="128" selection-start-column="6" selection-end-line="128" selection-end-column="6" />
           <folding>
             <element signature="n#style#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />

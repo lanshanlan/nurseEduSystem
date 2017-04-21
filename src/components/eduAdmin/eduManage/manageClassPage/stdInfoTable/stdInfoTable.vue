@@ -7,18 +7,20 @@
         <option v-for="yearPlan in yearPlans">{{yearPlan}}</option>
       </select>
       <span><input type="text" id="stdID" class="inputWM" placeholder="请输入学号"></span>
-      <span><input type="text" id="stdName" class="inputWM" placeholder="请输入姓名"></span>
-      <!--时间段(上)选择下拉列表-->
-      <select class="selectWM">
-        <option disabled selected>时间段</option>
-        <option v-for="timeHE in timeHEs">{{timeHE}}</option>
-      </select>
+      <span><input type="text" id="timeHead" class="inputWM" placeholder="请输入时间"></span>
       <span id="timeTo">至</span>
-      <!--时间段(下)选择下拉列表-->
-      <select class="selectWM">
-        <option disabled selected>时间段</option>
-        <option v-for="timeHE in timeHEs">{{timeHE}}</option>
-      </select>
+      <span><input type="text" id="timeEnd" class="inputWM" placeholder="请输入时间"></span>
+      <!--时间段(上)选择下拉列表-->
+      <!--<select class="selectWM">-->
+        <!--<option disabled selected>时间段</option>-->
+        <!--<option v-for="timeHE in timeHEs">{{timeHE}}</option>-->
+      <!--</select>-->
+      <!---->
+      <!--&lt;!&ndash;时间段(下)选择下拉列表&ndash;&gt;-->
+      <!--<select class="selectWM">-->
+        <!--<option disabled selected>时间段</option>-->
+        <!--<option v-for="timeHE in timeHEs">{{timeHE}}</option>-->
+      <!--</select>-->
       <span><button id="searchFor" class="am-btn am-btn-success am-radius buttonWM">查询</button></span>
     </div>
     <div id="stdInfoTable" style="padding: 0.6rem 5rem;background-color: #f3f3f3">

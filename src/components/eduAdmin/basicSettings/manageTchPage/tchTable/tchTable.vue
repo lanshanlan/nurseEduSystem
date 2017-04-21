@@ -66,7 +66,7 @@
             }
         },
       beforeMount:function() {
-        this.$http.post('../teacherManageJson',{
+        this.$http.post('../teacherManageJson',{},{
           "Content-Type":"application/json"
         }).then(function (response) {
           console.log(response);

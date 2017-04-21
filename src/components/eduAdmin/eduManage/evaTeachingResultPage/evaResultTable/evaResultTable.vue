@@ -22,7 +22,6 @@
           <th>教师姓名</th>
           <th>参评人数</th>
           <th>综合得分</th>
-          <th>等级</th>
           <th>查看留言</th>
         </tr>
         </thead>
@@ -34,7 +33,6 @@
           <td v-text="result.tchName"></td>
           <td v-text="result.evaNum"></td>
           <td v-text="result.multiplyScore"></td>
-          <td v-text="result.rank"></td>
           <td v-text="result.tips"></td>
         </tr>
         </tbody>
@@ -59,9 +57,9 @@
                 '2017-2018:第二学期'
               ],
                 results:[
-                  {courseID:'K2210710',courseName:'企业合作课程',tchID:'1234567',tchName:'何平',evaNum:'65',multiplyScore:'98',rank:'A',tips:'暂无'},
-                  {courseID:'K2210711',courseName:'企业合作课程',tchID:'1234567',tchName:'王建',evaNum:'73',multiplyScore:'97',rank:'A',tips:'暂无'},
-                  {courseID:'K2210712',courseName:'企业合作课程',tchID:'1234567',tchName:'张小山',evaNum:'56',multiplyScore:'96',rank:'A',tips:'暂无'}
+                  {courseID:'K2210710',courseName:'企业合作课程',tchID:'1234567',tchName:'何平',evaNum:'65',multiplyScore:'98',tips:'暂无'},
+                  {courseID:'K2210711',courseName:'企业合作课程',tchID:'1234567',tchName:'王建',evaNum:'73',multiplyScore:'97',tips:'暂无'},
+                  {courseID:'K2210712',courseName:'企业合作课程',tchID:'1234567',tchName:'张小山',evaNum:'56',multiplyScore:'96',tips:'暂无'}
                 ]
             }
         },

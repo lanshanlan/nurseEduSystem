@@ -1,19 +1,19 @@
 <template>
     <div>
       <div id="dropdownInfo">
-        <select class="selectWM" v-model="studentinfoKey.schoolYearType">
+        <select id="yearTypeSelect" class="selectWM" v-model="studentinfoKey.schoolYearType" @click="yearTypeClick()">
           <option value="0">选择年制</option>
-          <option v-for="year in years" :value="year">{{year}}</option>
+          <option v-for="(yearAndClass,indexYearType) in yearAndClassList" :value="yearAndClass.yearType">{{yearAndClass.yearType}}年制</option>
         </select>
         <!--年制选择下拉列表-->
-        <select class="selectWM" v-model="studentinfoKey.gradeId">
+        <select id="gradeSelect" class="selectWM" v-model="studentinfoKey.gradeName" @click="indexYearTypeClick()">
           <option value="0">选择年级</option>
-          <option v-for="three_grade in three_grades" :value="three_grade">{{three_grade}}</option>
+          <option v-for="yearEle in yearAndClassList[indexYearType].gradeList" :value="yearEle.gradeName">{{yearEle.gradeName}}级</option>
         </select>
         <!--年级选择下拉列表-->
-        <select class="selectWM" v-model="studentinfoKey.className">
+        <select id="classSelect" class="selectWM" v-model="studentinfoKey.className" @click="indexGradeClick()">
           <option value="0">选择班级</option>
-          <option v-for="clacc in claccs" :value="clacc">{{clacc}}</option>
+          <option v-for="classEle in yearAndClassList[indexYearType].gradeList[indexGrade].classList " :value="classEle">{{classEle}}</option>
         </select>
         <!--班级选择下拉列表-->
         <span><input type="text" id="stdID" class="inputWM" placeholder="请输入学号" v-model="studentinfoKey.studentId"></span>
@@ -70,33 +70,37 @@
         name: '',
         data () {
             return {
+              indexYearType:'0',
+              indexGrade:'0',
               studentinfoKey:{
                 schoolYearType:'0',
-                gradeId:'0',
+                gradeName:'0',
                 className:'0',
                 studentId:''
               },
-              years:[
-                '三年制',
-                '五年制'
-              ],
-              three_grades:[
-                '一年级',
-                '二年级',
-                '三年级'
-              ],
-              five_grades:[
-                '一年级',
-                '二年级',
-                '三年级',
-                '四年级',
-                '五年级'
-              ],
-              claccs:[
-                '一班',
-                '二班',
-                '三班',
-                '四班'
+              yearAndClassList:[
+                {
+                  yearType:'3',
+                  gradeList:[
+                    {
+                      gradeName:'2013',
+                      classList:[
+                        '护理3班','护理4班'
+                      ]
+                    }
+                  ]
+                },
+                {
+                  yearType:'5',
+                  gradeList:[
+                    {
+                      gradeName:'2015',
+                      classList:[
+                        '护理5班','护理6班'
+                      ]
+                    }
+                  ]
+                }
               ],
               studentSimpleInfoList:[
                   {studentId:'1530310503',studentName:'高兴月',studentIDcard:'321281199503281111',studentGender:'女',schoolYearType:'五年制',gradeName:'2013级',specialityName:'护理',className:'护理3班',birthday:'1993.02.03',ethno:'汉',nativePlace:'上海',phoneNumber:'15680992212',houseAddress:'成都市青牛区'},
@@ -104,17 +108,45 @@
                 ]
             }
         },
-      created:function() {
-        this.$http.get('../readjson.php').then(function (response) {
+      beforeMount:function() {
+        this.$http.post('../studentManageJson',{},{
+          "Content-Type":"application/json"
+        }).then(function (response) {
           console.log(response);
-          this.stdInfos = response.body.stdInfos;
+          this.studentSimpleInfoList = response.body.studentSimpleInfoList;
+        },function(error){
+          console.log("获取error");
+        });
+        this.$http.post('../studentinfoKeyJson',{
+          "Content-Type":"application/json"
+        }).then(function (response) {
+          console.log(response);
+          this.yearAndClassList = response.body.yearAndClassList;
+        },function(error){
+          console.log("获取error");
         });
       },
-      methods:{
-        moli:function(){
-          alert(this.aaa);
-        },
 
+      methods:{
+        yearTypeClick: function(){
+          this.studentinfoKey.gradeName = '0';
+          this.studentinfoKey.className = '0';
+        },
+        indexYearTypeClick: function(){
+          this.studentinfoKey.className = '0';
+          for(var i=0;i<this.yearAndClassList.length;i++){
+            if(this.studentinfoKey.schoolYearType === this.yearAndClassList[i].yearType){
+              this.indexYearType = i;
+            }
+          }
+        },
+        indexGradeClick: function(){
+          for(var i=0;i<this.yearAndClassList[this.indexYearType].gradeList.length;i++){
+            if(this.studentinfoKey.gradeName === this.yearAndClassList[this.indexYearType].gradeList.gradeName){
+              this.indexGrade = i;
+            }
+          }
+        },
         editClick: function(index){
           var inputTable = document.getElementById("inputTable"+index);
           var input = inputTable.getElementsByTagName("input");
