@@ -1,22 +1,22 @@
 <template>
     <div>
       <div id="dropdownInfo">
-        <select class="selectWM" v-model="selected">
+        <select class="selectWM" v-model="studentinfoKey.schoolYearType">
           <option value="0">选择年制</option>
-          <option value="year" v-for="year in years">{{year}}</option>
+          <option v-for="year in years" :value="year">{{year}}</option>
         </select>
         <!--年制选择下拉列表-->
-        <select class="selectWM">
-          <option value="2">选择年级</option>
+        <select class="selectWM" v-model="studentinfoKey.gradeId">
+          <option value="0">选择年级</option>
           <option v-for="three_grade in three_grades" :value="three_grade">{{three_grade}}</option>
         </select>
         <!--年级选择下拉列表-->
-        <select class="selectWM">
-          <option disabled selected>选择班级</option>
-          <option v-for="clacc in claccs">{{clacc}}</option>
+        <select class="selectWM" v-model="studentinfoKey.className">
+          <option value="0">选择班级</option>
+          <option v-for="clacc in claccs" :value="clacc">{{clacc}}</option>
         </select>
         <!--班级选择下拉列表-->
-        <span><input type="text" id="stdID" class="inputWM" placeholder="请输入学号"></span>
+        <span><input type="text" id="stdID" class="inputWM" placeholder="请输入学号" v-model="studentinfoKey.studentId"></span>
         <span><button id="downloadForm" class="am-btn am-btn-success am-radius buttonWM" @click="moli">下载模板</button></span>
         <span><button id="searchFor" class="am-btn am-btn-success am-radius buttonWM">查找</button></span>
         <span><button id="leadIn" class="am-btn am-btn-success am-radius buttonWM">导入</button></span>
@@ -42,15 +42,15 @@
             </tr>
             </thead>
             <tbody>
-            <tr v-for="(stdInfo,index) in stdInfos" :id="'inputTable'+index">
-              <td><input id="input1" :value="stdInfo.stdID" readonly="readonly" style="border: none"></td>
-              <td><input id="input2" :value="stdInfo.name" readonly="readonly" style="border: none"></td>
-              <td><input id="input3" :value="stdInfo.idCard" readonly="readonly" style="border: none"></td>
-              <td><input id="input4" :value="stdInfo.sex" readonly="readonly" style="border: none"></td>
-              <td><input id="input5" :value="stdInfo.yearPlan" readonly="readonly" style="border: none"></td>
-              <td><input id="input6" :value="stdInfo.gradeName" readonly="readonly" style="border: none"></td>
-              <td><input id="input7" :value="stdInfo.majorName" readonly="readonly" style="border: none"></td>
-              <td><input id="input8" :value="stdInfo.className" readonly="readonly" style="border: none"></td>
+            <tr v-for="(studentSimpleInfo,index) in studentSimpleInfoList" :id="'inputTable'+index">
+              <td><input id="input1" :value="studentSimpleInfo.studentId" readonly="readonly" style="border: none"></td>
+              <td><input id="input2" :value="studentSimpleInfo.studentName" readonly="readonly" style="border: none"></td>
+              <td><input id="input3" :value="studentSimpleInfo.studentIDcard" readonly="readonly" style="border: none"></td>
+              <td><input id="input4" :value="studentSimpleInfo.studentGender" readonly="readonly" style="border: none"></td>
+              <td><input id="input5" :value="studentSimpleInfo.schoolYearType" readonly="readonly" style="border: none"></td>
+              <td><input id="input6" :value="studentSimpleInfo.gradeName" readonly="readonly" style="border: none"></td>
+              <td><input id="input7" :value="studentSimpleInfo.specialityName" readonly="readonly" style="border: none"></td>
+              <td><input id="input8" :value="studentSimpleInfo.className" readonly="readonly" style="border: none"></td>
               <td>
                 <img :id="'editImg'+index" src="./images/edit.png" @click="editClick(index)">
                 <img :id="'saveImg'+index" src="./images/save.png" style="display: none" @click="saveClick(index)">
@@ -70,7 +70,12 @@
         name: '',
         data () {
             return {
-              selected:'0',
+              studentinfoKey:{
+                schoolYearType:'0',
+                gradeId:'0',
+                className:'0',
+                studentId:''
+              },
               years:[
                 '三年制',
                 '五年制'
@@ -93,10 +98,9 @@
                 '三班',
                 '四班'
               ],
-                stdInfos:[
-                  {stdID:'1530310503',name:'高兴月',idCard:'321281199503281111',sex:'女',yearPlan:'五年制',gradeName:'2013级',majorName:'护理',className:'护理3班'},
-                  {stdID:'1530310502',name:'王明',idCard:'321281199503282222',sex:'男',yearPlan:'三年制',gradeName:'2013级',majorName:'护理',className:'护理2班'},
-                  {stdID:'1530310513',name:'张玲',idCard:'321281199503283333',sex:'女',yearPlan:'五年制',gradeName:'2013级',majorName:'养生',className:'养生3班'}
+              studentSimpleInfoList:[
+                  {studentId:'1530310503',studentName:'高兴月',studentIDcard:'321281199503281111',studentGender:'女',schoolYearType:'五年制',gradeName:'2013级',specialityName:'护理',className:'护理3班',birthday:'1993.02.03',ethno:'汉',nativePlace:'上海',phoneNumber:'15680992212',houseAddress:'成都市青牛区'},
+                  {studentId:'1530310503',studentName:'高兴月',studentIDcard:'321281199503281111',studentGender:'女',schoolYearType:'五年制',gradeName:'2013级',specialityName:'护理',className:'护理3班',birthday:'1993.02.03',ethno:'汉',nativePlace:'上海',phoneNumber:'15680992212',houseAddress:'成都市青牛区'}
                 ]
             }
         },

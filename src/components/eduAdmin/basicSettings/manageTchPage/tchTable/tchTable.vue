@@ -1,10 +1,10 @@
 <template>
   <div>
     <div id="dropdownInfo">
-      <span><input type="text" id="tchName" class="inputWM" placeholder="请输入姓名"></span>
-      <span><input type="text" id="tchID" class="inputWM" placeholder="请输入编号"></span>
+      <span><input type="text" id="tchName" class="inputWM" placeholder="请输入姓名" v-model="teacherinfoKey.teacherName"></span>
+      <span><input type="text" id="tchID" class="inputWM" placeholder="请输入编号" v-model="teacherinfoKey.teacherId"></span>
       <span><button id="downloadForm" class="am-btn am-btn-success am-radius buttonWM">下载模板</button></span>
-      <span><button id="searchFor" class="am-btn am-btn-success am-radius buttonWM">查找</button></span>
+      <span><button id="searchFor" class="am-btn am-btn-success am-radius buttonWM" @click="searchClick()">查找</button></span>
       <span><button id="leadIn" class="am-btn am-btn-success am-radius buttonWM">导入</button></span>
       <span><button id="leadOut" class="am-btn am-btn-success am-radius buttonWM">导出</button></span>
     </div>
@@ -23,22 +23,20 @@
           <th>工作职称</th>
           <th>工作职务</th>
           <th>教师类型</th>
-          <th>所属教研组</th>
           <th>操作</th>
         </tr>
         </thead>
         <tbody>
-        <tr v-for="(tchInfo,index) in tchInfos" :id="'inputTable'+index">
-          <td><input id="input1" :value="tchInfo.tchID" readonly="readonly" style="border: none"></td>
-          <td><input id="input2" :value="tchInfo.name" readonly="readonly" style="border: none"></td>
-          <td><input id="input3" :value="tchInfo.idCard" readonly="readonly" style="border: none"></td>
-          <td><input id="input4" :value="tchInfo.sex" readonly="readonly" style="border: none"></td>
-          <td><input id="input5" :value="tchInfo.phoneNum" readonly="readonly" style="border: none"></td>
-          <td><input id="input6" :value="tchInfo.employCampus" readonly="readonly" style="border: none"></td>
-          <td><input id="input7" :value="tchInfo.proRanks" readonly="readonly" style="border: none"></td>
-          <td><input id="input8" :value="tchInfo.duties" readonly="readonly" style="border: none"></td>
-          <td><input id="input9" :value="tchInfo.tchType" readonly="readonly" style="border: none"></td>
-          <td><input id="input10" :value="tchInfo.tchGroup" readonly="readonly" style="border: none"></td>
+        <tr v-for="(teacherSimpleInfo,index) in teacherSimpleInfoList" :id="'inputTable'+index">
+          <td><input id="input1" :value="teacherSimpleInfo.teacherId" readonly="readonly" style="border: none"></td>
+          <td><input id="input2" :value="teacherSimpleInfo.teacherName" readonly="readonly" style="border: none"></td>
+          <td><input id="input3" :value="teacherSimpleInfo.teacherIDcard" readonly="readonly" style="border: none"></td>
+          <td><input id="input4" :value="teacherSimpleInfo.teacherGender" readonly="readonly" style="border: none"></td>
+          <td><input id="input5" :value="teacherSimpleInfo.phoneNum" readonly="readonly" style="border: none"></td>
+          <td><input id="input6" :value="teacherSimpleInfo.hireCampus" readonly="readonly" style="border: none"></td>
+          <td><input id="input7" :value="teacherSimpleInfo.currentWorkTitle" readonly="readonly" style="border: none"></td>
+          <td><input id="input8" :value="teacherSimpleInfo.currentWorkDuty" readonly="readonly" style="border: none"></td>
+          <td><input id="input9" :value="teacherSimpleInfo.teacherType" readonly="readonly" style="border: none"></td>
           <td>
             <img :id="'editImg'+index" src="./images/edit.png" @click="editClick(index)">
             <img :id="'saveImg'+index" src="./images/save.png" style="display: none" @click="saveClick(index)">
@@ -57,20 +55,39 @@
         name: '',
         data () {
             return {
-                tchInfos:[
-                  {tchID:'1234567',name:'何平',idCard:'321281199503285555',sex:'男',phoneNum:'15680991111',employCampus:'西校区',proRanks:'教授',duties:'教导主任',tchType:'教师',tchGroup:'护理组'},
-                  {tchID:'1234568',name:'王建',idCard:'321281199503286666',sex:'男',phoneNum:'15680992222',employCampus:'西校区',proRanks:'副教授',duties:'教师',tchType:'教师',tchGroup:'护理组'},
-                  {tchID:'1234569',name:'张小山',idCard:'321281199503287777',sex:'男',phoneNum:'15680993333',employCampus:'西校区',proRanks:'副教授',duties:'年级主任',tchType:'教师',tchGroup:'护理组'}
+              teacherinfoKey: {
+                teacherName: '',
+                teacherId:''
+            },
+              teacherSimpleInfoList:[
+                  {teacherId:'1234567',teacherName:'何平',teacherIDcard:'321281199503285555',teacherGender:'男',phoneNum:'15680991111',hireCampus:'西校区',currentWorkTitle:'教授',currentWorkDuty:'教导主任',teacherType:'教师'},
+                  {teacherId:'1234567',teacherName:'何平',teacherIDcard:'321281199503285555',teacherGender:'男',phoneNum:'15680991111',hireCampus:'西校区',currentWorkTitle:'教授',currentWorkDuty:'教导主任',teacherType:'教师'},
                 ]
             }
         },
-      created:function() {
-        this.$http.get('../readjson.php').then(function (response) {
+      beforeMount:function() {
+        this.$http.post('../teacherManageJson',{
+          "Content-Type":"application/json"
+        }).then(function (response) {
           console.log(response);
-          this.tchInfos = response.body.tchInfos;
+          this.teacherSimpleInfoList = response.body.teacherSimpleInfoList;
+        },function(error){
+          console.log("获取error");
         });
       },
       methods:{
+        searchClick:function() {
+          this.$http.post('../searchJson',{
+            "teacherinfoKey":this.teacherinfoKey
+          },{
+            "Content-Type":"application/json"
+          }).then(function (response) {
+            console.log(response);
+            this.teacherSimpleInfoList = response.body.teacherSimpleInfoList;
+          },function(error){
+            console.log("获取error");
+          });
+        },
         editClick: function(index){
           var inputTable = document.getElementById("inputTable"+index);
           var input = inputTable.getElementsByTagName("input");

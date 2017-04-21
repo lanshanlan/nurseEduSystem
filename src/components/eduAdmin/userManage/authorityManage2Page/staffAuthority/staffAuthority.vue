@@ -1,9 +1,13 @@
 <template>
     <div id="staffAuthority">
       <p class="topP" id="topStaff">督导</p>
+      <input type="checkbox" id="all" @click="allCheck()" style="margin-left: 3rem">
+      <label for="all">全选</label>
       <ul>
-        <li class="checkboxAuthority" v-for="tchAuthority in tchAuthoritys">
-          <input type="checkbox" name="staffAuthorityForm" value="tchAuthority.value" v-model="tchAuthority.checked">{{tchAuthority.output}}
+        <li  v-for="tchAuthority in tchAuthoritys">
+          <input type="checkbox" :id="tchAuthority.value" :value="tchAuthority.value" :checked="tchAuthority.checked" v-model="tchAuthorityNames">
+//		  将数组tchAuthorityNames绑定到了多选框上
+          <label :for="tchAuthority.value">{{tchAuthority.output}}</label>
         </li>
       </ul>
       <div>
@@ -18,9 +22,10 @@
         name: 'staffAuthority',
         data () {
             return {
+              tchAuthorityNames:[],
                 tchAuthoritys:[
-                  {value:'tch1',checked:true,output:'查看个人成绩'},
-                  {value:'tch2',checked:true,output:'查看全班成绩'},
+                  {value:'tch1',checked:false,output:'查看个人成绩'},
+                  {value:'tch2',checked:false,output:'查看全班成绩'},
                   {value:'tch3',checked:true,output:'管理成绩（导入、更新、修改、提交成绩）'},
                   {value:'tch4',checked:true,output:'管理教师个人信息'},
                   {value:'tch5',checked:true,output:'班主任信息管理'},
@@ -34,6 +39,20 @@
           console.log(response);
           this.tchAuthoritys = response.body.tchAuthoritys;
         });
+      },
+      methods:{
+        allCheck: function(){
+          if(this.tchAuthorityNames.length===this.tchAuthoritys.length){
+            this.tchAuthorityNames=[];
+          }
+          else {
+            this.tchAuthorityNames=[];
+            for(var i=0;i<this.tchAuthoritys.length;i++){
+              this.tchAuthorityNames.push(this.tchAuthoritys[i].value);
+            }
+          }
+        }
+//        用于多选框的全选或全不选，方法是对数组tchAuthorityNames进行操作，此数组用v-model绑定到了多选框上
       }
     }
 </script>
@@ -54,7 +73,6 @@
     border-bottom: 2px solid #158064;
   }
   ul li{
-    list-style: none;
     float: left;
     min-height: 2rem;
     font-size: 0.6rem;
