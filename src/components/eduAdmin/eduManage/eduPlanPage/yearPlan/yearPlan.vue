@@ -15,11 +15,12 @@
         <table id="fiveYearsPlanTable" v-show="fiveYearsPlanTable" class="normalTable" style="table-layout: fixed;">
           <thead>
           <tr>
-            <th width="8%" rowspan="3">课程类别</th>
-            <th width="8%" rowspan="3">课程名称</th>
+            <th width="6%" rowspan="3">课程编号</th>
+            <th width="6%" rowspan="3">课程类别</th>
+            <th width="6%" rowspan="3">课程名称</th>
             <th width="12%" rowspan="2" colspan="3">学时</th>
-            <th width="64%" colspan="16">执行学期</th>
-            <th width="8%" rowspan="2" colspan="2">考核学期</th>
+            <th width="64%" colspan="20">执行学期</th>
+            <th width="6%" rowspan="2" colspan="2">考核学期</th>
           </tr>
           <tr>
             <td colspan="2">1</td>
@@ -30,6 +31,8 @@
             <td colspan="2">6</td>
             <td colspan="2">7</td>
             <td colspan="2">8</td>
+            <td colspan="2">9</td>
+            <td colspan="2">10</td>
           </tr>
           <tr>
             <td>总计</td>
@@ -51,35 +54,44 @@
             <td>后9周</td>
             <td>前9周</td>
             <td>后9周</td>
+            <td>前9周</td>
+            <td>后9周</td>
+            <td>前9周</td>
+            <td>后9周</td>
             <td>考察</td>
             <td>考试</td>
           </tr>
           </thead>
           <tbody>
-          <tr v-for="course in courses">
-            <td v-text="course.cozType"></td>
-            <td v-text="course.cozName"></td>
-            <td v-text="course.stdTimeAdd"></td>
-            <td v-text="course.stdTimeTheory"></td>
-            <td v-text="course.stdTimePractice"></td>
-            <td v-text="course.term1st"></td>
-            <td v-text="course.term1nd"></td>
-            <td v-text="course.term2st"></td>
-            <td v-text="course.term2nd"></td>
-            <td v-text="course.term3st"></td>
-            <td v-text="course.term3nd"></td>
-            <td v-text="course.term4st"></td>
-            <td v-text="course.term4nd"></td>
-            <td v-text="course.term5st"></td>
-            <td v-text="course.term5nd"></td>
-            <td v-text="course.term6st"></td>
-            <td v-text="course.term6nd"></td>
-            <td v-text="course.term7st"></td>
-            <td v-text="course.term7nd"></td>
-            <td v-text="course.term8st"></td>
-            <td v-text="course.term8nd"></td>
-            <td v-text="course.inspect"></td>
-            <td v-text="course.exam"></td>
+          <tr v-for="firstCourse in firstCourses">
+            <td v-text="firstCourse.courseId"></td>
+            <td v-text="firstCourse.courseType"></td>
+            <td v-text="firstCourse.courseName"></td>
+            <td v-text="firstCourse.studentTimeAdd"></td>
+            <td v-text="firstCourse.studentTimeTheory"></td>
+            <td v-text="firstCourse.studentTimePractice"></td>
+            <td v-text="firstCourse.term1st"></td>
+            <td v-text="firstCourse.term1nd"></td>
+            <td v-text="firstCourse.term2st"></td>
+            <td v-text="firstCourse.term2nd"></td>
+            <td v-text="firstCourse.term3st"></td>
+            <td v-text="firstCourse.term3nd"></td>
+            <td v-text="firstCourse.term4st"></td>
+            <td v-text="firstCourse.term4nd"></td>
+            <td v-text="firstCourse.term5st"></td>
+            <td v-text="firstCourse.term5nd"></td>
+            <td v-text="firstCourse.term6st"></td>
+            <td v-text="firstCourse.term6nd"></td>
+            <td v-text="firstCourse.term7st"></td>
+            <td v-text="firstCourse.term7nd"></td>
+            <td v-text="firstCourse.term8st"></td>
+            <td v-text="firstCourse.term8nd"></td>
+            <td v-text="firstCourse.term9st"></td>
+            <td v-text="firstCourse.term9nd"></td>
+            <td v-text="firstCourse.term10st"></td>
+            <td v-text="firstCourse.term10nd"></td>
+            <td v-text="firstCourse.inspect"></td>
+            <td v-text="firstCourse.exam"></td>
           </tr>
           </tbody>
         </table>
@@ -100,11 +112,12 @@
         <table id="threeYearsPlanTable" v-show="threeYearsPlanTable" class="normalTable" style="table-layout: fixed;">
           <thead>
           <tr>
-            <th width="8%" rowspan="3">课程类别</th>
-            <th width="8%" rowspan="3">课程名称</th>
+            <th width="6%" rowspan="3">课程编号</th>
+            <th width="6%" rowspan="3">课程类别</th>
+            <th width="6%" rowspan="3">课程名称</th>
             <th width="12%" rowspan="2" colspan="3">学时</th>
             <th width="64%" colspan="16">执行学期</th>
-            <th width="8%" rowspan="2" colspan="2">考核学期</th>
+            <th width="6%" rowspan="2" colspan="2">考核学期</th>
           </tr>
           <tr>
             <td colspan="2">1</td>
@@ -141,30 +154,31 @@
           </tr>
           </thead>
           <tbody>
-          <tr v-for="course in courses">
-            <td v-text="course.cozType"></td>
-            <td v-text="course.cozName"></td>
-            <td v-text="course.stdTimeAdd"></td>
-            <td v-text="course.stdTimeTheory"></td>
-            <td v-text="course.stdTimePractice"></td>
-            <td v-text="course.term1st"></td>
-            <td v-text="course.term1nd"></td>
-            <td v-text="course.term2st"></td>
-            <td v-text="course.term2nd"></td>
-            <td v-text="course.term3st"></td>
-            <td v-text="course.term3nd"></td>
-            <td v-text="course.term4st"></td>
-            <td v-text="course.term4nd"></td>
-            <td v-text="course.term5st"></td>
-            <td v-text="course.term5nd"></td>
-            <td v-text="course.term6st"></td>
-            <td v-text="course.term6nd"></td>
-            <td v-text="course.term7st"></td>
-            <td v-text="course.term7nd"></td>
-            <td v-text="course.term8st"></td>
-            <td v-text="course.term8nd"></td>
-            <td v-text="course.inspect"></td>
-            <td v-text="course.exam"></td>
+          <tr v-for="secondCourse in secondCourses">
+            <td v-text="secondCourse.courseId"></td>
+            <td v-text="secondCourse.courseType"></td>
+            <td v-text="secondCourse.courseName"></td>
+            <td v-text="secondCourse.studentTimeAdd"></td>
+            <td v-text="secondCourse.studentTimeTheory"></td>
+            <td v-text="secondCourse.studentTimePractice"></td>
+            <td v-text="secondCourse.term1st"></td>
+            <td v-text="secondCourse.term1nd"></td>
+            <td v-text="secondCourse.term2st"></td>
+            <td v-text="secondCourse.term2nd"></td>
+            <td v-text="secondCourse.term3st"></td>
+            <td v-text="secondCourse.term3nd"></td>
+            <td v-text="secondCourse.term4st"></td>
+            <td v-text="secondCourse.term4nd"></td>
+            <td v-text="secondCourse.term5st"></td>
+            <td v-text="secondCourse.term5nd"></td>
+            <td v-text="secondCourse.term6st"></td>
+            <td v-text="secondCourse.term6nd"></td>
+            <td v-text="secondCourse.term7st"></td>
+            <td v-text="secondCourse.term7nd"></td>
+            <td v-text="secondCourse.term8st"></td>
+            <td v-text="secondCourse.term8nd"></td>
+            <td v-text="secondCourse.inspect"></td>
+            <td v-text="secondCourse.exam"></td>
           </tr>
           </tbody>
         </table>
@@ -184,18 +198,34 @@
                 threeYearsPlanTable:false,//用于更改课程表格显示与否的变量
                 fiveYearsArrow: arrowright,
                 threeYearsArrow:arrowright,//用于更改箭头图标为向右还是向下的变量
-                courses:[
-                  {cozType:'公共基础课',cozName:'职业生涯规划',stdTimeAdd:'36',stdTimeTheory:'32',stdTimePractice:'4',term1st:'36',term1nd:'36',term2st:'',term2nd:'',term3st:'',term3nd:'',term4st:'',term4nd:'',term5st:'',term5nd:'',term6st:'',term6nd:'',term7st:'',term7nd:'',term8st:'',term8nd:'',inspect:'1',exam:''},
-                  {cozType:'公共基础课',cozName:'哲学与人生',stdTimeAdd:'36',stdTimeTheory:'32',stdTimePractice:'4',term1st:'36',term1nd:'36',term2st:'',term2nd:'',term3st:'',term3nd:'',term4st:'',term4nd:'',term5st:'',term5nd:'',term6st:'',term6nd:'',term7st:'',term7nd:'',term8st:'',term8nd:'',inspect:'2',exam:''},
-                  {cozType:'公共基础课',cozName:'经济政治与社会',stdTimeAdd:'36',stdTimeTheory:'32',stdTimePractice:'4',term1st:'36',term1nd:'36',term2st:'',term2nd:'',term3st:'',term3nd:'',term4st:'',term4nd:'',term5st:'',term5nd:'',term6st:'',term6nd:'',term7st:'',term7nd:'',term8st:'',term8nd:'',inspect:'3',exam:''},
-                  {cozType:'公共基础课',cozName:'职业道德与法律',stdTimeAdd:'36',stdTimeTheory:'32',stdTimePractice:'4',term1st:'36',term1nd:'36',term2st:'',term2nd:'',term3st:'',term3nd:'',term4st:'',term4nd:'',term5st:'',term5nd:'',term6st:'',term6nd:'',term7st:'',term7nd:'',term8st:'',term8nd:'',inspect:'4',exam:''},
-                ]
+                firstCourses:[
+                  {courseId:'12345',courseType:'公共基础课',courseName:'职业生涯规划',studentTimeAdd:'36',studentTimeTheory:'32',studentTimePractice:'4',term1st:'36',term1nd:'36',term2st:'',term2nd:'',term3st:'',term3nd:'',term4st:'',term4nd:'',term5st:'',term5nd:'',term6st:'',term6nd:'',term7st:'',term7nd:'',term8st:'',term8nd:'',term9st:'',term9nd:'',term10st:'',term10nd:'',inspect:'1',exam:''},
+                  {courseId:'12346',courseType:'公共基础课',courseName:'哲学与人生',studentTimeAdd:'36',studentTimeTheory:'32',studentTimePractice:'4',term1st:'36',term1nd:'36',term2st:'',term2nd:'',term3st:'',term3nd:'',term4st:'',term4nd:'',term5st:'',term5nd:'',term6st:'',term6nd:'',term7st:'',term7nd:'',term8st:'',term8nd:'',term9st:'',term9nd:'',term10st:'',term10nd:'',inspect:'2',exam:''},
+                  {courseId:'12347',courseType:'公共基础课',courseName:'经济政治与社会',studentTimeAdd:'36',studentTimeTheory:'32',studentTimePractice:'4',term1st:'36',term1nd:'36',term2st:'',term2nd:'',term3st:'',term3nd:'',term4st:'',term4nd:'',term5st:'',term5nd:'',term6st:'',term6nd:'',term7st:'',term7nd:'',term8st:'',term8nd:'',term9st:'',term9nd:'',term10st:'',term10nd:'',inspect:'3',exam:''}
+                ],
+              secondCourses:[
+                {courseId:'12345',courseType:'公共基础课',courseName:'职业生涯规划',studentTimeAdd:'36',studentTimeTheory:'32',studentTimePractice:'4',term1st:'36',term1nd:'36',term2st:'',term2nd:'',term3st:'',term3nd:'',term4st:'',term4nd:'',term5st:'',term5nd:'',term6st:'',term6nd:'',term7st:'',term7nd:'',term8st:'',term8nd:'',inspect:'1',exam:''},
+                {courseId:'12346',courseType:'公共基础课',courseName:'哲学与人生',studentTimeAdd:'36',studentTimeTheory:'32',studentTimePractice:'4',term1st:'36',term1nd:'36',term2st:'',term2nd:'',term3st:'',term3nd:'',term4st:'',term4nd:'',term5st:'',term5nd:'',term6st:'',term6nd:'',term7st:'',term7nd:'',term8st:'',term8nd:'',inspect:'2',exam:''},
+                {courseId:'12347',courseType:'公共基础课',courseName:'经济政治与社会',studentTimeAdd:'36',studentTimeTheory:'32',studentTimePractice:'4',term1st:'36',term1nd:'36',term2st:'',term2nd:'',term3st:'',term3nd:'',term4st:'',term4nd:'',term5st:'',term5nd:'',term6st:'',term6nd:'',term7st:'',term7nd:'',term8st:'',term8nd:'',inspect:'3',exam:''}
+              ]
             }
         },
-      created:function() {
-        this.$http.get('../readjson.php').then(function (response) {
+      beforeMount:function() {
+        this.$http.post('../fiveYearPlanManageJson',{},{
+          "Content-Type":"application/json"
+        }).then(function (response) {
           console.log(response);
-          this.courses = response.body.courses;
+          this.firstCourses = response.body.firstCourses;
+        },function(error){
+          console.log("获取error");
+        });
+        this.$http.post('../threeYearPlanManageJson',{},{
+          "Content-Type":"application/json"
+        }).then(function (response) {
+          console.log(response);
+          this.secondCourses = response.body.secondCourses;
+        },function(error){
+          console.log("获取error");
         });
       },
       methods:{

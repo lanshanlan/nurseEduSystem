@@ -1,12 +1,12 @@
 <template>
   <div>
     <div id="stdInquireGradeChangeTerm">
-      <select class="selectWM">
-        <option disabled selected>选择学期</option>
-        <option v-for="term in terms">{{term}}</option>
+      <select class="selectWM" v-model="termEle">
+        <option value="0">选择学期</option>
+        <option v-for="term in terms" :value="term">{{term}}</option>
       </select>
-      <span><button id="changebut" class="am-btn am-btn-success am-radius buttonWM">切换学期</button></span>
-      <span><button id="allbut" class="am-btn am-btn-success am-radius buttonWM">所有学期成绩</button></span>
+      <span><button id="changebut" class="am-btn am-btn-success am-radius buttonWM" @click="changeTerm()">切换学期</button></span>
+      <span><button id="allbut" class="am-btn am-btn-success am-radius buttonWM" @click="allTerm()">所有学期成绩</button></span>
     </div>
     <div id="stdTable" style="padding: 0.6rem 5rem;background-color: #f3f3f3">
       <table id="stdInquireGradeTableSy" class="normalTable" style="table-layout: fixed;">
@@ -22,14 +22,14 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-for="item in items">
-          <td v-text="item.term"></td>
-          <td v-text="item.courseCode"></td>
-          <td v-text="item.courseName"></td>
-          <td v-text="item.courseCategory"></td>
-          <td v-text="item.generalScore"></td>
-          <td v-text="item.makeupScore"></td>
-          <td v-text="item.finalScore"></td>
+        <tr v-for="studentScore in studentScores">
+          <td v-text="studentScore.term"></td>
+          <td v-text="studentScore.courseCode"></td>
+          <td v-text="studentScore.courseName"></td>
+          <td v-text="studentScore.courseCategory"></td>
+          <td v-text="studentScore.generalScore"></td>
+          <td v-text="studentScore.makeupScore"></td>
+          <td v-text="studentScore.finalScore"></td>
         </tr>
         </tbody>
       </table>
@@ -42,35 +42,56 @@
     name: 'stdInquireGradeTableSy',
     data () {
       return {
+        termEle:'0',
         terms:[
-          '2014-2015:第一学期',
-          '2014-2015:第二学期',
-          '2015-2016:第一学期',
-          '2015-2016:第二学期',
-          '2016-2017:第一学期',
-          '2016-2017:第二学期',
-          '2017-2018:第一学期',
-          '2017-2018:第二学期'
+          '大一:第一学期',
+          '大一:第二学期',
+          '大二:第一学期',
+          '大二:第二学期',
+          '大三:第一学期',
+          '大三:第二学期',
+          '大四:第一学期',
+          '大四:第二学期'
         ],
-        items:[
+        studentScores:[
           {term:'2016-2017.2',courseCode:'K2210710',courseName:'企业合作课程',courseCategory:'实践类核心课程',generalScore:'80',makeupScore:'--',finalScore:'80'},
           {term:'2016-2017.2',courseCode:'K2210710',courseName:'企业合作课程',courseCategory:'实践类核心课程',generalScore:'80',makeupScore:'--',finalScore:'80'},
           {term:'2016-2017.2',courseCode:'K2210710',courseName:'企业合作课程',courseCategory:'实践类核心课程',generalScore:'80',makeupScore:'--',finalScore:'80'}
         ]
       }
     },
-    created:function() {
-      this.$http.get('../readjson.php').then(function (response) {
+    beforeMount:function() {
+      this.$http.post('../studentInquireGradeJson',{},{
+        "Content-Type":"application/json"
+      }).then(function (response) {
         console.log(response);
-        this.items = response.body.items;
+        this.studentScores = response.body.studentScores;
+      },function(error){
+        console.log("获取error");
       });
     },
     methods:{
-      yearClick: function(year,term){
-        //监听搜索内容点击选择，同步到课程表选择框
-//          alert("Hello boy!");
-        var changeTerm = document.getElementById("changeTerm");
-        changeTerm.value = year+': '+term;
+      changeTerm: function(){
+        this.$http.post('../changeTermJson',{
+          "termEle":this.termEle
+        },{
+          "Content-Type":"application/json"
+        }).then(function (response) {
+          console.log(response);
+          this.studentScores = response.body.studentScores;
+        },function(error){
+          console.log("获取error");
+        });
+      },
+      allTerm: function(){
+        this.$http.post('../allTermJson',{},{
+          "Content-Type":"application/json"
+        }).then(function (response) {
+          console.log(response);
+          this.studentScores = response.body.studentScores;
+        },function(error){
+          console.log("获取error");
+        });
       }
     }
   }

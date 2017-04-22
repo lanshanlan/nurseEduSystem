@@ -5,13 +5,13 @@
         <button class="amButtom" @click="fiveYearClick"><img id="fiveYearArrow" class="iconImg" :src="icon2"><span class="subtitle">{{firstYearType}}年制</span></button>
         <table id="fiveYearTable" v-show="fiveYearTable"  class="operationTable" style="table-layout: fixed;">
           <tr v-for="(fiveGrade,index) in fiveGrades" :id="'fiveInputTr'+index">
-            <td><input class="gradeInput" type="text" :value="fiveGrade.gradeName + '级'" readonly="readonly"></td>
-            <td><input class="gradeInput" type="text" :value="fiveGrade.studentNum + '人'" readonly="readonly"></td>
+            <td><input class="gradeInput" type="text" :value="fiveGrade.gradeName" readonly="readonly"></td>
+            <td><input class="gradeInput" type="text" :value="fiveGrade.studentNum" readonly="readonly"></td>
             <td class="checkGradeInfo" @click="checkGradeInfoClick(firstYearType,fiveGrade.gradeName)"><u>查看年级信息</u></td>
             <td>
               <img :id="'fiveEditImg'+index" src="./images/edit.png" @click="editGradeClick('five',index)">
-              <img :id="'fiveSaveImg'+index" src="./images/save.png" style="display: none" @click="saveGradeClick('five',index)">
-              <img :id="'fiveDeleteImg'+index" src="./images/delete.png" @click="deleteGradeClick(fiveGrades,index)">
+              <img :id="'fiveSaveImg'+index" src="./images/save.png" style="display: none" @click="saveGradeClick(firstYearType,'five',index)">
+              <img :id="'fiveDeleteImg'+index" src="./images/delete.png" @click="deleteGradeClick(firstYearType,fiveGrades,index)">
               <img :id="'fiveRestoreImg'+index" src="./images/restore.png" style="display: none" @click="restoreGradeClick('five',index)">
             </td>
           </tr>
@@ -27,13 +27,13 @@
         <button class="amButtom" @click="threeYearClick"><img id="threeYearArrow" class="iconImg" :src="icon1"><span class="subtitle">{{secondYearType}}年制</span></button>
         <table id="threeYearTable" v-show="threeYearTable"  class="operationTable" style="table-layout: fixed;">
           <tr v-for="(threeGrade,index) in threeGrades" :id="'threeInputTr'+index">
-            <td><input class="gradeInput" type="text" :value="threeGrade.gradeName + '级'" readonly="readonly"></td>
-            <td><input class="gradeInput" type="text" :value="threeGrade.studentNum + '人'" readonly="readonly"></td>
+            <td><input class="gradeInput" type="text" :value="threeGrade.gradeName" readonly="readonly"></td>
+            <td><input class="gradeInput" type="text" :value="threeGrade.studentNum" readonly="readonly"></td>
             <td class="checkGradeInfo" @click="checkGradeInfoClick(firstYearType,threeGrade.gradeName)"><u>查看年级信息</u></td>
             <td>
               <img :id="'threeEditImg'+index" src="./images/edit.png" @click="editGradeClick('three',index)">
-              <img :id="'threeSaveImg'+index" src="./images/save.png" style="display: none" @click="saveGradeClick('three',index)">
-              <img :id="'threeDeleteImg'+index" src="./images/delete.png" @click="deleteGradeClick(threeGrades,index)">
+              <img :id="'threeSaveImg'+index" src="./images/save.png" style="display: none" @click="saveGradeClick(secondYearType,'three',index)">
+              <img :id="'threeDeleteImg'+index" src="./images/delete.png" @click="deleteGradeClick(secondYearType,threeGrades,index)">
               <img :id="'threeRestoreImg'+index" src="./images/restore.png" style="display: none" @click="restoreGradeClick('three',index)">
             </td>
           </tr>
@@ -49,15 +49,14 @@
         <table id="gradeClassInfoDiv" class="operationTable" style="table-layout: fixed;">
           <thead>
           <tr>
-            <th width="6rem">年级</th>
-            <th width="6rem">专业名称</th>
-            <th width="6rem">班级ID</th>
-            <th width="6rem">班级名称</th>
-            <th width="6rem">班主任ID</th>
-            <th width="6rem">班主任姓名</th>
-            <th width="6rem">学制</th>
-            <th width="6rem">班级人数</th>
-            <th width="6rem">操作</th>
+            <th>年级</th>
+            <th>专业名称</th>
+            <th>班级ID</th>
+            <th>班级名称</th>
+            <th>班主任姓名</th>
+            <th>学制</th>
+            <th>班级人数</th>
+            <th>操作</th>
           </tr>
           </thead>
           <tbody>
@@ -66,10 +65,9 @@
             <td><input id="input2" :value="classinfoStr.specialityName" readonly="readonly" style="border: none"></td>
             <td><input id="input3" :value="classinfoStr.classId" readonly="readonly" style="border: none"></td>
             <td><input id="input4" :value="classinfoStr.className" readonly="readonly" style="border: none"></td>
-            <td><input id="input5" :value="classinfoStr.classTeacherId" readonly="readonly" style="border: none"></td>
-            <td><input id="input6" :value="classinfoStr.classTeacherName" readonly="readonly" style="border: none"></td>
-            <td><input id="input7" :value="classinfoStr.schoolYearType" readonly="readonly" style="border: none"></td>
-            <td><input id="input8" :value="classinfoStr.classSize" readonly="readonly" style="border: none"></td>
+            <td><input id="input5" :value="classinfoStr.classTeacherName" readonly="readonly" style="border: none"></td>
+            <td><input id="input6" :value="classinfoStr.schoolYearType" readonly="readonly" style="border: none"></td>
+            <td><input id="input7" :value="classinfoStr.classSize" readonly="readonly" style="border: none"></td>
             <td>
               <img :id="'editImg'+index" class="btnImg" src="./images/edit.png" @click="editClick(index)">
               <img :id="'saveImg'+index" class="btnImg" src="./images/save.png" style="display: none" @click="saveClick(index)">
@@ -121,9 +119,9 @@
           { gradeName:"2014", studentNum:"167" }
         ],
         classinfoStrList:[
-          {gradeName:'04',specialityName:'护理',classId:'03',className:'护理3班',classTeacherId:'12345',classTeacherName:'何平',schoolYearType:'五年制',classSize:'43'},
-          {gradeName:'04',specialityName:'临床医学',classId:'05',className:'临床医学5班',classTeacherId:'23141',classTeacherName:'季军',schoolYearType:'五年制',classSize:'54'},
-          {gradeName:'04',specialityName:'护理',classId:'01',className:'护理1班',classTeacherId:'54113',classTeacherName:'李磊',schoolYearType:'五年制',classSize:'31'}
+          {gradeName:'04',specialityName:'护理',classId:'03',className:'护理3班',classTeacherName:'何平',schoolYearType:'五年制',classSize:'43'},
+          {gradeName:'04',specialityName:'临床医学',classId:'05',className:'临床医学5班',classTeacherName:'季军',schoolYearType:'五年制',classSize:'54'},
+          {gradeName:'04',specialityName:'护理',classId:'01',className:'护理1班',classTeacherName:'李磊',schoolYearType:'五年制',classSize:'31'}
         ]
       }
     },
@@ -177,17 +175,15 @@
         var restoreImg = document.getElementById(year+"RestoreImg"+index);
         var deleteImg = document.getElementById(year+"DeleteImg"+index);
 //          使课程信息的输入标签变为可输入，显示边框
-        for(var i = 0;i<input.length;i++){
-          input[i].readOnly = false;
-          input[i].style.border = "0.1rem solid #d4d4d9";
-        }
+          input[1].readOnly = false;
+          input[1].style.border = "0.1rem solid #d4d4d9";
 //        隐藏编辑和删除功能图标,显示保存和重置功能图标
         editImg.style.display = "none";
         saveImg.style.display = "inline";
         deleteImg.style.display = "none";
         restoreImg.style.display = "inline";
       },
-      saveGradeClick: function(year,index){
+      saveGradeClick: function(yearType,year,index){
         if(confirm("您确定提交保存该课程吗？")){
           var inputTr = document.getElementById(year+"InputTr"+index);
           var input = inputTr.getElementsByTagName("input");
@@ -197,19 +193,26 @@
           var deleteImg = document.getElementById(year+"DeleteImg"+index);
           var i = null;
     //            保存数据到data,虽然input的value和data中的属性绑定,但并不是完成的双向,此时data中的属性数据并没有发生修改
+          this.$http.post('../saveGradeInfoJson',{
+            "yearType":yearType,
+            "gradeName":input[0].value,
+            "studentNum":input[1].value
+          },{
+            "Content-Type":"application/json"
+          }).then(function (response) {
+            console.log(response);
+          },function(error){
+            console.log("获取error");
+          });
           if(year == "five"){
-            this.fiveGrades[index].name = input[0].value;
-            this.fiveGrades[index].peopleNum = input[1].value;
+            this.fiveGrades[index].studentNum = input[1].value;
             console.log(this.fiveCourses);
           }
           if(year == "three"){
-            this.threeGrades[index].name = input[0].value;
-            this.threeGrades[index].peopleNum = input[1].value;
+            this.threeGrades[index].studentNum = input[1].value;
           }
-          for(i = 0;i<input.length;i++){
-            input[i].readOnly = true;
-            input[i].style.border = "none";
-          }
+            input[1].readOnly = true;
+            input[1].style.border = "none";
     //          预留功能,将data提交到后端,实现保存数据,处理回调
           editImg.style.display = "inline";
           saveImg.style.display = "none";
@@ -228,38 +231,47 @@
           var i = null;
 //            重置数据到value,虽然input的value和data中的属性绑定,但并不是完全的双向,此时data中的属性数据并没有发生修改
           if(year == "five"){
-            input[0].value = this.fiveGrades[index].name;
-            input[1].value = this.fiveGrades[index].peopleNum;
+            input[1].value = this.fiveGrades[index].studentNum;
           }
           if(year == "three"){
-            input[0].value = this.threeGrades[index].name;
-            input[1].value = this.threeGrades[index].peopleNum;
+            input[1].value = this.threeGrades[index].studentNum;
           }
 //          使课程信息的输入标签变为不可输入，隐藏边框
-          for(i = 0;i<input.length;i++){
-            input[i].readOnly = true;
-            input[i].style.border = "none";
-          }
+            input[1].readOnly = true;
+            input[1].style.border = "none";
           editImg.style.display = "inline";
           saveImg.style.display = "none";
           deleteImg.style.display = "inline";
           restoreImg.style.display = "none";
         }
       },
-      deleteGradeClick: function(grades,index){
+      deleteGradeClick: function(yearType,grades,index){
 //          从data中的课程信息数组中删除
 //          预留功能,将data提交到后端,实现删除数据,处理回调
         if(confirm("您确定删除该课程吗？")){
+          this.$http.post('../deleteGradeInfoJson',{
+            "yearType":yearType,
+            "gradeName":grades[index].gradeName
+          },{
+            "Content-Type":"application/json"
+          }).then(function (response) {
+            console.log(response);
+          },function(error){
+            console.log("获取error");
+          });
           grades.splice(index, 1);
         }
       },
-      addGradeClick: function (grades,year){
+      addGradeClick: function (grades){
         grades.push(
             { gradeName:"", studentNum:"" }
         );
       },
       checkGradeInfoClick: function(yearType,gradeName){
-        this.$http.post('../seeGradeInfoJson',{},{
+        this.$http.post('../checkGradeInfoJson',{
+          "yearType":yearType,
+          "gradeName":gradeName
+        },{
           "Content-Type":"application/json"
         }).then(function (response) {
           console.log(response);
@@ -277,7 +289,6 @@
       editClick: function(index){
         var inputTable = document.getElementById("inputTable"+index);
         var input = inputTable.getElementsByTagName("input");
-        var p = inputTable.getElementsByTagName("p");
         var editImg = document.getElementById("editImg"+index);
         var saveImg = document.getElementById("saveImg"+index);
         var deleteImg = document.getElementById("deleteImg"+index);
@@ -295,24 +306,37 @@
       saveClick: function(index){
         var inputTable = document.getElementById("inputTable"+index);
         var input = inputTable.getElementsByTagName("input");
-        var p = inputTable.getElementsByTagName("p");
         var editImg = document.getElementById("editImg"+index);
         var saveImg = document.getElementById("saveImg"+index);
         var deleteImg = document.getElementById("deleteImg"+index);
         var restoreImg = document.getElementById("restoreImg"+index);
         var i = null;
+        this.$http.post('../saveClassInfoJson',{
+          "gradeName":input[0].value ,
+          "specialityName":input[1].value ,
+          "classId":input[2].value ,
+          "className":input[3].value ,
+          "classTeacherName":input[4].value ,
+          "schoolYearType":input[5].value ,
+          "classSize":input[6].value
+        },{
+          "Content-Type":"application/json"
+        }).then(function (response) {
+          console.log(response);
+        },function(error){
+          console.log("获取error");
+        });
         for(i = 0;i<input.length;i++){
           input[i].readOnly = true;
           input[i].style.border = "none";
         }
-        this.gradeClassInfos[index].gradeID = input[0].value;
-        this.gradeClassInfos[index].majorName = input[1].value;
-        this.gradeClassInfos[index].classID = input[2].value;
-        this.gradeClassInfos[index].className = input[3].value;
-        this.gradeClassInfos[index].classTchID = input[4].value;
-        this.gradeClassInfos[index].classTchName = input[5].value;
-        this.gradeClassInfos[index].yearPlan = input[6].value;
-        this.gradeClassInfos[index].peopleNum = input[7].value;
+        this.classinfoStrList[index].gradeName = input[0].value;
+        this.classinfoStrList[index].specialityName = input[1].value;
+        this.classinfoStrList[index].classId = input[2].value;
+        this.classinfoStrList[index].className = input[3].value;
+        this.classinfoStrList[index].classTeacherName = input[4].value;
+        this.classinfoStrList[index].schoolYearType = input[5].value;
+        this.classinfoStrList[index].classSize = input[6].value;
         editImg.style.display = "inline";
         saveImg.style.display = "none";
         deleteImg.style.display = "inline";
@@ -321,7 +345,6 @@
       restoreClick: function(index){
         var inputTable = document.getElementById("inputTable"+index);
         var input = inputTable.getElementsByTagName("input");
-        var p = inputTable.getElementsByTagName("p");
         var editImg = document.getElementById("editImg"+index);
         var saveImg = document.getElementById("saveImg"+index);
         var deleteImg = document.getElementById("deleteImg"+index);
@@ -331,25 +354,33 @@
           input[i].readOnly = true;
           input[i].style.border = "none";
         }
-        input[0].value = this.gradeClassInfos[index].gradeID;
-        input[1].value = this.gradeClassInfos[index].majorName;
-        input[2].value = this.gradeClassInfos[index].classID;
-        input[3].value = this.gradeClassInfos[index].className;
-        input[4].value = this.gradeClassInfos[index].classTchID;
-        input[5].value = this.gradeClassInfos[index].classTchName;
-        input[6].value  = this.gradeClassInfos[index].yearPlan;
-        input[7].value = this.gradeClassInfos[index].peopleNum;
+        input[0].value = this.classinfoStrList[index].gradeName;
+        input[1].value = this.classinfoStrList[index].specialityName;
+        input[2].value = this.classinfoStrList[index].classId;
+        input[3].value = this.classinfoStrList[index].className;
+        input[4].value = this.classinfoStrList[index].classTeacherName;
+        input[5].value  = this.classinfoStrList[index].schoolYearType;
+        input[6].value = this.classinfoStrList[index].classSize;
         editImg.style.display = "inline";
         saveImg.style.display = "none";
         deleteImg.style.display = "inline";
         restoreImg.style.display = "none";
       },
       deleteClick: function(index){
-        this.gradeClassInfos.splice(index,1);
+        this.$http.post('../deleteClassInfoJson',{
+          "classId":this.classinfoStrList[index].classinfoStrList
+        },{
+          "Content-Type":"application/json"
+        }).then(function (response) {
+          console.log(response);
+        },function(error){
+          console.log("获取error");
+        });
+        this.classinfoStrList.splice(index,1);
       },
       addClick: function(){
-        this.gradeClassInfos.push(
-          { gradeID:"", majorName:"", className:"", classTchName:"",yearPlan:"",peopleNum:"" }
+        this.classinfoStrList.push(
+          { gradeName:"", specialityName:"", classId:"", className:"",classTeacherName:"",schoolYearType:"",classSize:"" }
         );
       }
     }

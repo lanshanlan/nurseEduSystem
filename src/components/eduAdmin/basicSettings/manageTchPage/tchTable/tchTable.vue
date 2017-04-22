@@ -4,7 +4,7 @@
       <span><input type="text" id="tchName" class="inputWM" placeholder="请输入姓名" v-model="teacherinfoKey.teacherName"></span>
       <span><input type="text" id="tchID" class="inputWM" placeholder="请输入编号" v-model="teacherinfoKey.teacherId"></span>
       <span><button id="downloadForm" class="am-btn am-btn-success am-radius buttonWM">下载模板</button></span>
-      <span><button id="searchFor" class="am-btn am-btn-success am-radius buttonWM" @click="searchClick()">查找</button></span>
+      <span><button id="searchFor" class="am-btn am-btn-success am-radius buttonWM" @click="checkTchInfoClick()">查找</button></span>
       <span><button id="leadIn" class="am-btn am-btn-success am-radius buttonWM">导入</button></span>
       <span><button id="leadOut" class="am-btn am-btn-success am-radius buttonWM">导出</button></span>
     </div>
@@ -76,8 +76,8 @@
         });
       },
       methods:{
-        searchClick:function() {
-          this.$http.post('../searchJson',{
+        checkTchInfoClick:function() {
+          this.$http.post('../checkTeacherInfoJson',{
             "teacherinfoKey":this.teacherinfoKey
           },{
             "Content-Type":"application/json"
@@ -91,7 +91,6 @@
         editClick: function(index){
           var inputTable = document.getElementById("inputTable"+index);
           var input = inputTable.getElementsByTagName("input");
-          var p = inputTable.getElementsByTagName("p");
           var editImg = document.getElementById("editImg"+index);
           var saveImg = document.getElementById("saveImg"+index);
           var deleteImg = document.getElementById("deleteImg"+index);
@@ -108,19 +107,31 @@
         saveClick: function(index){
           var inputTable = document.getElementById("inputTable"+index);
           var input = inputTable.getElementsByTagName("input");
-          var p = inputTable.getElementsByTagName("p");
           var editImg = document.getElementById("editImg"+index);
           var saveImg = document.getElementById("saveImg"+index);
           var deleteImg = document.getElementById("deleteImg"+index);
           var restoreImg = document.getElementById("restoreImg"+index);
+          this.$http.post('../saveTeacherInfoJson',{
+            "teacherId":input[0].value,
+            "hireCampus":input[5].value,
+            "currentWorkTitle":input[6].value,
+            "currentWorkDuty":input[7].value,
+            "teacherType":input[8].value
+          },{
+            "Content-Type":"application/json"
+          }).then(function (response) {
+            console.log(response);
+          },function(error){
+            console.log("获取error");
+          });
           for(var i = 5;i<9;i++){
             input[i].readOnly = true;
             input[i].style.border = "none";
           }
-          this.tchInfos[index].employCampus = input[5].value;
-          this.tchInfos[index].proRanks = input[6].value;
-          this.tchInfos[index].duties = input[7].value;
-          this.tchInfos[index].tchType = input[8].value;
+          this.teacherSimpleInfoList[index].hireCampus = input[5].value;
+          this.teacherSimpleInfoList[index].currentWorkTitle = input[6].value;
+          this.teacherSimpleInfoList[index].currentWorkDuty = input[7].value;
+          this.teacherSimpleInfoList[index].teacherType = input[8].value;
           editImg.style.display = "inline";
           saveImg.style.display = "none";
           deleteImg.style.display = "inline";
@@ -129,7 +140,6 @@
         restoreClick: function(index){
           var inputTable = document.getElementById("inputTable"+index);
           var input = inputTable.getElementsByTagName("input");
-          var p = inputTable.getElementsByTagName("p");
           var editImg = document.getElementById("editImg"+index);
           var saveImg = document.getElementById("saveImg"+index);
           var deleteImg = document.getElementById("deleteImg"+index);
@@ -138,17 +148,26 @@
             input[i].readOnly = true;
             input[i].style.border = "none";
           }
-          input[5].value = this.tchInfos[index].employCampus;
-          input[6].value = this.tchInfos[index].proRanks;
-          input[7].value = this.tchInfos[index].duties;
-          input[8].value = this.tchInfos[index].tchType;
+          input[5].value = this.teacherSimpleInfoList[index].hireCampus;
+          input[6].value = this.teacherSimpleInfoList[index].currentWorkTitle;
+          input[7].value = this.teacherSimpleInfoList[index].currentWorkDuty;
+          input[8].value = this.teacherSimpleInfoList[index].teacherType;
           editImg.style.display = "inline";
           saveImg.style.display = "none";
           deleteImg.style.display = "inline";
           restoreImg.style.display = "none";
         },
         deleteClick: function(index){
-          this.tchInfos.splice(index,1);
+          this.$http.post('../deleteTeacherInfoJson',{
+            "teacherId":this.teacherSimpleInfoList[index].teacherId
+          },{
+            "Content-Type":"application/json"
+          }).then(function (response) {
+            console.log(response);
+          },function(error){
+            console.log("获取error");
+          });
+          this.teacherSimpleInfoList.splice(index,1);
         }
       }
     }

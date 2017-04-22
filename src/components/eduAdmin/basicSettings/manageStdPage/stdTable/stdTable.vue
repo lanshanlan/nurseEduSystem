@@ -18,7 +18,7 @@
         <!--班级选择下拉列表-->
         <span><input type="text" id="stdID" class="inputWM" placeholder="请输入学号" v-model="studentinfoKey.studentId"></span>
         <span><button id="downloadForm" class="am-btn am-btn-success am-radius buttonWM" @click="moli">下载模板</button></span>
-        <span><button id="searchFor" class="am-btn am-btn-success am-radius buttonWM">查找</button></span>
+        <span><button id="searchFor" class="am-btn am-btn-success am-radius buttonWM" @click="checkStdInfoClick()">查找</button></span>
         <span><button id="leadIn" class="am-btn am-btn-success am-radius buttonWM">导入</button></span>
         <span><button id="leadOut" class="am-btn am-btn-success am-radius buttonWM">导出</button></span>
       </div>
@@ -147,10 +147,21 @@
             }
           }
         },
+        checkStdInfoClick: function(){
+          this.$http.post('../checkStudentInfoJson',{
+            "studentinfoKey":studentinfoKey
+          },{
+            "Content-Type":"application/json"
+          }).then(function (response) {
+            console.log(response);
+            this.studentSimpleInfoList = response.body.studentSimpleInfoList;
+          },function(error){
+            console.log("获取error");
+          });
+        },
         editClick: function(index){
           var inputTable = document.getElementById("inputTable"+index);
           var input = inputTable.getElementsByTagName("input");
-          var p = inputTable.getElementsByTagName("p");
           var editImg = document.getElementById("editImg"+index);
           var saveImg = document.getElementById("saveImg"+index);
           var deleteImg = document.getElementById("deleteImg"+index);
@@ -165,15 +176,24 @@
         saveClick: function(index){
           var inputTable = document.getElementById("inputTable"+index);
           var input = inputTable.getElementsByTagName("input");
-          var p = inputTable.getElementsByTagName("p");
           var editImg = document.getElementById("editImg"+index);
           var saveImg = document.getElementById("saveImg"+index);
           var deleteImg = document.getElementById("deleteImg"+index);
           var restoreImg = document.getElementById("restoreImg"+index);
+          this.$http.post('../saveStudentInfoJson',{
+            "studentId":input[0].value,
+            "className":input[7].value
+          },{
+            "Content-Type":"application/json"
+          }).then(function (response) {
+            console.log(response);
+          },function(error){
+            console.log("获取error");
+          });
           input[7].readOnly = true;
 //          true或false不可用引号
           input[7].style.border = "none";
-          this.stdInfos[index].classname = input[7].value;
+          this.studentSimpleInfoList[index].className = input[7].value;
           editImg.style.display = "inline";
           saveImg.style.display = "none";
           deleteImg.style.display = "inline";
@@ -182,21 +202,29 @@
         restoreClick: function(index){
           var inputTable = document.getElementById("inputTable"+index);
           var input = inputTable.getElementsByTagName("input");
-          var p = inputTable.getElementsByTagName("p");
           var editImg = document.getElementById("editImg"+index);
           var saveImg = document.getElementById("saveImg"+index);
           var deleteImg = document.getElementById("deleteImg"+index);
           var restoreImg = document.getElementById("restoreImg"+index);
           input[7].readOnly = true;
           input[7].style.border = "none";
-          input[7].value = this.stdInfos[index].classname;
+          input[7].value = this.studentSimpleInfoList[index].className;
           editImg.style.display = "inline";
           saveImg.style.display = "none";
           deleteImg.style.display = "inline";
           restoreImg.style.display = "none";
         },
         deleteClick: function(index){
-          this.stdInfos.splice(index,1);
+          this.$http.post('../deleteStudentInfoJson',{
+            "studentId":this.studentSimpleInfoList[index].studentId
+          },{
+            "Content-Type":"application/json"
+          }).then(function (response) {
+            console.log(response);
+          },function(error){
+            console.log("获取error");
+          });
+          this.studentSimpleInfoList.splice(index,1);
         }
       }
     }

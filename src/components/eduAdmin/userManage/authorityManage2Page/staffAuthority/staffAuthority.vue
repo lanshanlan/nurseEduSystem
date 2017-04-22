@@ -6,7 +6,6 @@
       <ul>
         <li  v-for="tchAuthority in tchAuthoritys">
           <input type="checkbox" :id="tchAuthority.value" :value="tchAuthority.value" :checked="tchAuthority.checked" v-model="tchAuthorityNames">
-//		  将数组tchAuthorityNames绑定到了多选框上
           <label :for="tchAuthority.value">{{tchAuthority.output}}</label>
         </li>
       </ul>
