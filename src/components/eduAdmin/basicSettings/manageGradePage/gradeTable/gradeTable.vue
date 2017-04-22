@@ -2,12 +2,12 @@
   <div style="padding: 0.6rem 5rem;background-color: #f3f3f3">
     <div id="gradeManagementDiv" style="background-color: white">
       <div id="fiveYearDiv" v-show="gradeManagement">
-        <button class="amButtom" @click="fiveYearClick"><img id="fiveYearArrow" class="iconImg" :src="icon2"><span class="subtitle">五年制</span></button>
+        <button class="amButtom" @click="fiveYearClick"><img id="fiveYearArrow" class="iconImg" :src="icon2"><span class="subtitle">{{firstYearType}}年制</span></button>
         <table id="fiveYearTable" v-show="fiveYearTable"  class="operationTable" style="table-layout: fixed;">
           <tr v-for="(fiveGrade,index) in fiveGrades" :id="'fiveInputTr'+index">
-            <td><input class="gradeInput" type="text" :value="fiveGrade.name" readonly="readonly"></td>
-            <td><input class="gradeInput" type="text" :value="fiveGrade.peopleNum" readonly="readonly"></td>
-            <td class="checkGradeInfo" @click="checkGradeInfoClick(fiveGrade.name ,fiveGrade.peopleNum)"><u>查看年级信息</u></td>
+            <td><input class="gradeInput" type="text" :value="fiveGrade.gradeName + '级'" readonly="readonly"></td>
+            <td><input class="gradeInput" type="text" :value="fiveGrade.studentNum + '人'" readonly="readonly"></td>
+            <td class="checkGradeInfo" @click="checkGradeInfoClick(firstYearType,fiveGrade.gradeName)"><u>查看年级信息</u></td>
             <td>
               <img :id="'fiveEditImg'+index" src="./images/edit.png" @click="editGradeClick('five',index)">
               <img :id="'fiveSaveImg'+index" src="./images/save.png" style="display: none" @click="saveGradeClick('five',index)">
@@ -24,12 +24,12 @@
         </table>
       </div>
       <div id="threeYearDiv" v-show="gradeManagement">
-        <button class="amButtom" @click="threeYearClick"><img id="threeYearArrow" class="iconImg" :src="icon1"><span class="subtitle">三年制</span></button>
+        <button class="amButtom" @click="threeYearClick"><img id="threeYearArrow" class="iconImg" :src="icon1"><span class="subtitle">{{secondYearType}}年制</span></button>
         <table id="threeYearTable" v-show="threeYearTable"  class="operationTable" style="table-layout: fixed;">
           <tr v-for="(threeGrade,index) in threeGrades" :id="'threeInputTr'+index">
-            <td><input class="gradeInput" type="text" :value="threeGrade.name" readonly="readonly"></td>
-            <td><input class="gradeInput" type="text" :value="threeGrade.peopleNum" readonly="readonly"></td>
-            <td class="checkGradeInfo" @click="checkGradeInfoClick(threeGrade.name ,threeGrade.peopleNum)"><u>查看年级信息</u></td>
+            <td><input class="gradeInput" type="text" :value="threeGrade.gradeName + '级'" readonly="readonly"></td>
+            <td><input class="gradeInput" type="text" :value="threeGrade.studentNum + '人'" readonly="readonly"></td>
+            <td class="checkGradeInfo" @click="checkGradeInfoClick(firstYearType,threeGrade.gradeName)"><u>查看年级信息</u></td>
             <td>
               <img :id="'threeEditImg'+index" src="./images/edit.png" @click="editGradeClick('three',index)">
               <img :id="'threeSaveImg'+index" src="./images/save.png" style="display: none" @click="saveGradeClick('three',index)">
@@ -61,15 +61,15 @@
           </tr>
           </thead>
           <tbody>
-          <tr v-for="(gradeClassInfo,index) in gradeClassInfos" :id="'inputTable'+index">
-            <td><input id="input1" :value="gradeClassInfo.gradeID" readonly="readonly" style="border: none"></td>
-            <td><input id="input2" :value="gradeClassInfo.majorName" readonly="readonly" style="border: none"></td>
-            <td><input id="input3" :value="gradeClassInfo.classID" readonly="readonly" style="border: none"></td>
-            <td><input id="input4" :value="gradeClassInfo.className" readonly="readonly" style="border: none"></td>
-            <td><input id="input5" :value="gradeClassInfo.classTchID" readonly="readonly" style="border: none"></td>
-            <td><input id="input6" :value="gradeClassInfo.classTchName" readonly="readonly" style="border: none"></td>
-            <td><input id="input7" :value="gradeClassInfo.yearPlan" readonly="readonly" style="border: none"></td>
-            <td><input id="input8" :value="gradeClassInfo.peopleNum" readonly="readonly" style="border: none"></td>
+          <tr v-for="(classinfoStr,index) in classinfoStrList" :id="'inputTable'+index">
+            <td><input id="input1" :value="classinfoStr.gradeName" readonly="readonly" style="border: none"></td>
+            <td><input id="input2" :value="classinfoStr.specialityName" readonly="readonly" style="border: none"></td>
+            <td><input id="input3" :value="classinfoStr.classId" readonly="readonly" style="border: none"></td>
+            <td><input id="input4" :value="classinfoStr.className" readonly="readonly" style="border: none"></td>
+            <td><input id="input5" :value="classinfoStr.classTeacherId" readonly="readonly" style="border: none"></td>
+            <td><input id="input6" :value="classinfoStr.classTeacherName" readonly="readonly" style="border: none"></td>
+            <td><input id="input7" :value="classinfoStr.schoolYearType" readonly="readonly" style="border: none"></td>
+            <td><input id="input8" :value="classinfoStr.classSize" readonly="readonly" style="border: none"></td>
             <td>
               <img :id="'editImg'+index" class="btnImg" src="./images/edit.png" @click="editClick(index)">
               <img :id="'saveImg'+index" class="btnImg" src="./images/save.png" style="display: none" @click="saveClick(index)">
@@ -100,6 +100,8 @@
     name: 'gradeManagementDiv',
     data () {
       return {
+        firstYearType:'3',
+        secondYearType:'5',
         icon1:arrowright,
         icon2:arrowdown,
         gradeManagement: true,
@@ -109,23 +111,34 @@
         threeYearTable: false,
         gradeTable: false,
         fiveGrades: [
-          { name:"2016级", peopleNum:"167", },
-          { name:"2015级", peopleNum:"167", },
-          { name:"2014级", peopleNum:"167", },
-          { name:"2013级", peopleNum:"167", },
-          { name:"2012级", peopleNum:"167", }
+          { gradeName:"2014", studentNum:"167" },
+          { gradeName:"2013", studentNum:"167" },
+          { gradeName:"2012", studentNum:"167" }
         ],
         threeGrades: [
-          { name:"2016级", peopleNum:"167", },
-          { name:"2015级", peopleNum:"167", },
-          { name:"2014级", peopleNum:"167", }
+          { gradeName:"2016", studentNum:"167" },
+          { gradeName:"2015", studentNum:"167" },
+          { gradeName:"2014", studentNum:"167" }
         ],
-        gradeClassInfos:[
-          {gradeID:'04',majorId:'221',majorName:'护理',classID:'03',className:'护理3班',classTchID:'12345',classTchName:'何平',yearPlan:'五年制',peopleNum:'43'},
-          {gradeID:'04',majorId:'231',majorName:'临床医学',classID:'05',className:'临床医学5班',classTchID:'23141',classTchName:'季军',yearPlan:'五年制',peopleNum:'54'},
-          {gradeID:'04',majorId:'123',majorName:'护理',classID:'01',className:'护理1班',classTchID:'54113',classTchName:'李磊',yearPlan:'五年制',peopleNum:'31'}
+        classinfoStrList:[
+          {gradeName:'04',specialityName:'护理',classId:'03',className:'护理3班',classTeacherId:'12345',classTeacherName:'何平',schoolYearType:'五年制',classSize:'43'},
+          {gradeName:'04',specialityName:'临床医学',classId:'05',className:'临床医学5班',classTeacherId:'23141',classTeacherName:'季军',schoolYearType:'五年制',classSize:'54'},
+          {gradeName:'04',specialityName:'护理',classId:'01',className:'护理1班',classTeacherId:'54113',classTeacherName:'李磊',schoolYearType:'五年制',classSize:'31'}
         ]
       }
+    },
+    beforeMount:function() {
+      this.$http.post('../gradeManageJson',{},{
+        "Content-Type":"application/json"
+      }).then(function (response) {
+        console.log(response);
+        this.firstYearType = response.body.yearList[0].yearType;
+        this.secondYearType = response.body.yearList[1].yearType;
+        this.fiveGrades = response.body.yearList[0].gradeList;
+        this.threeGrades = response.body.yearList[1].gradeList;
+      },function(error){
+        console.log("获取error");
+      });
     },
     methods: {
       fiveYearClick: function () {
@@ -242,10 +255,18 @@
       },
       addGradeClick: function (grades,year){
         grades.push(
-            { name:"请编辑后保存", peopleNum:"请编辑后保存" }
+            { gradeName:"", studentNum:"" }
         );
       },
-      checkGradeInfoClick: function(name,peopleNum){
+      checkGradeInfoClick: function(yearType,gradeName){
+        this.$http.post('../seeGradeInfoJson',{},{
+          "Content-Type":"application/json"
+        }).then(function (response) {
+          console.log(response);
+          this.classinfoStrList = response.body.classinfoStrList;
+        },function(error){
+          console.log("获取error");
+        });
         this.gradeTable = true;
         this.gradeManagement = false;
       },

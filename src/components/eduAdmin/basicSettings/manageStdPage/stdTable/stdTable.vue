@@ -117,7 +117,7 @@
         },function(error){
           console.log("获取error");
         });
-        this.$http.post('../studentinfoKeyJson',{
+        this.$http.post('../studentinfoKeyJson',{},{
           "Content-Type":"application/json"
         }).then(function (response) {
           console.log(response);
