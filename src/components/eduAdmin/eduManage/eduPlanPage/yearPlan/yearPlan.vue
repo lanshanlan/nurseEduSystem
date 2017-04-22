@@ -116,7 +116,7 @@
             <th width="6%" rowspan="3">课程类别</th>
             <th width="6%" rowspan="3">课程名称</th>
             <th width="12%" rowspan="2" colspan="3">学时</th>
-            <th width="64%" colspan="16">执行学期</th>
+            <th width="64%" colspan="20">执行学期</th>
             <th width="6%" rowspan="2" colspan="2">考核学期</th>
           </tr>
           <tr>
@@ -128,11 +128,17 @@
             <td colspan="2">6</td>
             <td colspan="2">7</td>
             <td colspan="2">8</td>
+            <td colspan="2">9</td>
+            <td colspan="2">10</td>
           </tr>
           <tr>
             <td>总计</td>
             <td>理论</td>
             <td>实践</td>
+            <td>前9周</td>
+            <td>后9周</td>
+            <td>前9周</td>
+            <td>后9周</td>
             <td>前9周</td>
             <td>后9周</td>
             <td>前9周</td>
@@ -177,6 +183,10 @@
             <td v-text="secondCourse.term7nd"></td>
             <td v-text="secondCourse.term8st"></td>
             <td v-text="secondCourse.term8nd"></td>
+            <td v-text="secondCourse.term9st"></td>
+            <td v-text="secondCourse.term9nd"></td>
+            <td v-text="secondCourse.term10st"></td>
+            <td v-text="secondCourse.term10nd"></td>
             <td v-text="secondCourse.inspect"></td>
             <td v-text="secondCourse.exam"></td>
           </tr>
@@ -204,9 +214,9 @@
                   {courseId:'12347',courseType:'公共基础课',courseName:'经济政治与社会',studentTimeAdd:'36',studentTimeTheory:'32',studentTimePractice:'4',term1st:'36',term1nd:'36',term2st:'',term2nd:'',term3st:'',term3nd:'',term4st:'',term4nd:'',term5st:'',term5nd:'',term6st:'',term6nd:'',term7st:'',term7nd:'',term8st:'',term8nd:'',term9st:'',term9nd:'',term10st:'',term10nd:'',inspect:'3',exam:''}
                 ],
               secondCourses:[
-                {courseId:'12345',courseType:'公共基础课',courseName:'职业生涯规划',studentTimeAdd:'36',studentTimeTheory:'32',studentTimePractice:'4',term1st:'36',term1nd:'36',term2st:'',term2nd:'',term3st:'',term3nd:'',term4st:'',term4nd:'',term5st:'',term5nd:'',term6st:'',term6nd:'',term7st:'',term7nd:'',term8st:'',term8nd:'',inspect:'1',exam:''},
-                {courseId:'12346',courseType:'公共基础课',courseName:'哲学与人生',studentTimeAdd:'36',studentTimeTheory:'32',studentTimePractice:'4',term1st:'36',term1nd:'36',term2st:'',term2nd:'',term3st:'',term3nd:'',term4st:'',term4nd:'',term5st:'',term5nd:'',term6st:'',term6nd:'',term7st:'',term7nd:'',term8st:'',term8nd:'',inspect:'2',exam:''},
-                {courseId:'12347',courseType:'公共基础课',courseName:'经济政治与社会',studentTimeAdd:'36',studentTimeTheory:'32',studentTimePractice:'4',term1st:'36',term1nd:'36',term2st:'',term2nd:'',term3st:'',term3nd:'',term4st:'',term4nd:'',term5st:'',term5nd:'',term6st:'',term6nd:'',term7st:'',term7nd:'',term8st:'',term8nd:'',inspect:'3',exam:''}
+                {courseId:'12345',courseType:'公共基础课',courseName:'职业生涯规划',studentTimeAdd:'36',studentTimeTheory:'32',studentTimePractice:'4',term1st:'36',term1nd:'36',term2st:'',term2nd:'',term3st:'',term3nd:'',term4st:'',term4nd:'',term5st:'',term5nd:'',term6st:'',term6nd:'',term7st:'',term7nd:'',term8st:'',term8nd:'',term9st:'',term9nd:'',term10st:'',term10nd:'',inspect:'1',exam:''},
+                {courseId:'12346',courseType:'公共基础课',courseName:'哲学与人生',studentTimeAdd:'36',studentTimeTheory:'32',studentTimePractice:'4',term1st:'36',term1nd:'36',term2st:'',term2nd:'',term3st:'',term3nd:'',term4st:'',term4nd:'',term5st:'',term5nd:'',term6st:'',term6nd:'',term7st:'',term7nd:'',term8st:'',term8nd:'',term9st:'',term9nd:'',term10st:'',term10nd:'',inspect:'2',exam:''},
+                {courseId:'12347',courseType:'公共基础课',courseName:'经济政治与社会',studentTimeAdd:'36',studentTimeTheory:'32',studentTimePractice:'4',term1st:'36',term1nd:'36',term2st:'',term2nd:'',term3st:'',term3nd:'',term4st:'',term4nd:'',term5st:'',term5nd:'',term6st:'',term6nd:'',term7st:'',term7nd:'',term8st:'',term8nd:'',term9st:'',term9nd:'',term10st:'',term10nd:'',inspect:'3',exam:''}
               ]
             }
         },

@@ -66,6 +66,7 @@
       }).then(function (response) {
         console.log(response);
         this.studentScores = response.body.studentScores;
+        this.terms = response.body.terms;
       },function(error){
         console.log("获取error");
       });
