@@ -4,7 +4,6 @@
     <topTitle></topTitle>
     <topBar></topBar>
     <noSupervisorTable></noSupervisorTable>
-    <supervisorTable></supervisorTable>
   </div>
 </template>
 
@@ -13,7 +12,6 @@
   import topTitle from '../../../../components/public/topTitle/topTitle.vue'
   import topBar from '../../../../components/eduAdmin/eduManage/supervisorManagePage/topBar/topBar.vue'
   import noSupervisorTable from '../../../../components/eduAdmin/eduManage/supervisorManagePage/noSupervisorTable/noSupervisorTable.vue'
-  import supervisorTable from '../../../../components/eduAdmin/eduManage/supervisorManagePage/supervisorTable/supervisorTable.vue'
   export default {
     name: 'manageClassPage',
     data () {
@@ -25,8 +23,7 @@
     components: {
       topTitle,
       topBar,
-      noSupervisorTable,
-      supervisorTable
+      noSupervisorTable
     }
   }
 </script>

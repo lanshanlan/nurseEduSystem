@@ -4,10 +4,7 @@
     <topTitle></topTitle>
     <topBar></topBar>
     <div class="blank"></div>
-    <div id="staffAuthorityAll">
-      <div ><dropdownStaff></dropdownStaff></div>
-      <div class="marginLeft"><staffAuthority></staffAuthority></div>
-    </div>
+    <dropdownStaff></dropdownStaff>
   </div>
 </template>
 
@@ -16,7 +13,6 @@
   import topTitle from '../../../../components/public/topTitle/topTitle.vue'
   import topBar from '../../../../components/eduAdmin/userManage/authorityManage2Page/topBar/topBar.vue'
   import dropdownStaff from '../../../../components/eduAdmin/userManage/authorityManage2Page/dropdownStaff/dropdownStaff.vue'
-  import staffAuthority from '../../../../components/eduAdmin/userManage/authorityManage2Page/staffAuthority/staffAuthority.vue'
   export default {
     name: 'authorityManage2Page',
     data () {
@@ -28,8 +24,7 @@
     components:{
       topTitle,
       topBar,
-      dropdownStaff,
-      staffAuthority
+      dropdownStaff
     }
   }
 </script>
@@ -37,18 +32,6 @@
 <style scoped>
   html {
     font-size: 100%;
-  }
-  #authorityManage2Page{
-  }
-  #staffAuthorityAll{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    margin: 2rem auto 2rem 5rem;
-    min-height: 50rem;
-  }
-  .marginLeft{
-    margin-left: 3rem;
   }
   .blank{
     height: 2.9rem;
