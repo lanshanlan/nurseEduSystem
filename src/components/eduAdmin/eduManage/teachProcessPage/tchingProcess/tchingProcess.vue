@@ -5,8 +5,6 @@
           <!--年制模块下拉菜单-->
           <!--<span><img :id="yearType.English + 'Arrow'" class="yearsTypeImg" :src="arrowright"></span>-->
           <span :id="yearTypeIndex + 'P'" class="yearsTypeP">{{yearAndCourse.yearType}}年制</span>
-          <span><button id="yearTypeIndex + 'LeadIn'" class="yearButton">导入</button></span>
-          <span><button id="yearTypeIndex + 'LeadOut'" class="yearButton">导出</button></span>
           <span><button id="yearTypeIndex + 'Module'" class="yearButton">下载模板</button></span>
         </div>
 
@@ -16,13 +14,15 @@
               <!--年级教学进程下拉菜单-->
               <span><img :id="yearTypeIndex + 'Arrow' + gradeIndex" class="gradeProcessImg" @click="tableSlideToggle(yearTypeIndex,gradeIndex)" :src="arrowright"></span>
               <span :id="yearTypeIndex + 'P' + gradeIndex" class="gradeProcessP" @click="tableSlideToggle(yearTypeIndex,gradeIndex)">{{grade.gradeName}}级</span>
+              <span><button class="gradeButton">导入</button></span>
+              <span><button class="gradeButton">导出</button></span>
             </div>
 
             <div :id="yearTypeIndex + 'Table' + gradeIndex" style="display: none">
               <table class="normalTable" style="table-layout: fixed">
                 <thead>
                 <tr>
-                  <th width="12%" rowspan="2">课程11类别</th>
+                  <th width="12%" rowspan="2">课程类别</th>
                   <th width="12%" rowspan="2">课程名称</th>
                   <th width="18%" colspan="3">学时</th>
                   <th width="48%" colspan="10">执行学期</th>
@@ -224,6 +224,26 @@
       /*更改button的边框属性*/
     }
     .yearButton:hover{
+      background-color: #00a539;
+    }
+    .gradeButton{
+      float: right;
+      margin-top: 0.3rem;
+      margin-right: 5rem;
+      background-color: #1fa573;
+      font-size: 0.8rem;
+      color:#FFF;
+      text-align: center;
+      border-radius: 0.5rem;
+      padding-bottom: 0.1rem;
+      height: 1.4rem;
+      min-width: 5rem;
+      border-color: white;
+      border-style: solid;
+      border-width: 0.1rem;
+      /*更改button的边框属性*/
+    }
+    .gradeButton:hover{
       background-color: #00a539;
     }
     @media screen and (max-width: 1023px) {

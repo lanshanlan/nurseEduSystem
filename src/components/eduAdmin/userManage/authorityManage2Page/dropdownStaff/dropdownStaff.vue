@@ -2,10 +2,21 @@
     <div  id="staffAuthorityAll">
       <div id="dropdownStaff">
         <div >
+          <p class="topP">职务</p>
           <table class="dropdownStaffTable" id="tchDropdownTable">
-            <tr v-for="role in roleList">
-              <td width="40%" v-text="role.roleName">督导</td>
-              <td width="60%"><img id="tchModifyInfo" src="./images/edit.png"><img id="tchDeleteInfo" src="./images/delete.png"></td>
+            <tr v-for="(role,index) in roleList">
+              <td><input :id="'roleNameInput'+index" class="inputWM" :value="role.roleName" readonly="readonly" style="border: none"@click="checkStaffAuthorityClick(index)"></td>
+              <!--<td width="50%" v-text="role.roleName" @click="checkStaffAuthorityClick(role.roleId)"></td>-->
+              <td>
+                <img :id="'editImg'+index" src="./images/edit.png" @click="editClick(index)">
+                <img :id="'saveImg'+index" src="./images/save.png" style="display: none" @click="saveClick(index)">
+                <img :id="'deleteImg'+index" src="./images/delete.png" @click="deleteClick(index)">
+                <img :id="'restoreImg'+index" src="./images/restore.png" style="display: none" @click="restoreClick(index)">
+              </td>
+            </tr>
+            <tr>
+              <td width="30%"><img :id="AddImg" src="./images/add.png" @click="addClick()"></td>
+              <td width="70%"></td>
             </tr>
           </table>
         </div>
@@ -13,61 +24,189 @@
 
       <div id="staffAuthority" class="marginLeft">
         <div>
-          <p class="topP" id="topStaff">督导</p>
+          <p class="topP" id="topStaff">{{roleNameEle}}</p>
           <input type="checkbox" id="all" @click="allCheck()" style="margin-left: 3rem">
           <label for="all">全选</label>
           <ul>
-            <li  v-for="tchAuthority in tchAuthoritys">
-              <input type="checkbox" :id="tchAuthority.value" :value="tchAuthority.value" :checked="tchAuthority.checked" v-model="tchAuthorityNames">
-              <label :for="tchAuthority.value">{{tchAuthority.output}}</label>
+            <li  v-for="authorityEle in authorityList">
+              <input type="checkbox" :id="authorityEle.authorityId" :value="authorityEle.authorityId" v-model="authorityIdList">
+              <label :for="authorityEle.authorityId">{{authorityEle.authorityName}}</label>
             </li>
           </ul>
         </div>
         <div id="buttonDiv">
-          <span><button id="saveInf" class="bottomButton am-btn am-btn-success am-radius">保存</button></span>
-          <span><button id="cancel" class="bottomButton am-btn am-btn-success am-radius">取消</button></span>
+          <span><button id="saveInf" class="bottomButton am-btn am-btn-success am-radius" @click="saveAuthorityClick()">保存</button></span>
+          <span><button id="cancel" class="bottomButton am-btn am-btn-success am-radius" @click="restoreAuthorityClick()">取消</button></span>
         </div>
       </div>
     </div>
 </template>
 
 <script>
-  import arrowright from "./images/arrowright.png"
-  import arrowdown from "./images/arrowdown.png"
     export default {
         name: '',
         data () {
             return {
+              roleIdEle:'',
+              roleNameEle:'请选择职务',
+              newRoleId:'',
               roleList:[
                 {roleId:'12345',roleName:'教师'},
                 {roleId:'12346',roleName:'督导'},
                 {roleId:'12347',roleName:'教研组组长'}
               ],
-              tchAuthorityNames:[],
-              tchAuthoritys:[
-                {value:'tch1',checked:false,output:'查看个人成绩'},
-                {value:'tch2',checked:false,output:'查看全班成绩'},
-                {value:'tch3',checked:true,output:'管理成绩（导入、更新、修改、提交成绩）'},
-                {value:'tch4',checked:true,output:'管理教师个人信息'},
-                {value:'tch5',checked:true,output:'班主任信息管理'},
-                {value:'tch5',checked:true,output:'班主任信息管理'},
-                {value:'tch6',checked:true,output:'班级信息管理'}
+              authorityIdList:[],
+              authorityList:[
+                {authorityId:'1',authorityName:'查看个人成绩'},
+                {authorityId:'2',authorityName:'查看全班成绩'},
+                {authorityId:'3',authorityName:'管理成绩（导入、更新、修改、提交成绩）'},
+                {authorityId:'4',authorityName:'管理教师个人信息'},
+                {authorityId:'5',authorityName:'班主任信息管理'},
+                {authorityId:'6',authorityName:'班主任信息修改'},
+                {authorityId:'7',authorityName:'班级信息管理'}
               ]
             }
         },
+      beforeMount:function() {
+        this.$http.post('./getAllRoleAuthority',{},{
+          "Content-Type":"application/json"
+        }).then(function (response) {
+          console.log(response);
+          this.roleList = response.body.getAllRoleAuthorityList.roleList;
+          this.authorityList = response.body.getAllRoleAuthorityList.authorityList;
+        },function(error){
+          console.log("获取error");
+        });
+      },
+
       methods:{
+        editClick: function(index){
+          var roleNameInput = document.getElementById("roleNameInput"+index);
+          var editImg = document.getElementById("editImg"+index);
+          var saveImg = document.getElementById("saveImg"+index);
+          var deleteImg = document.getElementById("deleteImg"+index);
+          var restoreImg = document.getElementById("restoreImg"+index);
+          roleNameInput.readOnly = false;
+          roleNameInput.style.border = "0.1rem solid #d4d4d9";
+          editImg.style.display = "none";
+          saveImg.style.display = "inline";
+          deleteImg.style.display = "none";
+          restoreImg.style.display = "inline";
+        },
+        saveClick: function(index){
+          var roleNameInput = document.getElementById("roleNameInput"+index);
+          var editImg = document.getElementById("editImg"+index);
+          var saveImg = document.getElementById("saveImg"+index);
+          var deleteImg = document.getElementById("deleteImg"+index);
+          var restoreImg = document.getElementById("restoreImg"+index);
+          this.$http.post('./saveNewRole',{
+            "roleId":this.roleIdEle,
+            "roleName":roleNameInput.value
+          },{
+            "Content-Type":"application/json"
+          }).then(function (response) {
+            console.log(response);
+          },function(error){
+            console.log("获取error");
+          });
+          roleNameInput.readOnly = true;
+//          true或false不可用引号
+          roleNameInput.style.border = "none";
+          this.roleList[index].roleName = roleNameInput.value;
+          editImg.style.display = "inline";
+          saveImg.style.display = "none";
+          deleteImg.style.display = "inline";
+          restoreImg.style.display = "none";
+        },
+        restoreClick: function(index){
+          var roleNameInput = document.getElementById("roleNameInput"+index);
+          var editImg = document.getElementById("editImg"+index);
+          var saveImg = document.getElementById("saveImg"+index);
+          var deleteImg = document.getElementById("deleteImg"+index);
+          var restoreImg = document.getElementById("restoreImg"+index);
+          roleNameInput.readOnly = true;
+          roleNameInput.style.border = "none";
+          roleNameInput.value = this.roleList[index].roleName;
+          editImg.style.display = "inline";
+          saveImg.style.display = "none";
+          deleteImg.style.display = "inline";
+          restoreImg.style.display = "none";
+        },
+        deleteClick: function(index){
+          this.$http.post('./deleteRole',{
+            "roleId":this.roleIdEle
+          },{
+            "Content-Type":"application/json"
+          }).then(function (response) {
+            console.log(response);
+          },function(error){
+            console.log("获取error");
+          });
+          this.roleList.splice(index,1);
+        },
+        addClick: function(){
+          this.$http.post('./addNewRole',{},{
+            "Content-Type":"application/json"
+          }).then(function (response) {
+            console.log(response);
+            this.newRoleId = response.body.roleId;
+          },function(error){
+            console.log("获取error");
+          });
+          this.roleList.push(
+            {roleId:"this.newRoleId",roleName:""}
+          );
+        },
         allCheck: function(){
-          if(this.tchAuthorityNames.length===this.tchAuthoritys.length){
-            this.tchAuthorityNames=[];
+          if(this.authorityIdList.length===this.authorityList.length){
+            this.authorityIdList=[];
           }
           else {
-            this.tchAuthorityNames=[];
-            for(var i=0;i<this.tchAuthoritys.length;i++){
-              this.tchAuthorityNames.push(this.tchAuthoritys[i].value);
+            this.authorityIdList=[];
+            for(var i=0;i<this.authorityList.length;i++){
+              this.authorityIdList.push(this.authorityList[i].authorityId);
             }
           }
-        }
+        },
 //        用于多选框的全选或全不选，方法是对数组tchAuthorityNames进行操作，此数组用v-model绑定到了多选框上
+        checkStaffAuthorityClick: function(index){
+          this.$http.post('./getRoleAuthority',{
+            "roleId":this.roleList[index].roleId
+          },{
+            "Content-Type":"application/json"
+          }).then(function (response) {
+            console.log(response);
+            this.authorityIdList = response.body.authorityIdList;
+          },function(error){
+            console.log("获取error");
+          });
+          this.roleIdEle = this.roleList[index].roleId;
+          this.roleNameEle = this.roleList[index].roleName;
+        },
+        saveAuthorityClick: function(){
+          this.$http.post('./saveNewRole',{
+            "roleId":this.roleIdEle,
+            "authorityIdList":this.authorityIdList
+          },{
+            "Content-Type":"application/json"
+          }).then(function (response) {
+            console.log(response);
+          },function(error){
+            console.log("获取error");
+          });
+        },
+        restoreAuthorityClick: function(){
+          this.$http.post('./getRoleAuthority',{
+            "roleId":this.roleIdEle
+          },{
+            "Content-Type":"application/json"
+          }).then(function (response) {
+            console.log(response);
+            this.authorityIdList = response.body.authorityIdList;
+          },function(error){
+            console.log("获取error");
+          });
+        }
       }
     }
 </script>
@@ -97,7 +236,6 @@
     img{
       width: 2rem;
       height: 2rem;
-      margin-left: 1rem;
       border: thin solid white;
     }
     img:hover{
@@ -105,10 +243,8 @@
       border: thin solid grey;
     }
     .dropdownStaffTable{
-      position: relative;
       width: 100%;
-      height:2rem;
-      border: 1px solid #d4d4d9;
+      border-bottom: 1px solid #d4d4d9;
       border-collapse: collapse;
       table-layout: fixed;
       text-align: center;
@@ -123,6 +259,15 @@
       margin-top: 0;
       padding: 1rem 3rem 1rem;
       border-bottom: 2px solid #158064;
+    }
+    .inputWM{
+      width:80%;
+      text-align: center;
+      cursor: pointer;
+      color: #158064;
+    }
+    .inputWM:hover{
+      color: black;
     }
     ul li{
       float: left;

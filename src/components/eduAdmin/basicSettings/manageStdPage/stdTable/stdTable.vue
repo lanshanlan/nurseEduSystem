@@ -109,19 +109,12 @@
             }
         },
       beforeMount:function() {
-        this.$http.post('../studentManageJson',{},{
+        this.$http.post('./studentManage/getGradeAndClassList',{},{
           "Content-Type":"application/json"
         }).then(function (response) {
           console.log(response);
-          this.studentSimpleInfoList = response.body.studentSimpleInfoList;
-        },function(error){
-          console.log("获取error");
-        });
-        this.$http.post('../studentinfoKeyJson',{},{
-          "Content-Type":"application/json"
-        }).then(function (response) {
-          console.log(response);
-          this.yearAndClassList = response.body.yearAndClassList;
+          this.yearAndClassList = response.body.getGradeAndClassObj.yearAndClassList;
+          this.studentSimpleInfoList = response.body.getGradeAndClassObj.studentSimpleInfoList;
         },function(error){
           console.log("获取error");
         });
@@ -148,7 +141,7 @@
           }
         },
         checkStdInfoClick: function(){
-          this.$http.post('../checkStudentInfoJson',{
+          this.$http.post('./studentManage/findStudentInfo',{
             "studentinfoKey":studentinfoKey
           },{
             "Content-Type":"application/json"

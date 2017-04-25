@@ -22,14 +22,14 @@
         </tr>
         </thead>
         <tbody>
-        <tr v-for="studentScore in studentScores">
+        <tr v-for="studentScore in studentScoreList">
           <td v-text="studentScore.term"></td>
-          <td v-text="studentScore.courseCode"></td>
+          <td v-text="studentScore.courseId"></td>
           <td v-text="studentScore.courseName"></td>
-          <td v-text="studentScore.courseCategory"></td>
-          <td v-text="studentScore.generalScore"></td>
-          <td v-text="studentScore.makeupScore"></td>
-          <td v-text="studentScore.finalScore"></td>
+          <td v-text="studentScore.courseType"></td>
+          <td v-text="studentScore.grade"></td>
+          <td v-text="studentScore.makeUpGrade"></td>
+          <td v-text="studentScore.finalGrade"></td>
         </tr>
         </tbody>
       </table>
@@ -53,19 +53,19 @@
           '大四:第一学期',
           '大四:第二学期'
         ],
-        studentScores:[
-          {term:'2016-2017.2',courseCode:'K2210710',courseName:'企业合作课程',courseCategory:'实践类核心课程',generalScore:'80',makeupScore:'--',finalScore:'80'},
-          {term:'2016-2017.2',courseCode:'K2210710',courseName:'企业合作课程',courseCategory:'实践类核心课程',generalScore:'80',makeupScore:'--',finalScore:'80'},
-          {term:'2016-2017.2',courseCode:'K2210710',courseName:'企业合作课程',courseCategory:'实践类核心课程',generalScore:'80',makeupScore:'--',finalScore:'80'}
+        studentScoreList:[
+          {term:'2016-2017.2',courseId:'K2210710',courseName:'企业合作课程',courseType:'实践类核心课程',grade:'80',makeUpGrade:'--',finalGrade:'80'},
+          {term:'2016-2017.2',courseId:'K2210710',courseName:'企业合作课程',courseType:'实践类核心课程',grade:'80',makeUpGrade:'--',finalGrade:'80'},
+          {term:'2016-2017.2',courseId:'K2210710',courseName:'企业合作课程',courseType:'实践类核心课程',grade:'80',makeUpGrade:'--',finalGrade:'80'}
         ]
       }
     },
     beforeMount:function() {
-      this.$http.post('../studentInquireGradeJson',{},{
+      this.$http.post('./studentFindScore',{},{
         "Content-Type":"application/json"
       }).then(function (response) {
         console.log(response);
-        this.studentScores = response.body.studentScores;
+        this.studentScoreList = response.body.studentScoreList;
         this.terms = response.body.terms;
       },function(error){
         console.log("获取error");
@@ -79,17 +79,17 @@
           "Content-Type":"application/json"
         }).then(function (response) {
           console.log(response);
-          this.studentScores = response.body.studentScores;
+          this.studentScoreList = response.body.studentScoreList;
         },function(error){
           console.log("获取error");
         });
       },
       allTerm: function(){
-        this.$http.post('../allTermJson',{},{
+        this.$http.post('./allTermJson',{},{
           "Content-Type":"application/json"
         }).then(function (response) {
           console.log(response);
-          this.studentScores = response.body.studentScores;
+          this.studentScoreList = response.body.studentScoreList;
         },function(error){
           console.log("获取error");
         });

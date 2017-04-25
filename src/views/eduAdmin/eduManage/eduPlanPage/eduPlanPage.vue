@@ -4,7 +4,7 @@
       <topTitle></topTitle>
       <topBar></topBar>
       <div class="blank"></div>
-      <yearPlan></yearPlan>
+      <teachingPlan></teachingPlan>
     </div>
 </template>
 
@@ -12,7 +12,7 @@
   /*import引入该page页面的单文件组件*/
   import topTitle from '../../../../components/public/topTitle/topTitle.vue'
   import topBar from '../../../../components/eduAdmin/eduManage/eduPlanPage/topBar/topBar.vue'
-  import yearPlan from '../../../../components/eduAdmin/eduManage/eduPlanPage/yearPlan/yearPlan.vue'
+  import teachingPlan from '../../../../components/eduAdmin/eduManage/eduPlanPage/teachingPlan/teachingPlan.vue'
   export default {
     name: 'eduPlanPage',
     data () {
@@ -24,7 +24,7 @@
     components: {
       topTitle,
       topBar,
-      yearPlan
+      teachingPlan
     }
   }
 </script>

@@ -66,7 +66,7 @@
             }
         },
       beforeMount:function() {
-        this.$http.post('../teacherManageJson',{},{
+        this.$http.post('./teacherManage',{},{
           "Content-Type":"application/json"
         }).then(function (response) {
           console.log(response);
@@ -77,7 +77,7 @@
       },
       methods:{
         checkTchInfoClick:function() {
-          this.$http.post('../checkTeacherInfoJson',{
+          this.$http.post('./teacherManage/findTeacherInfo',{
             "teacherinfoKey":this.teacherinfoKey
           },{
             "Content-Type":"application/json"
