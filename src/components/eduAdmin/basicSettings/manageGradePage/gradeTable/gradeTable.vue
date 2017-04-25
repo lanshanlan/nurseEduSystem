@@ -126,7 +126,7 @@
       }
     },
     beforeMount:function() {
-      this.$http.post('../gradeManageJson',{},{
+      this.$http.post('./gradeManage/getGradeInfo',{},{
         "Content-Type":"application/json"
       }).then(function (response) {
         console.log(response);
@@ -249,7 +249,7 @@
 //          从data中的课程信息数组中删除
 //          预留功能,将data提交到后端,实现删除数据,处理回调
         if(confirm("您确定删除该课程吗？")){
-          this.$http.post('../deleteGradeInfoJson',{
+          this.$http.post('./gradeManage/deleteGrade',{
             "yearType":yearType,
             "gradeName":grades[index].gradeName
           },{
@@ -268,7 +268,7 @@
         );
       },
       checkGradeInfoClick: function(yearType,gradeName){
-        this.$http.post('../checkGradeInfoJson',{
+        this.$http.post('./gradeManage/getGradeDetail',{
           "yearType":yearType,
           "gradeName":gradeName
         },{
@@ -311,7 +311,7 @@
         var deleteImg = document.getElementById("deleteImg"+index);
         var restoreImg = document.getElementById("restoreImg"+index);
         var i = null;
-        this.$http.post('../saveClassInfoJson',{
+        this.$http.post('./gradeManage/editClassInfo',{
           "gradeName":input[0].value ,
           "specialityName":input[1].value ,
           "classId":input[2].value ,
@@ -367,7 +367,7 @@
         restoreImg.style.display = "none";
       },
       deleteClick: function(index){
-        this.$http.post('../deleteClassInfoJson',{
+        this.$http.post('./gradeManage/deleteClassInfo',{
           "classId":this.classinfoStrList[index].classinfoStrList
         },{
           "Content-Type":"application/json"

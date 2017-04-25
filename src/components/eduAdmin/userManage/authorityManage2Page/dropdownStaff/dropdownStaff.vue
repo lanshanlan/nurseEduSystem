@@ -55,7 +55,7 @@
                 {roleId:'12346',roleName:'督导'},
                 {roleId:'12347',roleName:'教研组组长'}
               ],
-              authorityIdList:[],
+              authorityIdList:['1','4'],
               authorityList:[
                 {authorityId:'1',authorityName:'查看个人成绩'},
                 {authorityId:'2',authorityName:'查看全班成绩'},
@@ -100,7 +100,7 @@
           var deleteImg = document.getElementById("deleteImg"+index);
           var restoreImg = document.getElementById("restoreImg"+index);
           this.$http.post('./saveNewRole',{
-            "roleId":this.roleIdEle,
+            "roleId":this.roleList[index].roleId,
             "roleName":roleNameInput.value
           },{
             "Content-Type":"application/json"
@@ -134,7 +134,7 @@
         },
         deleteClick: function(index){
           this.$http.post('./deleteRole',{
-            "roleId":this.roleIdEle
+            "roleId":this.roleList[index].roleId
           },{
             "Content-Type":"application/json"
           }).then(function (response) {
@@ -149,12 +149,12 @@
             "Content-Type":"application/json"
           }).then(function (response) {
             console.log(response);
-            this.newRoleId = response.body.roleId;
+            this.newRoleId = response.body.addNewRoleList.roleId;
           },function(error){
             console.log("获取error");
           });
           this.roleList.push(
-            {roleId:"this.newRoleId",roleName:""}
+            {roleId:this.newRoleId,roleName:this.roleNameEle}
           );
         },
         allCheck: function(){
@@ -176,7 +176,7 @@
             "Content-Type":"application/json"
           }).then(function (response) {
             console.log(response);
-            this.authorityIdList = response.body.authorityIdList;
+            this.authorityIdList = response.body.getRoleAuthorityList.authorityIdList;
           },function(error){
             console.log("获取error");
           });
@@ -184,7 +184,7 @@
           this.roleNameEle = this.roleList[index].roleName;
         },
         saveAuthorityClick: function(){
-          this.$http.post('./saveNewRole',{
+          this.$http.post('./setRoleAuthority',{
             "roleId":this.roleIdEle,
             "authorityIdList":this.authorityIdList
           },{
@@ -202,7 +202,7 @@
             "Content-Type":"application/json"
           }).then(function (response) {
             console.log(response);
-            this.authorityIdList = response.body.authorityIdList;
+            this.authorityIdList = response.body.getRoleAuthorityList.authorityIdList;
           },function(error){
             console.log("获取error");
           });
@@ -236,6 +236,7 @@
     img{
       width: 2rem;
       height: 2rem;
+      margin-left: 1rem;
       border: thin solid white;
     }
     img:hover{
@@ -244,6 +245,7 @@
     }
     .dropdownStaffTable{
       width: 100%;
+      height:2rem;
       border-bottom: 1px solid #d4d4d9;
       border-collapse: collapse;
       table-layout: fixed;

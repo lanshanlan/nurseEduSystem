@@ -173,7 +173,7 @@
           var saveImg = document.getElementById("saveImg"+index);
           var deleteImg = document.getElementById("deleteImg"+index);
           var restoreImg = document.getElementById("restoreImg"+index);
-          this.$http.post('../saveStudentInfoJson',{
+          this.$http.post('./studentManage/editStudentSimpleInfo',{
             "studentId":input[0].value,
             "className":input[7].value
           },{
@@ -208,7 +208,7 @@
           restoreImg.style.display = "none";
         },
         deleteClick: function(index){
-          this.$http.post('../deleteStudentInfoJson',{
+          this.$http.post('./studentManage/deleteStudentInfo',{
             "studentId":this.studentSimpleInfoList[index].studentId
           },{
             "Content-Type":"application/json"

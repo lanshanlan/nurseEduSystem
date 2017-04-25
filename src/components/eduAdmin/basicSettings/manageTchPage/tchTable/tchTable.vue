@@ -66,7 +66,7 @@
             }
         },
       beforeMount:function() {
-        this.$http.post('./teacherManage',{},{
+        this.$http.post('./teacherManage/getTeacherInfo',{},{
           "Content-Type":"application/json"
         }).then(function (response) {
           console.log(response);
@@ -111,7 +111,7 @@
           var saveImg = document.getElementById("saveImg"+index);
           var deleteImg = document.getElementById("deleteImg"+index);
           var restoreImg = document.getElementById("restoreImg"+index);
-          this.$http.post('../saveTeacherInfoJson',{
+          this.$http.post('./teacherManage/editTeacherInfo',{
             "teacherId":input[0].value,
             "hireCampus":input[5].value,
             "currentWorkTitle":input[6].value,
@@ -158,7 +158,7 @@
           restoreImg.style.display = "none";
         },
         deleteClick: function(index){
-          this.$http.post('../deleteTeacherInfoJson',{
+          this.$http.post('./teacherManage/deleteTeacherInfo',{
             "teacherId":this.teacherSimpleInfoList[index].teacherId
           },{
             "Content-Type":"application/json"

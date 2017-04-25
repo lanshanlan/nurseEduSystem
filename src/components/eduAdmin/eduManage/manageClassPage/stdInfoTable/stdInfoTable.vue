@@ -64,7 +64,7 @@
             }
         },
       beforeMount:function() {
-        this.$http.post('../classManageJson',{},{
+        this.$http.post('./stateManage/getAllStateChangeInfo',{},{
           "Content-Type":"application/json"
         }).then(function (response) {
           console.log(response);
@@ -75,7 +75,9 @@
       },
       methods:{
         searchChangeInfo: function(){
-          this.$http.post('../searchChangeInfoJson',{"statechangeKey":this.statechangeKey},{
+          this.$http.post('./stateManage/findStateChangeInfo',{
+            "statechangeKey":this.statechangeKey
+          },{
             "Content-Type":"application/json"
           }).then(function (response) {
             console.log(response);
