@@ -150,12 +150,12 @@
           }).then(function (response) {
             console.log(response);
             this.newRoleId = response.body.addNewRoleList.roleId;
+            this.roleList.push(
+              {roleId:this.newRoleId,roleName:this.roleNameEle}
+            );
           },function(error){
             console.log("获取error");
           });
-          this.roleList.push(
-            {roleId:this.newRoleId,roleName:this.roleNameEle}
-          );
         },
         allCheck: function(){
           if(this.authorityIdList.length===this.authorityList.length){

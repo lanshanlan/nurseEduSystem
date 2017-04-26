@@ -1,7 +1,7 @@
 <template>
   <div>
     <div id="noSupervisorDiv" style="display: inline">
-      <div id="tchDropdown" style="height: 5rem;">
+      <div id="tchDropdown" style="height: 5rem;margin: 0.6rem 5rem;background-color: white;">
         <!--教师选择下拉列表-->
         <span><input type="text" id="teacherName" class="inputWM" placeholder="请输入任课教师姓名" v-model="noSupervisorinfoKey.teacherName"></span>
         <span><input type="text" id="courseName" class="inputWM" placeholder="请输入课程名称" v-model="noSupervisorinfoKey.courseName"></span>
@@ -22,30 +22,35 @@
           </tr>
           </thead>
           <tbody>
-          <tr v-for=" courseInfo in courseInfoList" v-if="courseInfo.setted === '0'">
-            <td @click="setSupervisorClick(courseInfo.courseId,courseInfo.courseName)"  class="setSupervisor"><u>设置督导</u></td>
-            <td v-text="courseInfo.className"></td>
-            <td v-text="courseInfo.courseId"></td>
-            <td v-text="courseInfo.courseName"></td>
-            <td v-text="courseInfo.teacherName"></td>
+          <tr v-for=" notSettedSupervisorCourseInfo in notSettedSupervisorCourseInfoList">
+            <td @click="setSupervisorClick(notSettedSupervisorCourseInfo.courseId,notSettedSupervisorCourseInfo.courseName)"  class="setSupervisor"><u>设置督导</u></td>
+            <td v-text="notSettedSupervisorCourseInfo.className"></td>
+            <td v-text="notSettedSupervisorCourseInfo.courseId"></td>
+            <td v-text="notSettedSupervisorCourseInfo.courseName"></td>
+            <td v-text="notSettedSupervisorCourseInfo.teacherName"></td>
           </tr>
           </tbody>
         </table>
+        <div class="buttonDiv">
+          <span><button id="goTo" class="bottomButton am-btn am-btn-success am-radius" @click="goToClick()">查看已设置督导课程</button></span>
+        </div>
       </div>
     </div>
     <div id="supervisorDiv" style="display: none">
-      <div id="setSupervisorDropdown" style="height: 5rem;">
-        <span><p>课程名称:    {{setCourseName}}</p></span>
-        <div>
-          <span id="setSupSpan">设置督导员:</span>
-          <span><input type="text" id="supervisorName" class="inputWM" placeholder="请输入督导员姓名" v-model="supervisorinfoKey.supervisorName"></span>
-          <!--督导时间选择下拉列表-->
-          <select class="selectWM" v-model="supervisorinfoKey.time">
-            <option value="0">选择时间</option>
-            <option v-for="time in times" :value="time">{{time}}</option>
-          </select>
-          <span><button id="save" class="am-btn am-btn-success am-radius buttonWM" @click="saveSupervisorInfoClick()">保存</button></span>
-          <span><button id="cancel" class="am-btn am-btn-success am-radius buttonWM" @click="restoreSupervisorInfoClick()">取消</button></span>
+      <div id="setSupervisorDropdown">
+        <div style="height: 5rem;margin: 0.6rem 5rem;background-color: white;">
+          <span><p>课程名称:    {{setCourseName}}</p></span>
+          <div>
+            <span id="setSupSpan">设置督导员:</span>
+            <span><input type="text" id="supervisorName" class="inputWM" placeholder="请输入督导员姓名" v-model="supervisorinfoKey.supervisorName"></span>
+            <!--督导时间选择下拉列表-->
+            <select class="selectWM" v-model="supervisorinfoKey.time">
+              <option value="0">选择时间</option>
+              <option v-for="time in times" :value="time">{{time}}</option>
+            </select>
+            <span><button id="save" class="am-btn am-btn-success am-radius buttonWM" @click="saveSupervisorInfoClick()">保存</button></span>
+            <span><button id="cancel" class="am-btn am-btn-success am-radius buttonWM" @click="restoreSupervisorInfoClick()">取消</button></span>
+          </div>
         </div>
       </div>
       <div style="padding: 0.6rem 5rem;background-color: #f3f3f3">
@@ -65,19 +70,19 @@
             </tr>
             </thead>
             <tbody>
-            <tr v-for=" courseInfo in courseInfoList" v-if="courseInfo.setted === '1'">
-              <td v-if="courseInfo.status === '1'">已读</td>
-              <td v-if="courseInfo.status === '0'"><u>未读</u></td>
-              <td v-text="courseInfo.supervisorName"></td>
-              <td v-text="courseInfo.className"></td>
-              <td v-text="courseInfo.courseId"></td>
-              <td v-text="courseInfo.courseName"></td>
-              <td v-text="courseInfo.teacherName"></td>
+            <tr v-for=" settedSupervisorCourseInfo in settedSupervisorCourseInfoList">
+              <td v-if="settedSupervisorCourseInfo.status === '1'">已读</td>
+              <td v-if="settedSupervisorCourseInfo.status === '0'"><u>未读</u></td>
+              <td v-text="settedSupervisorCourseInfo.supervisorName"></td>
+              <td v-text="settedSupervisorCourseInfo.className"></td>
+              <td v-text="settedSupervisorCourseInfo.courseId"></td>
+              <td v-text="settedSupervisorCourseInfo.courseName"></td>
+              <td v-text="settedSupervisorCourseInfo.teacherName"></td>
               <td><button class="am-btn am-btn-success am-radius">查看</button></td>
             </tr>
             </tbody>
           </table>
-          <div id="buttonDiv">
+          <div class="buttonDiv">
             <span><button id="goBack" class="bottomButton am-btn am-btn-success am-radius" @click="goBackClick()">返回</button></span>
           </div>
         </div>
@@ -100,6 +105,7 @@
                 supervisorName:'',
                 time:'0'
               },
+              setMsg:'0',
               setCourseName:'请选择',
               times:[
                 '1-5周',
@@ -107,12 +113,14 @@
                 '7-15周',
                 '16-20周'
               ],
-                courseInfoList:[
-                  {setted:'0',status:'1',supervisorName:'',className:'对口高职 2015 护理1班',courseName:'护理管理学',courseId:'10300',teacherName:'季军'},
-                  {setted:'0',status:'0',supervisorName:'',className:'对口高职 2015 护理2班',courseName:'护理管理学',courseId:'10300',teacherName:'季军'},
-                  {setted:'1',status:'1',supervisorName:'李晓',className:'普通高中 2015 护理1班',courseName:'护理管理学',courseId:'10301',teacherName:'何平'},
-                  {setted:'1',status:'0',supervisorName:'张玲',className:'普通高中 2015 护理2班',courseName:'护理管理学',courseId:'10301',teacherName:'何平'}
-                ]
+              notSettedSupervisorCourseInfoList:[
+                  {status:'1',supervisorName:'',className:'对口高职 2015 护理1班',courseName:'护理管理学',courseId:'10300',teacherName:'季军'},
+                  {status:'0',supervisorName:'',className:'对口高职 2015 护理2班',courseName:'护理管理学',courseId:'10300',teacherName:'季军'}
+                ],
+              settedSupervisorCourseInfoList:[
+                {status:'1',supervisorName:'李晓',className:'普通高中 2015 护理1班',courseName:'护理管理学',courseId:'10301',teacherName:'何平'},
+                {status:'0',supervisorName:'张玲',className:'普通高中 2015 护理2班',courseName:'护理管理学',courseId:'10301',teacherName:'何平'}
+              ]
             }
         },
       beforeMount:function() {
@@ -120,20 +128,22 @@
           "Content-Type":"application/json"
         }).then(function (response) {
           console.log(response);
-          this.courseInfoList = response.body.courseInfoList;
+          this.notSettedSupervisorCourseInfoList = response.body.supervisorManage.notSettedSupervisorCourseInfoList;
+          this.settedSupervisorCourseInfoList = response.body.supervisorManage.settedSupervisorCourseInfoList;
         },function(error){
           console.log("获取error");
         });
       },
       methods:{
         checkNoSupervisorInfoClick: function(){
-          this.$http.post('../checkNoSupervisorInfoJson',{
+          this.$http.post('./checkNoSupervisorInfoJson',{
             "noSupervisorinfoKey":this.noSupervisorinfoKey
           },{
             "Content-Type":"application/json"
           }).then(function (response) {
             console.log(response);
-            this.courseInfoList = response.body.courseInfoList;
+            this.notSettedSupervisorCourseInfoList = response.body.checkNoSupervisorInfoList.notSettedSupervisorCourseInfoList;
+            this.setMsg = response.body.checkNoSupervisorInfoList.setMsg
           },function(error){
             console.log("获取error");
           });
@@ -142,28 +152,35 @@
           var noSupervisorDiv = document.getElementById("noSupervisorDiv");
           var supervisorDiv = document.getElementById("supervisorDiv");
           this.setCourseName = courseName;
-          this.$http.post('../setSupervisorJson',{
+          this.$http.post('./setSupervisorJson',{
             "courseId":courseId
           },{
             "Content-Type":"application/json"
           }).then(function (response) {
             console.log(response);
-            this.courseInfoList = response.body.setSupervisor.courseInfoList;
             this.times = response.body.setSupervisor.times;
           },function(error){
             console.log("获取error");
           });
-          noSupervisorDiv.style.display = "none";
           supervisorDiv.style.display = "inline";
+          noSupervisorDiv.style.display = "none";
+        },
+        goToClick:function(){
+          var noSupervisorDiv = document.getElementById("noSupervisorDiv");
+          var supervisorDiv = document.getElementById("supervisorDiv");
+          var setSupervisorDropdown = document.getElementById("setSupervisorDropdown");
+          supervisorDiv.style.display = "inline";
+          noSupervisorDiv.style.display = "none";
+          setSupervisorDropdown.style.display = "none";
         },
         saveSupervisorInfoClick:function(){
-          this.$http.post('../saveSupervisorInfoJson',{
+          this.$http.post('./saveSupervisorInfoJson',{
             "supervisorinfoKey":this.supervisorinfoKey
           },{
             "Content-Type":"application/json"
           }).then(function (response) {
             console.log(response);
-            this.courseInfoList = response.body.courseInfoList;
+            this.settedSupervisorCourseInfoList = response.body.settedSupervisorCourseInfoList;
           },function(error){
             console.log("获取error");
           });
@@ -173,8 +190,20 @@
           this.supervisorinfoKey.time = '0';
         },
         goBackClick:function(){
+          var noSupervisorDiv = document.getElementById("noSupervisorDiv");
+          var supervisorDiv = document.getElementById("supervisorDiv");
+          var setSupervisorDropdown = document.getElementById("setSupervisorDropdown");
+          this.$http.post('./goBackNotSettedSupervisorInfoJson',{},{
+            "Content-Type":"application/json"
+          }).then(function (response) {
+            console.log(response);
+            this.notSettedSupervisorCourseInfoList = response.body.notSettedSupervisorCourseInfoList;
+          },function(error){
+            console.log("获取error");
+          });
           noSupervisorDiv.style.display = "inline";
           supervisorDiv.style.display = "none";
+          setSupervisorDropdown.style.display = "inline";
         }
       }
     }
@@ -183,10 +212,6 @@
 <style scoped>
     html {
         font-size: 62.5%;
-    }
-    #tchDropdown,#setSupervisorDropdown{
-      margin: 0.6rem 5rem;
-      background-color: white;
     }
     .selectWM{
       width: 8rem;
@@ -211,7 +236,7 @@
       margin-top: 1rem;
       margin-right: 1.4rem;
     }
-    #buttonDiv{
+    .buttonDiv{
       text-align: center;
     }
     @media screen and (max-width: 1023px) {

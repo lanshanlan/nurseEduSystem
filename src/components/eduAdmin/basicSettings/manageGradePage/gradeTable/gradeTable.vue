@@ -29,7 +29,7 @@
           <tr v-for="(threeGrade,index) in threeGrades" :id="'threeInputTr'+index">
             <td><input class="gradeInput" type="text" :value="threeGrade.gradeName" readonly="readonly"></td>
             <td><input class="gradeInput" type="text" :value="threeGrade.studentNum" readonly="readonly"></td>
-            <td class="checkGradeInfo" @click="checkGradeInfoClick(firstYearType,threeGrade.gradeName)"><u>查看年级信息</u></td>
+            <td class="checkGradeInfo" @click="checkGradeInfoClick(secondYearType,threeGrade.gradeName)"><u>查看年级信息</u></td>
             <td>
               <img :id="'threeEditImg'+index" src="./images/edit.png" @click="editGradeClick('three',index)">
               <img :id="'threeSaveImg'+index" src="./images/save.png" style="display: none" @click="saveGradeClick(secondYearType,'three',index)">

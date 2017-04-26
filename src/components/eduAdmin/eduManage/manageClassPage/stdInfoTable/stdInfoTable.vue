@@ -32,7 +32,11 @@
           <td v-text="statechangeinfoStr.className"></td>
           <td v-text="statechangeinfoStr.studentId"></td>
           <td v-text="statechangeinfoStr.studentName"></td>
-          <td v-text="statechangeinfoStr.changeType"></td>
+          <td v-if="statechangeinfoStr.changeType === '1'">在读</td>
+          <td v-else-if="statechangeinfoStr.changeType === '2'">停课</td>
+          <td v-else-if="statechangeinfoStr.changeType === '3'">休学</td>
+          <td v-else-if="statechangeinfoStr.changeType === '4'">退学</td>
+          <td v-else>未知</td>
           <td v-text="statechangeinfoStr.changeReason"></td>
           <td v-text="statechangeinfoStr.changeDate"></td>
         </tr>
@@ -57,9 +61,9 @@
                 studentName:''
               },
               statechangeinfoStrList:[
-                  {schoolYearType:'3',specialityName:'护理',className:'护理3班',studentId:'1530310503',studentName:'谢兴月',changeType:'请假',changeReason:'请假一学期',changeDate:'2016.03.01'},
-                  {schoolYearType:'5',specialityName:'护理',className:'护理4班',studentId:'1530310501',studentName:'张安',changeType:'转专业',changeReason:'希望转专业',changeDate:'2016年.03.02'},
-                  {schoolYearType:'3',specialityName:'护理',className:'护理1班',studentId:'1530310502',studentName:'吴晴',changeType:'挂科',changeReason:'挂科多门',changeDate:'2015.11.23'}
+                  {schoolYearType:'3',specialityName:'护理',className:'护理3班',studentId:'1530310503',studentName:'谢兴月',changeType:'1',changeReason:'请假一学期',changeDate:'2016.03.01'},
+                  {schoolYearType:'5',specialityName:'护理',className:'护理4班',studentId:'1530310501',studentName:'张安',changeType:'5',changeReason:'希望转专业',changeDate:'2016年.03.02'},
+                  {schoolYearType:'3',specialityName:'护理',className:'护理1班',studentId:'1530310502',studentName:'吴晴',changeType:'3',changeReason:'挂科多门',changeDate:'2015.11.23'}
                 ]
             }
         },
