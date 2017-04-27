@@ -14,6 +14,7 @@ import eduAdminSupervisorManage from '../views/eduAdmin/eduManage/supervisorMana
 import eduAdminAuthorityManage2 from '../views/eduAdmin/userManage/authorityManage2Page/authorityManage2Page.vue'
 import eduAdminManageGrade from '../views/eduAdmin/basicSettings/manageGradePage/manageGradePage.vue'
 import startTest from '../views/startTest.vue'
+import checkTest from '../views/test/checkTest/checkTest.vue'
 
 Vue.use(Router)
 
@@ -78,6 +79,11 @@ export default new Router({   //将routes里的参数导出
       path: '/eduAdminManageGrade',
       name: 'eduAdminManageGrade',
       component: eduAdminManageGrade
+    },
+    {
+      path: '/checkTest',
+      name: 'checkTest',
+      component: checkTest
     },
     {
       path: '/',

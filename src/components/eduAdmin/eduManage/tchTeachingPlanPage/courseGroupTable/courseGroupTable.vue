@@ -70,7 +70,8 @@
       methods:{
         checkTeachingPlanInfoClick: function(){
           this.$http.post('../checkTeachingPlanInfoJson',{
-            "teacherinfoKey":teacherinfoKey
+            "groupName":this.teacherinfoKey.groupName,
+            "teacherName":this.teacherinfoKey.teacherName
           },{
             "Content-Type":"application/json"
           }).then(function (response) {

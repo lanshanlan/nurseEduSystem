@@ -80,7 +80,9 @@
       methods:{
         checkEvaInfoClick: function(){
           this.$http.post('../checkEvaluateInfoJson',{
-            "evaluateinfoKey":this.evaluateinfoKey
+            "term":this.evaluateinfoKey.term,
+            "courseName":this.evaluateinfoKey.courseName,
+            "teacherName":this.evaluateinfoKey.teacherName
           },{
             "Content-Type":"application/json"
           }).then(function (response) {

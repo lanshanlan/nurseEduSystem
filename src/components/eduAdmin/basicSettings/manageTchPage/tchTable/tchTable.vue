@@ -30,9 +30,9 @@
         <tr v-for="(teacherSimpleInfo,index) in teacherSimpleInfoList" :id="'inputTable'+index">
           <td><input id="input1" :value="teacherSimpleInfo.teacherId" readonly="readonly" style="border: none"></td>
           <td><input id="input2" :value="teacherSimpleInfo.teacherName" readonly="readonly" style="border: none"></td>
-          <td><input id="input3" :value="teacherSimpleInfo.teacherIDcard" readonly="readonly" style="border: none"></td>
+          <td><input id="input3" :value="teacherSimpleInfo.teacherIdcard" readonly="readonly" style="border: none"></td>
           <td><input id="input4" :value="teacherSimpleInfo.teacherGender" readonly="readonly" style="border: none"></td>
-          <td><input id="input5" :value="teacherSimpleInfo.phoneNum" readonly="readonly" style="border: none"></td>
+          <td><input id="input5" :value="teacherSimpleInfo.phoneNumber" readonly="readonly" style="border: none"></td>
           <td><input id="input6" :value="teacherSimpleInfo.hireCampus" readonly="readonly" style="border: none"></td>
           <td><input id="input7" :value="teacherSimpleInfo.currentWorkTitle" readonly="readonly" style="border: none"></td>
           <td><input id="input8" :value="teacherSimpleInfo.currentWorkDuty" readonly="readonly" style="border: none"></td>
@@ -60,8 +60,8 @@
                 teacherId:''
             },
               teacherSimpleInfoList:[
-                  {teacherId:'1234567',teacherName:'何平',teacherIDcard:'321281199503285555',teacherGender:'男',phoneNum:'15680991111',hireCampus:'西校区',currentWorkTitle:'教授',currentWorkDuty:'教导主任',teacherType:'教师'},
-                  {teacherId:'1234567',teacherName:'何平',teacherIDcard:'321281199503285555',teacherGender:'男',phoneNum:'15680991111',hireCampus:'西校区',currentWorkTitle:'教授',currentWorkDuty:'教导主任',teacherType:'教师'},
+                  {teacherId:'1234567',teacherName:'何平',teacherIdcard:'321281199503285555',teacherGender:'男',phoneNumber:'15680991111',hireCampus:'西校区',currentWorkTitle:'教授',currentWorkDuty:'教导主任',teacherType:'1'},
+                  {teacherId:'1234567',teacherName:'何平',teacherIdcard:'321281199503285555',teacherGender:'男',phoneNumber:'15680991111',hireCampus:'西校区',currentWorkTitle:'教授',currentWorkDuty:'教导主任',teacherType:'2'}
                 ]
             }
         },
@@ -78,7 +78,8 @@
       methods:{
         checkTchInfoClick:function() {
           this.$http.post('./teacherManage/findTeacherInfo',{
-            "teacherinfoKey":this.teacherinfoKey
+            "teacherName":this.teacherinfoKey.teacherName,
+            "teacherId":this.teacherinfoKey.teacherId
           },{
             "Content-Type":"application/json"
           }).then(function (response) {

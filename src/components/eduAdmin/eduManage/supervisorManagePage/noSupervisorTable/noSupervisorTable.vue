@@ -46,7 +46,7 @@
             <!--督导时间选择下拉列表-->
             <select class="selectWM" v-model="supervisorinfoKey.time">
               <option value="0">选择时间</option>
-              <option v-for="time in times" :value="time">{{time}}</option>
+              <option v-for="time in times" :value="time.week+','+time.weekDay+','+time.lessonNum">第{{time.week}}周第{{time.weekDay}}天第{{time.lessonNum}}节课</option>
             </select>
             <span><button id="save" class="am-btn am-btn-success am-radius buttonWM" @click="saveSupervisorInfoClick()">保存</button></span>
             <span><button id="cancel" class="am-btn am-btn-success am-radius buttonWM" @click="restoreSupervisorInfoClick()">取消</button></span>
@@ -60,13 +60,13 @@
             <!--已分配督导员的课程的表格-->
             <thead>
             <tr>
-              <th width="12%">当前状态</th>
-              <th width="12%">督导老师</th>
-              <th width="12%">班级名称</th>
-              <th width="16%">课程编号</th>
-              <th width="24%">课程名称</th>
-              <th width="12%">任课老师</th>
-              <th width="12%">督导状态</th>
+              <th width="10%">当前状态</th>
+              <th width="10%">督导老师</th>
+              <th width="20%">班级名称</th>
+              <th width="20%">课程编号</th>
+              <th width="20%">课程名称</th>
+              <th width="10%">任课老师</th>
+              <th width="10%">督导状态</th>
             </tr>
             </thead>
             <tbody>
@@ -88,6 +88,45 @@
         </div>
       </div>
     </div>
+    <div id="table">
+      <div id="show">
+        <table class="normalTable">
+          <thead>
+          <tr>
+            <th colspan=4>督导反馈</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>督导日期</td>
+            <td colspan=3><input class="big" type="text"></td>
+          </tr>
+          <tr>
+            <td rowspan=8>评分</td>
+            <td>学生出勤情况</td> <td><input class="sma" type="text"></td>
+          </tr>
+          <tr><td>授课内容</td> <td><input class="sma" type="text"></td></tr>
+          <tr><td>教师素养得分</td> <td><input class="sma" type="text"></td></tr>
+          <tr><td>教学目标得分</td> <td><input class="sma" type="text"></td></tr>
+          <tr><td>教学内容得分</td> <td><input class="sma" type="text"></td></tr>
+          <tr><td>教学方法得分</td> <td><input class="sma" type="text"></td></tr>
+          <tr><td>教学常规得分</td> <td><input class="sma" type="text"></td></tr>
+          <tr><td>教学内容得分</td> <td><input class="sma" type="text"></td></tr>
+          <tr><td>督导员意见</td>
+            <td colspan=3><input class="big" type="text"></td>
+          </tr>
+          <tr><td>教务人员意见</td>
+            <td colspan=3><input class="big" type="text"></td>
+          </tr>
+          <tr><td>教师反馈</td>
+            <td colspan=3><input class="big" type="text"></td>
+          </tr>
+          </tbody>
+        </table>
+        <button class="am-btn am-btn-success am-radius">保存</button>
+        <button class="am-btn am-btn-success am-radius">取消</button>
+      </div>
+    </div>
   </div>
 
 </template>
@@ -105,13 +144,13 @@
                 supervisorName:'',
                 time:'0'
               },
-              setMsg:'0',
+              weekAndDay:[],
+              setMsg:'1',
               setCourseName:'请选择',
               times:[
-                '1-5周',
-                '6-10周',
-                '7-15周',
-                '16-20周'
+                {week:'1',weekDay:'2',lessonNum:'3'},
+                {week:'4',weekDay:'5',lessonNum:'6'},
+                {week:'7',weekDay:'8',lessonNum:'9'}
               ],
               notSettedSupervisorCourseInfoList:[
                   {status:'1',supervisorName:'',className:'对口高职 2015 护理1班',courseName:'护理管理学',courseId:'10300',teacherName:'季军'},
@@ -137,13 +176,19 @@
       methods:{
         checkNoSupervisorInfoClick: function(){
           this.$http.post('./checkNoSupervisorInfoJson',{
-            "noSupervisorinfoKey":this.noSupervisorinfoKey
+            "teacherName":this.noSupervisorinfoKey.teacherName,
+            "courseName":this.noSupervisorinfoKey.courseName
           },{
             "Content-Type":"application/json"
           }).then(function (response) {
             console.log(response);
-            this.notSettedSupervisorCourseInfoList = response.body.checkNoSupervisorInfoList.notSettedSupervisorCourseInfoList;
-            this.setMsg = response.body.checkNoSupervisorInfoList.setMsg
+            this.setMsg = response.body.checkNoSupervisorInfoList.setMsg;
+            if(this.setMsg === '0'){
+              this.notSettedSupervisorCourseInfoList = response.body.checkNoSupervisorInfoList.notSettedSupervisorCourseInfoList;
+            }
+            else{
+              alert("您查询的课程已设置督导，请点击查看已设置督导课程！");
+            }
           },function(error){
             console.log("获取error");
           });
@@ -174,8 +219,14 @@
           setSupervisorDropdown.style.display = "none";
         },
         saveSupervisorInfoClick:function(){
+          this.weekAndDay = this.supervisorinfoKey.time.split(",");
+//          分割字符串this.supervisorinfoKey.time,将week,weekDay,lessonNum分开传递给后端
+//          alert(this.weekAndDay[0]+","+this.weekAndDay[1]+","+this.weekAndDay[2]);
           this.$http.post('./saveSupervisorInfoJson',{
-            "supervisorinfoKey":this.supervisorinfoKey
+            "supervisorName":this.supervisorinfoKey.supervisorName,
+            "week":this.weekAndDay[0],
+            "weekDay":this.weekAndDay[1],
+            "lessonNum":this.weekAndDay[2]
           },{
             "Content-Type":"application/json"
           }).then(function (response) {
@@ -225,6 +276,11 @@
       width: 5.6rem;
       margin: 0 0.7rem;
     }
+    .bottomButton{
+      margin-top: 1rem;
+      margin-right: 1.4rem;
+      min-width: 5.6rem;
+    }
     p{
       color: grey;
     }
@@ -238,6 +294,9 @@
     }
     .buttonDiv{
       text-align: center;
+    }
+    .sma{
+      width: 80%;
     }
     @media screen and (max-width: 1023px) {
         html {

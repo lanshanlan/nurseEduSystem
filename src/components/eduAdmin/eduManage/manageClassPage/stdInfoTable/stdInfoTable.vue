@@ -80,7 +80,9 @@
       methods:{
         searchChangeInfo: function(){
           this.$http.post('./stateManage/findStateChangeInfo',{
-            "statechangeKey":this.statechangeKey
+            "schoolYearType":this.statechangeKey.schoolYearType,
+            "studentId":this.statechangeKey.studentId,
+            "studentName":this.statechangeKey.studentName
           },{
             "Content-Type":"application/json"
           }).then(function (response) {

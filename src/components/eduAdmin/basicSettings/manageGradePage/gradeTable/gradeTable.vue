@@ -407,6 +407,7 @@
   .bottomButton{
     margin-top: 1rem;
     margin-right: 1.4rem;
+    min-width: 5.6rem;
   }
   #buttonDiv{
     text-align: center;

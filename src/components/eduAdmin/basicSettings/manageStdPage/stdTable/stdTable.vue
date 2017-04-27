@@ -3,7 +3,7 @@
       <div id="dropdownInfo">
         <select id="yearTypeSelect" class="selectWM" v-model="studentinfoKey.schoolYearType" @click="yearTypeClick()">
           <option value="0">选择年制</option>
-          <option v-for="(yearAndClass,indexYearType) in yearAndClassList" :value="yearAndClass.yearType">{{yearAndClass.yearType}}年制</option>
+          <option v-for="yearAndClass in yearAndClassList" :value="yearAndClass.yearType">{{yearAndClass.yearType}}年制</option>
         </select>
         <!--年制选择下拉列表-->
         <select id="gradeSelect" class="selectWM" v-model="studentinfoKey.gradeName" @click="indexYearTypeClick()">
@@ -45,7 +45,7 @@
             <tr v-for="(studentSimpleInfo,index) in studentSimpleInfoList" :id="'inputTable'+index">
               <td><input id="input1" :value="studentSimpleInfo.studentId" readonly="readonly" style="border: none"></td>
               <td><input id="input2" :value="studentSimpleInfo.studentName" readonly="readonly" style="border: none"></td>
-              <td><input id="input3" :value="studentSimpleInfo.studentIDcard" readonly="readonly" style="border: none"></td>
+              <td><input id="input3" :value="studentSimpleInfo.studentIdcard" readonly="readonly" style="border: none"></td>
               <td><input id="input4" :value="studentSimpleInfo.studentGender" readonly="readonly" style="border: none"></td>
               <td><input id="input5" :value="studentSimpleInfo.schoolYearType" readonly="readonly" style="border: none"></td>
               <td><input id="input6" :value="studentSimpleInfo.gradeName" readonly="readonly" style="border: none"></td>
@@ -83,6 +83,12 @@
                   yearType:'3',
                   gradeList:[
                     {
+                      gradeName:'2012',
+                      classList:[
+                        '护理2班','护理3班'
+                      ]
+                    },
+                    {
                       gradeName:'2013',
                       classList:[
                         '护理3班','护理4班'
@@ -103,8 +109,8 @@
                 }
               ],
               studentSimpleInfoList:[
-                  {studentId:'1530310503',studentName:'高兴月',studentIDcard:'321281199503281111',studentGender:'女',schoolYearType:'五年制',gradeName:'2013级',specialityName:'护理',className:'护理3班',birthday:'1993.02.03',ethno:'汉',nativePlace:'上海',phoneNumber:'15680992212',houseAddress:'成都市青牛区'},
-                  {studentId:'1530310503',studentName:'高兴月',studentIDcard:'321281199503281111',studentGender:'女',schoolYearType:'五年制',gradeName:'2013级',specialityName:'护理',className:'护理3班',birthday:'1993.02.03',ethno:'汉',nativePlace:'上海',phoneNumber:'15680992212',houseAddress:'成都市青牛区'}
+                  {studentId:'1530310503',studentName:'高兴月',studentIdcard:'321281199503281111',studentGender:'女',schoolYearType:'五年制',gradeName:'2013级',specialityName:'护理',className:'护理3班',birthdate:'1993.02.03',ethno:'汉',nativePlace:'上海',phoneNumber:'15680992212',houseAddress:'成都市青牛区'},
+                  {studentId:'1530310503',studentName:'高兴月',studentIdcard:'321281199503281111',studentGender:'女',schoolYearType:'五年制',gradeName:'2013级',specialityName:'护理',className:'护理3班',birthdate:'1993.02.03',ethno:'汉',nativePlace:'上海',phoneNumber:'15680992212',houseAddress:'成都市青牛区'}
                 ]
             }
         },
@@ -134,15 +140,18 @@
           }
         },
         indexGradeClick: function(){
-          for(var i=0;i<this.yearAndClassList[this.indexYearType].gradeList.length;i++){
-            if(this.studentinfoKey.gradeName === this.yearAndClassList[this.indexYearType].gradeList.gradeName){
-              this.indexGrade = i;
+          for(var j=0;j<this.yearAndClassList[this.indexYearType].gradeList.length;j++){
+            if(this.studentinfoKey.gradeName === this.yearAndClassList[this.indexYearType].gradeList[j].gradeName){
+              this.indexGrade = j;
             }
           }
         },
         checkStdInfoClick: function(){
           this.$http.post('./studentManage/findStudentInfo',{
-            "studentinfoKey":studentinfoKey
+            "schoolYearType":this.studentinfoKey.schoolYearType,
+            "gradeName":this.studentinfoKey.gradeName,
+            "className":this.studentinfoKey.className,
+            "studentId":this.studentinfoKey.studentId
           },{
             "Content-Type":"application/json"
           }).then(function (response) {
