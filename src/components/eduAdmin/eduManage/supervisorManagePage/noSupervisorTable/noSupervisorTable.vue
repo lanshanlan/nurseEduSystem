@@ -66,7 +66,7 @@
               <th width="20%">课程编号</th>
               <th width="20%">课程名称</th>
               <th width="10%">任课老师</th>
-              <th width="10%">督导状态</th>
+              <th width="10%">督导反馈</th>
             </tr>
             </thead>
             <tbody>
@@ -78,18 +78,18 @@
               <td v-text="settedSupervisorCourseInfo.courseId"></td>
               <td v-text="settedSupervisorCourseInfo.courseName"></td>
               <td v-text="settedSupervisorCourseInfo.teacherName"></td>
-              <td><button class="am-btn am-btn-success am-radius">查看</button></td>
+              <td><button class="am-btn am-btn-success am-radius" @click="checksupervisorBackInfoClick(settedSupervisorCourseInfo.supervisorName,settedSupervisorCourseInfo.courseId)">查看</button></td>
             </tr>
             </tbody>
           </table>
           <div class="buttonDiv">
-            <span><button id="goBack" class="bottomButton am-btn am-btn-success am-radius" @click="goBackClick()">返回</button></span>
+            <span><button id="goBack" class="bottomButton am-btn am-btn-success am-radius" @click="supervisorTableGoBackClick()">返回</button></span>
           </div>
         </div>
       </div>
     </div>
-    <div id="table">
-      <div id="show">
+    <div id="superviseBackTable" style="display: none">
+      <div id="superviseBackShow" style="padding: 0.6rem 5rem;background-color: #f3f3f3;">
         <table class="normalTable">
           <thead>
           <tr>
@@ -99,32 +99,33 @@
           <tbody>
           <tr>
             <td>督导日期</td>
-            <td colspan=3><input class="big" type="text"></td>
+            <td colspan=3>{{superviseInfoList.superviseTime}}</td>
           </tr>
           <tr>
             <td rowspan=8>评分</td>
-            <td>学生出勤情况</td> <td><input class="sma" type="text"></td>
+            <td>学生出勤情况</td> <td>{{superviseInfoList.attendanceInfo}}</td>
           </tr>
-          <tr><td>授课内容</td> <td><input class="sma" type="text"></td></tr>
-          <tr><td>教师素养得分</td> <td><input class="sma" type="text"></td></tr>
-          <tr><td>教学目标得分</td> <td><input class="sma" type="text"></td></tr>
-          <tr><td>教学内容得分</td> <td><input class="sma" type="text"></td></tr>
-          <tr><td>教学方法得分</td> <td><input class="sma" type="text"></td></tr>
-          <tr><td>教学常规得分</td> <td><input class="sma" type="text"></td></tr>
-          <tr><td>教学内容得分</td> <td><input class="sma" type="text"></td></tr>
+          <tr><td>授课内容</td> <td>{{superviseInfoList.teachContent}}</td></tr>
+          <tr><td>教师素养得分</td> <td>{{superviseInfoList.teacherQualityScored}}</td></tr>
+          <tr><td>教学目标得分</td> <td>{{superviseInfoList.teachGoalsScored}}</td></tr>
+          <tr><td>教学内容得分</td> <td>{{superviseInfoList.teachContentScored}}</td></tr>
+          <tr><td>教学方法得分</td> <td>{{superviseInfoList.teachMethodsScored}}</td></tr>
+          <tr><td>教学常规得分</td> <td>{{superviseInfoList.teachRoutineScored}}</td></tr>
+          <tr><td>教学效果得分</td> <td>{{superviseInfoList.teachEffectScored}}</td></tr>
           <tr><td>督导员意见</td>
-            <td colspan=3><input class="big" type="text"></td>
+            <td colspan=3>{{superviseInfoList.commentsInfo}}</td>
           </tr>
           <tr><td>教务人员意见</td>
-            <td colspan=3><input class="big" type="text"></td>
-          </tr>
-          <tr><td>教师反馈</td>
-            <td colspan=3><input class="big" type="text"></td>
+            <td colspan=3 v-if="superviseInfoList.forwardInfo.length===0"><input class="supervisorBackInput" type="text" v-model="superviseBackinfoKey.forwardInfo"></td>
+            <td colspan=3 v-else>{{superviseInfoList.forwardInfo}}</td>
           </tr>
           </tbody>
         </table>
-        <button class="am-btn am-btn-success am-radius">保存</button>
-        <button class="am-btn am-btn-success am-radius">取消</button>
+        <div class="buttonDiv">
+          <span><button class="bottomButton am-btn am-btn-success am-radius" @click="submitClick()">提交</button></span>
+          <span><button class="bottomButton am-btn am-btn-success am-radius" @click="cancelClick()">取消</button></span>
+          <span><button class="bottomButton am-btn am-btn-success am-radius" @click="superviseBackTableGoBackClick()">返回</button></span>
+        </div>
       </div>
     </div>
   </div>
@@ -144,6 +145,11 @@
                 supervisorName:'',
                 time:'0'
               },
+              superviseBackinfoKey:{
+                supervisorName:'',
+                courseId:'',
+                forwardInfo:''
+              },
               weekAndDay:[],
               setMsg:'1',
               setCourseName:'请选择',
@@ -159,7 +165,20 @@
               settedSupervisorCourseInfoList:[
                 {status:'1',supervisorName:'李晓',className:'普通高中 2015 护理1班',courseName:'护理管理学',courseId:'10301',teacherName:'何平'},
                 {status:'0',supervisorName:'张玲',className:'普通高中 2015 护理2班',courseName:'护理管理学',courseId:'10301',teacherName:'何平'}
-              ]
+              ],
+              superviseInfoList:{
+                superviseTime:'2016.01.01',
+                attendanceInfo:'47人，应到47人',
+                teachContent:'授课内容',
+                teacherQualityScored:'88',
+                teachGoalsScored:'88',
+                teachContentScored:'88',
+                teachMethodsScored:'88',
+                teachRoutineScored:'88',
+                teachEffectScored:'88',
+                commentsInfo:'督导意见',
+                forwardInfo:''
+              }
             }
         },
       beforeMount:function() {
@@ -231,7 +250,7 @@
             "Content-Type":"application/json"
           }).then(function (response) {
             console.log(response);
-            this.settedSupervisorCourseInfoList = response.body.settedSupervisorCourseInfoList;
+            this.superviseInfoList = response.body.checksupervisorBackInfoList.superviseInfoList;
           },function(error){
             console.log("获取error");
           });
@@ -240,7 +259,28 @@
           this.supervisorinfoKey.supervisorName = '';
           this.supervisorinfoKey.time = '0';
         },
-        goBackClick:function(){
+        checksupervisorBackInfoClick:function(supervisorName,courseId){
+          var supervisorDiv = document.getElementById("supervisorDiv");
+          var superviseBackTable = document.getElementById("superviseBackTable");
+          this.superviseBackinfoKey.supervisorName = supervisorName;
+          this.superviseBackinfoKey.courseId = courseId;
+          this.superviseBackinfoKey.forwardInfo = "";
+          this.$http.post('./checksupervisorBackInfo',{
+            "supervisorName":supervisorName,
+            "courseId":courseId
+          },{
+            "Content-Type":"application/json"
+          }).then(function (response) {
+            console.log(response);
+            this.notSettedSupervisorCourseInfoList = response.body.notSettedSupervisorCourseInfoList;
+          },function(error){
+            console.log("获取error");
+          });
+          supervisorDiv.style.display = "none";
+          superviseBackTable.style.display = "inline"
+
+        },
+        supervisorTableGoBackClick:function(){
           var noSupervisorDiv = document.getElementById("noSupervisorDiv");
           var supervisorDiv = document.getElementById("supervisorDiv");
           var setSupervisorDropdown = document.getElementById("setSupervisorDropdown");
@@ -255,6 +295,31 @@
           noSupervisorDiv.style.display = "inline";
           supervisorDiv.style.display = "none";
           setSupervisorDropdown.style.display = "inline";
+        },
+        submitClick:function(){
+          if(this.superviseBackinfoKey.forwardInfo.length === 0){
+            alert("您没有输入教务人员意见");
+          }
+          else{
+            this.$http.post('./submitSupervisorInfoJson',{
+              "forwardInfo":this.superviseBackinfoKey.forwardInfo
+            },{
+              "Content-Type":"application/json"
+            }).then(function (response) {
+              console.log(response);
+            },function(error){
+              console.log("获取error");
+            });
+          }
+        },
+        cancelClick:function(){
+          this.superviseBackinfoKey.forwardInfo = "";
+        },
+        superviseBackTableGoBackClick:function(){
+          var supervisorDiv = document.getElementById("supervisorDiv");
+          var superviseBackTable = document.getElementById("superviseBackTable");
+          supervisorDiv.style.display = "inline";
+          superviseBackTable.style.display = "none"
         }
       }
     }
@@ -276,11 +341,6 @@
       width: 5.6rem;
       margin: 0 0.7rem;
     }
-    .bottomButton{
-      margin-top: 1rem;
-      margin-right: 1.4rem;
-      min-width: 5.6rem;
-    }
     p{
       color: grey;
     }
@@ -291,11 +351,12 @@
     .bottomButton{
       margin-top: 1rem;
       margin-right: 1.4rem;
+      min-width: 5.6rem;
     }
     .buttonDiv{
       text-align: center;
     }
-    .sma{
+    .supervisorBackInput{
       width: 80%;
     }
     @media screen and (max-width: 1023px) {

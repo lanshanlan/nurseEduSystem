@@ -28,15 +28,22 @@
         </thead>
         <tbody>
         <tr v-for="(teacherSimpleInfo,index) in teacherSimpleInfoList" :id="'inputTable'+index">
-          <td><input id="input1" :value="teacherSimpleInfo.teacherId" readonly="readonly" style="border: none"></td>
-          <td><input id="input2" :value="teacherSimpleInfo.teacherName" readonly="readonly" style="border: none"></td>
-          <td><input id="input3" :value="teacherSimpleInfo.teacherIdcard" readonly="readonly" style="border: none"></td>
-          <td><input id="input4" :value="teacherSimpleInfo.teacherGender" readonly="readonly" style="border: none"></td>
-          <td><input id="input5" :value="teacherSimpleInfo.phoneNumber" readonly="readonly" style="border: none"></td>
-          <td><input id="input6" :value="teacherSimpleInfo.hireCampus" readonly="readonly" style="border: none"></td>
-          <td><input id="input7" :value="teacherSimpleInfo.currentWorkTitle" readonly="readonly" style="border: none"></td>
-          <td><input id="input8" :value="teacherSimpleInfo.currentWorkDuty" readonly="readonly" style="border: none"></td>
-          <td><input id="input9" :value="teacherSimpleInfo.teacherType" readonly="readonly" style="border: none"></td>
+          <td><input :id="index + 'input1'" :value="teacherSimpleInfo.teacherId" readonly="readonly" style="border: none"></td>
+          <td><input :id="index + 'input2'" :value="teacherSimpleInfo.teacherName" readonly="readonly" style="border: none"></td>
+          <td><input :id="index + 'input3'" :value="teacherSimpleInfo.teacherIdcard" readonly="readonly" style="border: none"></td>
+          <td><input :id="index + 'input4'" :value="teacherSimpleInfo.teacherGender" readonly="readonly" style="border: none"></td>
+          <td><input :id="index + 'input5'" :value="teacherSimpleInfo.phoneNumber" readonly="readonly" style="border: none"></td>
+          <td><input :id="index + 'input6'" :value="teacherSimpleInfo.hireCampus" readonly="readonly" style="border: none"></td>
+          <td><input :id="index + 'input7'" :value="teacherSimpleInfo.currentWorkTitle" readonly="readonly" style="border: none"></td>
+          <td><input :id="index + 'input8'" :value="teacherSimpleInfo.currentWorkDuty" readonly="readonly" style="border: none"></td>
+          <td>
+            <span v-if="teacherSimpleInfo.teacherType==='1'"><input :id="index + 'input9'" value="在职" readonly="readonly" style="border: none;"></span>
+            <span v-else-if="teacherSimpleInfo.teacherType==='2'"><input :id="index + 'input10'" value="离职" readonly="readonly" style="border: none;"></span>
+            <span v-else><input :id="index + 'input11'" value="外聘" readonly="readonly" style="border: none;"></span>
+            <select :id="index + 'select'" class="selectWM" v-model="teacherTypeEle" style="display: none">
+              <option v-for="teacherType in teacherTypeList" :value="teacherType">{{teacherType}}</option>
+            </select>
+          </td>
           <td>
             <img :id="'editImg'+index" src="./images/edit.png" @click="editClick(index)">
             <img :id="'saveImg'+index" src="./images/save.png" style="display: none" @click="saveClick(index)">
@@ -59,9 +66,13 @@
                 teacherName: '',
                 teacherId:''
             },
+              teacherTypeList:[
+                '1:在职','2:离职','3:外聘'
+              ],
+              teacherTypeEle:'1:在职',
               teacherSimpleInfoList:[
-                  {teacherId:'1234567',teacherName:'何平',teacherIdcard:'321281199503285555',teacherGender:'男',phoneNumber:'15680991111',hireCampus:'西校区',currentWorkTitle:'教授',currentWorkDuty:'教导主任',teacherType:'1'},
-                  {teacherId:'1234567',teacherName:'何平',teacherIdcard:'321281199503285555',teacherGender:'男',phoneNumber:'15680991111',hireCampus:'西校区',currentWorkTitle:'教授',currentWorkDuty:'教导主任',teacherType:'2'}
+                  {teacherId:'11234567',teacherName:'何平',teacherIdcard:'321281199503285555',teacherGender:'男',phoneNumber:'15680991111',hireCampus:'西校区',currentWorkTitle:'教授',currentWorkDuty:'教导主任',teacherType:'1'},
+                  {teacherId:'21234567',teacherName:'何平',teacherIdcard:'321281199503285555',teacherGender:'男',phoneNumber:'15680991111',hireCampus:'西校区',currentWorkTitle:'教授',currentWorkDuty:'教导主任',teacherType:'2'}
                 ]
             }
         },
@@ -92,14 +103,17 @@
         editClick: function(index){
           var inputTable = document.getElementById("inputTable"+index);
           var input = inputTable.getElementsByTagName("input");
+          var select = document.getElementById(index + "select");
           var editImg = document.getElementById("editImg"+index);
           var saveImg = document.getElementById("saveImg"+index);
           var deleteImg = document.getElementById("deleteImg"+index);
           var restoreImg = document.getElementById("restoreImg"+index);
-          for(var i = 5;i<9;i++){
+          for(var i = 5;i<8;i++){
             input[i].readOnly = false;
             input[i].style.border = "0.1rem solid #d4d4d9";
           }
+          input[8].style.display = "none";
+          select.style.display = "inline";
           editImg.style.display = "none";
           saveImg.style.display = "inline";
           deleteImg.style.display = "none";
@@ -108,16 +122,19 @@
         saveClick: function(index){
           var inputTable = document.getElementById("inputTable"+index);
           var input = inputTable.getElementsByTagName("input");
+          var select = document.getElementById(index + "select");
           var editImg = document.getElementById("editImg"+index);
           var saveImg = document.getElementById("saveImg"+index);
           var deleteImg = document.getElementById("deleteImg"+index);
           var restoreImg = document.getElementById("restoreImg"+index);
+          var teacherTypeSplit = this.teacherTypeEle.split(":");
+          this.teacherSimpleInfoList[index].teacherType = teacherTypeSplit[0];
           this.$http.post('./teacherManage/editTeacherInfo',{
             "teacherId":input[0].value,
             "hireCampus":input[5].value,
             "currentWorkTitle":input[6].value,
             "currentWorkDuty":input[7].value,
-            "teacherType":input[8].value
+            "teacherType":teacherTypeSplit[0]
           },{
             "Content-Type":"application/json"
           }).then(function (response) {
@@ -125,14 +142,15 @@
           },function(error){
             console.log("获取error");
           });
-          for(var i = 5;i<9;i++){
+          for(var i = 5;i<8;i++){
             input[i].readOnly = true;
             input[i].style.border = "none";
           }
           this.teacherSimpleInfoList[index].hireCampus = input[5].value;
           this.teacherSimpleInfoList[index].currentWorkTitle = input[6].value;
           this.teacherSimpleInfoList[index].currentWorkDuty = input[7].value;
-          this.teacherSimpleInfoList[index].teacherType = input[8].value;
+          input[8].style.display = "inline";
+          select.style.display = "none";
           editImg.style.display = "inline";
           saveImg.style.display = "none";
           deleteImg.style.display = "inline";
@@ -141,18 +159,21 @@
         restoreClick: function(index){
           var inputTable = document.getElementById("inputTable"+index);
           var input = inputTable.getElementsByTagName("input");
+          var select = document.getElementById(index + "select");
           var editImg = document.getElementById("editImg"+index);
           var saveImg = document.getElementById("saveImg"+index);
           var deleteImg = document.getElementById("deleteImg"+index);
           var restoreImg = document.getElementById("restoreImg"+index);
-          for(var i = 5;i<9;i++){
+          for(var i = 5;i<8;i++){
             input[i].readOnly = true;
             input[i].style.border = "none";
           }
+          input[8].style.display = "inline";
+          select.style.display = "none";
           input[5].value = this.teacherSimpleInfoList[index].hireCampus;
           input[6].value = this.teacherSimpleInfoList[index].currentWorkTitle;
           input[7].value = this.teacherSimpleInfoList[index].currentWorkDuty;
-          input[8].value = this.teacherSimpleInfoList[index].teacherType;
+          this.teacherTypeEle = "1:在职";
           editImg.style.display = "inline";
           saveImg.style.display = "none";
           deleteImg.style.display = "inline";
@@ -190,6 +211,9 @@
     .buttonWM{
       width: 5.6rem;
       margin: 0 0.7rem;
+    }
+    .selectWM{
+      width: 80%;
     }
     input{
       width: 80%;

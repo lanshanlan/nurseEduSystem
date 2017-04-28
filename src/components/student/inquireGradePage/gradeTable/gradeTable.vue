@@ -73,7 +73,7 @@
     },
     methods:{
       changeTerm: function(){
-        this.$http.post('../changeTermJson',{
+        this.$http.post('./changeTermJson',{
           "termEle":this.termEle
         },{
           "Content-Type":"application/json"
