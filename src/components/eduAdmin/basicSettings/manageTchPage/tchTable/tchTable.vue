@@ -108,6 +108,7 @@
           var saveImg = document.getElementById("saveImg"+index);
           var deleteImg = document.getElementById("deleteImg"+index);
           var restoreImg = document.getElementById("restoreImg"+index);
+          this.teacherTypeEle = "1:在职";
           for(var i = 5;i<8;i++){
             input[i].readOnly = false;
             input[i].style.border = "0.1rem solid #d4d4d9";
