@@ -1,7 +1,7 @@
 <template>
   <div id="tchTeachingPlanPageTopBar" class="topBarDiv am-btn-group">
     <!--导航栏-->
-    <button class="am-btn am-btn-success btn-active" style="margin-left: 5rem">教师管理</button>
+    <button class="am-btn am-btn-success btn-active" style="margin-left: 5rem">教师教学计划</button>
   </div>
 </template>
 

@@ -1,8 +1,16 @@
 <template>
   <div>
     <div id="searchInfo">
-      <span><input type="text" id="groupID" class="inputWM" placeholder="请输入教研组名称" v-model="teacherinfoKey.groupName"></span>
-      <span><input type="text" id="tchID" class="inputWM" placeholder="请输入教师姓名" v-model="teacherinfoKey.teacherName"></span>
+      <select id="groupSelect" class="selectWM" v-model="teacherinfoKey.groupId" @click="groupClick()">
+        <option value="0">选择教研组</option>
+        <option v-for="group in groupList" :value="group.groupId">{{group.groupName}}</option>
+      </select>
+      <!--教研组选择下拉列表-->
+      <select id="teacherSelect" class="selectWM" v-model="teacherinfoKey.teacherId" @click="teacherClick()">
+        <option value="0">选择教师</option>
+        <option v-for="teacher in teacherList" :value="teacher.teacherId">{{teacher.teacherName}}</option>
+      </select>
+      <!--教师选择下拉列表-->
       <span><button id="searchFor" class="am-btn am-btn-success am-radius buttonWM" @click="checkTeachingPlanInfoClick()">查找</button></span>
     </div>
     <div style="padding: 0.6rem 5rem;background-color: #f3f3f3">
@@ -47,9 +55,19 @@
         data () {
             return {
               teacherinfoKey:{
-                groupName:'',
-                teacherName:''
+                groupId:'0',
+                teacherId:'0'
               },
+              groupList:[
+                {groupName:'护理组',groupId:'111'},
+                {groupName:'西医组',groupId:'222'},
+                {groupName:'临床组',groupId:'333'}
+              ],
+              teacherList:[
+                {teacherName:'何平',teacherId:'111111'},
+                {teacherName:'张继',teacherId:'222222'},
+                {teacherName:'李伟',teacherId:'333333'}
+              ],
                 courseGroupInfos:[
                   {groupName:'临床医学',groupId:'2017001',teacherName:'李伟',teacherId:'111', headman:'何平'},
                   {groupName:'临床护理',groupId:'2017002',teacherName:'张亮',teacherId:'222',headman:'张扬'},
@@ -63,13 +81,15 @@
         }).then(function (response) {
           console.log(response);
           this.courseGroupInfos = response.body.courseGroupInfos;
+          this.groupList = response.body.groupList;
+          this.teacherList = response.body.teacherList;
         },function(error){
           console.log("获取error");
         });
       },
       methods:{
         checkTeachingPlanInfoClick: function(){
-          this.$http.post('../checkTeachingPlanInfoJson',{
+          this.$http.post('./checkTeachingPlanInfoJson',{
             "groupName":this.teacherinfoKey.groupName,
             "teacherName":this.teacherinfoKey.teacherName
           },{
@@ -82,7 +102,7 @@
           });
         },
         adoptTeachingPlanInfoClick: function(teacherId){
-          this.$http.post('../adoptTeachingPlanInfoJson',{
+          this.$http.post('./adoptTeachingPlanInfoJson',{
             "teacherId":teacherId
           },{
             "Content-Type":"application/json"
@@ -93,7 +113,7 @@
           });
         },
         notAdoptTeachingPlanInfoClick: function(teacherId){
-          this.$http.post('../notAdoptTeachingPlanInfoJson',{
+          this.$http.post('./notAdoptTeachingPlanInfoJson',{
             "teacherId":teacherId
           },{
             "Content-Type":"application/json"

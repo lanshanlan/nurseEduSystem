@@ -1,12 +1,21 @@
 <template>
   <div>
     <div id="courseTchInfo">
-      <select class="selectWM" v-model="evaluateinfoKey.term">
+      <select id="termSelect" class="selectWM" v-model="evaluateinfoKey.term">
         <option value="0">选择学期</option>
         <option v-for="term in terms" :value="term">{{term}}</option>
       </select>
-      <span><input type="text" id="courseName" class="inputWM" placeholder="课程名称"  v-model="evaluateinfoKey.courseName"></span>
-      <span><input type="text" id="tchName" class="inputWM" placeholder="教师姓名"  v-model="evaluateinfoKey.teacherName"></span>
+      <!--学期选择下拉列表-->
+      <select id="teacherSelect" class="selectWM" v-model="evaluateinfoKey.teacherId">
+        <option value="0">选择教师</option>
+        <option v-for="teacher in teacherList" :value="teacher.teacherId">{{teacher.teacherName}}</option>
+      </select>
+      <!--教师选择下拉列表-->
+      <select id="courseSelect" class="selectWM" v-model="evaluateinfoKey.courseId">
+        <option value="0">选择课程</option>
+        <option v-for="course in courseList" :value="course.courseId">{{course.courseName}}</option>
+      </select>
+      <!--课程选择下拉列表-->
       <span><button id="searchFor" class="am-btn am-btn-success am-radius buttonWM" @click="checkEvaInfoClick()">查询</button></span>
     </div>
     <div id="evaResultTable" style="padding: 0.6rem 5rem;background-color: #f3f3f3">
@@ -46,8 +55,8 @@
             return {
               evaluateinfoKey:{
                 term:'0',
-                courseName:'',
-                teacherName:''
+                teacherId:'0',
+                courseId:'0'
               },
               terms:[
                 '大一:第一学期',
@@ -58,6 +67,16 @@
                 '大三:第二学期',
                 '大四:第一学期',
                 '大四:第二学期'
+              ],
+              teacherList:[
+                {teacherName:'何平',teacherId:'111111'},
+                {teacherName:'张继',teacherId:'222222'},
+                {teacherName:'李伟',teacherId:'333333'}
+              ],
+              courseList:[
+                {courseName:'护理学',courseId:'123456'},
+                {courseName:'西医',courseId:'223456'},
+                {courseName:'临床',courseId:'323456'}
               ],
                 results:[
                   {courseId:'K2210710',courseName:'企业合作课程',teacherId:'1234567',teacherName:'何平',evaluateNumber:'65',multiplyScore:'98',tips:'暂无'},

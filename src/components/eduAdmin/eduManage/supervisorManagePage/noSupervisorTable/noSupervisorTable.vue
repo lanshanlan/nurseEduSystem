@@ -2,9 +2,16 @@
   <div>
     <div id="noSupervisorDiv" style="display: inline">
       <div id="tchDropdown" style="height: 5rem;margin: 0.6rem 5rem;background-color: white;">
-        <!--教师选择下拉列表-->
-        <span><input type="text" id="teacherName" class="inputWM" placeholder="请输入任课教师姓名" v-model="noSupervisorinfoKey.teacherName"></span>
-        <span><input type="text" id="courseName" class="inputWM" placeholder="请输入课程名称" v-model="noSupervisorinfoKey.courseName"></span>
+        <select id="teacherSelect" class="selectWM" v-model="noSupervisorinfoKey.teacherId" @click="teacherClick()">
+          <option value="0">选择任课教师</option>
+          <option v-for="teacher in teacherList" :value="teacher.teacherId">{{teacher.teacherName}}</option>
+        </select>
+        <!--任课教师选择下拉列表-->
+        <select id="courseSelect" class="selectWM" v-model="noSupervisorinfoKey.courseId" @click="courseClick()">
+          <option value="0">选择课程</option>
+          <option v-for="course in courseList" :value="course.courseId">{{course.courseName}}</option>
+        </select>
+        <!--课程选择下拉列表-->
         <span><button id="searchFor" class="am-btn am-btn-success am-radius buttonWM" @click="checkNoSupervisorInfoClick()">查找</button></span>
         <span><button id="leadOut" class="am-btn am-btn-success am-radius buttonWM">导出</button></span>
       </div>
@@ -39,15 +46,19 @@
     <div id="supervisorDiv" style="display: none">
       <div id="setSupervisorDropdown">
         <div style="height: 5rem;margin: 0.6rem 5rem;background-color: white;">
-          <span><p>课程名称:    {{setCourseName}}</p></span>
+          <span><p>课程名称:{{setCourseName}}</p></span>
           <div>
             <span id="setSupSpan">设置督导员:</span>
-            <span><input type="text" id="supervisorName" class="inputWM" placeholder="请输入督导员姓名" v-model="supervisorinfoKey.supervisorName"></span>
-            <!--督导时间选择下拉列表-->
-            <select class="selectWM" v-model="supervisorinfoKey.time">
+            <select id="supervisorSelect" class="selectWM" v-model="supervisorinfoKey.supervisorId">
+              <option value="0">选择督导员</option>
+              <option v-for="supervisor in supervisorList" :value="supervisor.supervisorId">{{supervisor.supervisorName}}</option>
+            </select>
+            <!--督导员选择下拉列表-->
+            <select id="timeSelect" class="selectWM" v-model="supervisorinfoKey.time">
               <option value="0">选择时间</option>
               <option v-for="time in times" :value="time.week+','+time.weekDay+','+time.lessonNum">第{{time.week}}周第{{time.weekDay}}天第{{time.lessonNum}}节课</option>
             </select>
+            <!--督导时间选择下拉列表-->
             <span><button id="save" class="am-btn am-btn-success am-radius buttonWM" @click="saveSupervisorInfoClick()">保存</button></span>
             <span><button id="cancel" class="am-btn am-btn-success am-radius buttonWM" @click="restoreSupervisorInfoClick()">取消</button></span>
           </div>
@@ -138,13 +149,28 @@
         data () {
             return {
               noSupervisorinfoKey:{
-                teacherName:'',
-                courseName:''
+                teacherId:'0',
+                courseId:'0'
               },
+              teacherList:[
+                {teacherName:'何平',teacherId:'111111'},
+                {teacherName:'张继',teacherId:'222222'},
+                {teacherName:'李伟',teacherId:'333333'}
+              ],
+              courseList:[
+                {courseName:'护理学',courseId:'123456'},
+                {courseName:'西医',courseId:'223456'},
+                {courseName:'临床',courseId:'323456'}
+              ],
               supervisorinfoKey:{
-                supervisorName:'',
+                supervisorId:'0',
                 time:'0'
               },
+              supervisorList:[
+                {supervisorName:'何平',supervisorId:'111111'},
+                {supervisorName:'张继',supervisorId:'222222'},
+                {supervisorName:'李伟',supervisorId:'333333'}
+              ],
               superviseBackinfoKey:{
                 supervisorName:'',
                 courseId:'',

@@ -220,7 +220,7 @@
         var deleteImg = document.getElementById("deleteImg"+index);
         var restoreImg = document.getElementById("restoreImg"+index);
         this.$http.post('./gradeManage/editClassInfo',{
-          "classId":this.classinfoStrList.classId,
+          "classId":this.classinfoStrList[index].classId,
           "classTeacherId":this.teacherIdEle
         },{
           "Content-Type":"application/json"
@@ -263,7 +263,7 @@
       },
       deleteClick: function(index){
         this.$http.post('./gradeManage/deleteClassInfo',{
-          "classId":this.classinfoStrList[index].classinfoStrList
+          "classId":this.classinfoStrList[index].classId
         },{
           "Content-Type":"application/json"
         }).then(function (response) {

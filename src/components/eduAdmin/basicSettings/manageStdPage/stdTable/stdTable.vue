@@ -156,7 +156,12 @@
             "Content-Type":"application/json"
           }).then(function (response) {
             console.log(response);
-            this.studentSimpleInfoList = response.body.studentSimpleInfoList;
+            var result = response.body.result;
+            if(result === "0"){
+              alert("请输入正确的学生信息！");
+            }else{
+              this.studentSimpleInfoList = response.body.studentSimpleInfoList;
+            }
           },function(error){
             console.log("获取error");
           });

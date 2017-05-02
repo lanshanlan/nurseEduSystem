@@ -20,8 +20,8 @@
           <th>性别</th>
           <th>手机号码</th>
           <th>聘用校区</th>
+          <th>教学职称</th>
           <th>工作职称</th>
-          <th>工作职务</th>
           <th>教师类型</th>
           <th>操作</th>
         </tr>
@@ -95,7 +95,12 @@
             "Content-Type":"application/json"
           }).then(function (response) {
             console.log(response);
-            this.teacherSimpleInfoList = response.body.teacherSimpleInfoList;
+            var result = response.body.result;
+            if(result === "0"){
+              alert("请输入正确的教师信息！");
+            }else{
+              this.teacherSimpleInfoList = response.body.teacherSimpleInfoList;
+            }
           },function(error){
             console.log("获取error");
           });

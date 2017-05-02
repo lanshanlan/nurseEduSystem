@@ -61,7 +61,9 @@
                   <td v-text="course.term8"></td>
                   <td v-text="course.term9"></td>
                   <td v-text="course.term10"></td>
-                  <td v-text="course.courseStatus"></td>
+                  <td v-if="course.courseStatus === '0'">未完成</td>
+                  <td v-else-if="course.courseStatus === '1'">完成</td>
+                  <td v-else>未开始</td>
                 </tr>
                 </tbody>
               </table>
@@ -88,17 +90,17 @@
                     {
                       gradeName:'2013',
                       courseList:[
-                        {courseType:'公共基础课3',courseName:'职业生涯规划',studentTimeAdd:'36',studentTimeTheory:'32',studentTimePractice:'4',term1:'36',term2:'',term3:'',term4:'',term5:'',term6:'',term7:'',term8:'',term9:'',term10:'',courseStatus:'未完成'},
-                        {courseType:'公共基础课3',courseName:'哲学与人生',studentTimeAdd:'36',studentTimeTheory:'32',studentTimePractice:'4',term1:'',term2:'36',term3:'',term4:'',term5:'',term6:'',term7:'',term8:'',term9:'',term10:'',courseStatus:'未完成'},
-                        {courseType:'公共基础课3',courseName:'经济政治与社会',studentTimeAdd:'36',studentTimeTheory:'32',studentTimePractice:'4',term1:'',term2:'',term3:'36',term4:'',term5:'',term6:'',term7:'',term8:'',term9:'',term10:'',courseStatus:'未完成'}
+                        {courseType:'公共基础课3',courseName:'职业生涯规划',studentTimeAdd:'36',studentTimeTheory:'32',studentTimePractice:'4',term1:'36',term2:'',term3:'',term4:'',term5:'',term6:'',term7:'',term8:'',term9:'',term10:'',courseStatus:'0'},
+                        {courseType:'公共基础课3',courseName:'哲学与人生',studentTimeAdd:'36',studentTimeTheory:'32',studentTimePractice:'4',term1:'',term2:'36',term3:'',term4:'',term5:'',term6:'',term7:'',term8:'',term9:'',term10:'',courseStatus:'1'},
+                        {courseType:'公共基础课3',courseName:'经济政治与社会',studentTimeAdd:'36',studentTimeTheory:'32',studentTimePractice:'4',term1:'',term2:'',term3:'36',term4:'',term5:'',term6:'',term7:'',term8:'',term9:'',term10:'',courseStatus:'2'}
                       ]
                     },
                     {
                       gradeName:'2012',
                       courseList:[
-                        {courseType:'公共基础课2',courseName:'职业生涯规划',studentTimeAdd:'36',studentTimeTheory:'32',studentTimePractice:'4',term1:'36',term2:'',term3:'',term4:'',term5:'',term6:'',term7:'',term8:'',term9:'',term10:'',courseStatus:'未完成'},
-                        {courseType:'公共基础课2',courseName:'哲学与人生',studentTimeAdd:'36',studentTimeTheory:'32',studentTimePractice:'4',term1:'',term2:'36',term3:'',term4:'',term5:'',term6:'',term7:'',term8:'',term9:'',term10:'',courseStatus:'未完成'},
-                        {courseType:'公共基础课2',courseName:'经济政治与社会',studentTimeAdd:'36',studentTimeTheory:'32',studentTimePractice:'4',term1:'',term2:'',term3:'36',term4:'',term5:'',term6:'',term7:'',term8:'',term9:'',term10:'',courseStatus:'未完成'}
+                        {courseType:'公共基础课2',courseName:'职业生涯规划',studentTimeAdd:'36',studentTimeTheory:'32',studentTimePractice:'4',term1:'36',term2:'',term3:'',term4:'',term5:'',term6:'',term7:'',term8:'',term9:'',term10:'',courseStatus:'0'},
+                        {courseType:'公共基础课2',courseName:'哲学与人生',studentTimeAdd:'36',studentTimeTheory:'32',studentTimePractice:'4',term1:'',term2:'36',term3:'',term4:'',term5:'',term6:'',term7:'',term8:'',term9:'',term10:'',courseStatus:'1'},
+                        {courseType:'公共基础课2',courseName:'经济政治与社会',studentTimeAdd:'36',studentTimeTheory:'32',studentTimePractice:'4',term1:'',term2:'',term3:'36',term4:'',term5:'',term6:'',term7:'',term8:'',term9:'',term10:'',courseStatus:'2'}
                       ]
                     }
                   ]
@@ -109,17 +111,17 @@
                     {
                       gradeName:'2015',
                       courseList:[
-                        {courseType:'公共基础课5',courseName:'职业生涯规划',studentTimeAdd:'36',studentTimeTheory:'32',studentTimePractice:'4',term1:'36',term2:'',term3:'',term4:'',term5:'',term6:'',term7:'',term8:'',term9:'',term10:'',courseStatus:'未完成'},
-                        {courseType:'公共基础课5',courseName:'哲学与人生',studentTimeAdd:'36',studentTimeTheory:'32',studentTimePractice:'4',term1:'',term2:'36',term3:'',term4:'',term5:'',term6:'',term7:'',term8:'',term9:'',term10:'',courseStatus:'未完成'},
-                        {courseType:'公共基础课5',courseName:'经济政治与社会',studentTimeAdd:'36',studentTimeTheory:'32',studentTimePractice:'4',term1:'',term2:'',term3:'36',term4:'',term5:'',term6:'',term7:'',term8:'',term9:'',term10:'',courseStatus:'未完成'}
+                        {courseType:'公共基础课5',courseName:'职业生涯规划',studentTimeAdd:'36',studentTimeTheory:'32',studentTimePractice:'4',term1:'36',term2:'',term3:'',term4:'',term5:'',term6:'',term7:'',term8:'',term9:'',term10:'',courseStatus:'0'},
+                        {courseType:'公共基础课5',courseName:'哲学与人生',studentTimeAdd:'36',studentTimeTheory:'32',studentTimePractice:'4',term1:'',term2:'36',term3:'',term4:'',term5:'',term6:'',term7:'',term8:'',term9:'',term10:'',courseStatus:'1'},
+                        {courseType:'公共基础课5',courseName:'经济政治与社会',studentTimeAdd:'36',studentTimeTheory:'32',studentTimePractice:'4',term1:'',term2:'',term3:'36',term4:'',term5:'',term6:'',term7:'',term8:'',term9:'',term10:'',courseStatus:'2'}
                       ]
                     },
                     {
                       gradeName:'2014',
                       courseList:[
-                        {courseType:'公共基础课4',courseName:'职业生涯规划',studentTimeAdd:'36',studentTimeTheory:'32',studentTimePractice:'4',term1:'36',term2:'',term3:'',term4:'',term5:'',term6:'',term7:'',term8:'',term9:'',term10:'',courseStatus:'未完成'},
-                        {courseType:'公共基础课4',courseName:'哲学与人生',studentTimeAdd:'36',studentTimeTheory:'32',studentTimePractice:'4',term1:'',term2:'36',term3:'',term4:'',term5:'',term6:'',term7:'',term8:'',term9:'',term10:'',courseStatus:'未完成'},
-                        {courseType:'公共基础课4',courseName:'经济政治与社会',studentTimeAdd:'36',studentTimeTheory:'32',studentTimePractice:'4',term1:'',term2:'',term3:'36',term4:'',term5:'',term6:'',term7:'',term8:'',term9:'',term10:'',courseStatus:'未完成'}
+                        {courseType:'公共基础课4',courseName:'职业生涯规划',studentTimeAdd:'36',studentTimeTheory:'32',studentTimePractice:'4',term1:'36',term2:'',term3:'',term4:'',term5:'',term6:'',term7:'',term8:'',term9:'',term10:'',courseStatus:'0'},
+                        {courseType:'公共基础课4',courseName:'哲学与人生',studentTimeAdd:'36',studentTimeTheory:'32',studentTimePractice:'4',term1:'',term2:'36',term3:'',term4:'',term5:'',term6:'',term7:'',term8:'',term9:'',term10:'',courseStatus:'1'},
+                        {courseType:'公共基础课4',courseName:'经济政治与社会',studentTimeAdd:'36',studentTimeTheory:'32',studentTimePractice:'4',term1:'',term2:'',term3:'36',term4:'',term5:'',term6:'',term7:'',term8:'',term9:'',term10:'',courseStatus:'2'}
                       ]
                     }
                   ]
