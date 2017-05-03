@@ -2,7 +2,7 @@
   <div>
     <div id="noSupervisorDiv" style="display: inline">
       <div id="tchDropdown" style="height: 5rem;margin: 0.6rem 5rem;background-color: white;">
-        <select id="teacherSelect" class="selectWM" v-model="noSupervisorinfoKey.teacherId" @click="teacherClick()">
+        <select id="teacherSelect" class="selectWM" v-model="noSupervisorinfoKey.teacherId" @change="teacherClick()">
           <option value="0">选择任课教师</option>
           <option v-for="teacher in teacherList" :value="teacher.teacherId">{{teacher.teacherName}}</option>
         </select>
@@ -30,7 +30,7 @@
           </thead>
           <tbody>
           <tr v-for=" notSettedSupervisorCourseInfo in notSettedSupervisorCourseInfoList">
-            <td @click="setSupervisorClick(notSettedSupervisorCourseInfo.courseId,notSettedSupervisorCourseInfo.courseName)"  class="setSupervisor"><u>设置督导</u></td>
+            <td @click="setSupervisorClick(notSettedSupervisorCourseInfo.courseId,notSettedSupervisorCourseInfo.courseName,notSettedSupervisorCourseInfo.classId)" class="setSupervisor"><u>设置督导</u></td>
             <td v-text="notSettedSupervisorCourseInfo.className"></td>
             <td v-text="notSettedSupervisorCourseInfo.courseId"></td>
             <td v-text="notSettedSupervisorCourseInfo.courseName"></td>
@@ -49,14 +49,14 @@
           <span><p>课程名称:{{setCourseName}}</p></span>
           <div>
             <span id="setSupSpan">设置督导员:</span>
-            <select id="supervisorSelect" class="selectWM" v-model="supervisorinfoKey.supervisorId">
+            <select id="supervisorSelect" class="selectWM" v-model="supervisorinfoKey.supervisorId" @change="supervisorClick()">
               <option value="0">选择督导员</option>
               <option v-for="supervisor in supervisorList" :value="supervisor.supervisorId">{{supervisor.supervisorName}}</option>
             </select>
             <!--督导员选择下拉列表-->
             <select id="timeSelect" class="selectWM" v-model="supervisorinfoKey.time">
               <option value="0">选择时间</option>
-              <option v-for="time in times" :value="time.week+','+time.weekDay+','+time.lessonNum">第{{time.week}}周第{{time.weekDay}}天第{{time.lessonNum}}节课</option>
+              <option v-for="time in times" :value="'第'+time.week+'周第'+time.weekDay+'天第'+time.lessonNum+'节课'">第{{time.week}}周第{{time.weekDay}}天第{{time.lessonNum}}节课</option>
             </select>
             <!--督导时间选择下拉列表-->
             <span><button id="save" class="am-btn am-btn-success am-radius buttonWM" @click="saveSupervisorInfoClick()">保存</button></span>
@@ -89,7 +89,7 @@
               <td v-text="settedSupervisorCourseInfo.courseId"></td>
               <td v-text="settedSupervisorCourseInfo.courseName"></td>
               <td v-text="settedSupervisorCourseInfo.teacherName"></td>
-              <td><button class="am-btn am-btn-success am-radius" @click="checksupervisorBackInfoClick(settedSupervisorCourseInfo.supervisorName,settedSupervisorCourseInfo.courseId)">查看</button></td>
+              <td><button class="am-btn am-btn-success am-radius" @click="checksupervisorBackInfoClick(settedSupervisorCourseInfo.supervisorId,settedSupervisorCourseInfo.classId,settedSupervisorCourseInfo.courseId)">查看</button></td>
             </tr>
             </tbody>
           </table>
@@ -163,6 +163,7 @@
                 {courseName:'临床',courseId:'323456'}
               ],
               supervisorinfoKey:{
+                courseId:'',
                 supervisorId:'0',
                 time:'0'
               },
@@ -172,11 +173,11 @@
                 {supervisorName:'李伟',supervisorId:'333333'}
               ],
               superviseBackinfoKey:{
-                supervisorName:'',
+                supervisorId:'',
+                classId:'',
                 courseId:'',
                 forwardInfo:''
               },
-              weekAndDay:[],
               setMsg:'1',
               setCourseName:'请选择',
               times:[
@@ -185,12 +186,12 @@
                 {week:'7',weekDay:'8',lessonNum:'9'}
               ],
               notSettedSupervisorCourseInfoList:[
-                  {status:'1',supervisorName:'',className:'对口高职 2015 护理1班',courseName:'护理管理学',courseId:'10300',teacherName:'季军'},
-                  {status:'0',supervisorName:'',className:'对口高职 2015 护理2班',courseName:'护理管理学',courseId:'10300',teacherName:'季军'}
+                  {status:'1',supervisorName:'',supervisorId:'',className:'对口高职 2015 护理1班',classId:'11111',courseName:'护理管理学',courseId:'10300',teacherName:'季军'},
+                  {status:'0',supervisorName:'',supervisorId:'',className:'对口高职 2015 护理2班',classId:'22222',courseName:'护理管理学',courseId:'10300',teacherName:'季军'}
                 ],
               settedSupervisorCourseInfoList:[
-                {status:'1',supervisorName:'李晓',className:'普通高中 2015 护理1班',courseName:'护理管理学',courseId:'10301',teacherName:'何平'},
-                {status:'0',supervisorName:'张玲',className:'普通高中 2015 护理2班',courseName:'护理管理学',courseId:'10301',teacherName:'何平'}
+                  {status:'1',supervisorName:'李晓',supervisorId:'12345',className:'普通高中 2015 护理1班',classId:'33333',courseName:'护理管理学',courseId:'10301',teacherName:'何平'},
+                  {status:'0',supervisorName:'张玲',supervisorId:'22345',className:'普通高中 2015 护理2班',classId:'44444',courseName:'护理管理学',courseId:'10301',teacherName:'何平'}
               ],
               superviseInfoList:{
                 superviseTime:'2016.01.01',
@@ -208,12 +209,13 @@
             }
         },
       beforeMount:function() {
-        this.$http.post('../supervisorManageJson',{},{
+        this.$http.post('./supervisorManageJson',{},{
           "Content-Type":"application/json"
         }).then(function (response) {
           console.log(response);
+          this.courseList = response.body.courseList;
+          this.teacherList = response.body.teacherList;
           this.notSettedSupervisorCourseInfoList = response.body.supervisorManage.notSettedSupervisorCourseInfoList;
-          this.settedSupervisorCourseInfoList = response.body.supervisorManage.settedSupervisorCourseInfoList;
         },function(error){
           console.log("获取error");
         });
@@ -221,8 +223,8 @@
       methods:{
         checkNoSupervisorInfoClick: function(){
           this.$http.post('./checkNoSupervisorInfoJson',{
-            "teacherName":this.noSupervisorinfoKey.teacherName,
-            "courseName":this.noSupervisorinfoKey.courseName
+            "teacherId":this.noSupervisorinfoKey.teacherId,
+            "courseId":this.noSupervisorinfoKey.courseId
           },{
             "Content-Type":"application/json"
           }).then(function (response) {
@@ -238,23 +240,40 @@
             console.log("获取error");
           });
         },
-        setSupervisorClick:function(courseId,courseName){
+        teacherClick:function(){
+          this.$http.post('./noSupervisorTeacherClickJson',{
+            "teacherId":this.noSupervisorinfoKey.teacherId
+          },{
+            "Content-Type":"application/json"
+          }).then(function (response) {
+            console.log(response);
+            this.courseList = response.body.courseList;
+          },function(error){
+            console.log("获取error");
+          });
+          this.noSupervisorinfoKey.courseId = "0";
+        },
+        setSupervisorClick:function(courseId,courseName,classId){
           var noSupervisorDiv = document.getElementById("noSupervisorDiv");
           var supervisorDiv = document.getElementById("supervisorDiv");
           this.setCourseName = courseName;
           this.$http.post('./setSupervisorJson',{
-            "courseId":courseId
+            "courseId":courseId,
+            "classId":classId
           },{
             "Content-Type":"application/json"
           }).then(function (response) {
             console.log(response);
             this.times = response.body.setSupervisor.times;
+            this.settedSupervisorCourseInfoList = response.body.supervisorManage.settedSupervisorCourseInfoList;
           },function(error){
             console.log("获取error");
           });
+          this.supervisorinfoKey.courseId = courseId;
           supervisorDiv.style.display = "inline";
           noSupervisorDiv.style.display = "none";
         },
+//        从未设置督导页面跳转到已设置督导页面
         goToClick:function(){
           var noSupervisorDiv = document.getElementById("noSupervisorDiv");
           var supervisorDiv = document.getElementById("supervisorDiv");
@@ -263,15 +282,24 @@
           noSupervisorDiv.style.display = "none";
           setSupervisorDropdown.style.display = "none";
         },
+        supervisorClick:function(){
+          this.$http.post('./supervisorClickJson',{
+            "supervisorId":this.supervisorinfoKey.supervisorId
+          },{
+            "Content-Type":"application/json"
+          }).then(function (response) {
+            console.log(response);
+            this.times = response.body.times;
+          },function(error){
+            console.log("获取error");
+          });
+          this.supervisorinfoKey.time = "0";
+        },
         saveSupervisorInfoClick:function(){
-          this.weekAndDay = this.supervisorinfoKey.time.split(",");
-//          分割字符串this.supervisorinfoKey.time,将week,weekDay,lessonNum分开传递给后端
-//          alert(this.weekAndDay[0]+","+this.weekAndDay[1]+","+this.weekAndDay[2]);
           this.$http.post('./saveSupervisorInfoJson',{
-            "supervisorName":this.supervisorinfoKey.supervisorName,
-            "week":this.weekAndDay[0],
-            "weekDay":this.weekAndDay[1],
-            "lessonNum":this.weekAndDay[2]
+            "supervisorId":this.supervisorinfoKey.supervisorId,
+            "time":this.supervisorinfoKey.time,
+            "courseId":this.supervisorinfoKey.courseId
           },{
             "Content-Type":"application/json"
           }).then(function (response) {
@@ -285,14 +313,17 @@
           this.supervisorinfoKey.supervisorName = '';
           this.supervisorinfoKey.time = '0';
         },
-        checksupervisorBackInfoClick:function(supervisorName,courseId){
+//        从已设置督导页面跳转到督导反馈页面
+        checksupervisorBackInfoClick:function(supervisorName,classId,courseId){
           var supervisorDiv = document.getElementById("supervisorDiv");
           var superviseBackTable = document.getElementById("superviseBackTable");
-          this.superviseBackinfoKey.supervisorName = supervisorName;
+          this.superviseBackinfoKey.supervisorId = supervisorId;
+          this.superviseBackinfoKey.classId = classId;
           this.superviseBackinfoKey.courseId = courseId;
           this.superviseBackinfoKey.forwardInfo = "";
           this.$http.post('./checksupervisorBackInfo',{
-            "supervisorName":supervisorName,
+            "supervisorId":supervisorId,
+            "classId":classId,
             "courseId":courseId
           },{
             "Content-Type":"application/json"
@@ -306,6 +337,7 @@
           superviseBackTable.style.display = "inline"
 
         },
+//        从已设置督导页面跳转到未设置督导页面
         supervisorTableGoBackClick:function(){
           var noSupervisorDiv = document.getElementById("noSupervisorDiv");
           var supervisorDiv = document.getElementById("supervisorDiv");
@@ -341,6 +373,7 @@
         cancelClick:function(){
           this.superviseBackinfoKey.forwardInfo = "";
         },
+//        从督导反馈页面跳转到已设置督导页面
         superviseBackTableGoBackClick:function(){
           var supervisorDiv = document.getElementById("supervisorDiv");
           var superviseBackTable = document.getElementById("superviseBackTable");

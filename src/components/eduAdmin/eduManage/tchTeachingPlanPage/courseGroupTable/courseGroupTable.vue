@@ -1,12 +1,12 @@
 <template>
   <div>
     <div id="searchInfo">
-      <select id="groupSelect" class="selectWM" v-model="teacherinfoKey.groupId" @click="groupClick()">
+      <select id="groupSelect" class="selectWM" v-model="teacherinfoKey.groupId" @change="groupClick()">
         <option value="0">选择教研组</option>
         <option v-for="group in groupList" :value="group.groupId">{{group.groupName}}</option>
       </select>
       <!--教研组选择下拉列表-->
-      <select id="teacherSelect" class="selectWM" v-model="teacherinfoKey.teacherId" @click="teacherClick()">
+      <select id="teacherSelect" class="selectWM" v-model="teacherinfoKey.teacherId">
         <option value="0">选择教师</option>
         <option v-for="teacher in teacherList" :value="teacher.teacherId">{{teacher.teacherName}}</option>
       </select>
@@ -76,7 +76,7 @@
             }
         },
       beforeMount:function() {
-        this.$http.post('../teachingPlanJson',{},{
+        this.$http.post('./teachingPlanJson',{},{
           "Content-Type":"application/json"
         }).then(function (response) {
           console.log(response);
@@ -88,6 +88,19 @@
         });
       },
       methods:{
+        groupClick: function(){
+          this.$http.post('./groupClickJson',{
+            "groupId":this.teacherinfoKey.groupId
+          },{
+            "Content-Type":"application/json"
+          }).then(function (response) {
+            console.log(response);
+            this.teacherList = response.body.teacherList;
+          },function(error){
+            console.log("获取error");
+          });
+          this.teacherinfoKey.teacherId = "0";
+        },
         checkTeachingPlanInfoClick: function(){
           this.$http.post('./checkTeachingPlanInfoJson',{
             "groupName":this.teacherinfoKey.groupName,

@@ -12,11 +12,6 @@ export default {
     return{
 
     }
-  },
-  created:function() {
-    this.$http.get('../test.php').then(function (response) {
-      console.log(response.body);
-    });
   }
 }
 </script>

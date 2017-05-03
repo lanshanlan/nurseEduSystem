@@ -1,12 +1,12 @@
 <template>
   <div>
     <div id="courseTchInfo">
-      <select id="termSelect" class="selectWM" v-model="evaluateinfoKey.term">
+      <select id="termSelect" class="selectWM" v-model="evaluateinfoKey.term" @change="termClick()">
         <option value="0">选择学期</option>
         <option v-for="term in terms" :value="term">{{term}}</option>
       </select>
       <!--学期选择下拉列表-->
-      <select id="teacherSelect" class="selectWM" v-model="evaluateinfoKey.teacherId">
+      <select id="teacherSelect" class="selectWM" v-model="evaluateinfoKey.teacherId" @change="teacherClick()">
         <option value="0">选择教师</option>
         <option v-for="teacher in teacherList" :value="teacher.teacherId">{{teacher.teacherName}}</option>
       </select>
@@ -92,16 +92,46 @@
           console.log(response);
           this.results = response.body.evaluateResult.results;
           this.terms = response.body.evaluateResult.terms;
+          this.teacherList = response.body.evaluateResult.teacherList;
+          this.courseList = response.body.evaluateResult.courseList;
         },function(error){
           console.log("获取error");
         });
       },
       methods:{
+        termClick: function(){
+          this.$http.post('./termClickJson',{
+            "term":this.evaluateinfoKey.term
+          },{
+            "Content-Type":"application/json"
+          }).then(function (response) {
+            console.log(response);
+            this.teacherList = response.body.teacherList;
+            this.courseList = response.body.courseList;
+          },function(error){
+            console.log("获取error");
+          });
+          this.evaluateinfoKey.teacherId = "0";
+          this.evaluateinfoKey.courseId = "0";
+        },
+        teacherClick: function(){
+          this.$http.post('./evaResultTeacherClickJson',{
+            "teacherId":this.evaluateinfoKey.teacherId
+          },{
+            "Content-Type":"application/json"
+          }).then(function (response) {
+            console.log(response);
+            this.courseList = response.body.courseList;
+          },function(error){
+            console.log("获取error");
+          });
+          this.evaluateinfoKey.courseId = "0";
+        },
         checkEvaInfoClick: function(){
           this.$http.post('../checkEvaluateInfoJson',{
             "term":this.evaluateinfoKey.term,
-            "courseName":this.evaluateinfoKey.courseName,
-            "teacherName":this.evaluateinfoKey.teacherName
+            "teacherId":this.evaluateinfoKey.teacherId,
+            "courseId":this.evaluateinfoKey.courseId
           },{
             "Content-Type":"application/json"
           }).then(function (response) {
