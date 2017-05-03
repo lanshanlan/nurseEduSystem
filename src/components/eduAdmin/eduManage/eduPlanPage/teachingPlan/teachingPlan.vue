@@ -4,7 +4,7 @@
       <div :id="yearTypeIndex + 'YearsTypeDiv'" class="yearsTypeDiv">
         <!--年制模块下拉菜单-->
         <!--<span><img :id="yearType.English + 'Arrow'" class="yearsTypeImg" :src="arrowright"></span>-->
-        <span :id="yearTypeIndex + 'P'" class="yearsTypeP">{{yearAndCourse.yearType}}年制</span>
+        <span :id="yearTypeIndex + 'P'" class="yearsTypeP">{{yearAndCourse.yearType}}年制培养方案</span>
         <span><button id="yearTypeIndex + 'Module'" class="yearButton">下载模板</button></span>
       </div>
 
