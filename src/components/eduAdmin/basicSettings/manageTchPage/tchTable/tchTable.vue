@@ -3,10 +3,14 @@
     <div id="dropdownInfo">
       <span><input type="text" id="tchName" class="inputWM" placeholder="请输入姓名" v-model="teacherinfoKey.teacherName"></span>
       <span><input type="text" id="tchID" class="inputWM" placeholder="请输入编号" v-model="teacherinfoKey.teacherId"></span>
-      <span><button id="downloadForm" class="am-btn am-btn-success am-radius buttonWM">下载模板</button></span>
       <span><button id="searchFor" class="am-btn am-btn-success am-radius buttonWM" @click="checkTchInfoClick()">查找</button></span>
-      <span><button id="leadIn" class="am-btn am-btn-success am-radius buttonWM">导入</button></span>
-      <span><button id="leadOut" class="am-btn am-btn-success am-radius buttonWM">导出</button></span>
+      <span><button id="downloadForm" class="am-btn am-btn-success am-radius buttonWM" @click="downloadFormClick">下载模板</button></span>
+      <span style="display: inline-block">
+        <Upload action="./teacherManage/uploadTeacherInfo">
+        <button type="ghost" id="leadIn" class="am-btn am-btn-success am-radius buttonWM">上传</button>
+        </Upload>
+      </span>
+      <span><button id="leadOut" class="am-btn am-btn-success am-radius buttonWM" @click="downloadClick">下载</button></span>
     </div>
     <div id="tchTable" style="padding: 0.6rem 5rem;background-color: #f3f3f3">
       <!--教师信息表格-->
@@ -104,6 +108,12 @@
           },function(error){
             console.log("获取error");
           });
+        },
+        downloadFormClick:function(){
+          location.href="./teacherManage/exportTeacherInfoTemplet";
+        },
+        downloadClick:function(){
+          location.href="./teacherManage/exportTeacherInfo";
         },
         editClick: function(index){
           var inputTable = document.getElementById("inputTable"+index);

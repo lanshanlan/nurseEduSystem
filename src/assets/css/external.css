@@ -14,6 +14,10 @@ html {
 .textBtn a:active {
   color: #3091f2;
 }
+/*蓝色*/
+.textBlue {
+  color: blue;
+}
 
 /* ==========================================================================
    Component: topBar
@@ -40,6 +44,8 @@ html {
    Component: Button
  ============================================================================ */
 .am-btn {
+  margin-bottom: 0;
+  margin-top: 0;
   padding: 0.6rem 1.1rem;
   vertical-align: middle;
   font-size: 0.9rem;
@@ -105,9 +111,46 @@ html {
   background-color: #00a539;
   border-color: #00a539;
 }
-/*button {*/
-  /*margin: 0.7rem;*/
-/*}*/
+/*button {
+  margin: 0 0.7rem;
+}*/
+
+/**********上传按钮************/
+#uploadBtn {
+  margin-bottom: 0;
+  margin-top: 0;
+  padding: 0.7rem 0;
+  vertical-align: middle;
+  font-size: 0.8rem;
+  font-weight: normal;
+  line-height: 1.2;
+  white-space: nowrap;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  outline: none;
+  font-family: "Microsoft YaHei";
+  color: #fff;
+  background-color: #158064;
+  border-color: #158064;
+}
+#uploadBtn:hover,
+#uploadBtn:focus,
+#uploadBtn:active {
+  color: #fff;
+  border-color: #429842;
+}
+#uploadBtn:hover,
+#uploadBtn:focus {
+  background-color: #00a539;
+}
+#uploadBtn:active {
+  background-image: none;
+  background-color: #3f913f;
+}
+
+
 
 /* ==========================================================================
    Component: select
@@ -124,6 +167,13 @@ html {
 .tableSelect button {
   width: 5.6rem;
   margin: 0 0.7rem;
+  outline: none;
+}
+
+.blank {
+  height: 3.5rem;
+  line-height: 3.5rem;
+  overflow: hidden;
 }
 
   select{
@@ -167,7 +217,6 @@ html {
 /************有操作的表格（有border）operationTable************/
 .operationTable {
   width: 100%;
-/*改为98%，然后设置margin:0 1%;使得head下的横线有边框*/
   text-align: center;
   border-spacing: 0;
   border-collapse: separate;
@@ -255,4 +304,47 @@ list-style-type: none;
 .contentH{
     position:relative;
     left:3rem;
+}
+
+
+/* ==========================================================================
+   Component: modal
+ ============================================================================ */
+#modalBtn {
+  margin: 0 0.7rem;
+  padding: 0.6rem 1.6rem;
+  vertical-align: middle;
+  font-size: 0.9rem;
+  font-weight: normal;
+  line-height: 1.2;
+  white-space: nowrap;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  outline: none;
+  font-family: "Microsoft YaHei";
+  color: #fff;
+  background-color: #158064;
+  border-color: #158064;
+}
+#modalBtn:hover,
+#modalBtn:focus,
+#modalBtn:active {
+  color: #fff;
+  border-color: #429842;
+}
+#modalBtn:hover,
+#modalBtn:focus {
+  background-color: #00a539;
+}
+#modalBtn:active {
+  background-image: none;
+  background-color: #3f913f;
+}
+
+#modalBody {
+  text-align: center;
+  font-family: "Microsoft YaHei";
+
 }

@@ -17,10 +17,14 @@
         </select>
         <!--班级选择下拉列表-->
         <span><input type="text" id="stdID" class="inputWM" placeholder="请输入学号" v-model="studentinfoKey.studentId"></span>
-        <span><button id="downloadForm" class="am-btn am-btn-success am-radius buttonWM" @click="moli">下载模板</button></span>
         <span><button id="searchFor" class="am-btn am-btn-success am-radius buttonWM" @click="checkStdInfoClick()">查找</button></span>
-        <span><button id="leadIn" class="am-btn am-btn-success am-radius buttonWM">导入</button></span>
-        <span><button id="leadOut" class="am-btn am-btn-success am-radius buttonWM">导出</button></span>
+        <span><button id="downloadForm" class="am-btn am-btn-success am-radius buttonWM" @click="downloadFormClick">下载模板</button></span>
+        <span style="display: inline-block">
+          <Upload action="./studentManage/uploadStudentSimpleInfo">
+          <button type="ghost" id="leadIn" class="am-btn am-btn-success am-radius buttonWM">上传</button>
+          </Upload>
+        </span>
+        <span><button id="leadOut" class="am-btn am-btn-success am-radius buttonWM" @click="downloadClick">下载</button></span>
       </div>
       <div style="padding: 0.6rem 5rem;background-color: #f3f3f3">
         <div id="stdTable" style="background-color: white">
@@ -165,6 +169,12 @@
           },function(error){
             console.log("获取error");
           });
+        },
+        downloadFormClick:function(){
+          location.href="./studentManage/exportStudentSimpleInfoTemplet";
+        },
+        downloadClick:function(){
+          location.href="./studentManage/exportStudentSimpleInfo";
         },
         editClick: function(index){
           var inputTable = document.getElementById("inputTable"+index);
