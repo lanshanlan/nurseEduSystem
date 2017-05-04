@@ -8,19 +8,30 @@
         <!--年制选择下拉列表-->
         <select id="gradeSelect" class="selectWM" v-model="studentinfoKey.gradeName" @click="indexYearTypeClick()">
           <option value="0">选择年级</option>
-          <option v-for="yearEle in yearAndClassList[indexYearType].gradeList" :value="yearEle.gradeName">{{yearEle.gradeName}}级</option>
+          <option v-if="studentinfoKey.schoolYearType!='0'" v-for="yearEle in yearAndClassList[indexYearType].gradeList" :value="yearEle.gradeName">{{yearEle.gradeName}}级</option>
         </select>
         <!--年级选择下拉列表-->
         <select id="classSelect" class="selectWM" v-model="studentinfoKey.className" @click="indexGradeClick()">
           <option value="0">选择班级</option>
-          <option v-for="classEle in yearAndClassList[indexYearType].gradeList[indexGrade].classList " :value="classEle">{{classEle}}</option>
+          <option v-if="studentinfoKey.gradeName!='0'" v-for="classEle in yearAndClassList[indexYearType].gradeList[indexGrade].classList " :value="classEle">{{classEle}}</option>
         </select>
         <!--班级选择下拉列表-->
         <span><input type="text" id="stdID" class="inputWM" placeholder="请输入学号" v-model="studentinfoKey.studentId"></span>
         <span><button id="searchFor" class="am-btn am-btn-success am-radius buttonWM" @click="checkStdInfoClick()">查找</button></span>
+
         <span><button id="downloadForm" class="am-btn am-btn-success am-radius buttonWM" @click="downloadFormClick">下载模板</button></span>
         <span style="display: inline-block">
-          <Upload action="./studentManage/uploadStudentSimpleInfo">
+          <Upload
+            ref="upload"
+            :show-upload-list = false
+            :format="['xls','xlsx']"
+            :max-size="2048"
+            :on-format-error="handleFormatError"
+            :on-exceeded-size="handleSizeError"
+            :on-progress="handleProgress"
+            :on-success="handleSuccess"
+            :on-error="handleError"
+            action="./studentManage/uploadStudentSimpleInfo">
           <button type="ghost" id="leadIn" class="am-btn am-btn-success am-radius buttonWM">上传</button>
           </Upload>
         </span>
@@ -169,6 +180,31 @@
           },function(error){
             console.log("获取error");
           });
+        },
+        handleFormatError:function(file){
+          this.$Notice.warning({
+            title: '文件格式不正确',
+            desc: '文件 ' + file.name + ' 格式不正确，请上传xls或xlsx表格。'
+          });
+        },
+        handleSizeError:function(file){
+          this.$Notice.warning({
+            title: '超出文件大小限制',
+            desc: '文件 ' + file.name + ' 太大，不能超过 2M。'
+          });
+        },
+        handleProgress:function(){
+          this.$Message.loading("正在上传中...");
+        },
+        handleSuccess:function(res){
+          if(res.result==='1'){
+            this.$Message.success("上传成功！");
+          }else{
+            this.$Message.error(res.result);
+          }
+        },
+        handleError:function(){
+          this.$Message.error("上传失败");
         },
         downloadFormClick:function(){
           location.href="./studentManage/exportStudentSimpleInfoTemplet";

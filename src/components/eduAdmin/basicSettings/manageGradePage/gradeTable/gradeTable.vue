@@ -66,9 +66,23 @@
           </tbody>
         </table>
         <div id="buttonDiv">
-          <span><button id="downloadForm" class="bottomButton am-btn am-btn-success am-radius" @click="">下载模板</button></span>
-          <span><button id="leadIn" class="bottomButton am-btn am-btn-success am-radius" @click="">导入</button></span>
-          <span><button id="leadOut" class="bottomButton am-btn am-btn-success am-radius" @click="">导出</button></span>
+          <span><button id="downloadForm" class="bottomButton am-btn am-btn-success am-radius" @click="downloadFormClick">下载模板</button></span>
+          <span style="display: inline-block">
+            <Upload
+              ref="upload"
+              :show-upload-list = false
+              :format="['xls','xlsx']"
+              :max-size="2048"
+              :on-format-error="handleFormatError"
+              :on-exceeded-size="handleSizeError"
+              :on-progress="handleProgress"
+              :on-success="handleSuccess"
+              :on-error="handleError"
+              action="./teacherManage/uploadTeacherInfo">
+              <button type="ghost" id="leadIn" class="bottomButton am-btn am-btn-success am-radius">上传</button>
+            </Upload>
+          </span>
+          <span><button id="leadOut" class="bottomButton am-btn am-btn-success am-radius" @click="downloadClick">下载</button></span>
           <span><button id="goBack" class="bottomButton am-btn am-btn-success am-radius" @click="goBackClick()">返回</button></span>
         </div>
       </div>
@@ -191,10 +205,6 @@
         this.gradeTable = true;
         this.gradeManagement = false;
       },
-      goBackClick: function(){
-        this.gradeTable = false;
-        this.gradeManagement = true;
-      },
       editClick: function(index){
         var inputTable = document.getElementById("inputTable"+index);
         var input = inputTable.getElementsByTagName("input");
@@ -273,6 +283,41 @@
         });
         this.classinfoStrList.splice(index,1);
       },
+      handleFormatError:function(file){
+        this.$Notice.warning({
+          title: '文件格式不正确',
+          desc: '文件 ' + file.name + ' 格式不正确，请上传xls或xlsx表格。'
+        });
+      },
+      handleSizeError:function(file){
+        this.$Notice.warning({
+          title: '超出文件大小限制',
+          desc: '文件 ' + file.name + ' 太大，不能超过 2M。'
+        });
+      },
+      handleProgress:function(){
+        this.$Message.loading("正在上传中...");
+      },
+      handleSuccess:function(res){
+        if(res.result==='1'){
+          this.$Message.success("上传成功！");
+        }else{
+          this.$Message.error(res.result);
+        }
+      },
+      handleError:function(){
+        this.$Message.error("上传失败");
+      },
+      downloadFormClick:function(){
+        location.href="./gradeManage/exportClassInfoTemplet";
+      },
+      downloadClick:function(){
+        location.href="./gradeManage/exportClassInfo";
+      },
+      goBackClick: function(){
+        this.gradeTable = false;
+        this.gradeManagement = true;
+      }
     }
   }
 </script>
