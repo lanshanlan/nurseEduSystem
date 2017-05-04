@@ -86,7 +86,7 @@
             }
         },
       beforeMount:function() {
-        this.$http.post('../evaluateResultJson',{},{
+        this.$http.post('./studentEvaluation/findEvaluationResult',{},{
           "Content-Type":"application/json"
         }).then(function (response) {
           console.log(response);
@@ -128,7 +128,7 @@
           this.evaluateinfoKey.courseId = "0";
         },
         checkEvaInfoClick: function(){
-          this.$http.post('../checkEvaluateInfoJson',{
+          this.$http.post('./studentEvaluation/findEvaluationResult',{
             "term":this.evaluateinfoKey.term,
             "teacherId":this.evaluateinfoKey.teacherId,
             "courseId":this.evaluateinfoKey.courseId

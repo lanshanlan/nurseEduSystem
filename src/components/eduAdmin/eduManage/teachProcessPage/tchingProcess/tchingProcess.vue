@@ -5,7 +5,7 @@
           <!--年制模块下拉菜单-->
           <!--<span><img :id="yearType.English + 'Arrow'" class="yearsTypeImg" :src="arrowright"></span>-->
           <span :id="yearTypeIndex + 'P'" class="yearsTypeP">{{yearAndCourse.yearType}}年制教学进度</span>
-          <span><button id="yearTypeIndex + 'Module'" class="yearButton">下载模板</button></span>
+          <span><button id="yearTypeIndex + 'Module'" class="yearButton" @click="downloadFormClick">下载模板</button></span>
         </div>
 
         <div :id="yearTypeIndex + 'ProcessMenu'">
@@ -14,8 +14,23 @@
               <!--年级教学进程下拉菜单-->
               <span><img :id="yearTypeIndex + 'Arrow' + gradeIndex" class="gradeProcessImg" @click="tableSlideToggle(yearTypeIndex,gradeIndex)" :src="arrowright"></span>
               <span :id="yearTypeIndex + 'P' + gradeIndex" class="gradeProcessP" @click="tableSlideToggle(yearTypeIndex,gradeIndex)">{{grade.gradeName}}级</span>
-              <span><button class="gradeButton">导入</button></span>
-              <span><button class="gradeButton">导出</button></span>
+              <span><button class="gradeButton" @click="downloadClick(yearAndCourse.yearType,grade.gradeName)">下载</button></span>
+              <span style="display: inline-block;float: right;margin-bottom: 0.3rem">
+                <Upload
+                  ref="upload"
+                  :data="{yearType:yearAndCourse.yearType,gradeName:grade.gradeName}"
+                  :show-upload-list = false
+                  :format="['xls','xlsx']"
+                  :max-size="2048"
+                  :on-format-error="handleFormatError"
+                  :on-exceeded-size="handleSizeError"
+                  :on-progress="handleProgress"
+                  :on-success="handleSuccess"
+                  :on-error="handleError"
+                  action="./teachingSchedule/importExcel">
+                  <button type="ghost" id="leadIn" class="gradeButton">上传</button>
+                </Upload>
+              </span>
             </div>
 
             <div :id="yearTypeIndex + 'Table' + gradeIndex" style="display: none">
@@ -130,7 +145,7 @@
             }
         },
       beforeMount:function() {
-        this.$http.post('../teachingProcessJson',{},{
+        this.$http.post('./teachingSchedule/showSchedule',{},{
           "Content-Type":"application/json"
         }).then(function (response) {
           console.log(response);
@@ -151,6 +166,47 @@
             table.style.display = "none";
             arrow.src = this.arrowright;
           }
+        },
+        handleFormatError:function(file){
+          this.$Notice.warning({
+            title: '文件格式不正确',
+            desc: '文件 ' + file.name + ' 格式不正确，请上传xls或xlsx表格。'
+          });
+        },
+        handleSizeError:function(file){
+          this.$Notice.warning({
+            title: '超出文件大小限制',
+            desc: '文件 ' + file.name + ' 太大，不能超过 2M。'
+          });
+        },
+        handleProgress:function(){
+          this.$Message.loading("正在上传中...");
+        },
+        handleSuccess:function(res){
+          if(res.result==='1'){
+            this.$Message.success("上传成功！");
+          }else{
+            this.$Message.error(res.result);
+          }
+        },
+        handleError:function(){
+          this.$Message.error("上传失败");
+        },
+        downloadFormClick:function(){
+          location.href="./teachingSchedule/exportExcel";
+        },
+        downloadClick:function(yearType,gradeName){
+          this.$http.post('./teachingProcessDownloadJson',{
+            "yearType":yearType,
+            "gradeName":gradeName
+          },{
+            "Content-Type":"application/json"
+          }).then(function (response) {
+            console.log(response);
+          },function(error){
+            console.log("获取error");
+          });
+          location.href="./teachingSchedule/exportExcel";
         }
       }
     }

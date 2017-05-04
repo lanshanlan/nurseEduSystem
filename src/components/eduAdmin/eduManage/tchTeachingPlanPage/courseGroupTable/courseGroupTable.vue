@@ -19,7 +19,7 @@
         <table id="courseGroupTable" class="operationTable" style="table-layout: fixed;">
           <thead>
           <tr>
-            <th>教研1组编号</th>
+            <th>教研组编号</th>
             <th>教研组名称</th>
             <th>教师编号</th>
             <th>教师姓名</th>
@@ -107,7 +107,7 @@
       },
       methods:{
         groupClick: function(){
-          this.$http.post('./groupClickJson',{
+          this.$http.post('./courseTeachPlan/getTeacherList',{
             "groupId":this.teacherinfoKey.groupId
           },{
             "Content-Type":"application/json"

@@ -78,7 +78,7 @@
               :on-progress="handleProgress"
               :on-success="handleSuccess"
               :on-error="handleError"
-              action="./teacherManage/uploadTeacherInfo">
+              action="./gradeManage/uploadClassInfo">
               <button type="ghost" id="leadIn" class="bottomButton am-btn am-btn-success am-radius">上传</button>
             </Upload>
           </span>

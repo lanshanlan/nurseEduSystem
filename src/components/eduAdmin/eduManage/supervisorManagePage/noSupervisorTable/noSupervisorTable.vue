@@ -209,7 +209,7 @@
             }
         },
       beforeMount:function() {
-        this.$http.post('./supervisorManageJson',{},{
+        this.$http.post('./teachingSupervision/selectNotSupervisorList',{},{
           "Content-Type":"application/json"
         }).then(function (response) {
           console.log(response);
@@ -257,14 +257,10 @@
           var noSupervisorDiv = document.getElementById("noSupervisorDiv");
           var supervisorDiv = document.getElementById("supervisorDiv");
           this.setCourseName = courseName;
-          this.$http.post('./setSupervisorJson',{
-            "courseId":courseId,
-            "classId":classId
-          },{
+          this.$http.post('./teachingSupervision/selectSupervisorList',{},{
             "Content-Type":"application/json"
           }).then(function (response) {
             console.log(response);
-            this.times = response.body.setSupervisor.times;
             this.settedSupervisorCourseInfoList = response.body.supervisorManage.settedSupervisorCourseInfoList;
           },function(error){
             console.log("获取error");
@@ -281,9 +277,17 @@
           supervisorDiv.style.display = "inline";
           noSupervisorDiv.style.display = "none";
           setSupervisorDropdown.style.display = "none";
+          this.$http.post('./teachingSupervision/selectSupervisorList',{},{
+            "Content-Type":"application/json"
+          }).then(function (response) {
+            console.log(response);
+            this.settedSupervisorCourseInfoList = response.body.supervisorManage.settedSupervisorCourseInfoList;
+          },function(error){
+            console.log("获取error");
+          });
         },
         supervisorClick:function(){
-          this.$http.post('./supervisorClickJson',{
+          this.$http.post('./teachingSupervision/getTimeAndPlaceList',{
             "supervisorId":this.supervisorinfoKey.supervisorId
           },{
             "Content-Type":"application/json"
@@ -296,7 +300,7 @@
           this.supervisorinfoKey.time = "0";
         },
         saveSupervisorInfoClick:function(){
-          this.$http.post('./saveSupervisorInfoJson',{
+          this.$http.post('./teachingSupervision/setSupervisor',{
             "supervisorId":this.supervisorinfoKey.supervisorId,
             "time":this.supervisorinfoKey.time,
             "courseId":this.supervisorinfoKey.courseId
@@ -314,14 +318,14 @@
           this.supervisorinfoKey.time = '0';
         },
 //        从已设置督导页面跳转到督导反馈页面
-        checksupervisorBackInfoClick:function(supervisorName,classId,courseId){
+        checksupervisorBackInfoClick:function(supervisorId,classId,courseId){
           var supervisorDiv = document.getElementById("supervisorDiv");
           var superviseBackTable = document.getElementById("superviseBackTable");
           this.superviseBackinfoKey.supervisorId = supervisorId;
           this.superviseBackinfoKey.classId = classId;
           this.superviseBackinfoKey.courseId = courseId;
           this.superviseBackinfoKey.forwardInfo = "";
-          this.$http.post('./checksupervisorBackInfo',{
+          this.$http.post('./teachingSupervision/checkSupervisionResult',{
             "supervisorId":supervisorId,
             "classId":classId,
             "courseId":courseId
@@ -342,10 +346,12 @@
           var noSupervisorDiv = document.getElementById("noSupervisorDiv");
           var supervisorDiv = document.getElementById("supervisorDiv");
           var setSupervisorDropdown = document.getElementById("setSupervisorDropdown");
-          this.$http.post('./goBackNotSettedSupervisorInfoJson',{},{
+          this.$http.post('./teachingSupervision/selectNotSupervisorList',{},{
             "Content-Type":"application/json"
           }).then(function (response) {
             console.log(response);
+            this.courseList = response.body.courseList;
+            this.teacherList = response.body.teacherList;
             this.notSettedSupervisorCourseInfoList = response.body.notSettedSupervisorCourseInfoList;
           },function(error){
             console.log("获取error");
@@ -359,7 +365,7 @@
             alert("您没有输入教务人员意见");
           }
           else{
-            this.$http.post('./submitSupervisorInfoJson',{
+            this.$http.post('./teachingSupervision/setFeedbackSupervisionResult',{
               "forwardInfo":this.superviseBackinfoKey.forwardInfo
             },{
               "Content-Type":"application/json"
