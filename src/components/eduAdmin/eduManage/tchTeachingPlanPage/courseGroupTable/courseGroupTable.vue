@@ -35,11 +35,11 @@
             <td v-text="courseGroupInfo.teacherId"></td>
             <td v-text="courseGroupInfo.teacherName"></td>
             <td v-text="courseGroupInfo.headman"></td>
-            <td><button id="download" class="am-btn am-btn-success am-radius">下载</button></td>
+            <td><button id="download" class="am-btn am-btn-success am-radius" @click="downloadClick">下载</button></td>
             <!--下载培养方案的按钮-->
             <td>
-              <img id="adopt" src="./images/save.png" @click="adoptTeachingPlanInfoClick(courseGroupInfo.teacherId,'1')">
-              <img id="notAdopt" src="./images/restore.png" @click="notAdoptTeachingPlanInfoClick(courseGroupInfo.teacherId,'0')">
+              <img id="adopt" src="./images/save.png" @click="examineTeachingPlanInfoClick(courseGroupInfo.teacherId,'1')">
+              <img id="notAdopt" src="./images/restore.png" @click="examineTeachingPlanInfoClick(courseGroupInfo.teacherId,'0')">
             </td>
           </tr>
           </tbody>
@@ -47,13 +47,22 @@
       </div>
     </div>
     <div>
-      <modal v-model="modalBool" width="400" id="modalBody">
+      <modal v-model="modalOperateBool" width="400" id="modalBody">
         <div style="text-align: center;font-size: 1.1rem;">
-          <p>{{modalMsg}}</p>
+          <p>是否确定{{operateMsg}}</p>
         </div>
         <div slot="footer" style="text-align: center">
-          <button id="modalBtn" @click="ok">确定</button>
-          <button id="modalBtn" @click="cancel">取消</button>
+          <button id="modalBtn" @click="operateOk">确定</button>
+          <button id="modalBtn" @click="operateCancel">取消</button>
+        </div>
+      </modal>
+      <modal v-model="modalResultBool" width="400" id="modalBody">
+        <div style="text-align: center;font-size: 1.1rem;">
+          <p v-if="resultmsg === '1'">{{operateMsg}}成功</p>
+          <p v-else>{{operateMsg}}失败</p>
+        </div>
+        <div slot="footer" style="text-align: center">
+          <button id="modalBtn" @click="resultOk">确定</button>
         </div>
       </modal>
     </div>
@@ -84,9 +93,11 @@
                 {groupName:'临床护理',groupId:'2017002',teacherName:'张亮',teacherId:'222',headman:'张扬'},
                 {groupName:'护用药理',groupId:'2017003',teacherName:'邓常',teacherId:'333',headman:'李季'}
               ],
-              modalMsg:"",
               msg:"",
-              modalBool:false,
+              operateMsg:"",
+              resultmsg:"1",
+              modalOperateBool:false,
+              modalResultBool:false,
               teacherIdEle:""
             }
         },
@@ -132,43 +143,39 @@
             console.log("获取error");
           });
         },
-        ok:function(){
-          this.modal=false;
-          this.$Message.success("提交成功");
+        downloadClick:function(){
+          location.href="./courseTeachPlan/exportExcel";
         },
-        cancel:function(){
-          this.modal=false;
-          this.$Message.error("提交失败");
+        examineTeachingPlanInfoClick:function(teacherId,msg){
+          this.modalOperateBool = true;
+          this.teacherIdEle = teacherId;
+          this.msg = msg;
+          if(msg ==="1"){
+            this.operateMsg = "审核通过";
+          }else{
+            this.operateMsg = "审核不通过";
+          }
         },
-        adoptTeachingPlanInfoClick: function(teacherId,msg){
-          this.msg=msg;
+        operateOk: function(){
           this.$http.post('./courseTeachPlan/doCheckTeachPlan',{
-            "msg":"1",
-            "teacherId":teacherId
+            "msg":this.msg,
+            "teacherId":this.teacherIdEle
           },{
             "Content-Type":"application/json"
           }).then(function (response) {
             console.log(response);
-            var result=response.body.result;
-            alert(result);
+            var resultmsg=response.body.result;
           },function(error){
             console.log("获取error");
           });
+          this.modalOperateBool = false;
+          this.modalResultBool = true;
         },
-        notAdoptTeachingPlanInfoClick: function(teacherId,msg){
-          this.msg=msg;
-          this.$http.post('./courseTeachPlan/doCheckTeachPlan',{
-            "msg":"0",
-            "teacherId":teacherId
-          },{
-            "Content-Type":"application/json"
-          }).then(function (response) {
-            console.log(response);
-            var result=response.body.result;
-            alert(result);
-          },function(error){
-            console.log("获取error");
-          });
+        operateCancel: function(){
+          this.modalOperateBool = false;
+        },
+        resultOk: function(){
+          this.modalResultBool = false;
         }
       }
     }

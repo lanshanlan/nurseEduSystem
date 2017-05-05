@@ -13,7 +13,7 @@
         </select>
         <!--课程选择下拉列表-->
         <span><button id="searchFor" class="am-btn am-btn-success am-radius buttonWM" @click="checkNoSupervisorInfoClick()">查找</button></span>
-        <span><button id="leadOut" class="am-btn am-btn-success am-radius buttonWM">导出</button></span>
+        <span><button id="leadOut" class="am-btn am-btn-success am-radius buttonWM" @click="downloadClick">下载</button></span>
       </div>
       <div id="noSupervisorTable" style="padding: 0.6rem 5rem;background-color: #f3f3f3">
         <span><p>*下面是筛选后的课程</p></span>
@@ -240,6 +240,9 @@
             console.log("获取error");
           });
         },
+        downloadClick:function(){
+          location.href="./teachingSupervision/exportExcel";
+        },
         teacherClick:function(){
           this.$http.post('./noSupervisorTeacherClickJson',{
             "teacherId":this.noSupervisorinfoKey.teacherId
@@ -333,7 +336,7 @@
             "Content-Type":"application/json"
           }).then(function (response) {
             console.log(response);
-            this.notSettedSupervisorCourseInfoList = response.body.notSettedSupervisorCourseInfoList;
+            this.superviseInfoList = response.body.checksupervisorBackInfoList.superviseInfoList;
           },function(error){
             console.log("获取error");
           });
