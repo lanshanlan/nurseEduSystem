@@ -25,6 +25,15 @@
             <td><router-link to="/eduAdminSupervisorManage">督导设置</router-link></td>
           </tr>
           <tr>
+            <td>通知公告模块</td>
+            <td><router-link to="/eduAdminNotifyInformation">信息通知</router-link></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
             <td>权限管理</td>
             <td><router-link to="/eduAdminAuthorityManage2">权限管理页面2</router-link></td>
             <td></td>

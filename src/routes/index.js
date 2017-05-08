@@ -13,6 +13,7 @@ import eduAdminEvaTeachingResult from '../views/eduAdmin/eduManage/evaTeachingRe
 import eduAdminSupervisorManage from '../views/eduAdmin/eduManage/supervisorManagePage/supervisorManagePage.vue'
 import eduAdminAuthorityManage2 from '../views/eduAdmin/userManage/authorityManage2Page/authorityManage2Page.vue'
 import eduAdminManageGrade from '../views/eduAdmin/basicSettings/manageGradePage/manageGradePage.vue'
+import eduAdminNotifyInformation from '../views/eduAdmin/notice/notifyInformationPage/notifyInformationPage.vue'
 import startTest from '../views/startTest.vue'
 import checkTest from '../views/test/checkTest/checkTest.vue'
 
@@ -79,6 +80,11 @@ export default new Router({   //将routes里的参数导出
       path: '/eduAdminManageGrade',
       name: 'eduAdminManageGrade',
       component: eduAdminManageGrade
+    },
+    {
+      path: '/eduAdminNotifyInformation',
+      name: 'eduAdminNotifyInformation',
+      component: eduAdminNotifyInformation
     },
     {
       path: '/checkTest',
