@@ -2,12 +2,12 @@
   <div>
     <div id="searchInfo">
       <select id="groupSelect" class="selectWM" v-model="teacherinfoKey.groupId" @change="groupClick()">
-        <option value="0">选择教研组</option>
+        <option value="">选择教研组</option>
         <option v-for="group in groupList" :value="group.groupId">{{group.groupName}}</option>
       </select>
       <!--教研组选择下拉列表-->
       <select id="teacherSelect" class="selectWM" v-model="teacherinfoKey.teacherId">
-        <option value="0">选择教师</option>
+        <option value="">选择教师</option>
         <option v-for="teacher in teacherList" :value="teacher.teacherId">{{teacher.teacherName}}</option>
       </select>
       <!--教师选择下拉列表-->
@@ -75,8 +75,8 @@
         data () {
             return {
               teacherinfoKey:{
-                groupId:'0',
-                teacherId:'0'
+                groupId:'',
+                teacherId:''
               },
               groupList:[
                 {groupName:'护理组',groupId:'111'},
@@ -103,8 +103,8 @@
         },
       beforeMount:function() {
         this.$http.post('./courseTeachPlan/findTeachPlan',{
-          "groupId":"0",
-          "teacherId":"0"
+          "groupId":"",
+          "teacherId":""
         },{
           "Content-Type":"application/json"
         }).then(function (response) {
@@ -131,6 +131,7 @@
           this.teacherinfoKey.teacherId = "0";
         },
         checkTeachingPlanInfoClick: function(){
+          alert(this.teacherinfoKey.groupId);
           this.$http.post('./courseTeachPlan/findTeachPlan',{
             "groupId":this.teacherinfoKey.groupId,
             "teacherId":this.teacherinfoKey.teacherId

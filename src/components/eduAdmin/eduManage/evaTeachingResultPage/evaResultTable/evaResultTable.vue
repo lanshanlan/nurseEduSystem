@@ -2,17 +2,17 @@
   <div>
     <div id="courseTchInfo">
       <select id="termSelect" class="selectWM" v-model="evaluateinfoKey.term" @click="termClick1" @change="termClick()">
-        <option value="0">选择学期</option>
+        <option value="">选择学期</option>
         <option v-for="term in terms" :value="term">{{term}}</option>
       </select>
       <!--学期选择下拉列表-->
       <select id="teacherSelect" class="selectWM" v-model="evaluateinfoKey.teacherId" @click="teacherClick1" @change="teacherClick()">
-        <option value="0">选择教师</option>
+        <option value="">选择教师</option>
         <option v-if="evaluateinfoKey.term!='0'" v-for="teacher in teacherList" :value="teacher.teacherId">{{teacher.teacherName}}</option>
       </select>
       <!--教师选择下拉列表-->
       <select id="courseSelect" class="selectWM" v-model="evaluateinfoKey.courseId">
-        <option value="0">选择课程</option>
+        <option value="">选择课程</option>
         <option v-if="evaluateinfoKey.teacherId!='0'" v-for="course in courseList" :value="course.courseId">{{course.courseName}}</option>
       </select>
       <!--课程选择下拉列表-->
@@ -54,9 +54,9 @@
         data () {
             return {
               evaluateinfoKey:{
-                term:'0',
-                teacherId:'0',
-                courseId:'0'
+                term:'',
+                teacherId:'',
+                courseId:''
               },
               terms:[
                 '大一:第一学期',

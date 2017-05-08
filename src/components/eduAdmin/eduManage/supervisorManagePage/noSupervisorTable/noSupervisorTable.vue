@@ -3,12 +3,12 @@
     <div id="noSupervisorDiv" style="display: inline">
       <div id="tchDropdown" style="height: 5rem;margin: 0.6rem 5rem;background-color: white;">
         <select id="teacherSelect" class="selectWM" v-model="noSupervisorinfoKey.teacherId" @change="teacherClick()">
-          <option value="0">选择任课教师</option>
+          <option value="">选择任课教师</option>
           <option v-for="teacher in teacherList" :value="teacher.teacherId">{{teacher.teacherName}}</option>
         </select>
         <!--任课教师选择下拉列表-->
         <select id="courseSelect" class="selectWM" v-model="noSupervisorinfoKey.courseId" @click="courseClick()">
-          <option value="0">选择课程</option>
+          <option value="">选择课程</option>
           <option v-for="course in courseList" :value="course.courseId">{{course.courseName}}</option>
         </select>
         <!--课程选择下拉列表-->
@@ -50,12 +50,12 @@
           <div>
             <span id="setSupSpan">设置督导员:</span>
             <select id="supervisorSelect" class="selectWM" v-model="supervisorinfoKey.supervisorId" @change="supervisorClick()">
-              <option value="0">选择督导员</option>
+              <option value="">选择督导员</option>
               <option v-for="supervisor in supervisorList" :value="supervisor.supervisorId">{{supervisor.supervisorName}}</option>
             </select>
             <!--督导员选择下拉列表-->
             <select id="timeSelect" class="selectWM" v-model="supervisorinfoKey.time">
-              <option value="0">选择时间</option>
+              <option value="">选择时间</option>
               <option v-for="time in times" :value="'第'+time.week+'周第'+time.weekDay+'天第'+time.lessonNum+'节课'">第{{time.week}}周第{{time.weekDay}}天第{{time.lessonNum}}节课</option>
             </select>
             <!--督导时间选择下拉列表-->
@@ -149,8 +149,8 @@
         data () {
             return {
               noSupervisorinfoKey:{
-                teacherId:'0',
-                courseId:'0'
+                teacherId:'',
+                courseId:''
               },
               teacherList:[
                 {teacherName:'何平',teacherId:'111111'},
@@ -164,8 +164,8 @@
               ],
               supervisorinfoKey:{
                 courseId:'',
-                supervisorId:'0',
-                time:'0'
+                supervisorId:'',
+                time:''
               },
               supervisorList:[
                 {supervisorName:'何平',supervisorId:'111111'},
