@@ -47,13 +47,40 @@
           <td><input :id="index + 'input3'" :value="teacherSimpleInfo.teacherIdcard" readonly="readonly" style="border: none"></td>
           <td><input :id="index + 'input4'" :value="teacherSimpleInfo.teacherGender" readonly="readonly" style="border: none"></td>
           <td><input :id="index + 'input5'" :value="teacherSimpleInfo.phoneNumber" readonly="readonly" style="border: none"></td>
-          <td><input :id="index + 'input6'" :value="teacherSimpleInfo.hireCampus" readonly="readonly" style="border: none"></td>
-          <td><input :id="index + 'input7'" :value="teacherSimpleInfo.currentWorkTitle" readonly="readonly" style="border: none"></td>
-          <td><input :id="index + 'input8'" :value="teacherSimpleInfo.currentWorkDuty" readonly="readonly" style="border: none"></td>
           <td>
-            <span v-if="teacherSimpleInfo.teacherType==='1'"><input :id="index + 'input9'" value="在职" readonly="readonly" style="border: none;"></span>
-            <span v-else-if="teacherSimpleInfo.teacherType==='2'"><input :id="index + 'input10'" value="离职" readonly="readonly" style="border: none;"></span>
-            <span v-else><input :id="index + 'input11'" value="外聘" readonly="readonly" style="border: none;"></span>
+            <span v-if="teacherSimpleInfo.hireCampus==='1'"><input value="校本部" readonly="readonly" style="border: none;"></span>
+            <span v-else><input value="新校区" readonly="readonly" style="border: none;"></span>
+            <select :id="index + 'select'" class="selectWM" v-model="hireCampusEle" style="display: none">
+              <option v-for="hireCampus in hireCampusList" :value="hireCampus">{{hireCampus}}</option>
+            </select>
+          </td>
+          <td>
+            <span v-if="teacherSimpleInfo.currentWorkTitle==='1'"><input value="助教" readonly="readonly" style="border: none;"></span>
+            <span v-else-if="teacherSimpleInfo.currentWorkTitle==='2'"><input value="讲师" readonly="readonly" style="border: none;"></span>
+            <span v-else-if="teacherSimpleInfo.currentWorkTitle==='3'"><input value="副教授" readonly="readonly" style="border: none;"></span>
+            <span v-else><input value="教授" readonly="readonly" style="border: none;"></span>
+            <select :id="index + 'select'" class="selectWM" v-model="currentWorkTitleEle" style="display: none">
+              <option v-for="currentWorkTitle in currentWorkTitleList" :value="currentWorkTitle">{{currentWorkTitle}}</option>
+            </select>
+          </td>
+          <td>
+            <span v-if="teacherSimpleInfo.currentWorkDuty==='1'"><input value="医师" readonly="readonly" style="border: none;"></span>
+            <span v-else-if="teacherSimpleInfo.currentWorkDuty==='2'"><input value="主治医师" readonly="readonly" style="border: none;"></span>
+            <span v-else-if="teacherSimpleInfo.currentWorkDuty==='3'"><input value="副主任医师" readonly="readonly" style="border: none;"></span>
+            <span v-else-if="teacherSimpleInfo.currentWorkDuty==='4'"><input value="主任医师" readonly="readonly" style="border: none;"></span>
+            <span v-else-if="teacherSimpleInfo.currentWorkDuty==='5'"><input value="护士" readonly="readonly" style="border: none;"></span>
+            <span v-else-if="teacherSimpleInfo.currentWorkDuty==='6'"><input value="护师" readonly="readonly" style="border: none;"></span>
+            <span v-else-if="teacherSimpleInfo.currentWorkDuty==='7'"><input value="主管护师" readonly="readonly" style="border: none;"></span>
+            <span v-else-if="teacherSimpleInfo.currentWorkDuty==='8'"><input value="副主任护师" readonly="readonly" style="border: none;"></span>
+            <span v-else><input value="主任护师" readonly="readonly" style="border: none;"></span>
+            <select :id="index + 'select'" class="selectWM" v-model="currentWorkDutyEle" style="display: none">
+              <option v-for="currentWorkDuty in currentWorkDutyList" :value="currentWorkDuty">{{currentWorkDuty}}</option>
+            </select>
+          </td>
+          <td>
+            <span v-if="teacherSimpleInfo.teacherType==='1'"><input value="在职" readonly="readonly" style="border: none;"></span>
+            <span v-else-if="teacherSimpleInfo.teacherType==='2'"><input value="离职" readonly="readonly" style="border: none;"></span>
+            <span v-else><input value="外聘" readonly="readonly" style="border: none;"></span>
             <select :id="index + 'select'" class="selectWM" v-model="teacherTypeEle" style="display: none">
               <option v-for="teacherType in teacherTypeList" :value="teacherType">{{teacherType}}</option>
             </select>
@@ -80,13 +107,25 @@
                 teacherName: '',
                 teacherId:''
             },
+              hireCampusList:[
+                '1:校本部','2:新校区'
+              ],
+              currentWorkTitleList:[
+                '1:助教','2:讲师','3:副教授','4:教授'
+              ],
+              currentWorkDutyList:[
+                '1:医师','2:主治医师','3:副主任医师','4:主任医师','5:护士','6:护师','7:主管护师','8:副主任护师','9:主任护师'
+              ],
               teacherTypeList:[
                 '1:在职','2:离职','3:外聘'
               ],
-              teacherTypeEle:'1:在职',
+              hireCampusEle:'',
+              currentWorkTitleEle:'',
+              currentWorkDutyEle:'',
+              teacherTypeEle:'',
               teacherSimpleInfoList:[
-                  {teacherId:'11234567',teacherName:'何平',teacherIdcard:'321281199503285555',teacherGender:'男',phoneNumber:'15680991111',hireCampus:'西校区',currentWorkTitle:'教授',currentWorkDuty:'教导主任',teacherType:'1'},
-                  {teacherId:'21234567',teacherName:'何平',teacherIdcard:'321281199503285555',teacherGender:'男',phoneNumber:'15680991111',hireCampus:'西校区',currentWorkTitle:'教授',currentWorkDuty:'教导主任',teacherType:'2'}
+                  {teacherId:'11234567',teacherName:'何平',teacherIdcard:'321281199503285555',teacherGender:'男',phoneNumber:'15680991111',hireCampus:'1',currentWorkTitle:'1',currentWorkDuty:'3',teacherType:'1'},
+                  {teacherId:'21234567',teacherName:'何平',teacherIdcard:'321281199503285555',teacherGender:'男',phoneNumber:'15680991111',hireCampus:'2',currentWorkTitle:'3',currentWorkDuty:'7',teacherType:'2'}
                 ]
             }
         },
@@ -159,18 +198,40 @@
         editClick: function(index){
           var inputTable = document.getElementById("inputTable"+index);
           var input = inputTable.getElementsByTagName("input");
-          var select = document.getElementById(index + "select");
+          var select = inputTable.getElementsByTagName("select");
           var editImg = document.getElementById("editImg"+index);
           var saveImg = document.getElementById("saveImg"+index);
           var deleteImg = document.getElementById("deleteImg"+index);
           var restoreImg = document.getElementById("restoreImg"+index);
-          this.teacherTypeEle = "1:在职";
-          for(var i = 5;i<8;i++){
-            input[i].readOnly = false;
-            input[i].style.border = "0.1rem solid #d4d4d9";
+          for(var i1=0;i1<2;i1++){
+            var hireCampusSplit = this.hireCampusList[i1].split(":");
+            if(this.teacherSimpleInfoList[index].hireCampus === hireCampusSplit[0]){
+              this.hireCampusEle = this.hireCampusList[i1];
+            }
           }
-          input[8].style.display = "none";
-          select.style.display = "inline";
+          for(var i2=0;i2<4;i2++){
+            var currentWorkTitleSplit = this.currentWorkTitleList[i2].split(":");
+            if(this.teacherSimpleInfoList[index].currentWorkTitle === currentWorkTitleSplit[0]){
+              this.currentWorkTitleEle = this.currentWorkTitleList[i2];
+            }
+          }
+          for(var i3=0;i3<9;i3++){
+            var currentWorkDutySplit = this.currentWorkDutyList[i3].split(":");
+            if(this.teacherSimpleInfoList[index].currentWorkDuty === currentWorkDutySplit[0]){
+              this.currentWorkDutyEle = this.currentWorkDutyList[i3];
+            }
+          }
+          for(var i4=0;i4<3;i4++){
+            var teacherTypeSplit = this.teacherTypeList[i4].split(":");
+            if(this.teacherSimpleInfoList[index].teacherType === teacherTypeSplit[0]){
+              this.teacherTypeEle = this.teacherTypeList[i4];
+            }
+          }
+//          用户点击编辑图标时，下拉框内默认为当前用户信息
+          for(var i = 5;i<9;i++){
+            input[i].style.display = "none";
+            select[i-5].style.display = "inline";
+          }
           editImg.style.display = "none";
           saveImg.style.display = "inline";
           deleteImg.style.display = "none";
@@ -179,18 +240,24 @@
         saveClick: function(index){
           var inputTable = document.getElementById("inputTable"+index);
           var input = inputTable.getElementsByTagName("input");
-          var select = document.getElementById(index + "select");
+          var select = inputTable.getElementsByTagName("select");
           var editImg = document.getElementById("editImg"+index);
           var saveImg = document.getElementById("saveImg"+index);
           var deleteImg = document.getElementById("deleteImg"+index);
           var restoreImg = document.getElementById("restoreImg"+index);
+          var hireCampusSplit = this.hireCampusEle.split(":");
+          var currentWorkTitleSplit = this.currentWorkTitleEle.split(":");
+          var currentWorkDutySplit = this.currentWorkDutyEle.split(":");
           var teacherTypeSplit = this.teacherTypeEle.split(":");
+          this.teacherSimpleInfoList[index].hireCampus = hireCampusSplit[0];
+          this.teacherSimpleInfoList[index].currentWorkTitle = currentWorkTitleSplit[0];
+          this.teacherSimpleInfoList[index].currentWorkDuty = currentWorkDutySplit[0];
           this.teacherSimpleInfoList[index].teacherType = teacherTypeSplit[0];
           this.$http.post('./teacherManage/editTeacherInfo',{
             "teacherId":input[0].value,
-            "hireCampus":input[5].value,
-            "currentWorkTitle":input[6].value,
-            "currentWorkDuty":input[7].value,
+            "hireCampus":hireCampusSplit[0],
+            "currentWorkTitle":currentWorkTitleSplit[0],
+            "currentWorkDuty":currentWorkDutySplit[0],
             "teacherType":teacherTypeSplit[0]
           },{
             "Content-Type":"application/json"
@@ -199,15 +266,10 @@
           },function(error){
             console.log("获取error");
           });
-          for(var i = 5;i<8;i++){
-            input[i].readOnly = true;
-            input[i].style.border = "none";
+          for(var i = 5;i<9;i++){
+            input[i].style.display = "inline";
+            select[i-5].style.display = "none";
           }
-          this.teacherSimpleInfoList[index].hireCampus = input[5].value;
-          this.teacherSimpleInfoList[index].currentWorkTitle = input[6].value;
-          this.teacherSimpleInfoList[index].currentWorkDuty = input[7].value;
-          input[8].style.display = "inline";
-          select.style.display = "none";
           editImg.style.display = "inline";
           saveImg.style.display = "none";
           deleteImg.style.display = "inline";
@@ -216,21 +278,15 @@
         restoreClick: function(index){
           var inputTable = document.getElementById("inputTable"+index);
           var input = inputTable.getElementsByTagName("input");
-          var select = document.getElementById(index + "select");
+          var select = inputTable.getElementsByTagName("select");
           var editImg = document.getElementById("editImg"+index);
           var saveImg = document.getElementById("saveImg"+index);
           var deleteImg = document.getElementById("deleteImg"+index);
           var restoreImg = document.getElementById("restoreImg"+index);
-          for(var i = 5;i<8;i++){
-            input[i].readOnly = true;
-            input[i].style.border = "none";
+          for(var i = 5;i<9;i++){
+            input[i].style.display = "inline";
+            select[i-5].style.display = "none";
           }
-          input[8].style.display = "inline";
-          select.style.display = "none";
-          input[5].value = this.teacherSimpleInfoList[index].hireCampus;
-          input[6].value = this.teacherSimpleInfoList[index].currentWorkTitle;
-          input[7].value = this.teacherSimpleInfoList[index].currentWorkDuty;
-          this.teacherTypeEle = "1:在职";
           editImg.style.display = "inline";
           saveImg.style.display = "none";
           deleteImg.style.display = "inline";
