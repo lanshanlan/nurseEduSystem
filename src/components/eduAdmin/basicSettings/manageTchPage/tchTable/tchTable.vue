@@ -22,6 +22,20 @@
       </span>
       <span><button id="leadOut" class="am-btn am-btn-success am-radius buttonWM" @click="downloadClick">下载</button></span>
     </div>
+    <div>
+      <modal v-model="modalDownloadBool" width="400" id="modalBody">
+        <div style="text-align: center;font-size: 1.1rem;">
+          <p v-if="downloadMsg === '1'">文件格式不正确，请上传xls或xlsx表格。</p>
+          <p v-else-if="downloadMsg === '2'">文件太大，不能超过 2M</p>
+          <p v-else-if="downloadMsg === '3'">上传成功!</p>
+          <p v-else-if="downloadMsg === '4'">上传失败!</p>
+          <p v-else>{{downloadMsg}}</p>
+        </div>
+        <div slot="footer" style="text-align: center">
+          <button id="modalBtn" @click="checkOk">确定</button>
+        </div>
+      </modal>
+    </div>
     <div id="tchTable" style="padding: 0.6rem 5rem;background-color: #f3f3f3">
       <!--教师信息表格-->
       <table id="eduAdminTchTableSy" class="operationTable" style="table-layout: fixed;">
@@ -58,7 +72,8 @@
             <span v-if="teacherSimpleInfo.currentWorkTitle==='1'"><input value="助教" readonly="readonly" style="border: none;"></span>
             <span v-else-if="teacherSimpleInfo.currentWorkTitle==='2'"><input value="讲师" readonly="readonly" style="border: none;"></span>
             <span v-else-if="teacherSimpleInfo.currentWorkTitle==='3'"><input value="副教授" readonly="readonly" style="border: none;"></span>
-            <span v-else><input value="教授" readonly="readonly" style="border: none;"></span>
+            <span v-else-if="teacherSimpleInfo.currentWorkTitle==='4'"><input value="教授" readonly="readonly" style="border: none;"></span>
+            <span v-else><input value="无" readonly="readonly" style="border: none;"></span>
             <select :id="index + 'select'" class="selectWM" v-model="currentWorkTitleEle" style="display: none">
               <option v-for="currentWorkTitle in currentWorkTitleList" :value="currentWorkTitle">{{currentWorkTitle}}</option>
             </select>
@@ -72,7 +87,8 @@
             <span v-else-if="teacherSimpleInfo.currentWorkDuty==='6'"><input value="护师" readonly="readonly" style="border: none;"></span>
             <span v-else-if="teacherSimpleInfo.currentWorkDuty==='7'"><input value="主管护师" readonly="readonly" style="border: none;"></span>
             <span v-else-if="teacherSimpleInfo.currentWorkDuty==='8'"><input value="副主任护师" readonly="readonly" style="border: none;"></span>
-            <span v-else><input value="主任护师" readonly="readonly" style="border: none;"></span>
+            <span v-else-if="teacherSimpleInfo.currentWorkDuty==='9'"><input value="主任护师" readonly="readonly" style="border: none;"></span>
+            <span v-else><input value="无" readonly="readonly" style="border: none;"></span>
             <select :id="index + 'select'" class="selectWM" v-model="currentWorkDutyEle" style="display: none">
               <option v-for="currentWorkDuty in currentWorkDutyList" :value="currentWorkDuty">{{currentWorkDuty}}</option>
             </select>
@@ -111,14 +127,14 @@
       </modal>
       <modal v-model="modalResultBool" width="400" id="modalBody">
         <div style="text-align: center;font-size: 1.1rem;">
-          <p v-if="operateMsg === '1'&&resultmsg === '1'">保存修改成功</p>
-          <p v-else-if="operateMsg === '1'&&resultmsg === '0'">保存修改失败</p>
-          <p v-else-if="operateMsg === '3'&&resultmsg === '1'">删除成功</p>
-          <p v-else-if="operateMsg === '3'&&resultmsg === '0'">删除失败</p>
+          <p v-if="operateMsg === '1'&&resultMsg === '1'">保存修改成功</p>
+          <p v-else-if="operateMsg === '1'&&resultMsg === '0'">保存修改失败</p>
+          <p v-else-if="operateMsg === '3'&&resultMsg === '1'">删除成功</p>
+          <p v-else-if="operateMsg === '3'&&resultMsg === '0'">删除失败</p>
           <p v-else>处理出错</p>
         </div>
         <div slot="footer" style="text-align: center">
-          <button id="modalBtn" @click="resultOk">确定</button>
+          <button id="modalBtn" @click="checkOk">确定</button>
         </div>
       </modal>
     </div>
@@ -138,10 +154,10 @@
                 '1:校本部','2:新校区'
               ],
               currentWorkTitleList:[
-                '1:助教','2:讲师','3:副教授','4:教授'
+                '1:助教','2:讲师','3:副教授','4:教授','5:无'
               ],
               currentWorkDutyList:[
-                '1:医师','2:主治医师','3:副主任医师','4:主任医师','5:护士','6:护师','7:主管护师','8:副主任护师','9:主任护师'
+                '1:医师','2:主治医师','3:副主任医师','4:主任医师','5:护士','6:护师','7:主管护师','8:副主任护师','9:主任护师','10:无'
               ],
               teacherTypeList:[
                 '1:在职','2:离职','3:外聘'
@@ -151,10 +167,12 @@
               currentWorkDutyEle:'',
               teacherTypeEle:'',
               index:'',
+              modalDownloadBool:false,
               modalOperateBool:false,
               modalResultBool:false,
+              downloadMsg:'',
               operateMsg:'',
-              resultmsg:'1',
+              resultMsg:'1',
               teacherSimpleInfoList:[
                   {teacherId:'11234567',teacherName:'何平',teacherIdcard:'321281199503285555',teacherGender:'男',phoneNumber:'15680991111',hireCampus:'1',currentWorkTitle:'1',currentWorkDuty:'3',teacherType:'1'},
                   {teacherId:'21234567',teacherName:'何平',teacherIdcard:'321281199503285555',teacherGender:'男',phoneNumber:'15680991111',hireCampus:'2',currentWorkTitle:'3',currentWorkDuty:'7',teacherType:'2'}
@@ -197,35 +215,37 @@
           });
         },
         handleFormatError:function(file){
-          this.$Notice.warning({
-            title: '文件格式不正确',
-            desc: '文件 ' + file.name + ' 格式不正确，请上传xls或xlsx表格。'
-          });
+          this.downloadMsg = "1";
+          this.modalDownloadBool = true;
         },
         handleSizeError:function(file){
-          this.$Notice.warning({
-            title: '超出文件大小限制',
-            desc: '文件 ' + file.name + ' 太大，不能超过 2M。'
-          });
+          this.downloadMsg = "2";
+          this.modalDownloadBool = true;
         },
         handleProgress:function(){
           this.$Message.loading("正在上传中...");
         },
         handleSuccess:function(res){
           if(res.result==='1'){
-            this.$Message.success("上传成功！");
+            this.downloadMsg = "3";
+            setTimeout("location.reload(true)", 4000); //4秒后刷新页面
           }else{
-            this.$Message.error(res.result);
+            this.downloadMsg = res.result;
           }
+          this.modalDownloadBool = true;
         },
         handleError:function(){
-          this.$Message.error("上传失败");
+          this.downloadMsg = "4";
+          this.modalDownloadBool = true;
         },
         downloadFormClick:function(){
           location.href="./teacherManage/exportTeacherInfoTemplet";
         },
         downloadClick:function(){
           location.href="./teacherManage/exportTeacherInfo";
+        },
+        checkOk:function(){
+          this.modalDownloadBool = false;
         },
         editClick: function(index){
           var inputTable = document.getElementById("inputTable"+index);
@@ -241,13 +261,13 @@
               this.hireCampusEle = this.hireCampusList[i1];
             }
           }
-          for(var i2=0;i2<4;i2++){
+          for(var i2=0;i2<5;i2++){
             var currentWorkTitleSplit = this.currentWorkTitleList[i2].split(":");
             if(this.teacherSimpleInfoList[index].currentWorkTitle === currentWorkTitleSplit[0]){
               this.currentWorkTitleEle = this.currentWorkTitleList[i2];
             }
           }
-          for(var i3=0;i3<9;i3++){
+          for(var i3=0;i3<10;i3++){
             var currentWorkDutySplit = this.currentWorkDutyList[i3].split(":");
             if(this.teacherSimpleInfoList[index].currentWorkDuty === currentWorkDutySplit[0]){
               this.currentWorkDutyEle = this.currentWorkDutyList[i3];
@@ -306,8 +326,8 @@
             "Content-Type":"application/json"
           }).then(function (response) {
             console.log(response);
-            this.resultmsg=response.body.result;
-            if(this.resultmsg==='1'){
+            this.resultMsg=response.body.result;
+            if(this.resultMsg==='1'){
               this.teacherSimpleInfoList[this.index].hireCampus = hireCampusSplit[0];
               this.teacherSimpleInfoList[this.index].currentWorkTitle = currentWorkTitleSplit[0];
               this.teacherSimpleInfoList[this.index].currentWorkDuty = currentWorkDutySplit[0];
@@ -352,8 +372,8 @@
             "Content-Type":"application/json"
           }).then(function (response) {
             console.log(response);
-            this.resultmsg=response.body.result;
-            if(this.resultmsg==='1'){
+            this.resultMsg=response.body.result;
+            if(this.resultMsg==='1'){
               this.teacherSimpleInfoList.splice(this.index,1);
             }
           },function(error){
