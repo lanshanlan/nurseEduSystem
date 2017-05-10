@@ -4,6 +4,7 @@
     <list default="true" id="b5e2218c-6acf-49f7-bcba-6cb40434d61e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageTchPage/tchTable/tchTable.vue" afterPath="$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageTchPage/tchTable/tchTable.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/eduAdmin/eduManage/tchTeachingPlanPage/courseGroupTable/courseGroupTable.vue" afterPath="$PROJECT_DIR$/src/components/eduAdmin/eduManage/tchTeachingPlanPage/courseGroupTable/courseGroupTable.vue" />
     </list>
     <ignored path="nurseEduSystem.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,7 +28,7 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/routes/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-9.642858">
+            <state vertical-scroll-proportion="0.0">
               <caret line="15" column="32" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="32" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
@@ -49,8 +50,8 @@
       <file leaf-file-name="tchTable.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageTchPage/tchTable/tchTable.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.58802176">
-              <caret line="32" column="16" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="16" />
+            <state vertical-scroll-proportion="0.5553539">
+              <caret line="115" column="62" selection-start-line="115" selection-start-column="62" selection-end-line="115" selection-end-column="62" />
               <folding>
                 <element signature="n#span#4;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
                 <element signature="n#style#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
@@ -73,21 +74,35 @@
                 <element signature="n#style#0;n#input#0;n#span#7;n#td#7;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#input#0;n#span#8;n#td#7;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#select#0;n#td#7;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#td#8;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
                 <element signature="n#style#0;n#input#0;n#span#2;n#td#8;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#select#0;n#td#8;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#td#9;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-                <element signature="e#6648#6725#0" expanded="false" />
-                <element signature="e#8191#8248#0" expanded="false" />
-                <element signature="e#8279#8338#0" expanded="false" />
-                <element signature="e#8377#9005#0" expanded="false" />
-                <element signature="e#9047#9197#0" expanded="false" />
-                <element signature="e#9237#9379#0" expanded="false" />
-                <element signature="e#9414#9470#0" expanded="false" />
-                <element signature="e#9507#9668#0" expanded="false" />
-                <element signature="e#9700#9750#0" expanded="false" />
-                <element signature="e#9788#9867#0" expanded="false" />
-                <element signature="e#9901#9973#0" expanded="false" />
+                <element signature="n#style#0;n#div#0;n#modal#0;n#div#2;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="e#7955#8032#0" expanded="false" />
+                <element signature="e#9655#9712#0" expanded="false" />
+                <element signature="e#9743#9802#0" expanded="false" />
+                <element signature="e#9841#10469#0" expanded="false" />
+                <element signature="e#10511#10661#0" expanded="false" />
+                <element signature="e#10701#10843#0" expanded="false" />
+                <element signature="e#10878#10934#0" expanded="false" />
+                <element signature="e#10971#11132#0" expanded="false" />
+                <element signature="e#11164#11214#0" expanded="false" />
+                <element signature="e#11252#11331#0" expanded="false" />
+                <element signature="e#11365#11437#0" expanded="false" />
+                <element signature="e#11473#13490#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="courseGroupTable.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/eduManage/tchTeachingPlanPage/courseGroupTable/courseGroupTable.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="177" column="8" selection-start-line="177" selection-start-column="8" selection-end-line="179" selection-end-column="9" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#modal#0;n#div#2;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#modal#1;n#div#2;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#modal#1;n#div#2;n#div#0;n#template#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -150,7 +165,6 @@
         <option value="$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageGradePage/gradeTable/gradeTable.vue" />
         <option value="$PROJECT_DIR$/src/components/eduAdmin/eduManage/eduPlanPage/teachingPlan/teachingPlan.vue" />
         <option value="$PROJECT_DIR$/src/components/eduAdmin/eduManage/teachProcessPage/tchingProcess/tchingProcess.vue" />
-        <option value="$PROJECT_DIR$/src/components/eduAdmin/eduManage/tchTeachingPlanPage/courseGroupTable/courseGroupTable.vue" />
         <option value="$PROJECT_DIR$/src/components/eduAdmin/eduManage/evaTeachingResultPage/evaResultTable/evaResultTable.vue" />
         <option value="$PROJECT_DIR$/src/components/eduAdmin/eduManage/supervisorManagePage/noSupervisorTable/noSupervisorTable.vue" />
         <option value="$PROJECT_DIR$/src/components/eduAdmin/notice/notifyInformationPage/topBar/topBar.vue" />
@@ -158,6 +172,7 @@
         <option value="$PROJECT_DIR$/src/views/eduAdmin/notice/notifyInformationPage/notifyInformationPage.vue" />
         <option value="$PROJECT_DIR$/src/views/startTest.vue" />
         <option value="$PROJECT_DIR$/src/components/eduAdmin/notice/notifyInformationPage/notifyBoard/notifyBoard.vue" />
+        <option value="$PROJECT_DIR$/src/components/eduAdmin/eduManage/tchTeachingPlanPage/courseGroupTable/courseGroupTable.vue" />
         <option value="$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageTchPage/tchTable/tchTable.vue" />
       </list>
     </option>
@@ -200,7 +215,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -422,45 +436,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="eduManage" />
+              <option name="myItemId" value="basicSettings" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="teachProcessPage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nurseEduSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nurseEduSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eduAdmin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eduManage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="teachProcessPage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tchingProcess" />
+              <option name="myItemId" value="manageTchPage" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -486,7 +466,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="eduManage" />
+              <option name="myItemId" value="basicSettings" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="manageTchPage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tchTable" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -512,50 +500,13 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="eduManage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eduPlanPage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nurseEduSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nurseEduSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eduAdmin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eduManage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eduPlanPage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="teachingPlan" />
+              <option name="myItemId" value="basicSettings" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -634,25 +585,25 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20644216" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20644216" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -685,13 +636,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="e#4674#6419#0" expanded="false" />
-            <element signature="e#6949#7054#0" expanded="false" />
-            <element signature="e#7094#7365#0" expanded="false" />
-            <element signature="e#7402#7679#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -912,13 +856,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2323049">
           <caret line="28" column="48" selection-start-line="28" selection-start-column="48" selection-end-line="28" selection-end-column="48" />
-          <folding>
-            <element signature="n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="e#4674#6419#0" expanded="false" />
-            <element signature="e#6949#7054#0" expanded="false" />
-            <element signature="e#7094#7365#0" expanded="false" />
-            <element signature="e#7402#7679#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -933,18 +870,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.19600727">
           <caret line="164" column="33" selection-start-line="164" selection-start-column="33" selection-end-line="164" selection-end-column="33" />
-          <folding>
-            <element signature="e#7860#8041#0" expanded="false" />
-            <element signature="e#8068#8244#0" expanded="false" />
-            <element signature="e#8869#9047#0" expanded="false" />
-            <element signature="e#9486#9840#0" expanded="false" />
-            <element signature="e#9874#10329#0" expanded="false" />
-            <element signature="e#10949#11686#0" expanded="false" />
-            <element signature="e#11825#12277#0" expanded="false" />
-            <element signature="e#13147#13939#0" expanded="false" />
-            <element signature="e#13975#14426#0" expanded="false" />
-            <element signature="e#15073#15183#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -952,13 +877,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.032667875">
           <caret line="58" column="26" selection-start-line="58" selection-start-column="26" selection-end-line="58" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/eduManage/tchTeachingPlanPage/courseGroupTable/courseGroupTable.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.032667875">
-          <caret line="85" column="26" selection-start-line="85" selection-start-column="26" selection-end-line="85" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -985,7 +903,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.642858">
+        <state vertical-scroll-proportion="0.0">
           <caret line="15" column="32" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="32" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
@@ -997,21 +915,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.16333938">
           <caret line="95" column="18" selection-start-line="95" selection-start-column="18" selection-end-line="95" selection-end-column="18" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#table#0;n#div#2;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="e#5607#6931#0" expanded="false" />
-            <element signature="e#7507#7933#0" expanded="false" />
-            <element signature="e#7969#8404#0" expanded="false" />
-            <element signature="e#8461#8970#0" expanded="false" />
-            <element signature="e#9027#9588#0" expanded="false" />
-            <element signature="e#9622#10377#0" expanded="false" />
-            <element signature="e#10411#11726#0" expanded="false" />
-            <element signature="e#11763#12634#0" expanded="false" />
-            <element signature="e#12670#13041#0" expanded="false" />
-            <element signature="e#13970#14049#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1033,10 +936,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="1" column="55" selection-start-line="1" selection-start-column="55" selection-end-line="1" selection-end-column="62" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#table#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1052,14 +951,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.6666667">
           <caret line="23" column="29" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h2#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h4#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1067,26 +958,32 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.045372">
           <caret line="206" column="35" selection-start-line="206" selection-start-column="35" selection-end-line="206" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/eduManage/eduPlanPage/teachingPlan/teachingPlan.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22867514">
-          <caret line="133" column="28" selection-start-line="132" selection-start-column="30" selection-end-line="133" selection-end-column="28" />
+        <state vertical-scroll-proportion="0.6860254">
+          <caret line="262" column="22" selection-start-line="262" selection-start-column="22" selection-end-line="262" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/eduManage/tchTeachingPlanPage/courseGroupTable/courseGroupTable.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="177" column="8" selection-start-line="177" selection-start-column="8" selection-end-line="179" selection-end-column="9" />
           <folding>
-            <element signature="n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="e#5714#11032#0" expanded="false" />
-            <element signature="e#11454#11867#0" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#modal#0;n#div#2;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#modal#1;n#div#2;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#modal#1;n#div#2;n#div#0;n#template#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageTchPage/tchTable/tchTable.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.58802176">
-          <caret line="32" column="16" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.5553539">
+          <caret line="115" column="62" selection-start-line="115" selection-start-column="62" selection-end-line="115" selection-end-column="62" />
           <folding>
             <element signature="n#span#4;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
@@ -1109,21 +1006,21 @@
             <element signature="n#style#0;n#input#0;n#span#7;n#td#7;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#0;n#span#8;n#td#7;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#select#0;n#td#7;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#td#8;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#input#0;n#span#2;n#td#8;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#select#0;n#td#8;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#td#9;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="e#6648#6725#0" expanded="false" />
-            <element signature="e#8191#8248#0" expanded="false" />
-            <element signature="e#8279#8338#0" expanded="false" />
-            <element signature="e#8377#9005#0" expanded="false" />
-            <element signature="e#9047#9197#0" expanded="false" />
-            <element signature="e#9237#9379#0" expanded="false" />
-            <element signature="e#9414#9470#0" expanded="false" />
-            <element signature="e#9507#9668#0" expanded="false" />
-            <element signature="e#9700#9750#0" expanded="false" />
-            <element signature="e#9788#9867#0" expanded="false" />
-            <element signature="e#9901#9973#0" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#modal#0;n#div#2;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#7955#8032#0" expanded="false" />
+            <element signature="e#9655#9712#0" expanded="false" />
+            <element signature="e#9743#9802#0" expanded="false" />
+            <element signature="e#9841#10469#0" expanded="false" />
+            <element signature="e#10511#10661#0" expanded="false" />
+            <element signature="e#10701#10843#0" expanded="false" />
+            <element signature="e#10878#10934#0" expanded="false" />
+            <element signature="e#10971#11132#0" expanded="false" />
+            <element signature="e#11164#11214#0" expanded="false" />
+            <element signature="e#11252#11331#0" expanded="false" />
+            <element signature="e#11365#11437#0" expanded="false" />
+            <element signature="e#11473#13490#0" expanded="false" />
           </folding>
         </state>
       </provider>

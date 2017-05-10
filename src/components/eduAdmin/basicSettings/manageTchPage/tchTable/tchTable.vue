@@ -95,6 +95,33 @@
         </tbody>
       </table>
     </div>
+    <div>
+      <modal v-model="modalOperateBool" width="400" id="modalBody">
+        <div style="text-align: center;font-size: 1.1rem;">
+          <p v-if="operateMsg==='1'">是否确定保存修改</p>
+          <p v-else-if="operateMsg==='2'">是否确定取消修改</p>
+          <p v-else>是否确定删除</p>
+        </div>
+        <div slot="footer" style="text-align: center">
+          <button v-if="operateMsg==='1'" id="modalBtn" @click="saveOk()">确定</button>
+          <button v-else-if="operateMsg==='2'" id="modalBtn" @click="cancelOk()">确定</button>
+          <button v-else id="modalBtn" @click="deleteOk()">确定</button>
+          <button id="modalBtn" @click="operateCancel">取消</button>
+        </div>
+      </modal>
+      <modal v-model="modalResultBool" width="400" id="modalBody">
+        <div style="text-align: center;font-size: 1.1rem;">
+          <p v-if="operateMsg === '1'&&resultmsg === '1'">保存修改成功</p>
+          <p v-else-if="operateMsg === '1'&&resultmsg === '0'">保存修改失败</p>
+          <p v-else-if="operateMsg === '3'&&resultmsg === '1'">删除成功</p>
+          <p v-else-if="operateMsg === '3'&&resultmsg === '0'">删除失败</p>
+          <p v-else>处理出错</p>
+        </div>
+        <div slot="footer" style="text-align: center">
+          <button id="modalBtn" @click="resultOk">确定</button>
+        </div>
+      </modal>
+    </div>
   </div>
 </template>
 
@@ -123,6 +150,11 @@
               currentWorkTitleEle:'',
               currentWorkDutyEle:'',
               teacherTypeEle:'',
+              index:'',
+              modalOperateBool:false,
+              modalResultBool:false,
+              operateMsg:'',
+              resultmsg:'1',
               teacherSimpleInfoList:[
                   {teacherId:'11234567',teacherName:'何平',teacherIdcard:'321281199503285555',teacherGender:'男',phoneNumber:'15680991111',hireCampus:'1',currentWorkTitle:'1',currentWorkDuty:'3',teacherType:'1'},
                   {teacherId:'21234567',teacherName:'何平',teacherIdcard:'321281199503285555',teacherGender:'男',phoneNumber:'15680991111',hireCampus:'2',currentWorkTitle:'3',currentWorkDuty:'7',teacherType:'2'}
@@ -237,22 +269,33 @@
           deleteImg.style.display = "none";
           restoreImg.style.display = "inline";
         },
-        saveClick: function(index){
-          var inputTable = document.getElementById("inputTable"+index);
+        saveClick:function(index){
+          this.modalOperateBool = true;
+          this.operateMsg = "1";
+          this.index = index;
+        },
+        restoreClick:function(index){
+          this.modalOperateBool = true;
+          this.operateMsg = "2";
+          this.index = index;
+        },
+        deleteClick:function(index){
+          this.modalOperateBool = true;
+          this.operateMsg = "3";
+          this.index = index;
+        },
+        saveOk: function(){
+          var inputTable = document.getElementById("inputTable"+this.index);
           var input = inputTable.getElementsByTagName("input");
           var select = inputTable.getElementsByTagName("select");
-          var editImg = document.getElementById("editImg"+index);
-          var saveImg = document.getElementById("saveImg"+index);
-          var deleteImg = document.getElementById("deleteImg"+index);
-          var restoreImg = document.getElementById("restoreImg"+index);
+          var editImg = document.getElementById("editImg"+this.index);
+          var saveImg = document.getElementById("saveImg"+this.index);
+          var deleteImg = document.getElementById("deleteImg"+this.index);
+          var restoreImg = document.getElementById("restoreImg"+this.index);
           var hireCampusSplit = this.hireCampusEle.split(":");
           var currentWorkTitleSplit = this.currentWorkTitleEle.split(":");
           var currentWorkDutySplit = this.currentWorkDutyEle.split(":");
           var teacherTypeSplit = this.teacherTypeEle.split(":");
-          this.teacherSimpleInfoList[index].hireCampus = hireCampusSplit[0];
-          this.teacherSimpleInfoList[index].currentWorkTitle = currentWorkTitleSplit[0];
-          this.teacherSimpleInfoList[index].currentWorkDuty = currentWorkDutySplit[0];
-          this.teacherSimpleInfoList[index].teacherType = teacherTypeSplit[0];
           this.$http.post('./teacherManage/editTeacherInfo',{
             "teacherId":input[0].value,
             "hireCampus":hireCampusSplit[0],
@@ -263,6 +306,13 @@
             "Content-Type":"application/json"
           }).then(function (response) {
             console.log(response);
+            this.resultmsg=response.body.result;
+            if(this.resultmsg==='1'){
+              this.teacherSimpleInfoList[this.index].hireCampus = hireCampusSplit[0];
+              this.teacherSimpleInfoList[this.index].currentWorkTitle = currentWorkTitleSplit[0];
+              this.teacherSimpleInfoList[this.index].currentWorkDuty = currentWorkDutySplit[0];
+              this.teacherSimpleInfoList[this.index].teacherType = teacherTypeSplit[0];
+            }
           },function(error){
             console.log("获取error");
           });
@@ -270,39 +320,53 @@
             input[i].style.display = "inline";
             select[i-5].style.display = "none";
           }
+          this.modalOperateBool = false;
+          this.modalResultBool = true;
           editImg.style.display = "inline";
           saveImg.style.display = "none";
           deleteImg.style.display = "inline";
           restoreImg.style.display = "none";
         },
-        restoreClick: function(index){
-          var inputTable = document.getElementById("inputTable"+index);
+        cancelOk: function(){
+          var inputTable = document.getElementById("inputTable"+this.index);
           var input = inputTable.getElementsByTagName("input");
           var select = inputTable.getElementsByTagName("select");
-          var editImg = document.getElementById("editImg"+index);
-          var saveImg = document.getElementById("saveImg"+index);
-          var deleteImg = document.getElementById("deleteImg"+index);
-          var restoreImg = document.getElementById("restoreImg"+index);
+          var editImg = document.getElementById("editImg"+this.index);
+          var saveImg = document.getElementById("saveImg"+this.index);
+          var deleteImg = document.getElementById("deleteImg"+this.index);
+          var restoreImg = document.getElementById("restoreImg"+this.index);
           for(var i = 5;i<9;i++){
             input[i].style.display = "inline";
             select[i-5].style.display = "none";
           }
+          this.modalOperateBool = false;
           editImg.style.display = "inline";
           saveImg.style.display = "none";
           deleteImg.style.display = "inline";
           restoreImg.style.display = "none";
         },
-        deleteClick: function(index){
+        deleteOk: function(){
           this.$http.post('./teacherManage/deleteTeacherInfo',{
-            "teacherId":this.teacherSimpleInfoList[index].teacherId
+            "teacherId":this.teacherSimpleInfoList[this.index].teacherId
           },{
             "Content-Type":"application/json"
           }).then(function (response) {
             console.log(response);
+            this.resultmsg=response.body.result;
+            if(this.resultmsg==='1'){
+              this.teacherSimpleInfoList.splice(this.index,1);
+            }
           },function(error){
             console.log("获取error");
           });
-          this.teacherSimpleInfoList.splice(index,1);
+          this.modalOperateBool = false;
+          this.modalResultBool = true;
+        },
+        operateCancel:function(){
+          this.modalOperateBool = false;
+        },
+        resultOk: function(){
+          this.modalResultBool = false;
         }
       }
     }
@@ -330,10 +394,6 @@
     }
     input{
       width: 80%;
-      text-align: center;
-    }
-    p{
-      font-size: 0.8rem;
       text-align: center;
     }
     img{

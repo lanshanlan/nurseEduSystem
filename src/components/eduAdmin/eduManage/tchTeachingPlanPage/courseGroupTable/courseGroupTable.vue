@@ -95,7 +95,7 @@
               ],
               msg:"",
               operateMsg:"",
-              resultmsg:"1",
+              resultmsg:"",
               modalOperateBool:false,
               modalResultBool:false,
               teacherIdEle:""
@@ -165,7 +165,7 @@
             "Content-Type":"application/json"
           }).then(function (response) {
             console.log(response);
-            var resultmsg=response.body.result;
+            this.resultmsg=response.body.result;
           },function(error){
             console.log("获取error");
           });
