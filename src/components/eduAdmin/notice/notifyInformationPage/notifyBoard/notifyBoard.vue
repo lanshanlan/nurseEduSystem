@@ -1,12 +1,24 @@
 <template>
     <div id="notifyBoard" style="padding: 0.6rem 5rem;background-color: #f3f3f3">
-      <div style="background-color: white">
-        <div style="border-bottom: 1px solid black">
-          <h2 style="text-align: center">{{title}}</h2>
-          <h4 style="text-align: center">{{time}}</h4>
-        </div>
-        <p style="text-indent: 3rem">{{article}}</p>
-        <p class="download" @click="downloadNoticeClick"><u>下载附件</u></p>
+      <div style="padding: 0 2rem;background-color: white">
+        <table class="operationTable" style="table-layout: fixed;">
+          <thead>
+          <tr>
+            <th style="font-size: 2rem;">{{announcementName}}</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td style="text-align: left;font-size: 0.8rem;color: #00a539">发布时间:{{announcementTime}}&nbsp&nbsp&nbsp&nbsp&nbsp发布类型:{{announcementType}}&nbsp&nbsp&nbsp&nbsp&nbsp作者:{{announcementUserName}}</td>
+          </tr>
+          <tr>
+            <td style="text-align: left;text-indent: 3rem;font-size: 1.1rem">{{announcementContent}}</td>
+          </tr>
+          <tr>
+            <td class="download" @click="downloadNoticeClick">{{fileName}}</td>
+          </tr>
+          </tbody>
+        </table>
       </div>
     </div>
 </template>
@@ -16,26 +28,37 @@
         name: '',
         data () {
             return {
-                title:'新标题',
-                time:'2017.05.08',
-                article:'哈哈哈哈哈哈哈哈哈哈哈哈嗝'
+              announcementId:'',
+              announcementName:'新标题',
+              announcementTime:'2017.05.08',
+              announcementType:'学生科',
+              announcementUserName:'何平',
+              announcementContent:'哈哈哈哈哈哈哈哈哈哈哈哈嗝,哈哈哈哈哈哈哈哈哈哈哈哈嗝,哈哈哈哈哈哈哈哈哈哈哈哈嗝,哈哈哈哈哈哈哈哈哈哈哈哈嗝,哈哈哈哈哈哈哈哈哈哈哈哈嗝,哈哈哈哈哈哈哈哈哈哈哈哈嗝,哈哈哈哈哈哈哈哈哈哈哈哈嗝,哈哈哈哈哈哈哈哈哈哈哈哈嗝,哈哈哈哈哈哈哈哈哈哈哈哈嗝,哈哈哈哈哈哈哈哈哈哈哈哈嗝,哈哈哈哈哈哈哈哈哈哈哈哈嗝,哈哈哈哈哈哈哈哈哈哈哈哈嗝,哈哈哈哈哈哈哈哈哈哈哈哈嗝,哈哈哈哈哈哈哈哈哈哈哈哈嗝,哈哈哈哈哈哈哈哈哈哈哈哈嗝,哈哈哈哈哈哈哈哈哈哈哈哈嗝,',
+              fileName:'例附件'
             }
         },
       beforeMount:function(){
-        this.$http.post('./',{},{
+        var thisURL = document.URL;
+        this.announcementId = thisURL.split("?")[1];
+        this.$http.post('./announcementManage/getAnnouncementInfo',{
+          "announcementId":this.announcementId
+        },{
           "Content-Type":"application/json"
         }).then(function (response) {
           console.log(response);
-          this.title = response.body.title;
-          this.time = response.body.time;
-          this.article = response.body.article;
+          this.announcementName = response.body.announcementName;
+          this.announcementTime = response.body.announcementTime;
+          this.announcementType = response.body.announcementType;
+          this.announcementUserName = response.body.announcementUserName;
+          this.announcementContent = response.body.announcementContent;
+          this.fileName = response.body.fileName;
         },function(error){
           console.log("获取error");
         });
       },
       methods:{
         downloadNoticeClick:function(){
-          location.href="";
+          location.href="./announcementManage/downloadAnnouncementFile";
         }
       }
     }
@@ -48,8 +71,8 @@
     .download{
       color: #158064;
       cursor: pointer;
-      text-align: center;
-      padding-bottom: 2rem;
+      text-align: left;
+      font-size: 0.8rem;
     }
     .download:hover{
       color: black;
