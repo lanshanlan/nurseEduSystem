@@ -58,7 +58,7 @@
       },
       methods:{
         downloadNoticeClick:function(){
-          location.href="./announcementManage/downloadAnnouncementFile";
+          location.href="./announcementManage/downloadAnnouncementFile?announcementId="+this.announcementId;
         }
       }
     }

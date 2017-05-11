@@ -96,39 +96,38 @@
     </div>
     <div id="superviseBackTable" style="display: none">
       <div id="superviseBackShow" style="padding: 0.6rem 5rem;background-color: #f3f3f3;">
-        <table class="normalTable">
-          <thead>
-          <tr>
-            <th colspan=4>督导反馈</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td>督导日期</td>
-            <td colspan=3>{{superviseInfoList.superviseTime}}</td>
-          </tr>
-          <tr>
-            <td rowspan=8>评分</td>
-            <td>学生出勤情况</td> <td>{{superviseInfoList.attendanceInfo}}</td>
-          </tr>
-          <tr><td>授课内容</td> <td>{{superviseInfoList.teachContent}}</td></tr>
-          <tr><td>教师素养得分</td> <td>{{superviseInfoList.teacherQualityScored}}</td></tr>
-          <tr><td>教学目标得分</td> <td>{{superviseInfoList.teachGoalsScored}}</td></tr>
-          <tr><td>教学内容得分</td> <td>{{superviseInfoList.teachContentScored}}</td></tr>
-          <tr><td>教学方法得分</td> <td>{{superviseInfoList.teachMethodsScored}}</td></tr>
-          <tr><td>教学常规得分</td> <td>{{superviseInfoList.teachRoutineScored}}</td></tr>
-          <tr><td>教学效果得分</td> <td>{{superviseInfoList.teachEffectScored}}</td></tr>
-          <tr><td>督导员意见</td>
-            <td colspan=3>{{superviseInfoList.commentsInfo}}</td>
-          </tr>
-          <tr><td>教务人员意见</td>
-            <td colspan=3 v-if="superviseInfoList.forwardInfo.length===0"><input class="supervisorBackInput" type="text" v-model="superviseBackinfoKey.forwardInfo"></td>
-            <td colspan=3 v-else>{{superviseInfoList.forwardInfo}}</td>
-          </tr>
-          </tbody>
-        </table>
+        <div v-for="(superviseInfo,index) in superviseInfoList">
+          <div class="superviseDiv">
+            <span><img :id="'arrow'+index" class="superviseImg" @click="tableSlideToggle(index)" :src="arrowright"></span>
+            <span class="superviseP" @click="tableSlideToggle(index)">{{superviseInfo.superviseTime}}</span>
+          </div>
+          <div :id="'superviseTableDiv' + index" style="display: none">
+            <table class="normalTable">
+              <tbody>
+              <tr>
+                <td rowspan=8>评分</td>
+                <td>学生出勤情况</td> <td>{{superviseInfo.attendanceInfo}}</td>
+              </tr>
+              <tr><td>授课内容</td> <td>{{superviseInfo.teachContent}}</td></tr>
+              <tr><td>教师素养得分</td> <td>{{superviseInfo.teacherQualityScored}}</td></tr>
+              <tr><td>教学目标得分</td> <td>{{superviseInfo.teachGoalsScored}}</td></tr>
+              <tr><td>教学内容得分</td> <td>{{superviseInfo.teachContentScored}}</td></tr>
+              <tr><td>教学方法得分</td> <td>{{superviseInfo.teachMethodsScored}}</td></tr>
+              <tr><td>教学常规得分</td> <td>{{superviseInfo.teachRoutineScored}}</td></tr>
+              <tr><td>教学效果得分</td> <td>{{superviseInfo.teachEffectScored}}</td></tr>
+              <tr><td>督导员意见</td>
+                <td colspan=3>{{superviseInfo.commentsInfo}}</td>
+              </tr>
+              <tr><td>教务人员意见</td>
+                <td colspan=3 v-if="superviseInfo.forwardInfo.length===0"><input class="supervisorBackInput" type="text" v-model="superviseBackinfoKey.forwardInfo"></td>
+                <td colspan=3 v-else>{{superviseInfo.forwardInfo}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
         <div class="buttonDiv">
-          <span><button class="bottomButton am-btn am-btn-success am-radius" @click="submitClick(superviseInfoList.superviseTime)">提交</button></span>
+          <span><button class="bottomButton am-btn am-btn-success am-radius" @click="submitClick(superviseInfo.superviseTime)">提交</button></span>
           <span><button class="bottomButton am-btn am-btn-success am-radius" @click="cancelClick()">取消</button></span>
           <span><button class="bottomButton am-btn am-btn-success am-radius" @click="superviseBackTableGoBackClick()">返回</button></span>
         </div>
@@ -139,10 +138,14 @@
 </template>
 
 <script>
+  import arrowright from "./images/arrowright.png"
+  import arrowdown from "./images/arrowdown.png"
     export default {
         name: 'noSupervisorTable',
         data () {
             return {
+              arrowright:arrowright,
+              arrowdown:arrowdown,
               noSupervisorinfoKey:{
                 teacherId:'',
                 courseId:''
@@ -190,19 +193,34 @@
                   {status:'1',supervisorName:'李晓',supervisorId:'12345',className:'普通高中 2015 护理1班',classId:'33333',courseName:'护理管理学',courseId:'10301',teacherName:'何平',teacherId:'1111'},
                   {status:'0',supervisorName:'张玲',supervisorId:'22345',className:'普通高中 2015 护理2班',classId:'44444',courseName:'护理管理学',courseId:'10301',teacherName:'何平',teacherId:'2222'}
               ],
-              superviseInfoList:{
-                superviseTime:'2016.01.01',
-                attendanceInfo:'47人，应到47人',
-                teachContent:'授课内容',
-                teacherQualityScored:'88',
-                teachGoalsScored:'88',
-                teachContentScored:'88',
-                teachMethodsScored:'88',
-                teachRoutineScored:'88',
-                teachEffectScored:'88',
-                commentsInfo:'督导意见',
-                forwardInfo:''
-              }
+              superviseInfoList:[
+                {
+                  superviseTime:'2016.01.01',
+                  attendanceInfo:'47人，应到47人',
+                  teachContent:'授课内容',
+                  teacherQualityScored:'88',
+                  teachGoalsScored:'88',
+                  teachContentScored:'88',
+                  teachMethodsScored:'88',
+                  teachRoutineScored:'88',
+                  teachEffectScored:'88',
+                  commentsInfo:'督导意见',
+                  forwardInfo:''
+                },
+                {
+                  superviseTime:'2017.01.01',
+                  attendanceInfo:'47人，应到47人',
+                  teachContent:'授课内容',
+                  teacherQualityScored:'88',
+                  teachGoalsScored:'88',
+                  teachContentScored:'88',
+                  teachMethodsScored:'88',
+                  teachRoutineScored:'88',
+                  teachEffectScored:'88',
+                  commentsInfo:'督导意见',
+                  forwardInfo:''
+                }
+              ]
             }
         },
       beforeMount:function() {
@@ -361,6 +379,18 @@
           supervisorDiv.style.display = "none";
           setSupervisorDropdown.style.display = "inline";
         },
+        tableSlideToggle:function(index){
+          var table = document.getElementById('superviseTableDiv' + index);
+          var arrow = document.getElementById('arrow'+index);
+          if (arrow.src === this.arrowright){
+            table.style.display = "inline";
+            arrow.src = this.arrowdown;
+          }
+          else {
+            table.style.display = "none";
+            arrow.src = this.arrowright;
+          }
+        },
         submitClick:function(superviseTime){
           if(this.superviseBackinfoKey.forwardInfo.length === 0){
             alert("您没有输入教务人员意见");
@@ -429,6 +459,33 @@
     }
     .supervisorBackInput{
       width: 80%;
+    }
+
+    .superviseDiv{
+      position: relative;
+      /*background-color: #158064;*/
+      background-color: #1fa573;
+      border-top:1px solid #ececec;
+      height: 2rem;
+      width: 100%;
+    }
+    .superviseP{
+      position: absolute;
+      height: 1.7rem;
+      width: 10rem;
+      padding-top: 0.3rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color:#FFF;
+      cursor: default;
+    }
+    .superviseP:hover,.superviseImg:hover{
+      background-color: #00a539;
+    }
+    .superviseImg{
+      width: 2rem;
+      height: 2rem;
+      /*margin-left: 0.7rem;*/
     }
     @media screen and (max-width: 1023px) {
         html {
