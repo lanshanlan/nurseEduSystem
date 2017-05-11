@@ -15,7 +15,7 @@
             <td style="text-align: left;text-indent: 3rem;font-size: 1.1rem">{{announcementContent}}</td>
           </tr>
           <tr>
-            <td class="download" @click="downloadNoticeClick">{{fileName}}</td>
+            <td class="download" @click="downloadNoticeClick">附件:&nbsp&nbsp{{fileName}}</td>
           </tr>
           </tbody>
         </table>

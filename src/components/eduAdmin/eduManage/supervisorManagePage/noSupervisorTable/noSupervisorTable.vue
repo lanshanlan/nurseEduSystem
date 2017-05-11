@@ -228,29 +228,23 @@
           "Content-Type":"application/json"
         }).then(function (response) {
           console.log(response);
-          this.courseList = response.body.supervisorManage.courseList;
-          this.teacherList = response.body.supervisorManage.teacherList;
-          this.notSettedSupervisorCourseInfoList = response.body.supervisorManage.notSettedSupervisorCourseInfoList;
+          this.courseList = response.body.courseList;
+          this.teacherList = response.body.teacherList;
+          this.notSettedSupervisorCourseInfoList = response.body.notSettedSupervisorCourseInfoList;
         },function(error){
           console.log("获取error");
         });
       },
       methods:{
         checkNoSupervisorInfoClick: function(){
-          this.$http.post('./checkNoSupervisorInfoJson',{
+          this.$http.post('./teachingSupervision/checkNoSupervisorInfoJson',{
             "teacherId":this.noSupervisorinfoKey.teacherId,
             "courseId":this.noSupervisorinfoKey.courseId
           },{
             "Content-Type":"application/json"
           }).then(function (response) {
             console.log(response);
-            this.setMsg = response.body.checkNoSupervisorInfoList.setMsg;
-            if(this.setMsg === '0'){
-              this.notSettedSupervisorCourseInfoList = response.body.checkNoSupervisorInfoList.notSettedSupervisorCourseInfoList;
-            }
-            else{
-              alert("您查询的课程已设置督导，请点击查看已设置督导课程！");
-            }
+            this.notSettedSupervisorCourseInfoList = response.body.notSettedSupervisorCourseInfoList;
           },function(error){
             console.log("获取error");
           });
@@ -259,7 +253,7 @@
           location.href="./teachingSupervision/exportExcel";
         },
         teacherClick:function(){
-          this.$http.post('./noSupervisorTeacherClickJson',{
+          this.$http.post('./teachingSupervision/noSupervisorTeacherClickJson',{
             "teacherId":this.noSupervisorinfoKey.teacherId
           },{
             "Content-Type":"application/json"
@@ -283,8 +277,8 @@
             "Content-Type":"application/json"
           }).then(function (response) {
             console.log(response);
-            this.supervisorList = response.body.setSupervisor.supervisorList;
-            this.settedSupervisorCourseInfoList = response.body.setSupervisor.settedSupervisorCourseInfoList;
+            this.supervisorList = response.body.supervisorList;
+            this.settedSupervisorCourseInfoList = response.body.settedSupervisorCourseInfoList;
           },function(error){
             console.log("获取error");
           });
@@ -352,7 +346,7 @@
             "Content-Type":"application/json"
           }).then(function (response) {
             console.log(response);
-            this.superviseInfoList = response.body.checksupervisorBackInfoList.superviseInfoList;
+            this.superviseInfoList = response.body.superviseInfoList;
           },function(error){
             console.log("获取error");
           });

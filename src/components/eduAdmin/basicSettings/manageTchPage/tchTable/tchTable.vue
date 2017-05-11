@@ -134,7 +134,7 @@
           <p v-else>处理出错</p>
         </div>
         <div slot="footer" style="text-align: center">
-          <button id="modalBtn" @click="checkOk">确定</button>
+          <button id="modalBtn" @click="resultOk">确定</button>
         </div>
       </modal>
     </div>
@@ -214,11 +214,11 @@
             console.log("获取error");
           });
         },
-        handleFormatError:function(file){
+        handleFormatError:function(){
           this.downloadMsg = "1";
           this.modalDownloadBool = true;
         },
-        handleSizeError:function(file){
+        handleSizeError:function(){
           this.downloadMsg = "2";
           this.modalDownloadBool = true;
         },
