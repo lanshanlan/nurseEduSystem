@@ -60,7 +60,7 @@
             <tr v-for="(studentSimpleInfo,index) in studentSimpleInfoList" :id="'inputTable'+index">
               <td><input id="input1" :value="studentSimpleInfo.studentId" readonly="readonly" style="border: none"></td>
               <td><input id="input2" :value="studentSimpleInfo.studentName" readonly="readonly" style="border: none"></td>
-              <td><input id="input3" :value="studentSimpleInfo.studentIdcard" readonly="readonly" style="border: none"></td>
+              <td><input id="input3" :value="studentSimpleInfo.studentIDcard" readonly="readonly" style="border: none"></td>
               <td><input id="input4" :value="studentSimpleInfo.studentGender" readonly="readonly" style="border: none"></td>
               <td><input id="input5" :value="studentSimpleInfo.schoolYearType" readonly="readonly" style="border: none"></td>
               <td><input id="input6" :value="studentSimpleInfo.gradeName" readonly="readonly" style="border: none"></td>
@@ -124,8 +124,8 @@
                 }
               ],
               studentSimpleInfoList:[
-                  {studentId:'1530310503',studentName:'高兴月',studentIdcard:'321281199503281111',studentGender:'女',schoolYearType:'五年制',gradeName:'2013级',specialityName:'护理',className:'护理3班',birthdate:'1993.02.03',ethno:'汉',nativePlace:'上海',phoneNumber:'15680992212',houseAddress:'成都市青牛区'},
-                  {studentId:'1530310503',studentName:'高兴月',studentIdcard:'321281199503281111',studentGender:'女',schoolYearType:'五年制',gradeName:'2013级',specialityName:'护理',className:'护理3班',birthdate:'1993.02.03',ethno:'汉',nativePlace:'上海',phoneNumber:'15680992212',houseAddress:'成都市青牛区'}
+                  {studentId:'1530310503',studentName:'高兴月',studentIDcard:'321281199503281111',studentGender:'女',schoolYearType:'五年制',gradeName:'2013级',specialityName:'护理',className:'护理3班',birthdate:'1993.02.03',ethno:'汉',nativePlace:'上海',phoneNumber:'15680992212',houseAddress:'成都市青牛区'},
+                  {studentId:'1530310503',studentName:'高兴月',studentIDcard:'321281199503281111',studentGender:'女',schoolYearType:'五年制',gradeName:'2013级',specialityName:'护理',className:'护理3班',birthdate:'1993.02.03',ethno:'汉',nativePlace:'上海',phoneNumber:'15680992212',houseAddress:'成都市青牛区'}
                 ]
             }
         },
