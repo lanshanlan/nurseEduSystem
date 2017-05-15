@@ -298,7 +298,7 @@
             break;
           }
         }
-        if(this.indexBool === true){
+        if(this.indexBool === false){
           this.$http.post('./schoolCoursePlan/showPlan',{
             "gradeId":this.gradeIdList[gradeIndex]
           },{
