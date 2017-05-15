@@ -33,23 +33,25 @@
           </tr>
           </thead>
           <tbody>
-          <tr v-for=" courseGroupInfo in  courseGroupInfos">
+          <tr v-for="(courseGroupInfo,index) in  courseGroupInfos">
             <td v-text="courseGroupInfo.groupName"></td>
             <td v-text="courseGroupInfo.teacherName"></td>
             <td v-text="courseGroupInfo.courseName"></td>
             <td v-text="courseGroupInfo.headman"></td>
             <td>
               <form action="./courseTeachPlan/exportExcel" method="get">
-                <input v-model="courseGroupInfo.teacherId" style="display: none">
-                <input v-model="courseGroupInfo.courseId" style="display: none">
+                <input v-model="courseGroupInfo.teacherId" name="teacherId" style="display: none">
+                <input v-model="courseGroupInfo.courseId" name="courseId" style="display: none">
                 <button class="am-btn am-btn-success am-radius">下载</button>
               </form>
             </td>
             <!--<td><button id="download" class="am-btn am-btn-success am-radius" @click="downloadClick">下载</button></td>-->
             <!--下载培养方案的按钮-->
             <td>
-              <img id="adopt" src="./images/save.png" @click="examineTeachingPlanInfoClick(courseGroupInfo.teacherId,courseGroupInfo.courseId,'1')">
-              <img id="notAdopt" src="./images/restore.png" @click="examineTeachingPlanInfoClick(courseGroupInfo.teacherId,courseGroupInfo.courseId,'0')">
+              <button :id="'buttonOne'+index" @click="examineTeachingPlanInfoClick(courseGroupInfo.teacherId,courseGroupInfo.courseId,'1',index)"  class="circle" >√</button>
+              <button :id="'buttonTwo'+index" @click="examineTeachingPlanInfoClick(courseGroupInfo.teacherId,courseGroupInfo.courseId,'0',index)"  class="circle" >×</button>
+              <!--<img id="adopt" src="./images/save.png" @click="examineTeachingPlanInfoClick(courseGroupInfo.teacherId,courseGroupInfo.courseId,'1')">-->
+              <!--<img id="notAdopt" src="./images/restore.png" @click="examineTeachingPlanInfoClick(courseGroupInfo.teacherId,courseGroupInfo.courseId,'1')">-->
             </td>
           </tr>
           </tbody>
@@ -68,8 +70,7 @@
       </modal>
       <modal v-model="modalResultBool" width="400" id="modalBody">
         <div style="text-align: center;font-size: 1.1rem;">
-          <p v-if="resultmsg === '1'">{{operateMsg}}成功</p>
-          <p v-else>{{operateMsg}}失败</p>
+          <p>{{operateMsg}}失败</p>
         </div>
         <div slot="footer" style="text-align: center">
           <button id="modalBtn" @click="resultOk">确定</button>
@@ -111,11 +112,12 @@
               ],
               msg:"",
               operateMsg:"",
-              resultmsg:"",
+              resultmsg:1,
               modalOperateBool:false,
               modalResultBool:false,
               teacherIdEle:"",
-              courseIdEle:''
+              courseIdEle:'',
+              index:''
             }
         },
       beforeMount:function() {
@@ -180,11 +182,12 @@
 //        downloadClick:function(){
 //          location.href="./courseTeachPlan/exportExcel";
 //        },
-        examineTeachingPlanInfoClick:function(teacherId,courseId,msg){
+        examineTeachingPlanInfoClick:function(teacherId,courseId,msg,index){
           this.modalOperateBool = true;
           this.teacherIdEle = teacherId;
           this.courseIdEle = courseId;
           this.msg = msg;
+          this.index = index;
           if(msg ==="1"){
             this.operateMsg = "审核通过";
           }else{
@@ -192,7 +195,9 @@
           }
         },
         operateOk: function(){
-          this.$http.post('./courseTeachPlan/doCheckTeachPlan',{
+          var buttonTwo = document.getElementById("buttonTwo"+this.index);
+          var buttonOne = document.getElementById("buttonOne"+this.index);
+          this.$http.post('./courseTeachPlan/doAdminCheckTeachPlan',{
             "msg":this.msg,
             "teacherId":this.teacherIdEle,
             "courseId":this.courseIdEle
@@ -201,11 +206,28 @@
           }).then(function (response) {
             console.log(response);
             this.resultmsg=response.body.result;
+            if(this.resultmsg === 1&&this.msg === "1"){
+              buttonTwo.style.display = "none";
+              buttonOne.disabled = "true";
+              buttonOne.style.backgroundColor="white";
+              buttonOne.style.border="grey solid thin";
+              buttonOne.style.color="grey";
+            }else if(this.resultmsg === 1&&this.msg === "0"){
+              buttonOne.style.display = "none";
+              buttonTwo.disabled = "true";
+              buttonTwo.style.backgroundColor="white";
+              buttonTwo.style.border="grey solid thin";
+              buttonTwo.style.color="grey";
+            }
           },function(error){
             console.log("获取error");
           });
           this.modalOperateBool = false;
-          this.modalResultBool = true;
+          if(this.resultmsg === 1){
+            this.$Message.success(this.operateMsg + "成功！");
+          }else{
+            this.modalResultBool = true;
+          }
         },
         operateCancel: function(){
           this.modalOperateBool = false;
@@ -245,6 +267,20 @@
     img:hover{
       cursor: pointer;
       border: thin solid grey;
+    }
+    .circle{
+      border:solid thin grey;
+      color: grey;
+      background-color: white;
+      width: 1.5rem;
+      height: 1.5rem;
+      -webkit-border-radius: 0.75rem;
+      outline:none;
+    }
+    .circle:hover{
+      color:white;
+      background-color: red;
+      border:solid thin red;
     }
     @media screen and (max-width: 1023px) {
         html {

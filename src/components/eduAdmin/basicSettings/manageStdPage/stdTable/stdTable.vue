@@ -13,7 +13,7 @@
         <!--年级选择下拉列表-->
         <select id="classSelect" class="selectWM" v-model="studentinfoKey.classId" @click="indexGradeClick()">
           <option value="0">选择班级</option>
-          <option v-if="studentinfoKey.gradeName!='0'" v-for="classEle in yearAndClassList[indexYearType].gradeList[indexGrade].classList " :value="classEle.classId">{{classEle.classId}}</option>
+          <option v-if="studentinfoKey.gradeId!='0'" v-for="classEle in yearAndClassList[indexYearType].gradeList[indexGrade].classList " :value="classEle.classId">{{classEle.classId}}</option>
         </select>
         <!--班级选择下拉列表-->
         <span><input type="text" id="stdID" class="inputWM" placeholder="请输入学号" v-model="studentinfoKey.studentId"></span>

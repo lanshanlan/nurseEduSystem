@@ -27,61 +27,73 @@ export default new Router({   //将routes里的参数导出
     //  component: Hello
     //},
     {
+      //学生查询成绩界面
       path: '/stInquireGrade',
       name: 'stInquireGrade',
       component: stInquireGrade
     },
     {
+      //学生管理界面
       path: '/eduAdminManageStd',
       name: 'eduAdminManageStd',
       component: eduAdminManageStd
     },
     {
+      //教师管理界面
       path: '/eduAdminManageTch',
       name: 'eduAdminManageTch',
       component: eduAdminManageTch
     },
     {
+      //培养方案界面
       path: '/eduAdminEduPlan',
       name: 'eduAdminEduPlan',
       component: eduAdminEduPlan
     },
     {
+      //教学进程界面
       path: '/eduAdminTeachProcess',
       name: 'eduAdminTeachProcess',
       component: eduAdminTeachProcess
     },
     {
+      //教师教学计划界面
       path: '/eduAdminTchTeachingPlan',
       name: 'eduAdminTchTeachingPlan',
       component: eduAdminTchTeachingPlan
     },
     {
+      //班级管理界面
       path: '/eduAdminManageClass',
       name: 'eduAdminManageClass',
       component: eduAdminManageClass
     },
     {
+      //评教结果界面
       path: '/eduAdminEvaTeachingResult',
       name: 'eduAdminEvaTeachingResult',
       component: eduAdminEvaTeachingResult
     },
     {
+      //教务管理督导界面
       path: '/eduAdminSupervisorManage',
       name: 'eduAdminSupervisorManage',
       component: eduAdminSupervisorManage
     },
     {
+      //权限管理2界面
       path: '/eduAdminAuthorityManage2',
       name: 'eduAdminAuthorityManage2',
       component: eduAdminAuthorityManage2
     },
     {
+      //年级管理界面
       path: '/eduAdminManageGrade',
       name: 'eduAdminManageGrade',
       component: eduAdminManageGrade
     },
     {
+      //公告信息通知界面
       path: '/eduAdminNotifyInformation',
       name: 'eduAdminNotifyInformation',
       component: eduAdminNotifyInformation
