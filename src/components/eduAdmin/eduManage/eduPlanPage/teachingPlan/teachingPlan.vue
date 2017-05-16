@@ -18,7 +18,7 @@
             <span style="display: inline-block;float: right;margin-bottom: 0.3rem">
               <Upload
                 ref="upload"
-                :data="gradeIdList[gradeIndex]"
+                :data="{'gradeId':gradeIdList[gradeIndex]}"
                 :show-upload-list = false
                 :format="['xls','xlsx']"
                 :max-size="2048"
@@ -84,7 +84,7 @@
               </tr>
               </thead>
               <tbody>
-              <tr v-for="course in courseAllList[courseIndex].courseList">
+              <tr v-for="course in courseAllList[gradeIndexArr[gradeIndex]].courseList">
                 <td v-text="course.courseId"></td>
                 <td v-text="course.courseTypeName"></td>
                 <td v-text="course.courseName"></td>
@@ -204,7 +204,7 @@
               </tr>
               </thead>
               <tbody>
-              <tr v-for="course in courseAllList[courseIndex].courseList">
+              <tr v-for="course in courseAllList[gradeIndexArr[gradeIndex]].courseList">
                 <td v-text="course.courseId"></td>
                 <td v-text="course.courseTypeName"></td>
                 <td v-text="course.courseName"></td>
@@ -253,12 +253,15 @@
         arrowright:arrowright,
         arrowdown:arrowdown,
         indexBool:false,
-        courseIndex:'0',
+//        courseIndex:'0',
         gradeIdList:[
           '20145','20155','20133','20143'
         ],
         gradeIdArr:[
 //          {gradeName:'',yearType:''}
+        ],
+        gradeIndexArr:[
+          '0','0','0','0','0','0','0','0'
         ],
         courseAllList:[
           {
@@ -293,7 +296,7 @@
         this.indexBool = false;
         for(var i=0;i<this.courseAllList.length;i++){
           if(this.courseAllList[i].grade===gradeName && this.courseAllList[i].yearType===yearType){
-            this.courseIndex = i;
+            this.gradeIndexArr[gradeIndex] = i;
             this.indexBool = true;
             break;
           }
@@ -306,7 +309,7 @@
           }).then(function (response) {
             console.log(response);
             this.courseAllList.push({grade:response.body.grade,yearType:response.body.yearType,courseList:response.body.schoolCoursePlanVoList});
-            this.courseIndex = this.courseAllList.length - 1;
+            this.gradeIndexArr[gradeIndex] = this.courseAllList.length - 1;
           },function(error){
             console.log("获取error");
           });
@@ -349,7 +352,7 @@
         location.href="./schoolCoursePlan/downloadTemplet";
       },
       downloadClick:function(gradeId){
-        location.href="./schoolCoursePlan/exportExcel?"+gradeId;
+        location.href="./schoolCoursePlan/exportExcel?gradeId="+gradeId;
       }
     }
   }
