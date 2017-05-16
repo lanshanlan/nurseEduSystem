@@ -18,6 +18,7 @@
       <!--课程选择下拉列表-->
       <span><button id="searchFor" class="am-btn am-btn-success am-radius buttonWM" @click="checkTeachingPlanInfoClick()">查找</button></span>
     </div>
+
     <div style="padding: 0.6rem 5rem;background-color: #f3f3f3">
       <div id="courseGroupTableDiv" style="background-color: white">
         <!--课程培养方案表格-->
@@ -45,9 +46,14 @@
                 <button class="am-btn am-btn-success am-radius">下载</button>
               </form>
             </td>
-            <!--<td><button id="download" class="am-btn am-btn-success am-radius" @click="downloadClick">下载</button></td>-->
             <!--下载培养方案的按钮-->
-            <td>
+            <td v-if="courseGroupInfo.auditStatus==='0'">
+              <button class="circleEnd" >×</button>
+            </td>
+            <td v-else-if="courseGroupInfo.auditStatus==='1'">
+              <button class="circleEnd" >√</button>
+            </td>
+            <td v-else-if="courseGroupInfo.auditStatus==='2'">
               <button :id="'buttonOne'+index" @click="examineTeachingPlanInfoClick(courseGroupInfo.teacherId,courseGroupInfo.courseId,'1',index)"  class="circle" >√</button>
               <button :id="'buttonTwo'+index" @click="examineTeachingPlanInfoClick(courseGroupInfo.teacherId,courseGroupInfo.courseId,'0',index)"  class="circle" >×</button>
               <!--<img id="adopt" src="./images/save.png" @click="examineTeachingPlanInfoClick(courseGroupInfo.teacherId,courseGroupInfo.courseId,'1')">-->
@@ -106,9 +112,9 @@
                 {courseName:'护理学基础3',courseId:'JCKC3333'}
               ],
               courseGroupInfos:[
-                {groupName:'临床医学',teacherName:'李伟',teacherId:'111',courseName:'护理学基础1',courseId:'JCKC1111',headman:'何平'},
-                {groupName:'临床护理',teacherName:'张亮',teacherId:'222',courseName:'护理学基础2',courseId:'JCKC2222',headman:'张扬'},
-                {groupName:'护用药理',teacherName:'邓常',teacherId:'333',courseName:'护理学基础3',courseId:'JCKC3333',headman:'李季'}
+                {groupName:'临床医学',teacherName:'李伟',teacherId:'111',courseName:'护理学基础1',courseId:'JCKC1111',headman:'何平',auditStatus:'0'},
+                {groupName:'临床护理',teacherName:'张亮',teacherId:'222',courseName:'护理学基础2',courseId:'JCKC2222',headman:'张扬',auditStatus:'1'},
+                {groupName:'护用药理',teacherName:'邓常',teacherId:'333',courseName:'护理学基础3',courseId:'JCKC3333',headman:'李季',auditStatus:'2'}
               ],
               msg:"",
               operateMsg:"",
@@ -207,17 +213,9 @@
             console.log(response);
             this.resultmsg=response.body.result;
             if(this.resultmsg === 1&&this.msg === "1"){
-              buttonTwo.style.display = "none";
-              buttonOne.disabled = "true";
-              buttonOne.style.backgroundColor="white";
-              buttonOne.style.border="grey solid thin";
-              buttonOne.style.color="grey";
+              this.courseGroupInfos[this.index].auditStatus = "1";
             }else if(this.resultmsg === 1&&this.msg === "0"){
-              buttonOne.style.display = "none";
-              buttonTwo.disabled = "true";
-              buttonTwo.style.backgroundColor="white";
-              buttonTwo.style.border="grey solid thin";
-              buttonTwo.style.color="grey";
+              this.courseGroupInfos[this.index].auditStatus = "0";
             }
           },function(error){
             console.log("获取error");
@@ -268,7 +266,7 @@
       cursor: pointer;
       border: thin solid grey;
     }
-    .circle{
+    .circle,.circleEnd{
       border:solid thin grey;
       color: grey;
       background-color: white;

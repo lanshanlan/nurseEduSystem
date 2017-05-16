@@ -14,6 +14,7 @@
           </tr>
         </table>
       </div>
+      <!--3年制年级基本信息表格-->
       <div id="threeYearDiv" v-show="gradeManagement">
         <button class="amButtom" @click="threeYearClick"><img id="threeYearArrow" class="iconImg" :src="icon1"><span class="subtitle">{{secondYearType}}年制</span></button>
         <table id="threeYearTable" v-show="threeYearTable"  class="operationTable" style="table-layout: fixed;">
@@ -27,6 +28,7 @@
           </tr>
         </table>
       </div>
+      <!--5年制年级基本信息表格-->
       <div v-show="gradeTable">
         <table id="gradeClassInfoDiv" class="operationTable" style="table-layout: fixed;">
           <thead>
@@ -86,6 +88,7 @@
           <span><button id="goBack" class="bottomButton am-btn am-btn-success am-radius" @click="goBackClick()">返回</button></span>
         </div>
       </div>
+      <!--班级信息表格-->
     </div>
   </div>
 </template>
@@ -143,6 +146,7 @@
         console.log("获取error");
       });
     },
+//    初始化页面时，获取3年制和5年制年级信息
     methods: {
       fiveYearClick: function () {
         var fiveYearArrow = document.getElementById("fiveYearArrow");
@@ -158,6 +162,7 @@
           fiveYearArrow.src = this.icon1;
         }
       },
+//      点击5年制下拉按钮时，展示或隐藏5年制年级表格
       threeYearClick: function () {
         var threeYearArrow = document.getElementById("threeYearArrow");
         if (!this.threeArrow) {
@@ -172,6 +177,7 @@
           threeYearArrow.src = this.icon1;
         }
       },
+//      点击3年制下拉按钮时，展示或隐藏3年制年级表格
       deleteGradeClick: function(yearType,grades,index){
 //          从data中的课程信息数组中删除
 //          预留功能,将data提交到后端,实现删除数据,处理回调
@@ -189,6 +195,7 @@
           grades.splice(index, 1);
         }
       },
+//      删除年级信息
       checkGradeInfoClick: function(yearType,gradeName){
         this.$http.post('./gradeManage/getGradeDetail',{
           "yearType":yearType,
@@ -205,6 +212,7 @@
         this.gradeTable = true;
         this.gradeManagement = false;
       },
+//      查看年级具体班级信息，从年级信息页面跳转的班级信息页面
       editClick: function(index){
         var inputTable = document.getElementById("inputTable"+index);
         var input = inputTable.getElementsByTagName("input");
@@ -221,6 +229,7 @@
         deleteImg.style.display = "none";
         restoreImg.style.display = "inline";
       },
+//      修改班级信息，包括教师
       saveClick: function(index){
         var inputTable = document.getElementById("inputTable"+index);
         var input = inputTable.getElementsByTagName("input");
@@ -251,6 +260,7 @@
         deleteImg.style.display = "inline";
         restoreImg.style.display = "none";
       },
+//      保存对班级信息的修改
       restoreClick: function(index){
         var inputTable = document.getElementById("inputTable"+index);
         var input = inputTable.getElementsByTagName("input");
@@ -271,6 +281,7 @@
         deleteImg.style.display = "inline";
         restoreImg.style.display = "none";
       },
+//      取消班级信息修改
       deleteClick: function(index){
         this.$http.post('./gradeManage/deleteClassInfo',{
           "classId":this.classinfoStrList[index].classId
@@ -283,21 +294,25 @@
         });
         this.classinfoStrList.splice(index,1);
       },
+//      删除该班级以及该班级的所有信息
       handleFormatError:function(file){
         this.$Notice.warning({
           title: '文件格式不正确',
           desc: '文件 ' + file.name + ' 格式不正确，请上传xls或xlsx表格。'
         });
       },
+//      提醒用户上传文件格式不正确
       handleSizeError:function(file){
         this.$Notice.warning({
           title: '超出文件大小限制',
           desc: '文件 ' + file.name + ' 太大，不能超过 2M。'
         });
       },
+//      提醒用户上传文件大小超过限制
       handleProgress:function(){
         this.$Message.loading("正在上传中...");
       },
+//      提醒用户文件正在上传
       handleSuccess:function(res){
         if(res.result==='1'){
           this.$Message.success("上传成功！");
@@ -305,19 +320,24 @@
           this.$Message.error(res.result);
         }
       },
+//      提醒用户上传成功或者失败的原因（文件已上传到数据库，但文件内容问题）
       handleError:function(){
         this.$Message.error("上传失败");
       },
+//      提醒用户上传失败（文件未上传到数据库）
       downloadFormClick:function(){
         location.href="./gradeManage/exportClassInfoTemplet";
       },
+//      下载模板
       downloadClick:function(){
         location.href="./gradeManage/exportClassInfo";
       },
+//      下载班级信息
       goBackClick: function(){
         this.gradeTable = false;
         this.gradeManagement = true;
       }
+//      从班级信息页面返回年级信息页面
     }
   }
 </script>
