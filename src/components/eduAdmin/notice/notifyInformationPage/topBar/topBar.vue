@@ -1,7 +1,11 @@
 <template>
   <div id="mngGradePageTopBar" class="topBarDiv am-btn-group">
     <!--导航栏-->
-    <button class="am-btn am-btn-success btn-active" style="margin-left: 5rem">信息通知</button>
+    <router-link to="/noticeManage"><button class="am-btn am-btn-success" style="margin-left: 5rem">公告管理</button></router-link>
+    <router-link to="/noticeSetting"><button class="am-btn am-btn-success">公告编辑</button></router-link>
+    <router-link to="/"><button class="am-btn am-btn-success">公告详情</button></router-link>
+    <router-link to="/"><button class="am-btn am-btn-success">公告发布</button></router-link>
+    <button class="am-btn am-btn-success btn-active">公告信息</button>
   </div>
 </template>
 

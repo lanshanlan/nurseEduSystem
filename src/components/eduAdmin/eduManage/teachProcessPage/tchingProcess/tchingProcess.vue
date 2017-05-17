@@ -224,7 +224,7 @@
           }
         },
         downloadClick:function(gradeId){
-          location.href="./exportTeachProcess?"+gradeId;
+          location.href="./exportTeachProcess?gradeId="+gradeId;
         }
       }
     }

@@ -26,7 +26,7 @@
           </tr>
           <tr>
             <td>通知公告模块</td>
-            <td><router-link to="/eduAdminNotifyInformation">信息通知</router-link></td>
+            <td><router-link to="/notifyInformation">信息通知</router-link></td>
             <td></td>
             <td></td>
             <td></td>
