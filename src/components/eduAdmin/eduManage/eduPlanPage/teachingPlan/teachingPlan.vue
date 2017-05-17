@@ -2,16 +2,13 @@
   <div id="tchingPlan" style="padding: 0.6rem 5rem;background-color: #f3f3f3">
     <div>
       <div class="yearsTypeDiv">
-        <!--年制模块下拉菜单-->
-        <!--<span><img :id="yearType.English + 'Arrow'" class="yearsTypeImg" :src="arrowright"></span>-->
         <span class="yearsTypeP">5年制培养方案</span>
         <span><button class="yearButton" @click="downloadFormClick">下载模板</button></span>
       </div>
-
+      <!--年制栏-->
       <div>
         <div v-for="(grade,gradeIndex) in gradeIdArr">
           <div v-if="grade.yearType==='5'" :id="'5GradePlanDiv' + gradeIndex" class="gradePlanDiv">
-            <!--年级教学进程下拉菜单-->
             <span><img :id="'5Arrow' + gradeIndex" class="gradePlanImg" @click="tableSlideToggle(grade.yearType,gradeIndex,grade.gradeName)" :src="arrowright"></span>
             <span :id="'5P' + gradeIndex" class="gradePlanP" @click="tableSlideToggle(grade.yearType,gradeIndex,grade.gradeName)">{{grade.gradeName}}级</span>
             <span><button class="gradeButton" @click="downloadClick(gradeIdList[gradeIndex])">下载</button></span>
@@ -30,8 +27,10 @@
                 action="./schoolCoursePlan/importExcel">
                 <button type="ghost" id="leadIn" class="gradeButton">上传</button>
               </Upload>
+              <!--上传的data数据用对象传输-->
             </span>
           </div>
+          <!--年级教学进程下拉菜单-->
           <div :id="'5Table' + gradeIndex" style="display: none">
             <table class="normalTable" style="table-layout: fixed">
               <thead>
@@ -117,9 +116,11 @@
               </tbody>
             </table>
           </div>
+          <!--课程信息table-->
         </div>
       </div>
     </div>
+    <!--5年制培养方案-->
     <div>
       <div class="yearsTypeDiv">
         <!--年制模块下拉菜单-->
@@ -138,7 +139,7 @@
             <span style="display: inline-block;float: right;margin-bottom: 0.3rem">
               <Upload
                 ref="upload"
-                :data="gradeIdList[gradeIndex]"
+                :data="{'gradeId':gradeIdList[gradeIndex]}"
                 :show-upload-list = false
                 :format="['xls','xlsx']"
                 :max-size="2048"
@@ -339,12 +340,14 @@
         this.$Message.loading("正在上传中...");
       },
       handleSuccess:function(res){
-        if(res.result==='1'){
+        if(res.result===1){
           this.$Message.success("上传成功！");
         }else{
-          this.$Message.error(res.result);
+          var result = res.result;
+          this.$Message.error(result);
         }
       },
+//      从后台接收的数据必须先用变量接收后再应用
       handleError:function(){
         this.$Message.error("上传失败");
       },

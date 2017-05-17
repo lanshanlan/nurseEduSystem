@@ -18,7 +18,6 @@
         <!--班级选择下拉列表-->
         <span><input type="text" id="stdID" class="inputWM" placeholder="请输入学号" v-model="studentinfoKey.studentId"></span>
         <span><button id="searchFor" class="am-btn am-btn-success am-radius buttonWM" @click="checkStdInfoClick()">查找</button></span>
-
         <span><button id="downloadForm" class="am-btn am-btn-success am-radius buttonWM" @click="downloadFormClick">下载模板</button></span>
         <span style="display: inline-block">
           <Upload
@@ -35,6 +34,7 @@
           <button type="ghost" id="leadIn" class="am-btn am-btn-success am-radius buttonWM">上传</button>
           </Upload>
         </span>
+        <!--上传文件-->
         <span><button id="leadOut" class="am-btn am-btn-success am-radius buttonWM" @click="downloadClick">下载</button></span>
       </div>
       <div>
@@ -51,6 +51,7 @@
           </div>
         </modal>
       </div>
+      <!--上传文件出错信息提示弹窗-->
       <div style="padding: 0.6rem 5rem;background-color: #f3f3f3">
         <div id="stdTable" style="background-color: white">
           <!--学生信息表格-->
@@ -91,6 +92,7 @@
           </table>
         </div>
       </div>
+      <!--学生信息table-->
       <div>
         <modal v-model="modalOperateBool" width="400" id="modalBody">
           <div style="text-align: center;font-size: 1.1rem;">
@@ -105,6 +107,7 @@
             <button id="modalBtn" @click="operateCancel">取消</button>
           </div>
         </modal>
+        <!--确认保存、删除操作弹窗-->
         <modal v-model="modalResultBool" width="400" id="modalBody">
           <div style="text-align: center;font-size: 1.1rem;">
             <p v-if="operateMsg === '1'&&resultMsg === '1'">保存修改成功</p>
@@ -117,6 +120,7 @@
             <button id="modalBtn" @click="resultOk">确定</button>
           </div>
         </modal>
+        <!--操作成功或失败提示弹窗-->
       </div>
     </div>
 </template>
@@ -194,12 +198,13 @@
           console.log("获取error");
         });
       },
-
+//      初始化函数，获取年制、年级、班级信息，用于select下拉框，获取学生信息，用于学生信息table
       methods:{
         yearTypeClick: function(){
           this.studentinfoKey.gradeId = '0';
           this.studentinfoKey.classId = '0';
         },
+//        点击年制下拉框时，将年级、班级下拉框清空
         indexYearTypeClick: function(){
           this.studentinfoKey.className = '0';
           for(var i=0;i<this.yearAndClassList.length;i++){
@@ -208,6 +213,7 @@
             }
           }
         },
+//        点击选择年制后，将年级下拉框下拉的可选内容改为相应年制的年级
         indexGradeClick: function(){
           for(var j=0;j<this.yearAndClassList[this.indexYearType].gradeList.length;j++){
             if(this.studentinfoKey.gradeName === this.yearAndClassList[this.indexYearType].gradeList[j].gradeName){
@@ -215,6 +221,7 @@
             }
           }
         },
+//        点击选择年级后，将班级下拉框下拉的可选内容改为相应年级的班级
         checkStdInfoClick: function(){
           this.$http.post('./studentManage/findStudentInfo',{
             "schoolYearType":this.studentinfoKey.schoolYearType,
@@ -235,6 +242,7 @@
             console.log("获取error");
           });
         },
+//        查询学生成绩：向后台提交年制、年级、班级，后台返回相应的学生信息
         handleFormatError:function(){
           this.downloadMsg = "1";
           this.modalDownloadBool = true;
