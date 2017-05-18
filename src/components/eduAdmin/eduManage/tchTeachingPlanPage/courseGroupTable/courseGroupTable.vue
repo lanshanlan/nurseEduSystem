@@ -21,7 +21,6 @@
 
     <div style="padding: 0.6rem 5rem;background-color: #f3f3f3">
       <div id="courseGroupTableDiv" style="background-color: white">
-        <!--课程培养方案表格-->
         <table id="courseGroupTable" class="operationTable" style="table-layout: fixed;">
           <thead>
           <tr>
@@ -63,6 +62,7 @@
           </tbody>
         </table>
       </div>
+      <!--课程培养方案表格-->
     </div>
     <div>
       <modal v-model="modalOperateBool" width="400" id="modalBody">
@@ -74,6 +74,7 @@
           <button id="modalBtn" @click="operateCancel">取消</button>
         </div>
       </modal>
+      <!--操作确认弹窗-->
       <modal v-model="modalResultBool" width="400" id="modalBody">
         <div style="text-align: center;font-size: 1.1rem;">
           <p>{{operateMsg}}失败</p>
@@ -82,6 +83,7 @@
           <button id="modalBtn" @click="resultOk">确定</button>
         </div>
       </modal>
+      <!--确认操作失败弹窗-->
     </div>
   </div>
 </template>
@@ -143,6 +145,7 @@
           console.log("获取error");
         });
       },
+//      初始化页面，获取教学计划列表，教研组列表，教师列表，课程列表
       methods:{
         groupClick: function(){
           this.$http.post('./courseTeachPlan/getTeacherList',{
@@ -158,6 +161,7 @@
           this.teacherinfoKey.teacherId = "";
           this.teacherinfoKey.courseId = "";
         },
+//        点击教研组select下拉框时，清空教师、课程下拉框内容，获取相应教研组的教师列表
         teacherClick: function(){
           this.$http.post('./courseTeachPlan/getCourseList',{
             "teacherId":this.teacherinfoKey.teacherId
@@ -171,6 +175,7 @@
           });
           this.teacherinfoKey.courseId = "";
         },
+//        点击教师select下拉框时，清空课程下拉框内容，获取相应教师的课程列表
         checkTeachingPlanInfoClick: function(){
           this.$http.post('./courseTeachPlan/findTeachPlan',{
             "groupId":this.teacherinfoKey.groupId,
@@ -185,9 +190,7 @@
             console.log("获取error");
           });
         },
-//        downloadClick:function(){
-//          location.href="./courseTeachPlan/exportExcel";
-//        },
+//        提交教研组、教师、课程参数，获取相应课程信息列表
         examineTeachingPlanInfoClick:function(teacherId,courseId,msg,index){
           this.modalOperateBool = true;
           this.teacherIdEle = teacherId;
@@ -200,6 +203,7 @@
             this.operateMsg = "审核不通过";
           }
         },
+//        用户进行审核操作，弹出确认弹窗
         operateOk: function(){
           var buttonTwo = document.getElementById("buttonTwo"+this.index);
           var buttonOne = document.getElementById("buttonOne"+this.index);
@@ -214,25 +218,27 @@
             this.resultmsg=response.body.result;
             if(this.resultmsg === 1&&this.msg === "1"){
               this.courseGroupInfos[this.index].auditStatus = 1;
+              this.$Message.success(this.operateMsg + "成功！");
             }else if(this.resultmsg === 1&&this.msg === "0"){
               this.courseGroupInfos[this.index].auditStatus = 0;
+              this.$Message.success(this.operateMsg + "成功！");
+            }else{
+              this.modalResultBool = true;
             }
           },function(error){
             console.log("获取error");
           });
           this.modalOperateBool = false;
-          if(this.resultmsg === 1){
-            this.$Message.success(this.operateMsg + "成功！");
-          }else{
-            this.modalResultBool = true;
-          }
         },
+//        确认审核操作，
         operateCancel: function(){
           this.modalOperateBool = false;
         },
+//        取消审核操作
         resultOk: function(){
           this.modalResultBool = false;
         }
+//        确认审核操作结果
       }
     }
 </script>

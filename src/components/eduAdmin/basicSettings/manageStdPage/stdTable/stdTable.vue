@@ -57,7 +57,6 @@
           <!--学生信息表格-->
           <table id="eduAdminStdTableSy" class="operationTable" style="table-layout: fixed;">
             <!--table-layout: fixed;固定表格格局-->
-            <!--margin:0 1%;-->
             <thead>
             <tr>
               <th>学号</th>
@@ -110,10 +109,8 @@
         <!--确认保存、删除操作弹窗-->
         <modal v-model="modalResultBool" width="400" id="modalBody">
           <div style="text-align: center;font-size: 1.1rem;">
-            <p v-if="operateMsg === '1'&&resultMsg === '1'">保存修改成功</p>
-            <p v-else-if="operateMsg === '1'&&resultMsg === '0'">保存修改失败</p>
-            <p v-else-if="operateMsg === '3'&&resultMsg === '1'">删除成功</p>
-            <p v-else-if="operateMsg === '3'&&resultMsg === '0'">删除失败</p>
+            <p v-if="operateMsg === '1'">保存修改失败</p>
+            <p v-else-if="operateMsg === '3'">删除失败</p>
             <p v-else>处理出错</p>
           </div>
           <div slot="footer" style="text-align: center">
@@ -247,13 +244,16 @@
           this.downloadMsg = "1";
           this.modalDownloadBool = true;
         },
+//        处理文件格式出错问题
         handleSizeError:function(){
           this.downloadMsg = "2";
           this.modalDownloadBool = true;
         },
+//        处理文件大小超过限制问题
         handleProgress:function(){
           this.$Message.loading("正在上传中...");
         },
+//        提示用户文件正在上传
         handleSuccess:function(res){
           if(res.result==='1'){
             this.downloadMsg = "3";
@@ -263,19 +263,24 @@
           }
           this.modalDownloadBool = true;
         },
+//        处理文件上传失败（文件已上传到数据库，但文件内容问题）或者成功事件，如果上传成功，4秒后刷新页面
         handleError:function(){
           this.downloadMsg = "4";
           this.modalDownloadBool = true;
         },
+//        处理文件上传失败事件（文件未上传到数据库）
         downloadFormClick:function(){
           location.href="./studentManage/exportStudentSimpleInfoTemplet";
         },
+//        下载模板
         downloadClick:function(){
           location.href="./studentManage/exportStudentSimpleInfo";
         },
+//        下载学生信息文件
         checkOk:function(){
           this.modalDownloadBool = false;
         },
+//        确认文件上传结果弹窗
         editClick: function(index){
           var inputTable = document.getElementById("inputTable"+index);
           var input = inputTable.getElementsByTagName("input");
@@ -290,21 +295,25 @@
           deleteImg.style.display = "none";
           restoreImg.style.display = "inline";
         },
+//        编辑学生信息
         saveClick:function(index){
           this.modalOperateBool = true;
           this.operateMsg = "1";
           this.index = index;
         },
+//        保存学生信息时，弹窗让用户确认
         restoreClick:function(index){
           this.modalOperateBool = true;
           this.operateMsg = "2";
           this.index = index;
         },
+//        取消修改学生信息时，弹窗让用户确认
         deleteClick:function(index){
           this.modalOperateBool = true;
           this.operateMsg = "3";
           this.index = index;
         },
+//        删除学生信息时，弹窗让用户确认
         saveOk: function(){
           var inputTable = document.getElementById("inputTable"+this.index);
           var input = inputTable.getElementsByTagName("input");
@@ -322,20 +331,24 @@
             this.resultMsg=response.body.result;
             if(this.resultMsg==='1'){
               this.studentSimpleInfoList[this.index].className = input[7].value;
+              this.$Message.success("保存成功！");
+            }else{
+              this.modalResultBool = true;
             }
           },function(error){
             console.log("获取error");
           });
+          this.modalOperateBool = false;
           input[7].readOnly = true;
 //          true或false不可用引号
           input[7].style.border = "none";
           this.modalOperateBool = false;
-          this.modalResultBool = true;
           editImg.style.display = "inline";
           saveImg.style.display = "none";
           deleteImg.style.display = "inline";
           restoreImg.style.display = "none";
         },
+//        确认保存学生信息操作
         cancelOk: function(){
           var inputTable = document.getElementById("inputTable"+this.index);
           var input = inputTable.getElementsByTagName("input");
@@ -352,6 +365,7 @@
           deleteImg.style.display = "inline";
           restoreImg.style.display = "none";
         },
+//        确认不保存学生信息操作
         deleteOk: function(index){
           this.$http.post('./studentManage/deleteStudentInfo',{
             "studentId":this.studentSimpleInfoList[this.index].studentId
@@ -362,16 +376,24 @@
             this.resultMsg=response.body.result;
             if(this.resultMsg==='1'){
               this.studentSimpleInfoList.splice(this.index,1);
+              this.$Message.success("删除成功！");
+            }else{
+              this.modalResultBool = true;
             }
           },function(error){
             console.log("获取error");
           });
           this.modalOperateBool = false;
-          this.modalResultBool = true;
         },
+//        确认删除学生信息操作
+        operateCancel:function(){
+          this.modalOperateBool = false;
+        },
+//        取消学生信息操作
         resultOk: function(){
           this.modalResultBool = false;
         }
+//        确认学生信息操作结果
       }
     }
 </script>
