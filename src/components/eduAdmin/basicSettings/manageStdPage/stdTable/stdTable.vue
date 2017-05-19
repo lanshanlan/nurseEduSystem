@@ -79,7 +79,12 @@
               <td><input id="input5" :value="studentSimpleInfo.schoolYearType" readonly="readonly" style="border: none"></td>
               <td><input id="input6" :value="studentSimpleInfo.gradeName" readonly="readonly" style="border: none"></td>
               <td><input id="input7" :value="studentSimpleInfo.specialityName" readonly="readonly" style="border: none"></td>
-              <td><input id="input8" :value="studentSimpleInfo.className" readonly="readonly" style="border: none"></td>
+              <td>
+                <span><input id="input8" :value="studentSimpleInfo.className" readonly="readonly" style="border: none;"></span>
+                <select :id="'select' + index" v-model="classNameEle" style="display: none;width: 80%;">
+                  <option v-for="classArr in yearAndClassList[yearTypeClassIndex].gradeList[gradeClassIndex].classList" :value="classArr.classId">{{classArr.className}}</option>
+                </select>
+              </td>
               <td>
                 <img :id="'editImg'+index" src="./images/edit.png" @click="editClick(index)">
                 <img :id="'saveImg'+index" src="./images/save.png" style="display: none" @click="saveClick(index)">
@@ -141,7 +146,7 @@
                   gradeList:[
                     {
                       gradeName:'2012',
-                      gradeId:'111',
+                      gradeId:'20123',
                       classList:[
                         {className:'护理2班',classId:'111'},
                         {className:'临床2班',classId:'222'}
@@ -149,7 +154,7 @@
                     },
                     {
                       gradeName:'2013',
-                      gradeId:'222',
+                      gradeId:'20133',
                       classList:[
                         {className:'护理3班',classId:'333'},
                         {className:'临床3班',classId:'444'}
@@ -162,7 +167,7 @@
                   gradeList:[
                     {
                       gradeName:'2015',
-                      gradeId:'111',
+                      gradeId:'20155',
                       classList:[
                         {className:'护理4班',classId:'555'},
                         {className:'临床4班',classId:'666'}
@@ -172,10 +177,13 @@
                 }
               ],
               studentSimpleInfoList:[
-                  {studentId:'1530310503',studentName:'高兴月',studentIDcard:'321281199503281111',studentGender:'女',schoolYearType:'五年制',gradeName:'2013级',specialityName:'护理',className:'护理3班',birthdate:'1993.02.03',ethno:'汉',nativePlace:'上海',phoneNumber:'15680992212',houseAddress:'成都市青牛区'},
-                  {studentId:'1530310503',studentName:'高兴月',studentIDcard:'321281199503281111',studentGender:'女',schoolYearType:'五年制',gradeName:'2013级',specialityName:'护理',className:'护理3班',birthdate:'1993.02.03',ethno:'汉',nativePlace:'上海',phoneNumber:'15680992212',houseAddress:'成都市青牛区'}
+                  {studentId:'1530310503',studentName:'高兴月',studentIDcard:'321281199503281111',studentGender:'女',schoolYearType:'5',gradeName:'2015',specialityName:'护理',className:'护理3班',birthdate:'1993.02.03',ethno:'汉',nativePlace:'上海',phoneNumber:'15680992212',houseAddress:'成都市青牛区'},
+                  {studentId:'1530310503',studentName:'高兴月',studentIDcard:'321281199503281111',studentGender:'女',schoolYearType:'3',gradeName:'2013',specialityName:'护理',className:'护理3班',birthdate:'1993.02.03',ethno:'汉',nativePlace:'上海',phoneNumber:'15680992212',houseAddress:'成都市青牛区'}
                 ],
-              index:'',
+              classNameEle:'',
+              index:'0',
+              yearTypeClassIndex:'0',
+              gradeClassIndex:'0',
               modalDownloadBool:false,
               modalOperateBool:false,
               modalResultBool:false,
@@ -203,7 +211,7 @@
         },
 //        点击年制下拉框时，将年级、班级下拉框清空
         indexYearTypeClick: function(){
-          this.studentinfoKey.className = '0';
+          this.studentinfoKey.classId = '0';
           for(var i=0;i<this.yearAndClassList.length;i++){
             if(this.studentinfoKey.schoolYearType === this.yearAndClassList[i].yearType){
               this.indexYearType = i;
@@ -213,7 +221,7 @@
 //        点击选择年制后，将年级下拉框下拉的可选内容改为相应年制的年级
         indexGradeClick: function(){
           for(var j=0;j<this.yearAndClassList[this.indexYearType].gradeList.length;j++){
-            if(this.studentinfoKey.gradeName === this.yearAndClassList[this.indexYearType].gradeList[j].gradeName){
+            if(this.studentinfoKey.gradeId === this.yearAndClassList[this.indexYearType].gradeList[j].gradeName){
               this.indexGrade = j;
             }
           }
@@ -284,12 +292,24 @@
         editClick: function(index){
           var inputTable = document.getElementById("inputTable"+index);
           var input = inputTable.getElementsByTagName("input");
+          var select = document.getElementById("select" + index);
           var editImg = document.getElementById("editImg"+index);
           var saveImg = document.getElementById("saveImg"+index);
           var deleteImg = document.getElementById("deleteImg"+index);
           var restoreImg = document.getElementById("restoreImg"+index);
-            input[7].readOnly = false;
-            input[7].style.border = "0.1rem solid #d4d4d9";
+          for(var i=0;i<this.yearAndClassList.length;i++){
+            if(this.yearAndClassList[i].yearType===studentSimpleInfoList[index].schoolYearType){
+              for(var j=0;j<this.yearAndClassList[i].gradeList.lengrh;j++){
+                if(this.yearAndClassList[i].gradeList[j].gradeName===studentSimpleInfoList[index].gradeName){
+                  this.yearTypeClassIndex=i;
+                  this.gradeClassIndex=j;
+                }
+              }
+            }
+          }
+          this.classNameEle=this.studentSimpleInfoList[index].className;
+          input[7].style.display = "none";
+          select.style.display = "inline";
           editImg.style.display = "none";
           saveImg.style.display = "inline";
           deleteImg.style.display = "none";
