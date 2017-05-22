@@ -155,8 +155,8 @@
                 {courseName:'护理学基础3',courseId:'JCKC3333'}
               ],
               courseTypeList:[
-                {courseType:'教案课件',courseTypeName:1},
-                {courseType:'教学计划',courseTypeName:0}
+                {courseType:1,courseTypeName:'教案课件'},
+                {courseType:0,courseTypeName:'教学计划'}
               ],
               courseGroupInfosOne:[
                 {groupName:'临床医学1',teacherName:'李伟',teacherId:'111',courseName:'护理学基础1',courseId:'JCKC1111',headman:'何平',coursewareType:0,auditStatus:0},
@@ -189,7 +189,8 @@
           "Content-Type":"application/json"
         }).then(function (response) {
           console.log(response);
-          this.courseGroupInfos = response.body.courseGroupInfos;
+          this.courseGroupInfosOne = response.body.courseGroupInfosOne;
+          this.courseGroupInfosTwo = response.body.courseGroupInfosTwo;
           this.groupList = response.body.groupList;
           this.teacherList = response.body.teacherList;
           this.courseList = response.body.courseList;
