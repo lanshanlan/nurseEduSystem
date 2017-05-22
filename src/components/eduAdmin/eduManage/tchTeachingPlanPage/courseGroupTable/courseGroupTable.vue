@@ -16,6 +16,11 @@
         <option v-for="course in courseList" :value="course.courseId">{{course.courseName}}</option>
       </select>
       <!--课程选择下拉列表-->
+      <select id="courseTypeSelect" class="selectWM" v-model="teacherinfoKey.courseType">
+        <option value=2>选择类型</option>
+        <option v-for="courseTypeArr in courseTypeList" :value="courseTypeArr.courseType">{{courseTypeArr.courseTypeName}}</option>
+      </select>
+      <!--课程选择下拉列表-->
       <span><button id="searchFor" class="am-btn am-btn-success am-radius buttonWM" @click="checkTeachingPlanInfoClick()">查找</button></span>
     </div>
 
@@ -27,21 +32,26 @@
             <th>教研组名称</th>
             <th>教师姓名</th>
             <th>课程名称</th>
+            <th>文件类型</th>
             <th>组长</th>
             <th>导出</th>
             <th>审核</th>
           </tr>
           </thead>
           <tbody>
-          <tr v-for="(courseGroupInfo,index) in  courseGroupInfos">
+          <tr v-for="(courseGroupInfo,index) in  courseGroupInfosOne">
             <td v-text="courseGroupInfo.groupName"></td>
             <td v-text="courseGroupInfo.teacherName"></td>
             <td v-text="courseGroupInfo.courseName"></td>
+            <td v-if="courseGroupInfo.coursewareType===1">教案课件</td>
+            <td v-else-if="courseGroupInfo.coursewareType===0">教学计划</td>
+            <td v-else>信息错误</td>
             <td v-text="courseGroupInfo.headman"></td>
             <td>
               <form action="./courseTeachPlan/exportExcel" method="get">
                 <input v-model="courseGroupInfo.teacherId" name="teacherId" style="display: none">
                 <input v-model="courseGroupInfo.courseId" name="courseId" style="display: none">
+                <input v-model="courseGroupInfo.coursewareType" name="coursewareType" style="display: none">
                 <button class="am-btn am-btn-success am-radius">下载</button>
               </form>
             </td>
@@ -53,8 +63,38 @@
               <button class="circleEnd" >√</button>
             </td>
             <td v-else-if="courseGroupInfo.auditStatus===2">
-              <button :id="'buttonOne'+index" @click="examineTeachingPlanInfoClick(courseGroupInfo.teacherId,courseGroupInfo.courseId,'1',index)"  class="circle" >√</button>
-              <button :id="'buttonTwo'+index" @click="examineTeachingPlanInfoClick(courseGroupInfo.teacherId,courseGroupInfo.courseId,'0',index)"  class="circle" >×</button>
+              <button :id="'buttonOne'+index" @click="examineTeachingPlanInfoClick(courseGroupInfo.teacherId,courseGroupInfo.courseId,'1',index,courseGroupInfo.coursewareType)"  class="circle" >√</button>
+              <button :id="'buttonTwo'+index" @click="examineTeachingPlanInfoClick(courseGroupInfo.teacherId,courseGroupInfo.courseId,'0',index,courseGroupInfo.coursewareType)"  class="circle" >×</button>
+              <!--<img id="adopt" src="./images/save.png" @click="examineTeachingPlanInfoClick(courseGroupInfo.teacherId,courseGroupInfo.courseId,'1')">-->
+              <!--<img id="notAdopt" src="./images/restore.png" @click="examineTeachingPlanInfoClick(courseGroupInfo.teacherId,courseGroupInfo.courseId,'1')">-->
+            </td>
+          </tr>
+          <tr v-for="(courseGroupInfo,index) in  courseGroupInfosTwo">
+            <td v-text="courseGroupInfo.groupName"></td>
+            <td v-text="courseGroupInfo.teacherName"></td>
+            <td v-text="courseGroupInfo.courseName"></td>
+            <td v-if="courseGroupInfo.coursewareType===1">教案课件</td>
+            <td v-else-if="courseGroupInfo.coursewareType===0">教学计划</td>
+            <td v-else>信息错误</td>
+            <td v-text="courseGroupInfo.headman"></td>
+            <td>
+              <form action="./courseTeachPlan/exportExcel" method="get">
+                <input v-model="courseGroupInfo.teacherId" name="teacherId" style="display: none">
+                <input v-model="courseGroupInfo.courseId" name="courseId" style="display: none">
+                <input v-model="courseGroupInfo.coursewareType" name="coursewareType" style="display: none">
+                <button class="am-btn am-btn-success am-radius">下载</button>
+              </form>
+            </td>
+            <!--下载培养方案的按钮-->
+            <td v-if="courseGroupInfo.auditStatus===0">
+              <button class="circleEnd" >×</button>
+            </td>
+            <td v-else-if="courseGroupInfo.auditStatus===1">
+              <button class="circleEnd" >√</button>
+            </td>
+            <td v-else-if="courseGroupInfo.auditStatus===2">
+              <button :id="'buttonOne'+index" @click="examineTeachingPlanInfoClick(courseGroupInfo.teacherId,courseGroupInfo.courseId,'1',index,courseGroupInfo.coursewareType)"  class="circle" >√</button>
+              <button :id="'buttonTwo'+index" @click="examineTeachingPlanInfoClick(courseGroupInfo.teacherId,courseGroupInfo.courseId,'0',index,courseGroupInfo.coursewareType)"  class="circle" >×</button>
               <!--<img id="adopt" src="./images/save.png" @click="examineTeachingPlanInfoClick(courseGroupInfo.teacherId,courseGroupInfo.courseId,'1')">-->
               <!--<img id="notAdopt" src="./images/restore.png" @click="examineTeachingPlanInfoClick(courseGroupInfo.teacherId,courseGroupInfo.courseId,'1')">-->
             </td>
@@ -96,12 +136,13 @@
               teacherinfoKey:{
                 groupId: 0,
                 teacherId:'',
-                courseId:''
+                courseId:'',
+                courseType:2
               },
               groupList:[
-                {groupName:'护理组',groupId:'111'},
-                {groupName:'西医组',groupId:'222'},
-                {groupName:'临床组',groupId:'333'}
+                {groupName:'护理组',groupId:111},
+                {groupName:'西医组',groupId:222},
+                {groupName:'临床组',groupId:333}
               ],
               teacherList:[
                 {teacherName:'何平',teacherId:'111111'},
@@ -113,10 +154,19 @@
                 {courseName:'护理学基础2',courseId:'JCKC2222'},
                 {courseName:'护理学基础3',courseId:'JCKC3333'}
               ],
-              courseGroupInfos:[
-                {groupName:'临床医学',teacherName:'李伟',teacherId:'111',courseName:'护理学基础1',courseId:'JCKC1111',headman:'何平',auditStatus:0},
-                {groupName:'临床护理',teacherName:'张亮',teacherId:'222',courseName:'护理学基础2',courseId:'JCKC2222',headman:'张扬',auditStatus:1},
-                {groupName:'护用药理',teacherName:'邓常',teacherId:'333',courseName:'护理学基础3',courseId:'JCKC3333',headman:'李季',auditStatus:2}
+              courseTypeList:[
+                {courseType:'教案课件',courseTypeName:1},
+                {courseType:'教学计划',courseTypeName:0}
+              ],
+              courseGroupInfosOne:[
+                {groupName:'临床医学1',teacherName:'李伟',teacherId:'111',courseName:'护理学基础1',courseId:'JCKC1111',headman:'何平',coursewareType:0,auditStatus:0},
+                {groupName:'临床护理1',teacherName:'张亮',teacherId:'222',courseName:'护理学基础2',courseId:'JCKC2222',headman:'张扬',coursewareType:0,auditStatus:1},
+                {groupName:'护用药理1',teacherName:'邓常',teacherId:'333',courseName:'护理学基础3',courseId:'JCKC3333',headman:'李季',coursewareType:0,auditStatus:2}
+              ],
+              courseGroupInfosTwo:[
+                {groupName:'临床医学2',teacherName:'李伟',teacherId:'111',courseName:'护理学基础1',courseId:'JCKC1111',headman:'何平',coursewareType:1,auditStatus:0},
+                {groupName:'临床护理2',teacherName:'张亮',teacherId:'222',courseName:'护理学基础2',courseId:'JCKC2222',headman:'张扬',coursewareType:1,auditStatus:1},
+                {groupName:'护用药理2',teacherName:'邓常',teacherId:'333',courseName:'护理学基础3',courseId:'JCKC3333',headman:'李季',coursewareType:1,auditStatus:2}
               ],
               msg:"",
               operateMsg:"",
@@ -125,14 +175,16 @@
               modalResultBool:false,
               teacherIdEle:"",
               courseIdEle:'',
-              index:''
+              index:'',
+              coursewareType:2
             }
         },
       beforeMount:function() {
         this.$http.post('./courseTeachPlan/findTeachPlan',{
-          "groupId":"",
+          "groupId":0,
           "teacherId":"",
-          "courseId":""
+          "courseId":"",
+          "coursewareType":2
         },{
           "Content-Type":"application/json"
         }).then(function (response) {
@@ -180,23 +232,26 @@
           this.$http.post('./courseTeachPlan/findTeachPlan',{
             "groupId":this.teacherinfoKey.groupId,
             "teacherId":this.teacherinfoKey.teacherId,
-            "courseId":this.teacherinfoKey.courseId
+            "courseId":this.teacherinfoKey.courseId,
+            "coursewareType":this.teacherinfoKey.courseType
           },{
             "Content-Type":"application/json"
           }).then(function (response) {
             console.log(response);
-            this.courseGroupInfos = response.body.courseGroupInfos;
+            this.courseGroupInfosOne = response.body.courseGroupInfosOne;
+            this.courseGroupInfosTwo = response.body.courseGroupInfosTwo;
           },function(error){
             console.log("获取error");
           });
         },
 //        提交教研组、教师、课程参数，获取相应课程信息列表
-        examineTeachingPlanInfoClick:function(teacherId,courseId,msg,index){
+        examineTeachingPlanInfoClick:function(teacherId,courseId,msg,index,coursewareType){
           this.modalOperateBool = true;
           this.teacherIdEle = teacherId;
           this.courseIdEle = courseId;
           this.msg = msg;
           this.index = index;
+          this.coursewareType = coursewareType;
           if(msg ==="1"){
             this.operateMsg = "审核通过";
           }else{
@@ -210,18 +265,28 @@
           this.$http.post('./courseTeachPlan/doAdminCheckTeachPlan',{
             "msg":this.msg,
             "teacherId":this.teacherIdEle,
-            "courseId":this.courseIdEle
+            "courseId":this.courseIdEle,
+            "coursewareType":this.coursewareType
           },{
             "Content-Type":"application/json"
           }).then(function (response) {
             console.log(response);
             this.resultmsg=response.body.result;
-            if(this.resultmsg === 1&&this.msg === "1"){
-              this.courseGroupInfos[this.index].auditStatus = 1;
+            if(this.resultmsg === 1){
               this.$Message.success(this.operateMsg + "成功！");
-            }else if(this.resultmsg === 1&&this.msg === "0"){
-              this.courseGroupInfos[this.index].auditStatus = 0;
-              this.$Message.success(this.operateMsg + "成功！");
+              if(this.coursewareType === 0){
+                if(this.msg === "0"){
+                  this.courseGroupInfosOne[this.index].auditStatus = 0;
+                }else{
+                  this.courseGroupInfosOne[this.index].auditStatus = 1;
+                }
+              }else{
+                if(this.msg === "0"){
+                  this.courseGroupInfosTwo[this.index].auditStatus = 0;
+                }else{
+                  this.courseGroupInfosTwo[this.index].auditStatus = 1;
+                }
+              }
             }else{
               this.modalResultBool = true;
             }

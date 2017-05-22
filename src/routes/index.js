@@ -63,7 +63,7 @@ export default new Router({   //将routes里的参数导出
       component: eduAdminTchTeachingPlan
     },
     {
-      //班级管理界面
+      //学生异动情况界面
       path: '/eduAdminManageClass',
       name: 'eduAdminManageClass',
       component: eduAdminManageClass

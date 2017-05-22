@@ -20,7 +20,7 @@
             <td><router-link to="/eduAdminEduPlan">培养方案</router-link></td>
             <td><router-link to="/eduAdminTeachProcess">学期教学进程</router-link></td>
             <td><router-link to="/eduAdminTchTeachingPlan">教师教学计划</router-link></td>
-            <td><router-link to="/eduAdminManageClass">班级管理</router-link></td>
+            <td><router-link to="/eduAdminManageClass">学生异动情况</router-link></td>
             <td><router-link to="/eduAdminEvaTeachingResult">教务查看评教</router-link></td>
             <td><router-link to="/eduAdminSupervisorManage">督导设置</router-link></td>
           </tr>
