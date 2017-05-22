@@ -28,73 +28,73 @@ export default new Router({   //将routes里的参数导出
     //},
     {
       //学生查询成绩界面
-      path: '/stInquireGrade',
+      path: '/studentTestInfoContent/query/stInquireGrade',
       name: 'stInquireGrade',
       component: stInquireGrade
     },
     {
       //学生管理界面
-      path: '/eduAdminManageStd',
+      path: '/eduAdmin/baseSetting/person/eduAdminManageStd',
       name: 'eduAdminManageStd',
       component: eduAdminManageStd
     },
     {
       //教师管理界面
-      path: '/eduAdminManageTch',
+      path: '/eduAdmin/baseSetting/person/eduAdminManageTch',
       name: 'eduAdminManageTch',
       component: eduAdminManageTch
     },
     {
       //培养方案界面
-      path: '/eduAdminEduPlan',
+      path: '/eduAdmin/manage/plan/eduAdminEduPlan',
       name: 'eduAdminEduPlan',
       component: eduAdminEduPlan
     },
     {
       //教学进程界面
-      path: '/eduAdminTeachProcess',
+      path: '/eduAdmin/manage/plan/eduAdminTeachProcess',
       name: 'eduAdminTeachProcess',
       component: eduAdminTeachProcess
     },
     {
       //教师教学计划界面
-      path: '/eduAdminTchTeachingPlan',
+      path: '/eduAdmin/manage/examination/eduAdminTchTeachingPlan',
       name: 'eduAdminTchTeachingPlan',
       component: eduAdminTchTeachingPlan
     },
     {
       //学生异动情况界面
-      path: '/eduAdminManageClass',
+      path: '/eduAdmin/baseSetting/resource/eduAdminManageClass',
       name: 'eduAdminManageClass',
       component: eduAdminManageClass
     },
     {
       //评教结果界面
-      path: '/eduAdminEvaTeachingResult',
+      path: '/eduAdmin/manage/examination/eduAdminEvaTeachingResult',
       name: 'eduAdminEvaTeachingResult',
       component: eduAdminEvaTeachingResult
     },
     {
       //教务管理督导界面
-      path: '/eduAdminSupervisorManage',
+      path: '/eduAdmin/manage/plan/eduAdminSupervisorManage',
       name: 'eduAdminSupervisorManage',
       component: eduAdminSupervisorManage
     },
     {
-      //权限管理2界面
-      path: '/eduAdminAuthorityManage2',
+      //权限设置界面
+      path: '/eduAdmin/role/eduAdminAuthorityManage2',
       name: 'eduAdminAuthorityManage2',
       component: eduAdminAuthorityManage2
     },
     {
       //年级管理界面
-      path: '/eduAdminManageGrade',
+      path: '/eduAdmin/baseSetting/resource/eduAdminManageGrade',
       name: 'eduAdminManageGrade',
       component: eduAdminManageGrade
     },
     {
       //公告信息通知界面
-      path: '/notifyInformation',
+      path: '/eduAdmin/information/notifyInformation',
       name: 'notifyInformation',
       component: notifyInformation
     },

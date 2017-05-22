@@ -8,25 +8,25 @@
           <tbody>
           <tr>
             <td>教务基本设置模块</td>
-            <td><router-link to="/eduAdminManageStd">学生管理</router-link></td>
-            <td><router-link to="/eduAdminManageTch">教师管理</router-link></td>
-            <td><router-link to="/eduAdminManageGrade">年级管理</router-link></td>
+            <td><router-link to="/eduAdmin/baseSetting/person/eduAdminManageStd">学生管理</router-link></td>
+            <td><router-link to="/eduAdmin/baseSetting/person/eduAdminManageTch">教师管理</router-link></td>
+            <td><router-link to="/eduAdmin/baseSetting/resource/eduAdminManageGrade">年级管理</router-link></td>
             <td></td>
             <td></td>
             <td></td>
           </tr>
           <tr>
             <td>教务管理模块</td>
-            <td><router-link to="/eduAdminEduPlan">培养方案</router-link></td>
-            <td><router-link to="/eduAdminTeachProcess">学期教学进程</router-link></td>
-            <td><router-link to="/eduAdminTchTeachingPlan">教师教学计划</router-link></td>
-            <td><router-link to="/eduAdminManageClass">学生异动情况</router-link></td>
-            <td><router-link to="/eduAdminEvaTeachingResult">教务查看评教</router-link></td>
-            <td><router-link to="/eduAdminSupervisorManage">督导设置</router-link></td>
+            <td><router-link to="/eduAdmin/manage/plan/eduAdminEduPlan">培养方案</router-link></td>
+            <td><router-link to="/eduAdmin/manage/plan/eduAdminTeachProcess">学期教学进程</router-link></td>
+            <td><router-link to="/eduAdmin/manage/examination/eduAdminTchTeachingPlan">教师教学计划</router-link></td>
+            <td><router-link to="/eduAdmin/baseSetting/resource/eduAdminManageClass">学生异动情况</router-link></td>
+            <td><router-link to="/eduAdmin/manage/examination/eduAdminEvaTeachingResult">教务查看评教</router-link></td>
+            <td><router-link to="/eduAdmin/manage/plan/eduAdminSupervisorManage">教务管理督导</router-link></td>
           </tr>
           <tr>
             <td>通知公告模块</td>
-            <td><router-link to="/notifyInformation">信息通知</router-link></td>
+            <td><router-link to="/eduAdmin/information/notifyInformation">公告信息</router-link></td>
             <td></td>
             <td></td>
             <td></td>
@@ -35,7 +35,7 @@
           </tr>
           <tr>
             <td>权限管理</td>
-            <td><router-link to="/eduAdminAuthorityManage2">权限管理页面2</router-link></td>
+            <td><router-link to="/eduAdmin/role/eduAdminAuthorityManage2">权限设置</router-link></td>
             <td></td>
             <td></td>
             <td></td>
@@ -44,7 +44,7 @@
           </tr>
           <tr>
             <td>学生模块</td>
-            <td><router-link to="/stInquireGrade">学生查询成绩</router-link></td>
+            <td><router-link to="/studentTestInfoContent/query/stInquireGrade">学生查询成绩</router-link></td>
             <td></td>
             <td></td>
             <td></td>
