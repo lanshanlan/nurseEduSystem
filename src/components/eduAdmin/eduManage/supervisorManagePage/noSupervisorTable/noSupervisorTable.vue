@@ -125,12 +125,13 @@
               </tbody>
             </table>
           </div>
+          <div class="buttonDiv">
+            <span><button class="bottomButton am-btn am-btn-success am-radius" @click="submitClick(superviseInfo.superviseTime)">提交</button></span>
+            <span><button class="bottomButton am-btn am-btn-success am-radius" @click="cancelClick()">取消</button></span>
+            <span><button class="bottomButton am-btn am-btn-success am-radius" @click="superviseBackTableGoBackClick()">返回</button></span>
+          </div>
         </div>
-        <div class="buttonDiv">
-          <span><button class="bottomButton am-btn am-btn-success am-radius" @click="submitClick(superviseInfo.superviseTime)">提交</button></span>
-          <span><button class="bottomButton am-btn am-btn-success am-radius" @click="cancelClick()">取消</button></span>
-          <span><button class="bottomButton am-btn am-btn-success am-radius" @click="superviseBackTableGoBackClick()">返回</button></span>
-        </div>
+
       </div>
     </div>
   </div>

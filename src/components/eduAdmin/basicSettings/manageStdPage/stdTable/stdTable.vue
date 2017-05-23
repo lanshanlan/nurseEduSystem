@@ -81,8 +81,8 @@
               <td><input id="input7" :value="studentSimpleInfo.specialityName" readonly="readonly" style="border: none"></td>
               <td>
                 <span><input id="input8" :value="studentSimpleInfo.className" readonly="readonly" style="border: none;"></span>
-                <select :id="'select' + index" v-model="classNameEleList[index].className" style="display: none;width: 80%;">
-                  <option v-for="classArr in yearAndClassList[classNameEleList[index].yearTypeClassIndex].gradeList[classNameEleList[index].gradeClassIndex].classList" :value="classArr.className">{{classArr.className}}</option>
+                <select :id="'select' + index" v-model="classNameEle" style="display: none;width: 80%;">
+                  <option v-for="classArr in yearAndClassList[yearTypeClassIndex].gradeList[gradeClassIndex].classList" :value="classArr.className">{{classArr.className}}</option>
                 </select>
               </td>
               <td>
@@ -169,7 +169,7 @@
                       gradeName:'2015',
                       gradeId:'20155',
                       classList:[
-                        {className:'护理4班',classId:'555'},
+                        {className:'护理3班',classId:'555'},
                         {className:'临床4班',classId:'666'}
                       ]
                     }
@@ -177,14 +177,13 @@
                 }
               ],
               studentSimpleInfoList:[
-                  {studentId:'1530310503',studentName:'高兴月',studentIDcard:'321281199503281111',studentGender:'女',schoolYearType:'5',gradeName:'2015',specialityName:'护理',className:'护理4班',birthdate:'1993.02.03',ethno:'汉',nativePlace:'上海',phoneNumber:'15680992212',houseAddress:'成都市青牛区'}
+                  {studentId:'1530310503',studentName:'高兴月',studentIDcard:'321281199503281111',studentGender:'女',schoolYearType:'5',gradeName:'2015',specialityName:'护理',className:'护理3班',birthdate:'1993.02.03',ethno:'汉',nativePlace:'上海',phoneNumber:'15680992212',houseAddress:'成都市青牛区'},
+                  {studentId:'1530310503',studentName:'高兴月',studentIDcard:'321281199503281111',studentGender:'女',schoolYearType:'3',gradeName:'2013',specialityName:'护理',className:'护理3班',birthdate:'1993.02.03',ethno:'汉',nativePlace:'上海',phoneNumber:'15680992212',houseAddress:'成都市青牛区'}
                 ],
-              classNameEleList:[
-                {studentId:'1530310503',yearTypeClassIndex:'1',gradeClassIndex:'0',className:'护理4班'}
-              ],
+              classNameEle:'',
               index:'0',
-//              yearTypeClassIndex:'0',
-//              gradeClassIndex:'0',
+              yearTypeClassIndex:'0',
+              gradeClassIndex:'0',
               modalDownloadBool:false,
               modalOperateBool:false,
               modalResultBool:false,
@@ -200,10 +199,6 @@
           console.log(response);
           this.yearAndClassList = response.body.getGradeAndClassObj.yearAndClassList;
           this.studentSimpleInfoList = response.body.getGradeAndClassObj.studentSimpleInfoList;
-          this.classNameEleList.splice(0,1);
-          for(var i=0;i<this.studentSimpleInfoList.length;i++){
-            this.classNameEleList.push({studentId:this.studentSimpleInfoList[i].studentId,yearTypeClassIndex:'',gradeClassIndex:'',className:this.studentSimpleInfoList[i].className})
-          }
         },function(error){
           console.log("获取error");
         });
@@ -302,22 +297,23 @@
           var saveImg = document.getElementById("saveImg"+index);
           var deleteImg = document.getElementById("deleteImg"+index);
           var restoreImg = document.getElementById("restoreImg"+index);
+          this.classNameEle=this.studentSimpleInfoList[index].className;
+          for(var i=0;i<this.yearAndClassList.length;i++){
+            if(this.yearAndClassList[i].yearType===this.studentSimpleInfoList[index].schoolYearType){
+              for(var j=0;j<this.yearAndClassList[i].gradeList.length;j++){
+                if(this.yearAndClassList[i].gradeList[j].gradeName===this.studentSimpleInfoList[index].gradeName){
+                  this.yearTypeClassIndex=i;
+                  this.gradeClassIndex=j;
+                }
+              }
+            }
+          }
           input[7].style.display = "none";
           select.style.display = "inline";
           editImg.style.display = "none";
           saveImg.style.display = "inline";
           deleteImg.style.display = "none";
           restoreImg.style.display = "inline";
-          for(var i=0;i<this.yearAndClassList.length;i++){
-            if(this.yearAndClassList[i].yearType===this.studentSimpleInfoList[index].schoolYearType){
-              for(var j=0;j<this.yearAndClassList[i].gradeList.length;j++){
-                if(this.yearAndClassList[i].gradeList[j].gradeName===this.studentSimpleInfoList[index].gradeName){
-                  this.classNameEleList[index].yearTypeClassIndex=i;
-                  this.classNameEleList[index].gradeClassIndex=j;
-                }
-              }
-            }
-          }
         },
 //        编辑学生信息
         saveClick:function(index){
@@ -346,16 +342,22 @@
           var saveImg = document.getElementById("saveImg"+this.index);
           var deleteImg = document.getElementById("deleteImg"+this.index);
           var restoreImg = document.getElementById("restoreImg"+this.index);
+          var classIdTemp="";
+          for(var i=0;i<this.yearAndClassList[this.yearTypeClassIndex].gradeList[this.gradeClassIndex].classList.length;i++){
+            if(this.classNameEle===this.yearAndClassList[this.yearTypeClassIndex].gradeList[this.gradeClassIndex].classList[i].className){
+              classIdTemp=this.yearAndClassList[this.yearTypeClassIndex].gradeList[this.gradeClassIndex].classList[i].classId;
+            }
+          }
           this.$http.post('./studentManage/editStudentSimpleInfo',{
             "studentId":input[0].value,
-            "className":this.classNameEleList[this.index].className
+            "classId":classIdTemp
           },{
             "Content-Type":"application/json"
           }).then(function (response) {
             console.log(response);
             this.resultMsg=response.body.result;
             if(this.resultMsg==='1'){
-              this.studentSimpleInfoList[this.index].className = this.classNameEleList[this.index].className;
+              this.studentSimpleInfoList[this.index].className = this.classNameEle;
               input[7].style.display = "inline";
               select.style.display = "none";
               this.$Message.success("保存成功！");
@@ -365,6 +367,10 @@
           },function(error){
             console.log("获取error");
           });
+          this.modalOperateBool = false;
+          input[7].readOnly = true;
+//          true或false不可用引号
+          input[7].style.border = "none";
           this.modalOperateBool = false;
           editImg.style.display = "inline";
           saveImg.style.display = "none";
@@ -380,7 +386,6 @@
           var saveImg = document.getElementById("saveImg"+this.index);
           var deleteImg = document.getElementById("deleteImg"+this.index);
           var restoreImg = document.getElementById("restoreImg"+this.index);
-          this.classNameEleList[this.index].className = this.studentSimpleInfoList[this.index].className;
           input[7].style.display = "inline";
           select.style.display = "none";
           this.modalOperateBool = false;
@@ -390,11 +395,9 @@
           restoreImg.style.display = "none";
         },
 //        确认不保存学生信息操作
-        deleteOk: function(){
-          var inputTable = document.getElementById("inputTable"+this.index);
-          var input = inputTable.getElementsByTagName("input");
+        deleteOk: function(index){
           this.$http.post('./studentManage/deleteStudentInfo',{
-            "studentId":input[0].value
+            "studentId":this.studentSimpleInfoList[this.index].studentId
           },{
             "Content-Type":"application/json"
           }).then(function (response) {
