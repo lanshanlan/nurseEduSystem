@@ -89,6 +89,31 @@
           </tr>
           </tbody>
         </table>
+        <div>
+          <modal v-model="modalGradeOperateBool" width="400" id="modalBody">
+            <div style="text-align: center;font-size: 1.1rem;">
+              <p v-if="operateMsg==='1'">是否确定保存修改</p>
+              <p v-else-if="operateMsg==='2'">是否确定取消修改</p>
+              <p v-else>是否确定删除</p>
+            </div>
+            <div slot="footer" style="text-align: center">
+              <button v-if="operateMsg==='1'" id="modalBtn" @click="saveGradeOk()">确定</button>
+              <button v-else-if="operateMsg==='2'" id="modalBtn" @click="cancelGradeOk()">确定</button>
+              <button v-else id="modalBtn" @click="deleteGradeOk()">确定</button>
+              <button id="modalBtn" @click="operateGradeCancel">取消</button>
+            </div>
+          </modal>
+          <modal v-model="modalGradeResultBool" width="400" id="modalBody">
+            <div style="text-align: center;font-size: 1.1rem;">
+              <p v-if="operateMsg === '1'">保存修改失败</p>
+              <p v-else-if="operateMsg === '3'">删除失败</p>
+              <p v-else>处理出错</p>
+            </div>
+            <div slot="footer" style="text-align: center">
+              <button id="modalBtn" @click="resultGradeOk">确定</button>
+            </div>
+          </modal>
+        </div>
         <div id="buttonDiv">
           <span><button id="downloadForm" class="bottomButton am-btn am-btn-success am-radius" @click="downloadFormClick">下载模板</button></span>
           <span style="display: inline-block">
@@ -158,7 +183,12 @@
           {teacherName:'何平',teacherId:'123456'},
           {teacherName:'张伟',teacherId:'223456'},
           {teacherName:'李明',teacherId:'323456'}
-        ]
+        ],
+        index:"",
+        modalGradeOperateBool:false,
+        modalGradeResultBool:false,
+        operateMsg:"",
+        resultMsg:"1"
       }
     },
     beforeMount:function() {
@@ -281,50 +311,77 @@
         restoreImg.style.display = "inline";
       },
 //      修改班级信息，包括教师
-      saveClick: function(index){
-        var inputTable = document.getElementById("inputTable"+index);
+      saveClick:function(index){
+        this.modalGradeOperateBool = true;
+        this.operateMsg = "1";
+        this.index = index;
+      },
+//      保存修改时，弹窗提醒用户确认
+      restoreClick:function(index){
+        this.modalGradeOperateBool = true;
+        this.operateMsg = "2";
+        this.index = index;
+      },
+//      取消修改时，弹窗提醒用户确认
+      deleteClick:function(index){
+        this.modalGradeOperateBool = true;
+        this.operateMsg = "3";
+        this.index = index;
+      },
+//      删除班级时，弹窗提醒用户确认
+      saveGradeOk: function(){
+        var inputTable = document.getElementById("inputTable"+this.index);
         var input = inputTable.getElementsByTagName("input");
-        var select = document.getElementById(index + "select");
-        var editImg = document.getElementById("editImg"+index);
-        var saveImg = document.getElementById("saveImg"+index);
-        var deleteImg = document.getElementById("deleteImg"+index);
-        var restoreImg = document.getElementById("restoreImg"+index);
+        var select = document.getElementById(this.index + "select");
+        var editImg = document.getElementById("editImg"+this.index);
+        var saveImg = document.getElementById("saveImg"+this.index);
+        var deleteImg = document.getElementById("deleteImg"+this.index);
+        var restoreImg = document.getElementById("restoreImg"+this.index);
         this.$http.post('./gradeManage/editClassInfo',{
-          "classId":this.classinfoStrList[index].classId,
+          "classId":this.classinfoStrList[this.index].classId,
           "classTeacherId":this.teacherIdEle
         },{
           "Content-Type":"application/json"
         }).then(function (response) {
           console.log(response);
+          this.resultMsg=response.body.result;
+          if(this.resultMsg==="1"){
+            for(var i=0;i<this.teacherList.length;i++){
+              if(this.teacherIdEle === this.teacherList[i].teacherId){
+                this.classinfoStrList[this.index].classTeacherName = this.teacherList[i].teacherName;
+              }
+            }
+            this.modalGradeOperateBool=false;
+            this.$Message.success("保存成功！");
+            input[4].style.display = "inline";
+            select.style.display = "none";
+            editImg.style.display = "inline";
+            saveImg.style.display = "none";
+            deleteImg.style.display = "inline";
+            restoreImg.style.display = "none";
+          }else{
+            this.modalGradeOperateBool=false;
+            this.modalGradeResultBool=true;
+          }
         },function(error){
           console.log("获取error");
         });
-        for(var i=0;i<this.teacherList.length;i++){
-          if(this.teacherIdEle === this.teacherList[i].teacherId){
-            this.classinfoStrList[index].classTeacherName = this.teacherList[i].teacherName;
-          }
-        }
-        input[4].style.display = "inline";
-        select.style.display = "none";
-        editImg.style.display = "inline";
-        saveImg.style.display = "none";
-        deleteImg.style.display = "inline";
-        restoreImg.style.display = "none";
       },
 //      保存对班级信息的修改
-      restoreClick: function(index){
-        var inputTable = document.getElementById("inputTable"+index);
+      cancelGradeOk: function(){
+        var inputTable = document.getElementById("inputTable"+this.index);
         var input = inputTable.getElementsByTagName("input");
-        var select = document.getElementById(index + "select");
-        var editImg = document.getElementById("editImg"+index);
-        var saveImg = document.getElementById("saveImg"+index);
-        var deleteImg = document.getElementById("deleteImg"+index);
-        var restoreImg = document.getElementById("restoreImg"+index);
-        var i = null;
-        for(i = 0;i<input.length;i++){
-          input[i].readOnly = true;
-          input[i].style.border = "none";
-        }
+        var select = document.getElementById(this.index + "select");
+        var editImg = document.getElementById("editImg"+this.index);
+        var saveImg = document.getElementById("saveImg"+this.index);
+        var deleteImg = document.getElementById("deleteImg"+this.index);
+        var restoreImg = document.getElementById("restoreImg"+this.index);
+//        var i = null;
+//        for(i = 0;i<input.length;i++){
+//          input[i].readOnly = true;
+//          input[i].style.border = "none";
+//        }
+        this.modalGradeOperateBool=false;
         input[4].style.display = "inline";
         select.style.display = "none";
         editImg.style.display = "inline";
@@ -333,19 +390,35 @@
         restoreImg.style.display = "none";
       },
 //      取消班级信息修改
-      deleteClick: function(index){
+      deleteGradeOk: function(){
         this.$http.post('./gradeManage/deleteClassInfo',{
-          "classId":this.classinfoStrList[index].classId
+          "classId":this.classinfoStrList[this.index].classId
         },{
           "Content-Type":"application/json"
         }).then(function (response) {
           console.log(response);
+          this.resultMsg=response.body.result;
+          if(this.resultMsg==="1"){
+            this.$Message.success("删除成功！");
+            this.classinfoStrList.splice(this.index,1);
+            this.modalGradeOperateBool=false;
+          }else{
+            this.modalGradeOperateBool=false;
+            this.modalGradeResultBool=true;
+          }
         },function(error){
           console.log("获取error");
         });
-        this.classinfoStrList.splice(index,1);
       },
 //      删除该班级以及该班级的所有信息
+      operateGradeCancel:function(){
+        this.modalGradeOperateBool = false;
+      },
+//      取消保存，删除，取消保存等操作
+      resultGradeOk: function(){
+        this.modalGradeResultBool = false;
+      },
+//      弹窗让用户确认操作失败信息
       handleFormatError:function(file){
         this.$Notice.warning({
           title: '文件格式不正确',
