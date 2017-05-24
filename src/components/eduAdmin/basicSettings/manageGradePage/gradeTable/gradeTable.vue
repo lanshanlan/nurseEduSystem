@@ -74,7 +74,6 @@
             <td>
               <input id="input5" :value="classinfoStr.classTeacherName" readonly="readonly" style="border: none">
               <select :id="index + 'select'" class="selectWM" v-model="teacherIdEle" style="display: none">
-                <option value="0">请选择教师</option>
                 <option v-for="teacher in teacherList" :value="teacher.teacherId">{{teacher.teacherName}}</option>
               </select>
             </td>
@@ -159,7 +158,7 @@
         modalOperateBool:false,
         modalResultBool:false,
         gradeTable: false,
-        teacherIdEle:'0',
+        teacherIdEle:'',
         yearTypeEle:'',
         gradeNameEle:'',
         indexEle:'',
@@ -181,8 +180,8 @@
         ],
         teacherList:[
           {teacherName:'何平',teacherId:'123456'},
-          {teacherName:'张伟',teacherId:'223456'},
-          {teacherName:'李明',teacherId:'323456'}
+          {teacherName:'季军',teacherId:'223456'},
+          {teacherName:'李磊',teacherId:'323456'}
         ],
         index:"",
         modalGradeOperateBool:false,
@@ -302,7 +301,11 @@
         var saveImg = document.getElementById("saveImg"+index);
         var deleteImg = document.getElementById("deleteImg"+index);
         var restoreImg = document.getElementById("restoreImg"+index);
-        this.teacherIdEle = '0';
+        for(var i=0;i<this.teacherList.length;i++){
+          if(this.classinfoStrList[index].classTeacherName === this.teacherList[i].teacherName){
+            this.teacherIdEle = this.teacherList[i].teacherId;
+          }
+        }
         input[4].style.display = "none";
         select.style.display = "inline";
         editImg.style.display = "none";
