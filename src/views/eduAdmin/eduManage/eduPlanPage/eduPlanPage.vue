@@ -3,7 +3,11 @@
     <div id="eduPlanPage">
       <topTitle></topTitle>
       <topBar></topBar>
-      <div class="blank"></div>
+      <div class="blank positionBar">
+        <span>您的当前位置是：</span>
+        <span><a href="#/login/main/eduAdminHome">首页</a></span>
+        <span> > <a href="#/login/main/eduAdminHome?manage">教务管理</a> > 教务安排 > 培养方案 </span>
+      </div>
       <teachingPlan></teachingPlan>
     </div>
 </template>

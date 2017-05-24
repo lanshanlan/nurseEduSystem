@@ -48,19 +48,49 @@
                   <td v-text="course.totalHours"></td>
                   <td v-text="course.theoryHours"></td>
                   <td v-text="course.practiceHours"></td>
-                  <td v-text="course.semesterPeriod1"></td>
-                  <td v-text="course.semesterPeriod2"></td>
-                  <td v-text="course.semesterPeriod3"></td>
-                  <td v-text="course.semesterPeriod4"></td>
-                  <td v-text="course.semesterPeriod5"></td>
-                  <td v-text="course.semesterPeriod6"></td>
-                  <td v-text="course.semesterPeriod7"></td>
-                  <td v-text="course.semesterPeriod8"></td>
-                  <td v-text="course.semesterPeriod9"></td>
-                  <td v-text="course.semesterPeriod10"></td>
-                  <td v-if="course.teachStatus === 0">未开始</td>
-                  <td v-else-if="course.teachStatus === 1">完成</td>
-                  <td v-else>正在执行</td>
+                  <td>
+                    <span v-if="course.semesterPeriod1 == 0"></span>
+                    <span v-else>{{course.semesterPeriod1}}</span>
+                  </td>
+                  <td>
+                    <span v-if="course.semesterPeriod2 == 0"></span>
+                    <span v-else>{{course.semesterPeriod2}}</span>
+                  </td>
+                  <td>
+                    <span v-if="course.semesterPeriod3 == 0"></span>
+                    <span v-else>{{course.semesterPeriod3}}</span>
+                  </td>
+                  <td>
+                    <span v-if="course.semesterPeriod4 == 0"></span>
+                    <span v-else>{{course.semesterPeriod4}}</span>
+                  </td>
+                  <td>
+                    <span v-if="course.semesterPeriod5 == 0"></span>
+                    <span v-else>{{course.semesterPeriod5}}</span>
+                  </td>
+                  <td>
+                    <span v-if="course.semesterPeriod6 == 0"></span>
+                    <span v-else>{{course.semesterPeriod6}}</span>
+                  </td>
+                  <td>
+                    <span v-if="course.semesterPeriod7 == 0"></span>
+                    <span v-else>{{course.semesterPeriod7}}</span>
+                  </td>
+                  <td>
+                    <span v-if="course.semesterPeriod8 == 0"></span>
+                    <span v-else>{{course.semesterPeriod8}}</span>
+                  </td>
+                  <td>
+                    <span v-if="course.semesterPeriod9 == 0"></span>
+                    <span v-else>{{course.semesterPeriod9}}</span>
+                  </td>
+                  <td>
+                    <span v-if="course.semesterPeriod10 == 0"></span>
+                    <span v-else>{{course.semesterPeriod10}}</span>
+                  </td>
+                  <td v-if="course.teachStatus === 0" style="background-color: blue">未开始</td>
+                  <td v-else-if="course.teachStatus === 1" style="background-color: red">完成</td>
+                  <td v-else style="background-color: green">正在执行</td>
                 </tr>
                 </tbody>
               </table>
@@ -117,19 +147,49 @@
                   <td v-text="course.totalHours"></td>
                   <td v-text="course.theoryHours"></td>
                   <td v-text="course.practiceHours"></td>
-                  <td v-text="course.semesterPeriod1"></td>
-                  <td v-text="course.semesterPeriod2"></td>
-                  <td v-text="course.semesterPeriod3"></td>
-                  <td v-text="course.semesterPeriod4"></td>
-                  <td v-text="course.semesterPeriod5"></td>
-                  <td v-text="course.semesterPeriod6"></td>
-                  <td v-text="course.semesterPeriod7"></td>
-                  <td v-text="course.semesterPeriod8"></td>
-                  <td v-text="course.semesterPeriod9"></td>
-                  <td v-text="course.semesterPeriod10"></td>
-                  <td v-if="course.teachStatus === 0">未开始</td>
-                  <td v-else-if="course.teachStatus === 1">完成</td>
-                  <td v-else>正在执行</td>
+                  <td>
+                    <span v-if="course.semesterPeriod1 == 0"></span>
+                    <span v-else>{{course.semesterPeriod1}}</span>
+                  </td>
+                  <td>
+                    <span v-if="course.semesterPeriod2 == 0"></span>
+                    <span v-else>{{course.semesterPeriod2}}</span>
+                  </td>
+                  <td>
+                    <span v-if="course.semesterPeriod3 == 0"></span>
+                    <span v-else>{{course.semesterPeriod3}}</span>
+                  </td>
+                  <td>
+                    <span v-if="course.semesterPeriod4 == 0"></span>
+                    <span v-else>{{course.semesterPeriod4}}</span>
+                  </td>
+                  <td>
+                    <span v-if="course.semesterPeriod5 == 0"></span>
+                    <span v-else>{{course.semesterPeriod5}}</span>
+                  </td>
+                  <td>
+                    <span v-if="course.semesterPeriod6 == 0"></span>
+                    <span v-else>{{course.semesterPeriod6}}</span>
+                  </td>
+                  <td>
+                    <span v-if="course.semesterPeriod7 == 0"></span>
+                    <span v-else>{{course.semesterPeriod7}}</span>
+                  </td>
+                  <td>
+                    <span v-if="course.semesterPeriod8 == 0"></span>
+                    <span v-else>{{course.semesterPeriod8}}</span>
+                  </td>
+                  <td>
+                    <span v-if="course.semesterPeriod9 == 0"></span>
+                    <span v-else>{{course.semesterPeriod9}}</span>
+                  </td>
+                  <td>
+                    <span v-if="course.semesterPeriod10 == 0"></span>
+                    <span v-else>{{course.semesterPeriod10}}</span>
+                  </td>
+                  <td v-if="course.teachStatus === 0" style="background-color: blue">未开始</td>
+                  <td v-else-if="course.teachStatus === 1" style="background-color: red">完成</td>
+                  <td v-else style="background-color: green">正在执行</td>
                 </tr>
                 </tbody>
               </table>

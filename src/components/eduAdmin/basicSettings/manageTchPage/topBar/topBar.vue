@@ -1,9 +1,17 @@
 <template>
-  <div id="mngTchPageTopBar" class="topBarDiv am-btn-group">
-    <!--导航栏-->
-    <router-link to="/eduAdmin/baseSetting/person/eduResGroupMgmt"><button class="am-btn am-btn-success" style="margin-left: 5rem">教研组管理</button></router-link>
-    <router-link to="/eduAdmin/baseSetting/person/eduAdminManageStd"><button class="am-btn am-btn-success">学生管理</button></router-link>
-    <button class="am-btn am-btn-success btn-active">教师管理</button>
+  <div>
+    <div id="mngTchPageTopBar" class="topBarDiv am-btn-group">
+      <!--导航栏-->
+      <router-link to="/eduAdmin/baseSetting/person/eduResGroupMgmt"><button class="am-btn am-btn-success" style="margin-left: 5rem">教研组管理</button></router-link>
+      <router-link to="/eduAdmin/baseSetting/person/eduAdminManageStd"><button class="am-btn am-btn-success">学生管理</button></router-link>
+      <button class="am-btn am-btn-success btn-active">教师管理</button>
+      <router-link to="/eduAdmin/baseSetting/person/eduAdminManageClass"><button class="am-btn am-btn-success">学生异动情况</button></router-link>
+    </div>
+    <div class="blank positionBar">
+      <span>您的当前位置是：</span>
+      <span><a href="#/login/main/eduAdminHome">首页</a></span>
+      <span> > <a href="#/login/main/eduAdminHome?baseSetting">基本设置</a> > 人员管理设置 > 教师管理 </span>
+    </div>
   </div>
 </template>
 

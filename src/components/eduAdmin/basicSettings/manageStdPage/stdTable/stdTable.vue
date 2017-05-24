@@ -79,17 +79,9 @@
               <td><input id="input5" :value="studentSimpleInfo.schoolYearType" readonly="readonly" style="border: none"></td>
               <td><input id="input6" :value="studentSimpleInfo.gradeName" readonly="readonly" style="border: none"></td>
               <td><input id="input7" :value="studentSimpleInfo.specialityName" readonly="readonly" style="border: none"></td>
+              <td><input id="input8" :value="studentSimpleInfo.className" readonly="readonly" style="border: none;"></td>
               <td>
-                <span><input id="input8" :value="studentSimpleInfo.className" readonly="readonly" style="border: none;"></span>
-                <select :id="'select' + index" v-model="classNameEle" style="display: none;width: 80%;">
-                  <option v-for="classArr in yearAndClassList[yearTypeClassIndex].gradeList[gradeClassIndex].classList" :value="classArr.className">{{classArr.className}}</option>
-                </select>
-              </td>
-              <td>
-                <img :id="'editImg'+index" src="./images/edit.png" @click="editClick(index)">
-                <img :id="'saveImg'+index" src="./images/save.png" style="display: none" @click="saveClick(index)">
                 <img :id="'deleteImg'+index" src="./images/delete.png" @click="deleteClick(index)">
-                <img :id="'restoreImg'+index" src="./images/restore.png" style="display: none" @click="restoreClick(index)">
               </td>
             </tr>
             </tbody>
@@ -100,22 +92,17 @@
       <div>
         <modal v-model="modalOperateBool" width="400" id="modalBody">
           <div style="text-align: center;font-size: 1.1rem;">
-            <p v-if="operateMsg==='1'">是否确定保存修改</p>
-            <p v-else-if="operateMsg==='2'">是否确定取消修改</p>
-            <p v-else>是否确定删除</p>
+            <p v-if="operateMsg==='3'">是否确定删除</p>
           </div>
           <div slot="footer" style="text-align: center">
-            <button v-if="operateMsg==='1'" id="modalBtn" @click="saveOk()">确定</button>
-            <button v-else-if="operateMsg==='2'" id="modalBtn" @click="cancelOk()">确定</button>
-            <button v-else id="modalBtn" @click="deleteOk()">确定</button>
+            <button v-if="operateMsg==='3'" id="modalBtn" @click="deleteOk()">确定</button>
             <button id="modalBtn" @click="operateCancel">取消</button>
           </div>
         </modal>
         <!--确认保存、删除操作弹窗-->
         <modal v-model="modalResultBool" width="400" id="modalBody">
           <div style="text-align: center;font-size: 1.1rem;">
-            <p v-if="operateMsg === '1'">保存修改失败</p>
-            <p v-else-if="operateMsg === '3'">删除失败</p>
+            <p v-if="operateMsg === '3'">删除失败</p>
             <p v-else>处理出错</p>
           </div>
           <div slot="footer" style="text-align: center">
@@ -289,112 +276,12 @@
           this.modalDownloadBool = false;
         },
 //        确认文件上传结果弹窗
-        editClick: function(index){
-          var inputTable = document.getElementById("inputTable"+index);
-          var input = inputTable.getElementsByTagName("input");
-          var select = document.getElementById("select" + index);
-          var editImg = document.getElementById("editImg"+index);
-          var saveImg = document.getElementById("saveImg"+index);
-          var deleteImg = document.getElementById("deleteImg"+index);
-          var restoreImg = document.getElementById("restoreImg"+index);
-          this.classNameEle=this.studentSimpleInfoList[index].className;
-          for(var i=0;i<this.yearAndClassList.length;i++){
-            if(this.yearAndClassList[i].yearType===this.studentSimpleInfoList[index].schoolYearType){
-              for(var j=0;j<this.yearAndClassList[i].gradeList.length;j++){
-                if(this.yearAndClassList[i].gradeList[j].gradeName===this.studentSimpleInfoList[index].gradeName){
-                  this.yearTypeClassIndex=i;
-                  this.gradeClassIndex=j;
-                }
-              }
-            }
-          }
-          input[7].style.display = "none";
-          select.style.display = "inline";
-          editImg.style.display = "none";
-          saveImg.style.display = "inline";
-          deleteImg.style.display = "none";
-          restoreImg.style.display = "inline";
-        },
-//        编辑学生信息
-        saveClick:function(index){
-          this.modalOperateBool = true;
-          this.operateMsg = "1";
-          this.index = index;
-        },
-//        保存学生信息时，弹窗让用户确认
-        restoreClick:function(index){
-          this.modalOperateBool = true;
-          this.operateMsg = "2";
-          this.index = index;
-        },
-//        取消修改学生信息时，弹窗让用户确认
         deleteClick:function(index){
           this.modalOperateBool = true;
           this.operateMsg = "3";
           this.index = index;
         },
 //        删除学生信息时，弹窗让用户确认
-        saveOk: function(){
-          var inputTable = document.getElementById("inputTable"+this.index);
-          var input = inputTable.getElementsByTagName("input");
-          var select = document.getElementById("select" + this.index);
-          var editImg = document.getElementById("editImg"+this.index);
-          var saveImg = document.getElementById("saveImg"+this.index);
-          var deleteImg = document.getElementById("deleteImg"+this.index);
-          var restoreImg = document.getElementById("restoreImg"+this.index);
-          var classIdTemp="";
-          for(var i=0;i<this.yearAndClassList[this.yearTypeClassIndex].gradeList[this.gradeClassIndex].classList.length;i++){
-            if(this.classNameEle===this.yearAndClassList[this.yearTypeClassIndex].gradeList[this.gradeClassIndex].classList[i].className){
-              classIdTemp=this.yearAndClassList[this.yearTypeClassIndex].gradeList[this.gradeClassIndex].classList[i].classId;
-            }
-          }
-          this.$http.post('./studentManage/editStudentSimpleInfo',{
-            "studentId":input[0].value,
-            "classId":classIdTemp
-          },{
-            "Content-Type":"application/json"
-          }).then(function (response) {
-            console.log(response);
-            this.resultMsg=response.body.result;
-            if(this.resultMsg==='1'){
-              this.studentSimpleInfoList[this.index].className = this.classNameEle;
-              input[7].style.display = "inline";
-              select.style.display = "none";
-              this.$Message.success("保存成功！");
-            }else{
-              this.modalResultBool = true;
-            }
-          },function(error){
-            console.log("获取error");
-          });
-          this.modalOperateBool = false;
-          input[7].readOnly = true;
-//          true或false不可用引号
-          input[7].style.border = "none";
-          this.modalOperateBool = false;
-          editImg.style.display = "inline";
-          saveImg.style.display = "none";
-          deleteImg.style.display = "inline";
-          restoreImg.style.display = "none";
-        },
-//        确认保存学生信息操作
-        cancelOk: function(){
-          var inputTable = document.getElementById("inputTable"+this.index);
-          var input = inputTable.getElementsByTagName("input");
-          var select = document.getElementById("select" + this.index);
-          var editImg = document.getElementById("editImg"+this.index);
-          var saveImg = document.getElementById("saveImg"+this.index);
-          var deleteImg = document.getElementById("deleteImg"+this.index);
-          var restoreImg = document.getElementById("restoreImg"+this.index);
-          input[7].style.display = "inline";
-          select.style.display = "none";
-          this.modalOperateBool = false;
-          editImg.style.display = "inline";
-          saveImg.style.display = "none";
-          deleteImg.style.display = "inline";
-          restoreImg.style.display = "none";
-        },
-//        确认不保存学生信息操作
         deleteOk: function(index){
           this.$http.post('./studentManage/deleteStudentInfo',{
             "studentId":this.studentSimpleInfoList[this.index].studentId

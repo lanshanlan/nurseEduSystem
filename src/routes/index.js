@@ -2,7 +2,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Hello from '../components/Hello.vue'
-import stInquireGrade from '../views/student/inquireGradePage/inquireGradePage.vue'
+//import stInquireGrade from '../views/student/inquireGradePage/inquireGradePage.vue'
 import eduAdminManageStd from '../views/eduAdmin/basicSettings/manageStdPage/manageStdPage.vue'
 import eduAdminManageTch from '../views/eduAdmin/basicSettings/manageTchPage/manageTchPage.vue'
 import eduAdminEduPlan from '../views/eduAdmin/eduManage/eduPlanPage/eduPlanPage.vue'
@@ -26,12 +26,13 @@ export default new Router({   //将routes里的参数导出
     //  name: 'Hello',
     //  component: Hello
     //},
-    {
-      //学生查询成绩界面
-      path: '/studentTestInfoContent/query/stInquireGrade',
-      name: 'stInquireGrade',
-      component: stInquireGrade
-    },
+
+    //{
+    //  //学生查询成绩界面
+    //  path: '/studentTestInfoContent/query/stInquireGrade',
+    //  name: 'stInquireGrade',
+    //  component: stInquireGrade
+    //},
     {
       //学生管理界面
       path: '/eduAdmin/baseSetting/person/eduAdminManageStd',
@@ -64,7 +65,7 @@ export default new Router({   //将routes里的参数导出
     },
     {
       //学生异动情况界面
-      path: '/eduAdmin/baseSetting/resource/eduAdminManageClass',
+      path: '/eduAdmin/baseSetting/person/eduAdminManageClass',
       name: 'eduAdminManageClass',
       component: eduAdminManageClass
     },

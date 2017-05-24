@@ -35,6 +35,7 @@
               <button id="modalBtn" @click="operateNameCancel">取消</button>
             </div>
           </modal>
+          <!--用户对角色名进行修改，取消修改，删除角色操作时，弹窗确认-->
           <modal v-model="modalNameResultBool" width="400" id="modalBody">
             <div style="text-align: center;font-size: 1.1rem;">
               <p v-if="operateNameMsg === '1'">保存修改失败</p>
@@ -45,6 +46,7 @@
               <button id="modalBtn" @click="resultNameOk">确定</button>
             </div>
           </modal>
+          <!--弹窗提示修改角色名，保存角色名修改，删除角色，添加角色操作结果-->
         </div>
       </div>
 
@@ -66,6 +68,29 @@
           <span><button id="cancel" class="bottomButton am-btn am-btn-success am-radius" @click="restoreAuthorityClick()">取消</button></span>
         </div>
         <!--权限修改提交或取消按钮-->
+      </div>
+      <div>
+        <modal v-model="modalAuthorityOperateBool" width="400" id="modalBody">
+          <div style="text-align: center;font-size: 1.1rem;">
+            <p v-if="operateAuthorityMsg==='1'">是否确定保存修改</p>
+            <p v-else-if="operateAuthorityMsg==='2'">是否确定取消修改</p>
+          </div>
+          <div slot="footer" style="text-align: center">
+            <button v-if="operateAuthorityMsg==='1'" id="modalBtn" @click="saveAuthorityOk()">确定</button>
+            <button v-else-if="operateAuthorityMsg==='2'" id="modalBtn" @click="cancelAuthorityOk()">确定</button>
+            <button id="modalBtn" @click="operateAuthorityCancel">取消</button>
+          </div>
+        </modal>
+        <!--用户进行保存，取消权限设置时，弹窗确认-->
+        <modal v-model="modalAuthorityResultBool" width="400" id="modalBody">
+          <div style="text-align: center;font-size: 1.1rem;">
+            <p v-if="operateAuthorityMsg === '1'">保存修改失败</p>
+          </div>
+          <div slot="footer" style="text-align: center">
+            <button id="modalBtn" @click="resultAuthorityOk">确定</button>
+          </div>
+        </modal>
+        <!--弹窗提示保存，取消权限设置结果-->
       </div>
     </div>
 </template>
@@ -102,7 +127,10 @@
                 {authorityId:'5',authorityName:'班主任信息管理'},
                 {authorityId:'6',authorityName:'班主任信息修改'},
                 {authorityId:'7',authorityName:'班级信息管理'}
-              ]
+              ],
+              modalAuthorityOperateBool:false,
+              modalAuthorityResultBool:false,
+              operateAuthorityMsg:''
             }
         },
       beforeMount:function() {
@@ -117,7 +145,7 @@
           console.log("获取error");
         });
       },
-
+//        初始化页面时，获取角色列表，角色权限列表
       methods:{
         editClick: function(index){
           var roleNameInput = document.getElementById("roleNameInput"+index);
@@ -132,24 +160,25 @@
           deleteImg.style.display = "none";
           restoreImg.style.display = "inline";
         },
+//        修改角色名
         saveClick:function(index){
           this.modalNameOperateBool = true;
           this.operateNameMsg = "1";
           this.index = index;
         },
-//      保存修改时，弹窗提醒用户确认
+//        保存修改角色名时，弹窗提醒用户确认
         restoreClick:function(index){
           this.modalNameOperateBool = true;
           this.operateNameMsg = "2";
           this.index = index;
         },
-//      取消修改时，弹窗提醒用户确认
+//        取消修改角色名时，弹窗提醒用户确认
         deleteClick:function(index){
           this.modalNameOperateBool = true;
           this.operateNameMsg = "3";
           this.index = index;
         },
-//      删除班级时，弹窗提醒用户确认
+//        删除角色时，弹窗提醒用户确认
         saveNameOk: function(){
           var roleNameInput = document.getElementById("roleNameInput"+this.index);
           var editImg = document.getElementById("editImg"+this.index);
@@ -182,6 +211,7 @@
           });
           this.modalNameOperateBool = false;
         },
+//        保存对角色名的修改
         cancelNameOk: function(){
           var roleNameInput = document.getElementById("roleNameInput"+this.index);
           var editImg = document.getElementById("editImg"+this.index);
@@ -197,6 +227,7 @@
           deleteImg.style.display = "inline";
           restoreImg.style.display = "none";
         },
+//        取消对角色名的修改
         deleteNameOk: function(){
           this.$http.post('./deleteRole',{
             "roleId":this.roleList[this.index].roleId
@@ -217,14 +248,15 @@
           });
           this.modalNameOperateBool = false;
         },
+//        删除角色
         operateNameCancel:function(){
           this.modalNameOperateBool = false;
         },
-//      取消保存，删除，取消保存等操作
+//        取消保存，删除，取消保存等操作
         resultNameOk: function(){
           this.modalNameResultBool = false;
         },
-//      弹窗让用户确认操作失败信息
+//        弹窗让用户确认操作失败信息
         addClick: function(){
           this.$http.post('./addNewRole',{},{
             "Content-Type":"application/json"
@@ -249,6 +281,7 @@
             console.log("获取error");
           });
         },
+//        添加角色
         allCheck: function(){
           if(this.authorityIdList.length===this.authorityList.length){
             this.authorityIdList=[];
@@ -275,7 +308,18 @@
           this.roleIdEle = this.roleList[index].roleId;
           this.roleNameEle = this.roleList[index].roleName;
         },
-        saveAuthorityClick: function(){
+//        点击角色名时，权限列表中对该角色的权限打钩
+        saveAuthorityClick:function(){
+          this.modalAuthorityOperateBool = true;
+          this.operateAuthorityMsg = "1";
+        },
+//        保存修改权限时，弹窗提醒用户确认
+        restoreAuthorityClick:function(){
+          this.modalAuthorityOperateBool = true;
+          this.operateAuthorityMsg = "2";
+        },
+//        取消修改权限时，弹窗提醒用户确认
+        saveAuthorityOk: function(){
           this.$http.post('./setRoleAuthority',{
             "roleId":this.roleIdEle,
             "authorityIdList":this.authorityIdList
@@ -283,11 +327,19 @@
             "Content-Type":"application/json"
           }).then(function (response) {
             console.log(response);
+            var saveAuthorityResult = response.body.result;
+            if(saveAuthorityResult == '1'){
+              this.$Message.success("保存成功！");
+            }else{
+              this.modalAuthorityResultBool = true;
+            }
           },function(error){
             console.log("获取error");
           });
+          this.modalAuthorityOperateBool = false;
         },
-        restoreAuthorityClick: function(){
+//        保存对权限的修改
+        cancelAuthorityOk: function(){
           this.$http.post('./getRoleAuthority',{
             "roleId":this.roleIdEle
           },{
@@ -298,7 +350,17 @@
           },function(error){
             console.log("获取error");
           });
+          this.modalAuthorityOperateBool = false;
+        },
+//        取消对权限的修改
+        operateAuthorityCancel:function(){
+          this.modalAuthorityOperateBool = false;
+        },
+//      取消保存权限的操作
+        resultAuthorityOk: function(){
+          this.modalAuthorityResultBool = false;
         }
+//      弹窗让用户确认权限保存操作的失败信息
       }
     }
 </script>

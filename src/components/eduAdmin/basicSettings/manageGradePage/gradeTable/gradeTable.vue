@@ -271,7 +271,7 @@
       operateCancel:function(){
         this.modalOperateBool = false;
       },
-//        取消学生信息操作
+//      取消学生信息操作
       resultOk: function(){
         this.modalResultBool = false;
       },

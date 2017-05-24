@@ -77,8 +77,8 @@
             </thead>
             <tbody>
             <tr v-for=" settedSupervisorCourseInfo in settedSupervisorCourseInfoList">
-              <td v-if="settedSupervisorCourseInfo.status === '1'">已读</td>
-              <td v-if="settedSupervisorCourseInfo.status === '0'"><u>未读</u></td>
+              <td v-if="settedSupervisorCourseInfo.status == 1">已读</td>
+              <td v-if="settedSupervisorCourseInfo.status == 0"><u>未读</u></td>
               <td v-text="settedSupervisorCourseInfo.supervisorName"></td>
               <td v-text="settedSupervisorCourseInfo.className"></td>
               <td v-text="settedSupervisorCourseInfo.courseId"></td>
@@ -317,7 +317,7 @@
           }).then(function (response) {
             console.log(response);
             var message = response.body.message;
-            if(message==="1"){
+            if(message==1){
               this.settedSupervisorCourseInfoList = response.body.settedSupervisorCourseInfoList;
             }else{
               alert("保存失败!");
