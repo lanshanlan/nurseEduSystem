@@ -7,11 +7,6 @@
       <router-link to="/eduAdmin/baseSetting/person/eduAdminManageTch"><button class="am-btn am-btn-success">教师管理</button></router-link>
       <router-link to="/eduAdmin/baseSetting/person/eduAdminManageClass"><button class="am-btn am-btn-success">学生异动情况</button></router-link>
     </div>
-    <div class="blank positionBar">
-      <span>您的当前位置是：</span>
-      <span><a href="#/login/main/eduAdminHome">首页</a></span>
-      <span> > <a href="#/login/main/eduAdminHome?baseSetting">基本设置</a> > 人员管理设置 > 学生管理 </span>
-    </div>
   </div>
 </template>
 

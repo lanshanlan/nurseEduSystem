@@ -17,9 +17,11 @@
           <tr>
             <td class="download" @click="downloadNoticeClick">附件:&nbsp&nbsp{{fileName}}</td>
           </tr>
+          <!--附件下载按钮-->
           </tbody>
         </table>
       </div>
+      <!--公告信息表格-->
     </div>
 </template>
 
@@ -56,10 +58,12 @@
           console.log("获取error");
         });
       },
+//      初始化页面时，获取公告标题，时间，类型，作者，内容，附件名
       methods:{
         downloadNoticeClick:function(){
           location.href="./announcementManage/downloadAnnouncementFile?announcementId="+this.announcementId;
         }
+//        下载附件
       }
     }
 </script>

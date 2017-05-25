@@ -18,8 +18,8 @@
           <tr>
             <td>教务管理模块</td>
             <td><router-link to="/eduAdmin/manage/plan/eduAdminEduPlan">培养方案</router-link></td>
-            <td><router-link to="/eduAdmin/manage/plan/eduAdminTeachProcess">学期教学进程</router-link></td>
-            <td><router-link to="/eduAdmin/manage/examination/eduAdminTchTeachingPlan">教师教学计划</router-link></td>
+            <td><router-link to="/eduAdmin/manage/plan/eduAdminTeachProcess">教学进度</router-link></td>
+            <td><router-link to="/eduAdmin/manage/examination/eduAdminTchTeachingPlan">教学计划</router-link></td>
             <td><router-link to="/eduAdmin/baseSetting/person/eduAdminManageClass">学生异动情况</router-link></td>
             <td><router-link to="/eduAdmin/manage/examination/eduAdminEvaTeachingResult">教务查看评教</router-link></td>
             <td><router-link to="/eduAdmin/manage/plan/eduAdminSupervisorManage">教务管理督导</router-link></td>

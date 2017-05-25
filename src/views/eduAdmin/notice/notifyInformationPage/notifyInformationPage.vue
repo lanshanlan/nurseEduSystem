@@ -5,7 +5,7 @@
     <topBar></topBar>
     <div class="blank positionBar">
       <span>您的当前位置是：</span>
-      <span><a href="#/login/main/eduAdminHome">首页</a></span>
+      <span><a href="#/login/main/eduAdminHome" class="returnHome">首页</a></span>
       <span> > 教务公告 > 公告信息 </span>
     </div>
     <notifyBoard></notifyBoard>
@@ -39,9 +39,6 @@
   }
   #manageGradePage{
     min-height:50rem;
-  }
-  .blank{
-    height: 2.9rem;
   }
 
   @media screen and (max-width: 1023px) {

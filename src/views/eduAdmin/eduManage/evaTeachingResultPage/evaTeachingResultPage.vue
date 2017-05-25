@@ -3,10 +3,10 @@
     <div id="evaTeachingReasultPage">
       <topTitle></topTitle>
       <topBar></topBar>
-      <div class="blank positionBar">
+      <div class="positionBar">
         <span>您的当前位置是：</span>
-        <span><a href="#/login/main/eduAdminHome">首页</a></span>
-        <span> > <a href="#/login/main/eduAdminHome?manage">教务管理</a> > 教务省察 > 教务查看评教 </span>
+        <span><a href="#/login/main/eduAdminHome" class="returnHome">首页</a></span>
+        <span> > <a href="#/login/main/eduAdminHome?manage" class="returnHome">教务管理</a> > 教务省察 > 教务查看评教 </span>
       </div>
       <evaResultTable></evaResultTable>
     </div>

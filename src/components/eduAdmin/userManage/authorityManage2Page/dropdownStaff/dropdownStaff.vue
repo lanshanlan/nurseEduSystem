@@ -6,21 +6,22 @@
           <table class="dropdownStaffTable" id="tchDropdownTable">
             <tr v-for="(role,index) in roleEleList">
               <td><input :id="'roleNameInput'+index" class="inputWM" v-model="role.roleName" readonly="readonly" style="border: none"@click="checkStaffAuthorityClick(index)"></td>
-              <!--<td width="50%" v-text="role.roleName" @click="checkStaffAuthorityClick(role.roleId)"></td>-->
               <td>
                 <img :id="'editImg'+index" src="./images/edit.png" @click="editClick(index)">
                 <img :id="'saveImg'+index" src="./images/save.png" style="display: none" @click="saveClick(index)">
                 <img :id="'deleteImg'+index" src="./images/delete.png" @click="deleteClick(index)">
                 <img :id="'restoreImg'+index" src="./images/restore.png" style="display: none" @click="restoreClick(index)">
               </td>
+              <!--修改，保存，删除，取消保存按钮-->
             </tr>
             <tr>
               <td width="30%"><img :id="AddImg" src="./images/add.png" @click="addClick()"></td>
               <td width="70%"></td>
             </tr>
+            <!--添加新角色按钮-->
           </table>
-          <!--角色名设置，修改，删除和添加组件-->
         </div>
+        <!--角色名设置，修改，删除和添加组件-->
         <div>
           <modal v-model="modalNameOperateBool" width="400" id="modalBody">
             <div style="text-align: center;font-size: 1.1rem;">

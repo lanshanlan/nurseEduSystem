@@ -88,6 +88,7 @@
           </tr>
           </tbody>
         </table>
+        <!--班级信息表格-->
         <div>
           <modal v-model="modalGradeOperateBool" width="400" id="modalBody">
             <div style="text-align: center;font-size: 1.1rem;">
@@ -102,6 +103,7 @@
               <button id="modalBtn" @click="operateGradeCancel">取消</button>
             </div>
           </modal>
+          <!--用户修改，取消修改班级信息，删除班级时，弹窗提醒确认-->
           <modal v-model="modalGradeResultBool" width="400" id="modalBody">
             <div style="text-align: center;font-size: 1.1rem;">
               <p v-if="operateMsg === '1'">保存修改失败</p>
@@ -112,6 +114,7 @@
               <button id="modalBtn" @click="resultGradeOk">确定</button>
             </div>
           </modal>
+          <!--弹窗提醒修改，取消修改班级信息，删除班级操作结果-->
         </div>
         <div id="buttonDiv">
           <span><button id="downloadForm" class="bottomButton am-btn am-btn-success am-radius" @click="downloadFormClick">下载模板</button></span>
@@ -134,7 +137,7 @@
           <span><button id="goBack" class="bottomButton am-btn am-btn-success am-radius" @click="goBackClick()">返回</button></span>
         </div>
       </div>
-      <!--班级信息表格-->
+      <!--上传，下载按钮，返回按钮-->
     </div>
   </div>
 </template>

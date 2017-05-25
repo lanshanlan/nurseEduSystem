@@ -2,19 +2,17 @@
     <div id="tchingProcess" style="padding: 0.6rem 5rem;background-color: #f3f3f3">
       <div>
         <div class="yearsTypeDiv">
-          <!--年制模块下拉菜单-->
+          <!--年制模块下拉导航栏-->
           <span class="yearsTypeP">5年制教学进度</span>
         </div>
-
         <div>
           <div v-for="(grade,gradeIndex) in gradeIdArr">
             <div v-if="grade.yearType==='5'" :id="'5GradeProcessDiv' + gradeIndex" class="gradeProcessDiv">
-              <!--年级教学进程下拉菜单-->
               <span><img :id="'5Arrow' + gradeIndex" class="gradeProcessImg" @click="tableSlideToggle(grade.yearType,gradeIndex,grade.gradeName)" :src="arrowright"></span>
               <span :id="'5P' + gradeIndex" class="gradeProcessP" @click="tableSlideToggle(grade.yearType,gradeIndex,grade.gradeName)">{{grade.gradeName}}级</span>
               <span><button class="gradeButton" @click="downloadClick(gradeIdList[gradeIndex])">下载</button></span>
             </div>
-
+            <!--年级教学进程下拉导航栏-->
             <div :id="'5Table' + gradeIndex" style="display: none">
               <table class="normalTable" style="table-layout: fixed">
                 <thead>
@@ -88,32 +86,31 @@
                     <span v-if="course.semesterPeriod10 == 0"></span>
                     <span v-else>{{course.semesterPeriod10}}</span>
                   </td>
-                  <td v-if="course.teachStatus === 0" style="background-color: blue">未开始</td>
-                  <td v-else-if="course.teachStatus === 1" style="background-color: red">完成</td>
-                  <td v-else style="background-color: green">正在执行</td>
+                  <td v-if="course.teachStatus == 0" style="background-color: #f79992">未开始</td>
+                  <td v-else-if="course.teachStatus == 1" style="background-color: #d9d9d9">已完成</td>
+                  <td v-else style="background-color: #76d0a3">正在执行</td>
                 </tr>
                 </tbody>
               </table>
             </div>
+            <!--年级教学进度表格-->
           </div>
         </div>
       </div>
+      <!--五年制教学进度-->
       <div>
         <div class="yearsTypeDiv">
-          <!--年制模块下拉菜单-->
-          <!--<span><img :id="yearType.English + 'Arrow'" class="yearsTypeImg" :src="arrowright"></span>-->
+          <!--年制模块下拉导航栏-->
           <span class="yearsTypeP">3年制教学进度</span>
         </div>
-
         <div>
           <div v-for="(grade,gradeIndex) in gradeIdArr">
             <div v-if="grade.yearType==='3'" :id="'3GradeProcessDiv' + gradeIndex" class="gradeProcessDiv">
-              <!--年级教学进程下拉菜单-->
               <span><img :id="'3Arrow' + gradeIndex" class="gradeProcessImg" @click="tableSlideToggle(grade.yearType,gradeIndex,grade.gradeName)" :src="arrowright"></span>
               <span :id="'3P' + gradeIndex" class="gradeProcessP" @click="tableSlideToggle(grade.yearType,gradeIndex,grade.gradeName)">{{grade.gradeName}}级</span>
               <span><button class="gradeButton" @click="downloadClick(gradeIdList[gradeIndex])">下载</button></span>
             </div>
-
+            <!--年级教学进程下拉导航栏-->
             <div :id="'3Table' + gradeIndex" style="display: none">
               <table class="normalTable" style="table-layout: fixed">
                 <thead>
@@ -187,16 +184,18 @@
                     <span v-if="course.semesterPeriod10 == 0"></span>
                     <span v-else>{{course.semesterPeriod10}}</span>
                   </td>
-                  <td v-if="course.teachStatus === 0" style="background-color: blue">未开始</td>
-                  <td v-else-if="course.teachStatus === 1" style="background-color: red">完成</td>
-                  <td v-else style="background-color: green">正在执行</td>
+                  <td v-if="course.teachStatus == 0" style="background-color: #f79992">未开始</td>
+                  <td v-else-if="course.teachStatus == 1" style="background-color: #d9d9d9">已完成</td>
+                  <td v-else style="background-color: #76d0a3">正在执行</td>
                 </tr>
                 </tbody>
               </table>
             </div>
+            <!--三年制教学进度表格-->
           </div>
         </div>
       </div>
+      <!--三年制教学进度-->
     </div>
 </template>
 
@@ -225,9 +224,9 @@
                   grade:'',
                   yearType:'',
                   courseList:[
-                    {courseTypeName:'公共基础课3',courseName:'职业生涯规划',totalHours:'36',theoryHours:'32',practiceHours:'4',semesterPeriod1:'36',semesterPeriod2:'',semesterPeriod3:'',semesterPeriod4:'',semesterPeriod5:'',semesterPeriod6:'',semesterPeriod7:'',semesterPeriod8:'',semesterPeriod9:'',semesterPeriod10:'',teachStatus:'0'},
-                    {courseTypeName:'公共基础课3',courseName:'哲学与人生',totalHours:'36',theoryHours:'32',practiceHours:'4',semesterPeriod1:'',semesterPeriod2:'36',semesterPeriod3:'',semesterPeriod4:'',semesterPeriod5:'',semesterPeriod6:'',semesterPeriod7:'',semesterPeriod8:'',semesterPeriod9:'',semesterPeriod10:'',courseStatus:'1'},
-                    {courseTypeName:'公共基础课3',courseName:'经济政治与社会',totalHours:'36',theoryHours:'32',practiceHours:'4',semesterPeriod1:'',semesterPeriod2:'',semesterPeriod3:'36',semesterPeriod4:'',semesterPeriod5:'',semesterPeriod6:'',semesterPeriod7:'',semesterPeriod8:'',semesterPeriod9:'',semesterPeriod10:'',courseStatus:'2'}
+                    {courseTypeName:'公共基础课3',courseName:'职业生涯规划',totalHours:'36',theoryHours:'32',practiceHours:'4',semesterPeriod1:'36',semesterPeriod2:'',semesterPeriod3:'',semesterPeriod4:'',semesterPeriod5:'',semesterPeriod6:'',semesterPeriod7:'',semesterPeriod8:'',semesterPeriod9:'',semesterPeriod10:'',teachStatus:0},
+                    {courseTypeName:'公共基础课3',courseName:'哲学与人生',totalHours:'36',theoryHours:'32',practiceHours:'4',semesterPeriod1:'',semesterPeriod2:'36',semesterPeriod3:'',semesterPeriod4:'',semesterPeriod5:'',semesterPeriod6:'',semesterPeriod7:'',semesterPeriod8:'',semesterPeriod9:'',semesterPeriod10:'',teachStatus:1},
+                    {courseTypeName:'公共基础课3',courseName:'经济政治与社会',totalHours:'36',theoryHours:'32',practiceHours:'4',semesterPeriod1:'',semesterPeriod2:'',semesterPeriod3:'36',semesterPeriod4:'',semesterPeriod5:'',semesterPeriod6:'',semesterPeriod7:'',semesterPeriod8:'',semesterPeriod9:'',semesterPeriod10:'',teachStatus:2}
                   ]
                 }
               ]
@@ -246,6 +245,7 @@
           console.log("获取error");
         });
       },
+//      初始化页面时，获取年级列表
       methods:{
         tableSlideToggle:function(yearType,gradeIndex,gradeName){
           var table = document.getElementById(yearType + 'Table' + gradeIndex);
@@ -283,9 +283,11 @@
             arrow.src = this.arrowright;
           }
         },
+//        点击年级教学进度下拉导航栏时，下拉出年级教学进度表格
         downloadClick:function(gradeId){
           location.href="./exportTeachProcess?gradeId="+gradeId;
         }
+//        下载对应年级的教学进度Excel表
       }
     }
 </script>

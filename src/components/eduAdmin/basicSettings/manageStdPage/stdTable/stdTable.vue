@@ -34,8 +34,8 @@
           <button type="ghost" id="leadIn" class="am-btn am-btn-success am-radius buttonWM">上传</button>
           </Upload>
         </span>
-        <!--上传文件-->
         <span><button id="leadOut" class="am-btn am-btn-success am-radius buttonWM" @click="downloadClick">下载</button></span>
+        <!--查找，下载，上传按钮-->
       </div>
       <div>
         <modal v-model="modalDownloadBool" width="400" id="modalBody">
@@ -54,7 +54,6 @@
       <!--上传文件出错信息提示弹窗-->
       <div style="padding: 0.6rem 5rem;background-color: #f3f3f3">
         <div id="stdTable" style="background-color: white">
-          <!--学生信息表格-->
           <table id="eduAdminStdTableSy" class="operationTable" style="table-layout: fixed;">
             <!--table-layout: fixed;固定表格格局-->
             <thead>
@@ -86,9 +85,9 @@
             </tr>
             </tbody>
           </table>
+          <!--学生信息表格-->
         </div>
       </div>
-      <!--学生信息table-->
       <div>
         <modal v-model="modalOperateBool" width="400" id="modalBody">
           <div style="text-align: center;font-size: 1.1rem;">
@@ -109,7 +108,7 @@
             <button id="modalBtn" @click="resultOk">确定</button>
           </div>
         </modal>
-        <!--操作成功或失败提示弹窗-->
+        <!--操作失败提示弹窗-->
       </div>
     </div>
 </template>
