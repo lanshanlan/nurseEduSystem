@@ -3,33 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="b5e2218c-6acf-49f7-bcba-6cb40434d61e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageGradePage/gradeTable/gradeTable.vue" afterPath="$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageGradePage/gradeTable/gradeTable.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageStdPage/stdTable/stdTable.vue" afterPath="$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageStdPage/stdTable/stdTable.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageGradePage/topBar/topBar.vue" afterPath="$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageGradePage/topBar/topBar.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageStdPage/topBar/topBar.vue" afterPath="$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageStdPage/topBar/topBar.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageTchPage/tchTable/tchTable.vue" afterPath="$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageTchPage/tchTable/tchTable.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageTchPage/topBar/topBar.vue" afterPath="$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageTchPage/topBar/topBar.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/eduAdmin/eduManage/eduPlanPage/teachingPlan/teachingPlan.vue" afterPath="$PROJECT_DIR$/src/components/eduAdmin/eduManage/eduPlanPage/teachingPlan/teachingPlan.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/eduAdmin/eduManage/evaTeachingResultPage/evaResultTable/evaResultTable.vue" afterPath="$PROJECT_DIR$/src/components/eduAdmin/eduManage/evaTeachingResultPage/evaResultTable/evaResultTable.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/eduAdmin/eduManage/eduPlanPage/topBar/topBar.vue" afterPath="$PROJECT_DIR$/src/components/eduAdmin/eduManage/eduPlanPage/topBar/topBar.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/eduAdmin/eduManage/evaTeachingResultPage/topBar/topBar.vue" afterPath="$PROJECT_DIR$/src/components/eduAdmin/eduManage/evaTeachingResultPage/topBar/topBar.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/eduAdmin/eduManage/manageClassPage/stdInfoTable/stdInfoTable.vue" afterPath="$PROJECT_DIR$/src/components/eduAdmin/eduManage/manageClassPage/stdInfoTable/stdInfoTable.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/eduAdmin/eduManage/supervisorManagePage/noSupervisorTable/noSupervisorTable.vue" afterPath="$PROJECT_DIR$/src/components/eduAdmin/eduManage/supervisorManagePage/noSupervisorTable/noSupervisorTable.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/eduAdmin/eduManage/tchTeachingPlanPage/courseGroupTable/courseGroupTable.vue" afterPath="$PROJECT_DIR$/src/components/eduAdmin/eduManage/tchTeachingPlanPage/courseGroupTable/courseGroupTable.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/eduAdmin/eduManage/manageClassPage/topBar/topBar.vue" afterPath="$PROJECT_DIR$/src/components/eduAdmin/eduManage/manageClassPage/topBar/topBar.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/eduAdmin/eduManage/supervisorManagePage/topBar/topBar.vue" afterPath="$PROJECT_DIR$/src/components/eduAdmin/eduManage/supervisorManagePage/topBar/topBar.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/eduAdmin/eduManage/tchTeachingPlanPage/topBar/topBar.vue" afterPath="$PROJECT_DIR$/src/components/eduAdmin/eduManage/tchTeachingPlanPage/topBar/topBar.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/eduAdmin/eduManage/teachProcessPage/tchingProcess/tchingProcess.vue" afterPath="$PROJECT_DIR$/src/components/eduAdmin/eduManage/teachProcessPage/tchingProcess/tchingProcess.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/eduAdmin/notice/notifyInformationPage/notifyBoard/notifyBoard.vue" afterPath="$PROJECT_DIR$/src/components/eduAdmin/notice/notifyInformationPage/notifyBoard/notifyBoard.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/eduAdmin/userManage/authorityManage2Page/dropdownStaff/dropdownStaff.vue" afterPath="$PROJECT_DIR$/src/components/eduAdmin/userManage/authorityManage2Page/dropdownStaff/dropdownStaff.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/eduAdmin/basicSettings/manageGradePage/manageGradePage.vue" afterPath="$PROJECT_DIR$/src/views/eduAdmin/basicSettings/manageGradePage/manageGradePage.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/eduAdmin/basicSettings/manageStdPage/manageStdPage.vue" afterPath="$PROJECT_DIR$/src/views/eduAdmin/basicSettings/manageStdPage/manageStdPage.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/eduAdmin/basicSettings/manageTchPage/manageTchPage.vue" afterPath="$PROJECT_DIR$/src/views/eduAdmin/basicSettings/manageTchPage/manageTchPage.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/eduAdmin/eduManage/eduPlanPage/eduPlanPage.vue" afterPath="$PROJECT_DIR$/src/views/eduAdmin/eduManage/eduPlanPage/eduPlanPage.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/eduAdmin/eduManage/evaTeachingResultPage/evaTeachingResultPage.vue" afterPath="$PROJECT_DIR$/src/views/eduAdmin/eduManage/evaTeachingResultPage/evaTeachingResultPage.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/eduAdmin/eduManage/manageClassPage/manageClassPage.vue" afterPath="$PROJECT_DIR$/src/views/eduAdmin/eduManage/manageClassPage/manageClassPage.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/eduAdmin/eduManage/supervisorManagePage/supervisorManagePage.vue" afterPath="$PROJECT_DIR$/src/views/eduAdmin/eduManage/supervisorManagePage/supervisorManagePage.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/eduAdmin/eduManage/tchTeachingPlanPage/tchTeachingPlanPage.vue" afterPath="$PROJECT_DIR$/src/views/eduAdmin/eduManage/tchTeachingPlanPage/tchTeachingPlanPage.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/eduAdmin/eduManage/teachProcessPage/teachProcessPage.vue" afterPath="$PROJECT_DIR$/src/views/eduAdmin/eduManage/teachProcessPage/teachProcessPage.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/eduAdmin/notice/notifyInformationPage/notifyInformationPage.vue" afterPath="$PROJECT_DIR$/src/views/eduAdmin/notice/notifyInformationPage/notifyInformationPage.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/eduAdmin/userManage/authorityManage2Page/authorityManage2Page.vue" afterPath="$PROJECT_DIR$/src/views/eduAdmin/userManage/authorityManage2Page/authorityManage2Page.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/views/startTest.vue" afterPath="$PROJECT_DIR$/src/views/startTest.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/eduAdmin/eduManage/teachProcessPage/topBar/topBar.vue" afterPath="$PROJECT_DIR$/src/components/eduAdmin/eduManage/teachProcessPage/topBar/topBar.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/eduAdmin/notice/notifyInformationPage/topBar/topBar.vue" afterPath="$PROJECT_DIR$/src/components/eduAdmin/notice/notifyInformationPage/topBar/topBar.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/eduAdmin/userManage/authorityManage2Page/topBar/topBar.vue" afterPath="$PROJECT_DIR$/src/components/eduAdmin/userManage/authorityManage2Page/topBar/topBar.vue" />
     </list>
     <ignored path="nurseEduSystem.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -70,83 +54,32 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tchingProcess.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/eduManage/teachProcessPage/tchingProcess/tchingProcess.vue">
+      <file leaf-file-name="topBar.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageStdPage/topBar/topBar.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.333333">
-              <caret line="286" column="39" selection-start-line="286" selection-start-column="39" selection-end-line="286" selection-end-column="39" />
-              <folding>
-                <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-                <element signature="n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-                <element signature="n#thead#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-                <element signature="n#style#0;n#td#15;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#16;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#17;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-                <element signature="n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-                <element signature="n#thead#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-                <element signature="n#style#0;n#td#15;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#16;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#17;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="e#9524#9589#0" expanded="false" />
-                <element signature="e#9619#10756#0" expanded="false" />
-                <element signature="e#10811#11308#0" expanded="false" />
-                <element signature="e#11412#12900#0" expanded="false" />
-                <element signature="e#12978#13054#0" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="-6.3333335">
+              <caret line="19" column="9" selection-start-line="19" selection-start-column="9" selection-end-line="39" selection-end-column="7" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="notifyBoard.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/notice/notifyInformationPage/notifyBoard/notifyBoard.vue">
+      <file leaf-file-name="topBar.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/notice/notifyInformationPage/topBar/topBar.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.6666665">
-              <caret line="41" column="28" selection-start-line="41" selection-start-column="28" selection-end-line="41" selection-end-column="28" />
-              <folding>
-                <element signature="e#1616#2424#0" expanded="false" />
-                <element signature="e#2518#2638#0" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="-1.0">
+              <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dropdownStaff.vue" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/userManage/authorityManage2Page/dropdownStaff/dropdownStaff.vue">
+      <file leaf-file-name="topBar.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/userManage/authorityManage2Page/topBar/topBar.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.7114336">
-              <caret line="38" column="27" selection-start-line="38" selection-start-column="27" selection-end-line="38" selection-end-column="27" />
-              <folding>
-                <element signature="n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-                <element signature="n#modal#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-                <element signature="n#modal#1;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-                <element signature="n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-                <element signature="n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-                <element signature="n#modal#0;n#div#2;n#div#0;n#template#0;n#!!top" expanded="false" />
-                <element signature="n#modal#1;n#div#2;n#div#0;n#template#0;n#!!top" expanded="false" />
-                <element signature="e#5129#5292#0" expanded="false" />
-                <element signature="e#5317#5480#0" expanded="false" />
-                <element signature="e#5551#5990#0" expanded="false" />
-                <element signature="e#6176#6661#0" expanded="false" />
-                <element signature="e#6744#7389#0" expanded="false" />
-                <element signature="e#7440#7562#0" expanded="false" />
-                <element signature="e#7628#7750#0" expanded="false" />
-                <element signature="e#7815#7937#0" expanded="false" />
-                <element signature="e#7994#9425#0" expanded="false" />
-                <element signature="e#9479#10263#0" expanded="false" />
-                <element signature="e#10317#11003#0" expanded="false" />
-                <element signature="e#11056#11112#0" expanded="false" />
-                <element signature="e#11172#11227#0" expanded="false" />
-                <element signature="e#11281#12133#0" expanded="false" />
-                <element signature="e#12178#12523#0" expanded="false" />
-                <element signature="e#12645#13171#0" expanded="false" />
-                <element signature="e#13242#13344#0" expanded="false" />
-                <element signature="e#13413#13515#0" expanded="false" />
-                <element signature="e#13579#14226#0" expanded="false" />
-                <element signature="e#14284#14731#0" expanded="false" />
-                <element signature="e#14793#14854#0" expanded="false" />
-                <element signature="e#14911#14971#0" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="0.49001816">
+              <caret line="15" column="10" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -181,18 +114,9 @@
         <option value="$PROJECT_DIR$/src/App.vue" />
         <option value="$PROJECT_DIR$/src/views/test/checkTest/checkTest.vue" />
         <option value="$PROJECT_DIR$/src/views/student/inquireGradePage/inquireGradePage.vue" />
-        <option value="$PROJECT_DIR$/src/components/eduAdmin/eduManage/eduPlanPage/topBar/topBar.vue" />
-        <option value="$PROJECT_DIR$/src/components/eduAdmin/eduManage/teachProcessPage/topBar/topBar.vue" />
-        <option value="$PROJECT_DIR$/src/components/eduAdmin/eduManage/supervisorManagePage/topBar/topBar.vue" />
-        <option value="$PROJECT_DIR$/src/components/eduAdmin/notice/notifyInformationPage/topBar/topBar.vue" />
         <option value="$PROJECT_DIR$/src/components/student/inquireGradePage/topBar/topBar.vue" />
-        <option value="$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageGradePage/topBar/topBar.vue" />
-        <option value="$PROJECT_DIR$/src/components/eduAdmin/userManage/authorityManage2Page/topBar/topBar.vue" />
         <option value="$PROJECT_DIR$/src/routes/index.js" />
-        <option value="$PROJECT_DIR$/src/components/eduAdmin/eduManage/manageClassPage/topBar/topBar.vue" />
-        <option value="$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageStdPage/topBar/topBar.vue" />
         <option value="$PROJECT_DIR$/src/views/eduAdmin/basicSettings/manageStdPage/manageStdPage.vue" />
-        <option value="$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageTchPage/topBar/topBar.vue" />
         <option value="$PROJECT_DIR$/src/views/eduAdmin/basicSettings/manageTchPage/manageTchPage.vue" />
         <option value="$PROJECT_DIR$/src/views/eduAdmin/eduManage/manageClassPage/manageClassPage.vue" />
         <option value="$PROJECT_DIR$/src/views/eduAdmin/eduManage/evaTeachingResultPage/evaTeachingResultPage.vue" />
@@ -202,8 +126,6 @@
         <option value="$PROJECT_DIR$/src/views/eduAdmin/eduManage/eduPlanPage/eduPlanPage.vue" />
         <option value="$PROJECT_DIR$/src/views/eduAdmin/notice/notifyInformationPage/notifyInformationPage.vue" />
         <option value="$PROJECT_DIR$/src/views/eduAdmin/userManage/authorityManage2Page/authorityManage2Page.vue" />
-        <option value="$PROJECT_DIR$/src/components/eduAdmin/eduManage/evaTeachingResultPage/topBar/topBar.vue" />
-        <option value="$PROJECT_DIR$/src/components/eduAdmin/eduManage/tchTeachingPlanPage/topBar/topBar.vue" />
         <option value="$PROJECT_DIR$/src/views/startTest.vue" />
         <option value="$PROJECT_DIR$/src/views/eduAdmin/eduManage/teachProcessPage/teachProcessPage.vue" />
         <option value="$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageGradePage/gradeTable/gradeTable.vue" />
@@ -217,6 +139,17 @@
         <option value="$PROJECT_DIR$/src/components/eduAdmin/eduManage/teachProcessPage/tchingProcess/tchingProcess.vue" />
         <option value="$PROJECT_DIR$/src/components/eduAdmin/notice/notifyInformationPage/notifyBoard/notifyBoard.vue" />
         <option value="$PROJECT_DIR$/src/components/eduAdmin/userManage/authorityManage2Page/dropdownStaff/dropdownStaff.vue" />
+        <option value="$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageStdPage/topBar/topBar.vue" />
+        <option value="$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageGradePage/topBar/topBar.vue" />
+        <option value="$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageTchPage/topBar/topBar.vue" />
+        <option value="$PROJECT_DIR$/src/components/eduAdmin/eduManage/manageClassPage/topBar/topBar.vue" />
+        <option value="$PROJECT_DIR$/src/components/eduAdmin/eduManage/eduPlanPage/topBar/topBar.vue" />
+        <option value="$PROJECT_DIR$/src/components/eduAdmin/eduManage/supervisorManagePage/topBar/topBar.vue" />
+        <option value="$PROJECT_DIR$/src/components/eduAdmin/eduManage/teachProcessPage/topBar/topBar.vue" />
+        <option value="$PROJECT_DIR$/src/components/eduAdmin/eduManage/evaTeachingResultPage/topBar/topBar.vue" />
+        <option value="$PROJECT_DIR$/src/components/eduAdmin/eduManage/tchTeachingPlanPage/topBar/topBar.vue" />
+        <option value="$PROJECT_DIR$/src/components/eduAdmin/notice/notifyInformationPage/topBar/topBar.vue" />
+        <option value="$PROJECT_DIR$/src/components/eduAdmin/userManage/authorityManage2Page/topBar/topBar.vue" />
       </list>
     </option>
   </component>
@@ -259,7 +192,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -357,6 +289,10 @@
               <option name="myItemId" value="authorityManage2Page" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="topBar" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -387,8 +323,26 @@
               <option name="myItemId" value="authorityManage2Page" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="dropdownStaff" />
+              <option name="myItemId" value="nurseEduSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="nurseEduSystem" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="eduAdmin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -411,6 +365,18 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="eduAdmin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="notice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="notifyInformationPage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="topBar" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -466,15 +432,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="notice" />
+              <option name="myItemId" value="eduManage" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="notifyInformationPage" />
+              <option name="myItemId" value="teachProcessPage" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="notifyBoard" />
+              <option name="myItemId" value="topBar" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -534,11 +500,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="teachProcessPage" />
+              <option name="myItemId" value="tchTeachingPlanPage" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="tchingProcess" />
+              <option name="myItemId" value="topBar" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -598,11 +564,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="tchTeachingPlanPage" />
+              <option name="myItemId" value="supervisorManagePage" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="courseGroupTable" />
+              <option name="myItemId" value="topBar" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -662,11 +628,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="supervisorManagePage" />
+              <option name="myItemId" value="manageClassPage" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="noSupervisorTable" />
+              <option name="myItemId" value="topBar" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -726,11 +692,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="manageClassPage" />
+              <option name="myItemId" value="evaTeachingResultPage" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="stdInfoTable" />
+              <option name="myItemId" value="topBar" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -790,11 +756,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="evaTeachingResultPage" />
+              <option name="myItemId" value="eduPlanPage" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="evaResultTable" />
+              <option name="myItemId" value="topBar" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -850,15 +816,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="eduManage" />
+              <option name="myItemId" value="basicSettings" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="eduPlanPage" />
+              <option name="myItemId" value="manageTchPage" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="teachingPlan" />
+              <option name="myItemId" value="topBar" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -918,11 +884,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="manageTchPage" />
+              <option name="myItemId" value="manageStdPage" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="tchTable" />
+              <option name="myItemId" value="topBar" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -953,40 +919,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="manageStdPage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nurseEduSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="nurseEduSystem" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eduAdmin" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="basicSettings" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="manageStdPage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stdTable" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1017,6 +949,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="manageGradePage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="topBar" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1056,6 +992,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1133,7 +1070,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20644216" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1141,18 +1078,18 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1184,16 +1121,23 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
             <element signature="n#thead#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#td#15;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#16;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#17;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#td#15;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#td#16;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#td#17;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
             <element signature="n#thead#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#td#15;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#16;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#17;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#15;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#td#16;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#td#17;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="e#9524#9589#0" expanded="false" />
+            <element signature="e#9619#10756#0" expanded="false" />
+            <element signature="e#10811#11308#0" expanded="false" />
+            <element signature="e#11412#12900#0" expanded="false" />
+            <element signature="e#12978#13054#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1315,87 +1259,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/notice/notifyInformationPage/topBar/topBar.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.3333334">
-          <caret line="4" column="43" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/userManage/authorityManage2Page/topBar/topBar.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.0">
-          <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/App.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.45735028">
           <caret line="14" column="3" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/eduManage/manageClassPage/topBar/topBar.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29401088">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageGradePage/topBar/topBar.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19600727">
-          <caret line="6" column="51" selection-start-line="6" selection-start-column="51" selection-end-line="6" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/eduManage/eduPlanPage/topBar/topBar.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16333938">
-          <caret line="5" column="42" selection-start-line="5" selection-start-column="42" selection-end-line="5" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageTchPage/topBar/topBar.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.261343">
-          <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageStdPage/topBar/topBar.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.6666667">
-          <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/eduManage/supervisorManagePage/topBar/topBar.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1306715">
-          <caret line="4" column="42" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/eduManage/tchTeachingPlanPage/topBar/topBar.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29401088">
-          <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/eduManage/evaTeachingResultPage/topBar/topBar.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.09800363">
-          <caret line="3" column="139" selection-start-line="3" selection-start-column="139" selection-end-line="3" selection-end-column="139" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/eduManage/teachProcessPage/topBar/topBar.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16333938">
-          <caret line="5" column="42" selection-start-line="5" selection-start-column="42" selection-end-line="5" selection-end-column="42" />
         </state>
       </provider>
     </entry>
@@ -1496,77 +1363,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.666667">
           <caret line="283" column="33" selection-start-line="283" selection-start-column="33" selection-end-line="283" selection-end-column="33" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#table#0;n#div#0;n#div#2;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#modal#0;n#div#3;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#modal#1;n#div#3;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="e#6011#6151#0" expanded="false" />
-            <element signature="e#6184#7327#0" expanded="false" />
-            <element signature="e#7365#7955#0" expanded="false" />
-            <element signature="e#8341#8788#0" expanded="false" />
-            <element signature="e#8897#8998#0" expanded="false" />
-            <element signature="e#9069#9338#0" expanded="false" />
-            <element signature="e#9416#9689#0" expanded="false" />
-            <element signature="e#9769#10505#0" expanded="false" />
-            <element signature="e#10586#10672#0" expanded="false" />
-            <element signature="e#10729#10815#0" expanded="false" />
-            <element signature="e#10873#10929#0" expanded="false" />
-            <element signature="e#10987#11244#0" expanded="false" />
-            <element signature="e#11335#11421#0" expanded="false" />
-            <element signature="e#11491#11576#0" expanded="false" />
-            <element signature="e#11625#11703#0" expanded="false" />
-            <element signature="e#11750#11803#0" expanded="false" />
-            <element signature="e#11861#11975#0" expanded="false" />
-            <element signature="e#12036#12711#0" expanded="false" />
-            <element signature="e#12766#12818#0" expanded="false" />
-            <element signature="e#12867#12918#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageGradePage/gradeTable/gradeTable.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.537037">
-          <caret line="465" column="29" selection-start-line="465" selection-start-column="29" selection-end-line="465" selection-end-column="29" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#2;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#table#0;n#div#3;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#div#3;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#div#3;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="e#8420#8580#0" expanded="false" />
-            <element signature="e#8603#8763#0" expanded="false" />
-            <element signature="e#8790#9212#0" expanded="false" />
-            <element signature="e#9234#9391#0" expanded="false" />
-            <element signature="e#9571#10068#0" expanded="false" />
-            <element signature="e#10145#10571#0" expanded="false" />
-            <element signature="e#10639#11074#0" expanded="false" />
-            <element signature="e#11177#11365#0" expanded="false" />
-            <element signature="e#11417#12178#0" expanded="false" />
-            <element signature="e#12227#12275#0" expanded="false" />
-            <element signature="e#12320#12367#0" expanded="false" />
-            <element signature="e#12445#13006#0" expanded="false" />
-            <element signature="e#13076#14032#0" expanded="false" />
-            <element signature="e#14085#14196#0" expanded="false" />
-            <element signature="e#14255#14366#0" expanded="false" />
-            <element signature="e#14424#14535#0" expanded="false" />
-            <element signature="e#14589#16280#0" expanded="false" />
-            <element signature="e#16332#17285#0" expanded="false" />
-            <element signature="e#17335#18012#0" expanded="false" />
-            <element signature="e#18073#18126#0" expanded="false" />
-            <element signature="e#18183#18235#0" expanded="false" />
-            <element signature="e#18297#18437#0" expanded="false" />
-            <element signature="e#18497#18629#0" expanded="false" />
-            <element signature="e#18685#18737#0" expanded="false" />
-            <element signature="e#18791#18940#0" expanded="false" />
-            <element signature="e#19013#19059#0" expanded="false" />
-            <element signature="e#19123#19194#0" expanded="false" />
-            <element signature="e#19239#19303#0" expanded="false" />
-            <element signature="e#19349#19428#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1619,21 +1415,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.91470057">
           <caret line="2" column="27" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
-          <folding>
-            <element signature="n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#thead#0;n#table#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="e#2123#2223#0" expanded="false" />
-            <element signature="e#2245#2477#0" expanded="false" />
-            <element signature="e#2505#2686#0" expanded="false" />
-            <element signature="e#2713#2889#0" expanded="false" />
-            <element signature="e#2915#3375#0" expanded="false" />
-            <element signature="e#3430#3961#0" expanded="false" />
-            <element signature="e#4047#4153#0" expanded="false" />
-            <element signature="e#4220#4650#0" expanded="false" />
-            <element signature="e#4732#4790#0" expanded="false" />
-            <element signature="e#4857#5251#0" expanded="false" />
-            <element signature="e#5335#5836#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1641,15 +1422,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.78402907">
           <caret line="55" column="24" selection-start-line="55" selection-start-column="24" selection-end-line="55" selection-end-column="24" />
-          <folding>
-            <element signature="n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#thead#0;n#table#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="e#2152#2210#0" expanded="false" />
-            <element signature="e#2241#2355#0" expanded="false" />
-            <element signature="e#2394#2944#0" expanded="false" />
-            <element signature="e#2999#3341#0" expanded="false" />
-            <element signature="e#3417#4114#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1684,53 +1456,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/assets/css/external.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.33333334">
-          <caret line="231" column="25" selection-start-line="231" selection-start-column="25" selection-end-line="231" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/eduManage/supervisorManagePage/noSupervisorTable/noSupervisorTable.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-30.666666">
           <caret line="427" column="30" selection-start-line="427" selection-start-column="30" selection-end-line="427" selection-end-column="30" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#thead#0;n#table#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#thead#0;n#table#0;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#div#0;n#div#0;n#div#2;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#div#0;n#div#0;n#div#2;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#2;n#div#0;n#div#0;n#div#2;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="e#8340#8521#0" expanded="false" />
-            <element signature="e#8548#8724#0" expanded="false" />
-            <element signature="e#8758#8894#0" expanded="false" />
-            <element signature="e#8925#9124#0" expanded="false" />
-            <element signature="e#9161#9329#0" expanded="false" />
-            <element signature="e#9412#9590#0" expanded="false" />
-            <element signature="e#9640#9926#0" expanded="false" />
-            <element signature="e#9973#10361#0" expanded="false" />
-            <element signature="e#10395#11405#0" expanded="false" />
-            <element signature="e#11460#11944#0" expanded="false" />
-            <element signature="e#12050#12572#0" expanded="false" />
-            <element signature="e#12627#12699#0" expanded="false" />
-            <element signature="e#12754#13226#0" expanded="false" />
-            <element signature="e#13337#14346#0" expanded="false" />
-            <element signature="e#14418#15192#0" expanded="false" />
-            <element signature="e#15267#16027#0" expanded="false" />
-            <element signature="e#16091#16156#0" expanded="false" />
-            <element signature="e#16261#17317#0" expanded="false" />
-            <element signature="e#17392#18292#0" expanded="false" />
-            <element signature="e#18363#18766#0" expanded="false" />
-            <element signature="e#18846#19671#0" expanded="false" />
-            <element signature="e#19722#19787#0" expanded="false" />
-            <element signature="e#19858#20125#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1738,71 +1467,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="21.333334">
           <caret line="2" column="24" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#thead#0;n#table#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#tr#1;n#tbody#0;n#table#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="e#7054#7187#0" expanded="false" />
-            <element signature="e#7213#7370#0" expanded="false" />
-            <element signature="e#7398#7579#0" expanded="false" />
-            <element signature="e#7606#7799#0" expanded="false" />
-            <element signature="e#7830#7954#0" expanded="false" />
-            <element signature="e#7990#8468#0" expanded="false" />
-            <element signature="e#8504#8982#0" expanded="false" />
-            <element signature="e#9307#9985#0" expanded="false" />
-            <element signature="e#10072#10559#0" expanded="false" />
-            <element signature="e#10645#11087#0" expanded="false" />
-            <element signature="e#11182#11836#0" expanded="false" />
-            <element signature="e#11963#12330#0" expanded="false" />
-            <element signature="e#12387#13787#0" expanded="false" />
-            <element signature="e#13840#13892#0" expanded="false" />
-            <element signature="e#13939#13990#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/eduManage/teachProcessPage/tchingProcess/tchingProcess.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.333333">
-          <caret line="286" column="39" selection-start-line="286" selection-start-column="39" selection-end-line="286" selection-end-column="39" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#thead#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#td#15;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#16;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#17;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#thead#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#td#15;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#16;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#17;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="e#9524#9589#0" expanded="false" />
-            <element signature="e#9619#10756#0" expanded="false" />
-            <element signature="e#10811#11308#0" expanded="false" />
-            <element signature="e#11412#12900#0" expanded="false" />
-            <element signature="e#12978#13054#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/notice/notifyInformationPage/notifyBoard/notifyBoard.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.6666665">
-          <caret line="41" column="28" selection-start-line="41" selection-start-column="28" selection-end-line="41" selection-end-column="28" />
-          <folding>
-            <element signature="e#1616#2424#0" expanded="false" />
-            <element signature="e#2518#2638#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/userManage/authorityManage2Page/dropdownStaff/dropdownStaff.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.7114336">
-          <caret line="38" column="27" selection-start-line="38" selection-start-column="27" selection-end-line="38" selection-end-column="27" />
+        <state vertical-scroll-proportion="0.39201453">
+          <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
           <folding>
             <element signature="n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
             <element signature="n#modal#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
@@ -1834,6 +1505,182 @@
             <element signature="e#14793#14854#0" expanded="false" />
             <element signature="e#14911#14971#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/notice/notifyInformationPage/notifyBoard/notifyBoard.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.032667875">
+          <caret line="41" column="28" selection-start-line="41" selection-start-column="28" selection-end-line="41" selection-end-column="28" />
+          <folding>
+            <element signature="e#1616#2424#0" expanded="false" />
+            <element signature="e#2518#2638#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/eduManage/teachProcessPage/tchingProcess/tchingProcess.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.032667875">
+          <caret line="286" column="39" selection-start-line="286" selection-start-column="39" selection-end-line="286" selection-end-column="39" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#thead#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#td#15;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#td#16;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#td#17;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#thead#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#td#15;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#td#16;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#td#17;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="e#9524#9589#0" expanded="false" />
+            <element signature="e#9619#10756#0" expanded="false" />
+            <element signature="e#10811#11308#0" expanded="false" />
+            <element signature="e#11412#12900#0" expanded="false" />
+            <element signature="e#12978#13054#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageGradePage/gradeTable/gradeTable.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5753176">
+          <caret line="149" column="13" selection-start-line="149" selection-start-column="13" selection-end-line="149" selection-end-column="13" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#2;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#table#0;n#div#3;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#3;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#3;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="e#8420#8580#0" expanded="false" />
+            <element signature="e#8603#8763#0" expanded="false" />
+            <element signature="e#8790#9212#0" expanded="false" />
+            <element signature="e#9234#9391#0" expanded="false" />
+            <element signature="e#9571#10068#0" expanded="false" />
+            <element signature="e#10145#10571#0" expanded="false" />
+            <element signature="e#10639#11074#0" expanded="false" />
+            <element signature="e#11177#11365#0" expanded="false" />
+            <element signature="e#11417#12178#0" expanded="false" />
+            <element signature="e#12227#12275#0" expanded="false" />
+            <element signature="e#12320#12367#0" expanded="false" />
+            <element signature="e#12445#13006#0" expanded="false" />
+            <element signature="e#13076#14032#0" expanded="false" />
+            <element signature="e#14085#14196#0" expanded="false" />
+            <element signature="e#14255#14366#0" expanded="false" />
+            <element signature="e#14424#14535#0" expanded="false" />
+            <element signature="e#16332#17285#0" expanded="false" />
+            <element signature="e#17335#18012#0" expanded="false" />
+            <element signature="e#18073#18126#0" expanded="false" />
+            <element signature="e#18183#18235#0" expanded="false" />
+            <element signature="e#18297#18437#0" expanded="false" />
+            <element signature="e#18497#18629#0" expanded="false" />
+            <element signature="e#18685#18737#0" expanded="false" />
+            <element signature="e#18791#18940#0" expanded="false" />
+            <element signature="e#19013#19059#0" expanded="false" />
+            <element signature="e#19123#19194#0" expanded="false" />
+            <element signature="e#19239#19303#0" expanded="false" />
+            <element signature="e#19349#19428#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageGradePage/topBar/topBar.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9800363">
+          <caret line="30" column="44" selection-start-line="30" selection-start-column="44" selection-end-line="30" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/css/external.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.33333334">
+          <caret line="231" column="25" selection-start-line="231" selection-start-column="25" selection-end-line="231" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/eduManage/manageClassPage/topBar/topBar.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.032667875">
+          <caret line="17" column="10" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageTchPage/topBar/topBar.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16333938">
+          <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/eduManage/supervisorManagePage/topBar/topBar.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.62068963">
+          <caret line="19" column="75" selection-start-line="19" selection-start-column="75" selection-end-line="19" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/eduManage/teachProcessPage/topBar/topBar.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4246824">
+          <caret line="19" column="71" selection-start-line="19" selection-start-column="71" selection-end-line="19" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/eduManage/eduPlanPage/topBar/topBar.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4246824">
+          <caret line="13" column="20" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/eduManage/tchTeachingPlanPage/topBar/topBar.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.0">
+          <caret line="18" column="74" selection-start-line="18" selection-start-column="74" selection-end-line="18" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/eduManage/evaTeachingResultPage/topBar/topBar.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.49001816">
+          <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="31" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/notice/notifyInformationPage/topBar/topBar.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.0">
+          <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/basicSettings/manageStdPage/topBar/topBar.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.3333335">
+          <caret line="19" column="9" selection-start-line="19" selection-start-column="9" selection-end-line="39" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/eduAdmin/userManage/authorityManage2Page/topBar/topBar.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.49001816">
+          <caret line="15" column="10" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
+          <folding />
         </state>
       </provider>
     </entry>
