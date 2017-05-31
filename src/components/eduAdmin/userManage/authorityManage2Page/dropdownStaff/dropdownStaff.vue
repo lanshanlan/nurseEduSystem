@@ -51,7 +51,7 @@
         </div>
       </div>
 
-      <div id="staffAuthority" class="marginLeft">
+      <div id="staffAuthority">
         <div>
           <p class="topP" id="topStaff">{{roleNameEle}}</p>
           <input type="checkbox" id="all" @click="allCheck()" style="margin-left: 3rem">
@@ -378,19 +378,11 @@
     }
     #staffAuthorityAll{
       display: flex;
-      flex-direction: row;
-      justify-content: flex-start;
-      margin: 2rem auto 2rem 5rem;
-      min-height: 50rem;
-    }
-    .marginLeft{
-      margin-left: 3rem;
-    }
-    .blank{
-      height: 2.9rem;
+      justify-content: space-between;
+      padding: 3.5rem 5rem;
     }
     #dropdownStaff{
-      width: 25rem;
+      width: 20rem;
       min-height: 30rem;
       border: 2px solid #d4d4d9;
     }
@@ -413,7 +405,7 @@
       text-align: center;
     }
     #staffAuthority{
-      width: 45rem;
+      width: 47rem;
       min-height: 30rem;
       border: 2px solid #d4d4d9;
     }
