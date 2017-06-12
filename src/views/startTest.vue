@@ -8,21 +8,21 @@
           <tbody>
           <tr>
             <td>教务基本设置模块</td>
-            <td><router-link to="/eduAdmin/baseSetting/person/eduAdminManageStd">学生管理</router-link></td>
-            <td><router-link to="/eduAdmin/baseSetting/person/eduAdminManageTch">教师管理</router-link></td>
-            <td><router-link to="/eduAdmin/baseSetting/resource/eduAdminManageGrade">年级管理</router-link></td>
+            <td><router-link to="/eduAdmin/person/eduAdminManageStd">学生管理</router-link></td>
+            <td><router-link to="/eduAdmin/person/eduAdminManageTch">教师管理</router-link></td>
+            <td><router-link to="/eduAdmin/resource/eduAdminManageGrade">年级管理</router-link></td>
             <td></td>
             <td></td>
             <td></td>
           </tr>
           <tr>
             <td>教务管理模块</td>
-            <td><router-link to="/eduAdmin/manage/plan/eduAdminEduPlan">培养方案</router-link></td>
-            <td><router-link to="/eduAdmin/manage/plan/eduAdminTeachProcess">教学进度</router-link></td>
-            <td><router-link to="/eduAdmin/manage/examination/eduAdminTchTeachingPlan">教学计划</router-link></td>
-            <td><router-link to="/eduAdmin/baseSetting/person/eduAdminManageClass">学生异动情况</router-link></td>
-            <td><router-link to="/eduAdmin/manage/examination/eduAdminEvaTeachingResult">教务查看评教</router-link></td>
-            <td><router-link to="/eduAdmin/manage/plan/eduAdminSupervisorManage">教务管理督导</router-link></td>
+            <td><router-link to="/eduAdmin/plan/eduAdminEduPlan">培养方案</router-link></td>
+            <td><router-link to="/eduAdmin/plan/eduAdminTeachProcess">教学进度</router-link></td>
+            <td><router-link to="/eduAdmin/examination/eduAdminTchTeachingPlan">教学计划</router-link></td>
+            <td><router-link to="/eduAdmin/person/eduAdminManageClass">学生异动情况</router-link></td>
+            <td><router-link to="/eduAdmin/examination/eduAdminEvaTeachingResult">教务查看评教</router-link></td>
+            <td><router-link to="/eduAdmin/plan/eduAdminSupervisorManage">教务管理督导</router-link></td>
           </tr>
           <tr>
             <td>权限管理</td>
